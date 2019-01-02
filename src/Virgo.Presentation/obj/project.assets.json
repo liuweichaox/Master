@@ -7231,11 +7231,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Presentation\\Virgo.Presentation.csproj",
+      "projectUniqueName": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Presentation\\Virgo.Presentation.csproj",
       "projectName": "Virgo.Presentation",
-      "projectPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Presentation\\Virgo.Presentation.csproj",
+      "projectPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Presentation\\Virgo.Presentation.csproj",
       "packagesPath": "C:\\Users\\89370\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Presentation\\obj\\",
+      "outputPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Presentation\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

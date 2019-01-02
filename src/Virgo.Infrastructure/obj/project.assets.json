@@ -491,11 +491,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Infrastructure\\Virgo.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Infrastructure\\Virgo.Infrastructure.csproj",
       "projectName": "Virgo.Infrastructure",
-      "projectPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Infrastructure\\Virgo.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Infrastructure\\Virgo.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\89370\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

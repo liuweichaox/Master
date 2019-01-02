@@ -184,11 +184,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Application\\Virgo.Application.csproj",
+      "projectUniqueName": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Application\\Virgo.Application.csproj",
       "projectName": "Virgo.Application",
-      "projectPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Application\\Virgo.Application.csproj",
+      "projectPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Application\\Virgo.Application.csproj",
       "packagesPath": "C:\\Users\\89370\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\89370\\Desktop\\Jon\\C#Project\\Virgo\\Virgo.Application\\obj\\",
+      "outputPath": "C:\\Users\\89370\\Documents\\GitHub\\Virgo\\src\\Virgo.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
