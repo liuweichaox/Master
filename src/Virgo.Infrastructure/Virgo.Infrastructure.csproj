@@ -5,10 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Cache\" />
-    <Folder Include="DependencyInjection\" />
-    <Folder Include="Log\" />
-    <Folder Include="Configuration\" />
+    <Compile Remove="Cache\**" />
+    <Compile Remove="Configuration\**" />
+    <Compile Remove="DependencyInjection\**" />
+    <Compile Remove="Log\**" />
+    <EmbeddedResource Remove="Cache\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <EmbeddedResource Remove="DependencyInjection\**" />
+    <EmbeddedResource Remove="Log\**" />
+    <None Remove="Cache\**" />
+    <None Remove="Configuration\**" />
+    <None Remove="DependencyInjection\**" />
+    <None Remove="Log\**" />
   </ItemGroup>
 
   <ItemGroup>

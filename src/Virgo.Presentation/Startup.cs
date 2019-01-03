@@ -52,6 +52,9 @@ namespace Virgo.Presentation
                 options.ApiVersionSelector = new CurrentImplementationApiVersionSelector(options);
             });
 
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            var diff = DateTime.Now - origin;
+            var s= Math.Floor(diff.TotalSeconds);
 
             //ITransientDependency
             //ISingletonDependency

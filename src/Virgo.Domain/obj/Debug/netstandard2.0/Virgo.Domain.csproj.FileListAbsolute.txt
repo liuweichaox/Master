@@ -1,0 +1,9 @@
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\bin\Debug\netstandard2.0\Virgo.Domain.deps.json
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\bin\Debug\netstandard2.0\Virgo.Domain.dll
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\bin\Debug\netstandard2.0\Virgo.Domain.pdb
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.csprojAssemblyReference.cache
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.csproj.CoreCompileInputs.cache
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.AssemblyInfoInputs.cache
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.AssemblyInfo.cs
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.dll
+C:\Users\89370\Documents\GitHub\Virgo\src\Virgo.Domain\obj\Debug\netstandard2.0\Virgo.Domain.pdb
