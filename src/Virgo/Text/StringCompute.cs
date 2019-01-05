@@ -6,15 +6,8 @@ namespace Virgo.Text
 {
     /// <summary>
     /// 字符串相似度辅助类
-    /// <para>使用示例：</para>
-    /// <para>方式一:</para>
-    /// <para>StringCompute stringcompute1 = new StringCompute();</para>
-    /// <para>stringcompute1.SpeedyCompute("对比字符一", "对比字符二");   // 计算相似度， 不记录比较时间</para>
-    /// <para>decimal rate = stringcompute1.ComputeResult.Rate;           // 相似度百分之几，完全匹配相似度为1</para>
-    /// <para>方式二:</para>
-    /// <para>StringCompute stringcompute2 = new StringCompute();</para>
-    /// <para>stringcompute2.Compute("对比字符一", "对比字符二");         // 计算相似度， 记录比较时间</para>
-    /// <para>string usetime = stringcompute2.ComputeResult.UseTime;      // 对比使用时间</para>
+    /// <see cref="SpeedyCompute"/>计算相似度， 不记录比较时间
+    /// <see cref="Compute"/>计算相似度， 记录比较时间
     /// </summary>
     public class StringCompute
     {
@@ -225,7 +218,7 @@ namespace Virgo.Text
     public struct StringComputeResult
     {
         /// <summary>
-        /// 相似度
+        /// 相似度（完全匹配相似度为1）
         /// </summary>
         public decimal Rate;
         /// <summary>

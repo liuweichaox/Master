@@ -1,4 +1,5 @@
-﻿using Autofac.Extras.IocManager;
+﻿using Autofac;
+using Autofac.Extras.IocManager;
 using Castle.DynamicProxy;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -29,6 +30,7 @@ namespace Virgo.Tests.Cache
             //                          .UseIocManager();
             //var someDomainService = resolver.Resolve<SomeDomainService>();
             //someDomainService.DoSomeStuff();
+
 
             var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
             container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
