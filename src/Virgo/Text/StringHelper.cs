@@ -29,7 +29,7 @@ namespace Virgo.Text
         /// 全角空格为12288，半角空格为32
         /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
         /// </remarks>
-        public static string ToSBC(string text)
+        public static string ConvertToSBC(string text)
         {
             if (text == null) return null;
             //半角转全角：
@@ -56,7 +56,7 @@ namespace Virgo.Text
         /// 全角空格为12288，半角空格为32
         /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
         /// </remarks>
-        public static string ToDBC(string text)
+        public static string ConvertToDBC(string text)
         {
             if (text == null) return null;
             var c = text.ToCharArray();
@@ -125,11 +125,11 @@ namespace Virgo.Text
         #region 简体 繁体 转换
 
         /// <summary>
-        /// 简体到繁体
+        /// 将字符串转换为繁体
         /// </summary>
         /// <param name="text">需要转的简体中文文本</param>
         /// <returns>繁体中文结果</returns>
-        public static string SimplifiedToTraditional(string text)
+        public static string ConvertToTraditional(string text)
         {
             if (text == null) return null;
             var sb = new StringBuilder(text);
@@ -147,11 +147,11 @@ namespace Virgo.Text
         }
 
         /// <summary>
-        /// 繁体到简体
+        /// 将字符串转换为简体
         /// </summary>
         /// <param name="text">需要转的繁体中文文本</param>
         /// <returns>简体中文结果</returns>
-        public static string TraditionalToSimplified(string text)
+        public static string ConvertToSimplified(string text)
         {
             if (text == null) return null;
             var sb = new StringBuilder(text);

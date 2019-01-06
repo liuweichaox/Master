@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Virgo.Cache;
+using Virgo.Cache.Configuration;
 
 namespace Virgo.Redis
 {
@@ -17,7 +18,9 @@ namespace Virgo.Redis
         /// <param name="services"></param>
         public static void AddRedis(this IServiceCollection services)
         {
-            services.AddSingleton<RedisCache>();
+            services.AddSingleton<ICachingConfiguration, CachingConfiguration>();
+            services.AddSingleton<IRedisCaCheConfiguration,RedisCaCheConfiguration>();
+            services.AddSingleton<IRedisCacheProvider, RedisCacheProvider>();
             services.AddSingleton<ICacheManager, RedisCacheManager>();
         }
     }

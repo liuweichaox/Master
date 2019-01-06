@@ -5,15 +5,15 @@ using System.Text;
 namespace Virgo.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="DateTime"/>.
+    /// <see cref=“DateTime”/>的扩展方法
     /// </summary>
     public static class DateTimeExtensions
     {
         /// <summary>
-        /// Converts a DateTime to a Unix Timestamp
+        /// 将日期时间转换为Unix时间戳
         /// </summary>
-        /// <param name="time">This DateTime</param>
-        /// <returns></returns>
+        /// <param name="time">此日期时间</param>
+        /// <returns>UNIX时间戳</returns>
         public static long ToUnixTimestamp(this DateTime time)
         {
             var start = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local);
@@ -22,9 +22,9 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
-        /// Converts a Unix Timestamp in to a DateTime
+        /// 将中的Unix时间戳转换为日期时间
         /// </summary>
-        /// <param name="unixTime">This Unix Timestamp</param>
+        /// <param name="unixTime">这个Unix时间戳</param>
         /// <returns></returns>
         public static DateTime FromUnixTimestamp(this long unixTime)
         {

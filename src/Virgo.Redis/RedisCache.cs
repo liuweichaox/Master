@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,6 @@ namespace Virgo.Redis
     public class RedisCache : CacheBase
     {
         private readonly IDatabase _database;
-
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -147,6 +148,8 @@ namespace Virgo.Redis
 
         protected virtual string Serialize(object value)
         {
+            var typeName = value.GetType().Name;
+            var type = Type.GetType(typeName);
             return JsonConvert.SerializeObject(value);
         }
 
@@ -162,7 +165,7 @@ namespace Virgo.Redis
 
         protected virtual string GetLocalizedKey(string key)
         {
-            return "n:" + Name + ",k:" + key;
+            return "Project:" + Name + ":" + key;
         }
     }
 }

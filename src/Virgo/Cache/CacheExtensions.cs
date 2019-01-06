@@ -63,8 +63,7 @@ namespace Virgo.Cache
             {
                 var v = await factory(key);
                 return (object)v;
-            });
-
+            });            
             return (TValue)value;
         }
 
@@ -99,8 +98,8 @@ namespace Virgo.Cache
             if (value == null)
             {
                 return default(TValue);
-            }
-
+            }          
+            
             return (TValue)value;
         }
 

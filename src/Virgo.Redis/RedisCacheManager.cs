@@ -15,15 +15,16 @@ namespace Virgo.Redis
         /// <summary>
         /// 初始化<see cref =“AbpRedisCacheManager”/>类的新实例
         /// </summary>
-        public RedisCacheManager(ICachingConfiguration configuration)
-            : base(configuration)
+        public RedisCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
+            : base(iocManager, configuration)
         {
 
         }
 
         protected override ICache CreateCacheImplementation(string name)
         {
-            return IocManager.Instance.Resolve<RedisCache>(new { name });
+            var provider = IocManager.Resolve<IRedisCacheProvider>();
+            return new RedisCache(name, provider);
         }
     }
 }

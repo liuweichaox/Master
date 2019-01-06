@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Autofac.Extras.IocManager;
+﻿using Autofac.Extras.IocManager;
 using Castle.DynamicProxy;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
@@ -7,44 +6,41 @@ using Castle.Windsor.Proxy;
 using Shouldly;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
-using Virgo.Cache.Memory;
 using Xunit;
 
-namespace Virgo.Tests.Cache
+namespace Virgo.Redis.Tests
 {
-    public class MemoryCacheManager_Tests
+    public class RedisCacheManager_Tests
     {
         private readonly ICacheManager _cacheManager;
         private readonly ITypedCache<string, MyCacheItem> _cache;
-        public MemoryCacheManager_Tests()
+        public RedisCacheManager_Tests()
         {
             IRootResolver resolver = IocBuilder.New
                                       .UseAutofacContainerBuilder()
                                       .RegisterServices(r =>
                                       {
-                                          //r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
                                           r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                                          r.Register(typeof(ICacheManager), typeof(VirgoMemoryCacheManager), Lifetime.Singleton);
+                                          r.Register(typeof(IRedisCaCheConfiguration), typeof(RedisCaCheConfiguration), Lifetime.Singleton);
+                                          r.Register(typeof(IRedisCacheProvider), typeof(RedisCacheProvider), Lifetime.Singleton);
+                                          //r.Register(typeof(ICache), typeof(RedisCache),Lifetime.LifetimeScope);
+                                          r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton); 
                                       })
                                       .RegisterIocManager()
                                       .CreateResolver()
                                       .UseIocManager();
-            //var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
-            //container.Register(Component.For(typeof(IIocManager), typeof(IocManager)).LifestyleSingleton());
-            //container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
-            //container.Register(Component.For(typeof(ICacheManager), typeof(VirgoMemoryCacheManager)).LifestyleSingleton());
-            //_cacheManager = container.Resolve<ICacheManager>();
+            resolver.Resolve<IRedisCaCheConfiguration>().DatabaseId=0;
             _cacheManager = resolver.Resolve<ICacheManager>();
             resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
-            });
+            });            
             _cache = _cacheManager.GetCache<string, MyCacheItem>("MyCacheItems");
         }
+
         [Fact]
         public void Simple_Get_Set_Test()
         {

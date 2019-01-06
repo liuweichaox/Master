@@ -11,13 +11,13 @@ namespace Virgo.Redis
     /// </summary>
     public class RedisCacheProvider : IRedisCacheProvider, ISingletonDependency
     {
-        private readonly RedisCaCheConfiguration _configuration;
+        private readonly IRedisCaCheConfiguration _configuration;
         private readonly Lazy<ConnectionMultiplexer> _connectionMultiplexer;
 
         /// <summary>
         /// 初始化<see cref =“AbpRedisCacheDatabaseProvider”/>类的新实例
         /// </summary>
-        public RedisCacheProvider(RedisCaCheConfiguration configuration)
+        public RedisCacheProvider(IRedisCaCheConfiguration configuration)
         {
             _configuration = configuration;
             _connectionMultiplexer = new Lazy<ConnectionMultiplexer>(CreateConnectionMultiplexer);

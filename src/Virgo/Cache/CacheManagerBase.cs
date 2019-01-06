@@ -13,6 +13,8 @@ namespace Virgo.Cache
     /// </summary>
     public abstract class CacheManagerBase : ICacheManager, ISingletonDependency
     {
+        protected readonly IIocManager IocManager;
+
         protected readonly ICachingConfiguration Configuration;
 
         protected readonly ConcurrentDictionary<string, ICache> Caches;
@@ -21,8 +23,9 @@ namespace Virgo.Cache
         /// 构造函数
         /// </summary>
         /// <param name="configuration"></param>
-        protected CacheManagerBase(ICachingConfiguration configuration)
+        protected CacheManagerBase(IIocManager iocManager,ICachingConfiguration configuration)
         {
+            IocManager = iocManager;
             Configuration = configuration;
             Caches = new ConcurrentDictionary<string, ICache>();
         }

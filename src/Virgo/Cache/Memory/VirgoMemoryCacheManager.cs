@@ -13,13 +13,14 @@ namespace Virgo.Cache.Memory
     /// </summary>
     public class VirgoMemoryCacheManager : CacheManagerBase, ISingletonDependency
     {
+
         public ILogger Logger { get; set; }
 
         /// <summary>
         /// 构造函数
         /// </summary>
-        public VirgoMemoryCacheManager(ICachingConfiguration configuration)
-            : base(configuration)
+        public VirgoMemoryCacheManager(IIocManager iocManager,ICachingConfiguration configuration)
+            : base(iocManager,configuration)
         {
             Logger = NullLogger.Instance;
         }
