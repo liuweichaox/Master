@@ -16,7 +16,6 @@ namespace Virgo.Quartz.Tests
             IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
                                       .RegisterServices(r =>
                                       {
-                                          r.Register(typeof(IQuartzConfiguration), typeof(QuartzConfiguration), Lifetime.Singleton);
                                           r.Register(typeof(IQuartzScheduleJobManager), typeof(QuartzScheduleJobManager), Lifetime.Transient);
                                       })
                                       .RegisterIocManager()
