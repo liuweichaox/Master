@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Virgo.Redis\Virgo.Redis.csproj" />
-    <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
+    <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
+    <ProjectReference Include="..\Virgo.Tests\Virgo.Tests.csproj" />
   </ItemGroup>
 
 </Project>

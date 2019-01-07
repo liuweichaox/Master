@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Tests", "test\Virgo.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Elasticsearch", "src\Virgo.Elasticsearch\Virgo.Elasticsearch.csproj", "{CFDEE252-3B1E-4E9F-99FD-AB7BB4404435}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.Redis.Tests", "Virgo.Redis.Tests\Virgo.Redis.Tests.csproj", "{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Redis.Tests", "test\Virgo.Redis.Tests\Virgo.Redis.Tests.csproj", "{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,10 @@ Global
 		{CFDEE252-3B1E-4E9F-99FD-AB7BB4404435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFDEE252-3B1E-4E9F-99FD-AB7BB4404435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFDEE252-3B1E-4E9F-99FD-AB7BB4404435}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +75,7 @@ Global
 		{CCE0FF5E-0D4F-4178-B20B-9BEA8F6B44BF} = {75E3E399-89DC-4838-98CD-2C3795B2DCF6}
 		{F6CC28AB-02AF-49F5-A113-596369D4AAFE} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
 		{CFDEE252-3B1E-4E9F-99FD-AB7BB4404435} = {75E3E399-89DC-4838-98CD-2C3795B2DCF6}
-		{8C2EB9F6-142E-4FF2-99E5-7EEB5BA2D17A} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
+		{0E33AB78-2EC4-4C8D-8A77-FD0A18365A49} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCA8524E-1E53-4254-BC3E-1D733F1D4C42}
