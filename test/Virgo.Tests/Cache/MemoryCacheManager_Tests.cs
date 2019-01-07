@@ -22,8 +22,7 @@ namespace Virgo.Tests.Cache
         private readonly ITypedCache<string, MyCacheItem> _cache;
         public MemoryCacheManager_Tests()
         {
-            IRootResolver resolver = IocBuilder.New
-                                      .UseAutofacContainerBuilder()
+            IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
                                       .RegisterServices(r =>
                                       {
                                           //r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
@@ -42,6 +41,10 @@ namespace Virgo.Tests.Cache
             resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
+            });
+            resolver.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+            {
+                cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
             });
             _cache = _cacheManager.GetCache<string, MyCacheItem>("MyCacheItems");
         }

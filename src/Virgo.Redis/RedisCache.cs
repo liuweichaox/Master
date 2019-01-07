@@ -65,7 +65,7 @@ namespace Virgo.Redis
             }
 
             _database.StringSet(
-                GetLocalizedRedisKey(key),Serialize(value),
+                GetLocalizedRedisKey(key), Serialize(value),
                 absoluteExpireTime ?? slidingExpireTime ?? DefaultAbsoluteExpireTime ?? DefaultSlidingExpireTime
                 );
         }
@@ -77,7 +77,7 @@ namespace Virgo.Redis
                 throw new Exception("无法将空值插入缓存！");
             }
 
-            await _database.StringSetAsync(GetLocalizedRedisKey(key),Serialize(value),absoluteExpireTime ?? slidingExpireTime ?? DefaultAbsoluteExpireTime ?? DefaultSlidingExpireTime);
+            await _database.StringSetAsync(GetLocalizedRedisKey(key), Serialize(value), absoluteExpireTime ?? slidingExpireTime ?? DefaultAbsoluteExpireTime ?? DefaultSlidingExpireTime);
         }
 
         public override void Set(KeyValuePair<string, object>[] pairs, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
@@ -140,22 +140,19 @@ namespace Virgo.Redis
             _database.KeyDeleteWithPrefix(GetLocalizedRedisKey("*"));
         }
 
-        protected virtual Type GetSerializableType(object value)
-        {
-            var type = value.GetType();
-            return type;
-        }
-
         protected virtual string Serialize(object value)
         {
-            var typeName = value.GetType().Name;
-            var type = Type.GetType(typeName);
-            return JsonConvert.SerializeObject(value);
+            var typeName = value.GetType().AssemblyQualifiedName;
+            return $"{JsonConvert.SerializeObject(value)}|{typeName}";
         }
 
         protected virtual object Deserialize(RedisValue objbyte)
         {
-            return JsonConvert.DeserializeObject(objbyte);
+            var array = objbyte.ToString().Split('|');
+            var json = array.FirstOrDefault();
+            var typeName = array.LastOrDefault();
+            var type = Type.GetType(typeName);
+            return JsonConvert.DeserializeObject(json, type);
         }
 
         protected virtual RedisKey GetLocalizedRedisKey(string key)

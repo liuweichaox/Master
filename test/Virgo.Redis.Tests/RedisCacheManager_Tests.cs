@@ -1,12 +1,7 @@
 ﻿using Autofac.Extras.IocManager;
-using Castle.DynamicProxy;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using Castle.Windsor.Proxy;
 using Shouldly;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
 using Xunit;
@@ -19,25 +14,32 @@ namespace Virgo.Redis.Tests
         private readonly ITypedCache<string, MyCacheItem> _cache;
         public RedisCacheManager_Tests()
         {
-            IRootResolver resolver = IocBuilder.New
-                                      .UseAutofacContainerBuilder()
+            IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
                                       .RegisterServices(r =>
                                       {
                                           r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                                          r.Register(typeof(IRedisCaCheConfiguration), typeof(RedisCaCheConfiguration), Lifetime.Singleton);
+                                          var instance = new RedisCaCheConfiguration()
+                                          {
+                                              DatabaseId = 0,
+                                              HostAndPort = "localhost:6379",
+                                              ConnectionString = "localhost:6379,Password=123456,ConnectTimeout=1000,ConnectRetry=1,SyncTimeout=10000"
+                                          };
+                                          r.Register<IRedisCaCheConfiguration, RedisCaCheConfiguration>(instance, Lifetime.Singleton);
                                           r.Register(typeof(IRedisCacheProvider), typeof(RedisCacheProvider), Lifetime.Singleton);
-                                          //r.Register(typeof(ICache), typeof(RedisCache),Lifetime.LifetimeScope);
-                                          r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton); 
+                                          r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton);
                                       })
                                       .RegisterIocManager()
                                       .CreateResolver()
                                       .UseIocManager();
-            resolver.Resolve<IRedisCaCheConfiguration>().DatabaseId=0;
             _cacheManager = resolver.Resolve<ICacheManager>();
             resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
-            });            
+            });
+            resolver.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+             {
+                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
+             });
             _cache = _cacheManager.GetCache<string, MyCacheItem>("MyCacheItems");
         }
 
