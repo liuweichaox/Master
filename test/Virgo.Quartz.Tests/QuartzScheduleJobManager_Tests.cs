@@ -26,11 +26,11 @@ namespace Virgo.Quartz.Tests
         [Fact]
         public async Task Simple_Job_Test()
         {
-            _scheduleJobManager.Start();
+            await _scheduleJobManager.StartAsync();
             await ScheduleJobsAsync();
-            Thread.Sleep(1000);
-            TestJob1.TestNum1.ShouldBeGreaterThan(100);
-            TestJob2.TestNum2.ShouldBeGreaterThan(100);
+            Thread.Sleep(100);
+            TestJob1.TestNum1.ShouldBeGreaterThan(1);
+            TestJob2.TestNum2.ShouldBeGreaterThan(1);
         }
         private async Task ScheduleJobsAsync()
         {
@@ -43,7 +43,7 @@ namespace Virgo.Quartz.Tests
                  {
                      trigger.WithIdentity("TestJob1Trigger")
                      .WithDescription("TestJob1Trigger Description")
-                     .WithSimpleSchedule(schedule => schedule.WithRepeatCount(1000).WithInterval(TimeSpan.FromMilliseconds(1)))
+                     .WithSimpleSchedule(schedule => schedule.WithRepeatCount(100).WithInterval(TimeSpan.FromMilliseconds(1)))
                      .StartNow();
                  });
 
@@ -56,7 +56,7 @@ namespace Virgo.Quartz.Tests
                  {
                      trigger.WithIdentity("HelloJob2Trigger")
                      .WithDescription("TestJob1Trigger Description")
-                     .WithSimpleSchedule(schedule => schedule.WithRepeatCount(1000).WithInterval(TimeSpan.FromMilliseconds(1)))
+                     .WithSimpleSchedule(schedule => schedule.WithRepeatCount(100).WithInterval(TimeSpan.FromMilliseconds(1)))
                      .StartNow();
                  });
 

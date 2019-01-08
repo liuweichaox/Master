@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Internal;
 using Quartz;
 using Quartz.Impl;
 
@@ -9,14 +10,28 @@ namespace Virgo.Quartz
 {
     public class QuartzScheduleJobManager : IQuartzScheduleJobManager
     {
-        private readonly IScheduler _scheduler;
-        public QuartzScheduleJobManager()
-        {
-            _scheduler = StdSchedulerFactory.GetDefaultScheduler().Result;
-        }
+        private static volatile IScheduler _scheduler = null;
         public bool IsRunning { get { return _isRunning; } }
 
         private volatile bool _isRunning;
+
+        private static AsyncLock _asyncLock = new AsyncLock();
+
+        private async Task<IScheduler> SchedulerAsync()
+        {
+            if (_scheduler == null)
+            {
+                using (await _asyncLock.LockAsync())
+                {
+                    if (_scheduler == null)
+                    {
+                        var factory = new StdSchedulerFactory();
+                        _scheduler = await factory.GetScheduler();
+                    }
+                }
+            }
+            return _scheduler;
+        }
 
         public async Task ScheduleAsync<TJob>(Action<JobBuilder> configureJob, Action<TriggerBuilder> configureTrigger) where TJob : IJob
         {
@@ -30,16 +45,17 @@ namespace Virgo.Quartz
             await _scheduler.ScheduleJob(job, trigger);
         }
 
-        public void Start()
+        public async Task StartAsync()
         {
             _isRunning = true;
-            _scheduler.Start();
+            _scheduler = await SchedulerAsync();
+            await _scheduler.Start();
         }
 
-        public void Stop()
+        public async Task StopAsync()
         {
             _isRunning = false;
-            _scheduler.Shutdown(true);
+            await _scheduler.Shutdown(true);
         }
     }
 }
