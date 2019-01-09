@@ -5,13 +5,17 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 希望此接口存储修改实体信息的创建者和创建时间
+    /// 希望此接口存实现（保存）审计相关属性
     /// </summary>
-    public interface ICreationAudited<TKey> : IHasCreationTime where TKey:struct
+    public interface ICreationAudited<TPrimaryKey> : IHasCreationTime where TPrimaryKey : struct
     {
         /// <summary>
         /// 创建此实体的用户
         /// </summary>
-        TKey? CreatorUserId { get; set; }
+        TPrimaryKey? CreatorUserId { get; set; }
+    }
+    public interface ICreationAudited : IHasCreationTime
+    {
+        string CreatorUserId { get; set; }
     }
 }

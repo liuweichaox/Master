@@ -5,7 +5,7 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 此接口由希望存储修改信息的实体删除时间
+    /// 希望此接口存储实体的删除时间和是否删除属性
     /// </summary>
     public interface IHasDeletionTime : ISoftDelete
     {

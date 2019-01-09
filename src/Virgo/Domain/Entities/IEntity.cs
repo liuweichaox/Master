@@ -15,4 +15,8 @@ namespace Virgo.Domain.Entities
         /// </summary>
         TPrimaryKey Id { get; set; }
     }
+    public interface IEntity
+    {
+        string Id { get; set; }
+    }
 }
