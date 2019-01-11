@@ -9,8 +9,30 @@ namespace Virgo.Extensions
     /// </summary>
     public static class DateTimeExtensions
     {
+        /// <summary>  
+        /// DateTime时间格式转换为时间戳格式[13位时间戳]
+        /// </summary>  
+        /// <param name="time">时间</param>  
+        /// <returns>long</returns>  
+        public static long ConvertDateTimeToLong(DateTime datetime)
+        {
+            DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
+            return (long)(datetime - UnixTimestampLocalZero).TotalMilliseconds;
+        }
+
+        /// <summary>        
+        /// 将本地时间戳转为C#格式时间[13位时间戳]   
+        /// </summary>        
+        /// <param name=”timeStamp”></param>        
+        /// <returns></returns>        
+        public static DateTime ConvertLocalFromTimestamp(long timestamp)
+        {
+            DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
+            return UnixTimestampLocalZero.AddMilliseconds(timestamp);
+        }
+
         /// <summary>
-        /// 将日期时间转换为Unix时间戳
+        /// 将日期时间转换为Unix时间戳[10位时间戳]
         /// </summary>
         /// <param name="time">此日期时间</param>
         /// <returns>UNIX时间戳</returns>
@@ -22,7 +44,7 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
-        /// 将中的Unix时间戳转换为日期时间
+        /// 将中的Unix时间戳转换为日期时间[10位时间戳]
         /// </summary>
         /// <param name="unixTime">这个Unix时间戳</param>
         /// <returns></returns>
