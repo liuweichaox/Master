@@ -32,11 +32,12 @@ namespace Virgo.Tests.Cache
                                       .RegisterIocManager()
                                       .CreateResolver()
                                       .UseIocManager();
-            //var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
+            // var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
             //container.Register(Component.For(typeof(IIocManager), typeof(IocManager)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICacheManager), typeof(VirgoMemoryCacheManager)).LifestyleSingleton());
-            //_cacheManager = container.Resolve<ICacheManager>();
+            //_cacheManager = container.Resolve<ICacheManager>(); 
+
             _cacheManager = resolver.Resolve<ICacheManager>();
             resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
