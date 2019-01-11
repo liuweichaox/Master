@@ -14,7 +14,7 @@ namespace Virgo.Extensions
         /// </summary>  
         /// <param name="time">时间</param>  
         /// <returns>long</returns>  
-        public static long ConvertDateTimeToLong(DateTime datetime)
+        public static long ConvertDateTimeToLong(this DateTime datetime)
         {
             DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
             return (long)(datetime - UnixTimestampLocalZero).TotalMilliseconds;
@@ -25,7 +25,7 @@ namespace Virgo.Extensions
         /// </summary>        
         /// <param name=”timeStamp”></param>        
         /// <returns></returns>        
-        public static DateTime ConvertLocalFromTimestamp(long timestamp)
+        public static DateTime ConvertLocalFromTimestamp(this long timestamp)
         {
             DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
             return UnixTimestampLocalZero.AddMilliseconds(timestamp);
