@@ -7,7 +7,7 @@ namespace Virgo.Cache
 {
     /// <summary>
     /// 以类型化方式使用缓存的接口
-    /// 使用<see cref =“CacheExtensions.AsTyped {TKey，TValue}”/>方法将<see cref =“ICache”/>转换为此接口
+    /// 使用<see cref ="CacheExtensions.AsTyped {TKey，TValue}"/>方法将<see cref ="ICache"/>转换为此接口
     /// </summary>
     /// <typeparam name="TKey">缓存项的键类型</typeparam>
     /// <typeparam name="TValue">缓存项的值类型</typeparam>

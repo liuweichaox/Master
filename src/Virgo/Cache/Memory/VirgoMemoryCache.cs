@@ -8,7 +8,7 @@ using Virgo.Cache;
 namespace Virgo.Cache.Memory
 {
     /// <summary>
-    /// 实现<see cref =“ICache”/>以使用<see cref =“MemoryCache”/>
+    /// 实现<see cref ="ICache"/>以使用<see cref ="MemoryCache"/>
     /// </summary>
     public class VirgoMemoryCache : CacheBase
     {

@@ -9,7 +9,7 @@ using Virgo.Cache.Configuration;
 namespace Virgo.Cache.Memory
 {
     /// <summary>
-    /// 实现<see cref =“ICacheManager”/>以使用MemoryCache
+    /// 实现<see cref ="ICacheManager"/>以使用MemoryCache
     /// </summary>
     public class VirgoMemoryCacheManager : CacheManagerBase, ISingletonDependency
     {

@@ -5,7 +5,7 @@ using System.Text;
 namespace Virgo.Extensions
 {
     /// <summary>
-    /// <see cref=“IComparable”/>的扩展方法。
+    /// <see cref="IComparable"/>的扩展方法。
     /// </summary>
     public static class ComparableExtensions
     {

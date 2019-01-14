@@ -8,12 +8,12 @@ using Virgo.Cache.Configuration;
 namespace Virgo.Redis
 {
     /// <summary>
-    /// 用于创建<see cref =“RedisCache”/>实例
+    /// 用于创建<see cref ="RedisCache"/>实例
     /// </summary>
     public class RedisCacheManager : CacheManagerBase, ISingletonDependency
     {
         /// <summary>
-        /// 初始化<see cref =“AbpRedisCacheManager”/>类的新实例
+        /// 初始化<see cref ="AbpRedisCacheManager"/>类的新实例
         /// </summary>
         public RedisCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
             : base(iocManager, configuration)

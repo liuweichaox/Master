@@ -5,9 +5,9 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 抽象实现<see cref =“IAudited”/>的聚合根
+    /// 抽象实现<see cref ="IAudited"/>的聚合根
     /// </summary>
-    /// <typeparam name =“TPrimaryKey”>实体主键的类型</ typeparam>
+    /// <typeparam name ="TPrimaryKey">实体主键的类型</ typeparam>
     [Serializable]
     public abstract class AuditedAggregateRoot<TPrimaryKey> : CreationAuditedAggregateRoot<TPrimaryKey>, IAudited<TPrimaryKey> where TPrimaryKey : struct
     {

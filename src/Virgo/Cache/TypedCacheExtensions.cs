@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Virgo.Cache
 {
     /// <summary>
-    /// <see cref =“ITypedCache {TKey，TValue}”/>的扩展方法
+    /// <see cref ="ITypedCache {TKey，TValue}"/>的扩展方法
     /// </summary>
     public static class TypedCacheExtensions
     {

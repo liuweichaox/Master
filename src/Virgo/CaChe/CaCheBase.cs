@@ -11,7 +11,7 @@ namespace Virgo.Cache
 {    
     /// <summary>
     /// 缓存的基类
-    /// 它用于简化实现<see cref =“ICache”/>
+    /// 它用于简化实现<see cref ="ICache"/>
     /// </summary>
     public abstract class CacheBase : ICache
     {

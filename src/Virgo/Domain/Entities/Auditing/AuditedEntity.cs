@@ -5,7 +5,7 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 此类可用于简化实现<see cref=“iaudited”/>
+    /// 此类可用于简化实现<see cref="iaudited"/>
     /// </summary>
     /// <typeparam name="TPrimaryKey">实体的主键类型</typeparam>
     [Serializable]

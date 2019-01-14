@@ -6,7 +6,7 @@ using System.Text;
 namespace Virgo.Redis
 {
     /// <summary>
-    /// <see cref =“IDatabase”/>的扩展方法
+    /// <see cref ="IDatabase"/>的扩展方法
     /// </summary>
     internal static class RedisDatabaseExtensions
     {

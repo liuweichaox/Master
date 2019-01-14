@@ -7,7 +7,7 @@ namespace Virgo.Cache
 {
     /// <summary>
     /// <see cref="ICache"/> 对象的上层容器
-    /// 缓存管理器应该作为Singleton工作，并跟踪和管理<see cref =“ICache”/>对象
+    /// 缓存管理器应该作为Singleton工作，并跟踪和管理<see cref ="ICache"/>对象
     /// </summary>
     public interface ICacheManager : IDisposable
     {
@@ -18,7 +18,7 @@ namespace Virgo.Cache
         IReadOnlyList<ICache> GetAllCaches();
 
         /// <summary>
-        /// 获取<see cref =“ICache”/>实例
+        /// 获取<see cref ="ICache"/>实例
         /// 如果缓存尚不存在，它可能会创建缓存
         /// </summary>
         /// <param name="name">

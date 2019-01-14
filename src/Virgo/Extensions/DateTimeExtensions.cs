@@ -5,7 +5,7 @@ using System.Text;
 namespace Virgo.Extensions
 {
     /// <summary>
-    /// <see cref=“DateTime”/>的扩展方法
+    /// <see cref="DateTime"/>的扩展方法
     /// </summary>
     public static class DateTimeExtensions
     {
@@ -23,7 +23,7 @@ namespace Virgo.Extensions
         /// <summary>        
         /// 将本地时间戳转为C#格式时间[13位时间戳]   
         /// </summary>        
-        /// <param name=”timeStamp”></param>        
+        /// <param name="timeStamp"></param>        
         /// <returns></returns>        
         public static DateTime ConvertLocalFromTimestamp(this long timestamp)
         {

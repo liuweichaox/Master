@@ -8,7 +8,7 @@ using Virgo.Cache.Configuration;
 namespace Virgo.Redis
 {
     /// <summary>
-    /// <see cref =“ICachingConfiguration”/>的扩展方法
+    /// <see cref ="ICachingConfiguration"/>的扩展方法
     /// </summary>
     public static class RedisCacheConfigurationExtensions
     {

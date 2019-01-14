@@ -6,7 +6,7 @@ using System.Text;
 namespace Virgo.Extensions
 {
     /// <summary>
-    /// Extension methods for String class.
+    /// <see cref="String"/>的扩展方法
     /// </summary>
     public static class StringExtensions
     {
