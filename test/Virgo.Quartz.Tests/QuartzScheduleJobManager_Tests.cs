@@ -1,27 +1,28 @@
+using Autofac;
 using Autofac.Extras.IocManager;
 using Quartz;
 using Shouldly;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Virgo.TestBase;
 using Xunit;
 
 namespace Virgo.Quartz.Tests
 {
-    public class QuartzScheduleJobManager_Tests
+    public class QuartzScheduleJobManager_Tests : TestBaseWithIocBuilder
     {
         private readonly IQuartzScheduleJobManager _scheduleJobManager;
         public QuartzScheduleJobManager_Tests()
         {
-            IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
-                                      .RegisterServices(r =>
-                                      {
-                                          r.Register(typeof(IQuartzScheduleJobManager), typeof(QuartzScheduleJobManager), Lifetime.Transient);
-                                      })
-                                      .RegisterIocManager()
-                                      .CreateResolver()
-                                      .UseIocManager();
-            _scheduleJobManager = resolver.Resolve<IQuartzScheduleJobManager>();
+            Building(builder =>
+            {
+                builder.RegisterServices(r =>
+                {
+                    r.Register(typeof(IQuartzScheduleJobManager), typeof(QuartzScheduleJobManager), Lifetime.Transient);
+                });
+            });
+            _scheduleJobManager = LocalIocManager.Resolve<IQuartzScheduleJobManager>();
         }
         [Fact]
         public async Task Simple_Job_Test()
