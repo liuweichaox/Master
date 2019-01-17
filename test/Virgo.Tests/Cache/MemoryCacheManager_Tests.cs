@@ -12,38 +12,36 @@ using System.Text;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
 using Virgo.Cache.Memory;
+using Virgo.TestBase;
 using Xunit;
 
 namespace Virgo.Tests.Cache
 {
-    public class MemoryCacheManager_Tests
+    public class MemoryCacheManager_Tests:TestBaseWithIocBuilder
     {
         private readonly ICacheManager _cacheManager;
         private readonly ITypedCache<string, MyCacheItem> _cache;
         public MemoryCacheManager_Tests()
         {
-            IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
-                                      .RegisterServices(r =>
-                                      {
-                                          //r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-                                          r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                                          r.Register(typeof(ICacheManager), typeof(VirgoMemoryCacheManager), Lifetime.Singleton);
-                                      })
-                                      .RegisterIocManager()
-                                      .CreateResolver()
-                                      .UseIocManager();
+            Building(builder =>
+            {
+                builder.RegisterServices(r =>
+                {
+                    r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
+                    r.Register(typeof(ICacheManager), typeof(VirgoMemoryCacheManager), Lifetime.Singleton);
+                });
+            });
             // var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
             //container.Register(Component.For(typeof(IIocManager), typeof(IocManager)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICacheManager), typeof(VirgoMemoryCacheManager)).LifestyleSingleton());
             //_cacheManager = container.Resolve<ICacheManager>(); 
-
-            _cacheManager = resolver.Resolve<ICacheManager>();
-            resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
+            _cacheManager = LocalIocManager.Resolve<ICacheManager>();
+            LocalIocManager.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
             });
-            resolver.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+            LocalIocManager.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
             });

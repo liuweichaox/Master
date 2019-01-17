@@ -4,39 +4,39 @@ using System;
 using System.Collections.Generic;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
+using Virgo.TestBase;
 using Xunit;
 
 namespace Virgo.Redis.Tests
 {
-    public class RedisCacheManager_Tests
+    public class RedisCacheManager_Tests : TestBaseWithIocBuilder
     {
         private readonly ICacheManager _cacheManager;
         private readonly ITypedCache<string, MyCacheItem> _cache;
         public RedisCacheManager_Tests()
         {
-            IRootResolver resolver = IocBuilder.New.UseAutofacContainerBuilder()
-                                      .RegisterServices(r =>
-                                      {
-                                          r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                                          var instance = new RedisCaCheConfiguration()
-                                          {
-                                              DatabaseId = 0,
-                                              HostAndPort = "localhost:6379",
-                                              ConnectionString = "localhost:6379,Password=123456,ConnectTimeout=1000,ConnectRetry=1,SyncTimeout=10000"
-                                          };
-                                          r.Register<IRedisCaCheConfiguration, RedisCaCheConfiguration>(instance, Lifetime.Singleton);
-                                          r.Register(typeof(IRedisCacheProvider), typeof(RedisCacheProvider), Lifetime.Singleton);
-                                          r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton);
-                                      })
-                                      .RegisterIocManager()
-                                      .CreateResolver()
-                                      .UseIocManager();
-            _cacheManager = resolver.Resolve<ICacheManager>();
-            resolver.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
+            Building(builder =>
+            {
+                builder.RegisterServices(r =>
+                {
+                    r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
+                    var instance = new RedisCaCheConfiguration()
+                    {
+                        DatabaseId = 0,
+                        HostAndPort = "localhost:6379",
+                        ConnectionString = "localhost:6379,Password=123456,ConnectTimeout=1000,ConnectRetry=1,SyncTimeout=10000"
+                    };
+                    r.Register<IRedisCaCheConfiguration, RedisCaCheConfiguration>(instance, Lifetime.Singleton);
+                    r.Register(typeof(IRedisCacheProvider), typeof(RedisCacheProvider), Lifetime.Singleton);
+                    r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton);
+                });
+            });
+            _cacheManager = LocalIocManager.Resolve<ICacheManager>();
+            LocalIocManager.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
             });
-            resolver.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+            LocalIocManager.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
              {
                  cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
              });
