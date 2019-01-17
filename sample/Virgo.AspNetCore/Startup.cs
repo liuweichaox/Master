@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.IocManager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -21,7 +25,7 @@ namespace Virgo.AspNetCore
         public IConfiguration Configuration { get; }
 
         // 此方法由运行时调用。 使用此方法将服务添加到容器。
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -30,8 +34,21 @@ namespace Virgo.AspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddControllersAsServices();
+            #region Autofac接管Ioc
+            var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
+            builder.RegisterServices(r =>
+            {
+                r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+                r.BeforeRegistrationCompleted += (sender, args) =>
+                {
+                    args.ContainerBuilder.Populate(services);
+                    args.ContainerBuilder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).PropertiesAutowired();
+                };
+            });
+            var resolver = builder.CreateResolver().UseIocManager();
+            return new AutofacServiceProvider(resolver.Container);
+            #endregion
         }
 
         // 此方法由运行时调用。 使用此方法配置HTTP请求管道。
