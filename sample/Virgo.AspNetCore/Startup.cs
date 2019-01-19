@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Virgo.Infrastructure;
 
 namespace Virgo.AspNetCore
 {
@@ -39,13 +40,14 @@ namespace Virgo.AspNetCore
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
             builder.RegisterServices(r =>
             {
-                r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-                r.BeforeRegistrationCompleted += (sender, args) =>
+                r.BeforeRegistrationCompleted += ((sender, args) =>
                 {
                     args.ContainerBuilder.Populate(services);
                     args.ContainerBuilder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).PropertiesAutowired();
-                };
+                });
+                r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());               
             });
+            builder.UseInfrastructure();
             var resolver = builder.CreateResolver().UseIocManager();
             return new AutofacServiceProvider(resolver.Container);
             #endregion

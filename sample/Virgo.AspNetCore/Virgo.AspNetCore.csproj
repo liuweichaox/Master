@@ -11,6 +11,11 @@
     <PackageReference Include="Autofac.Extras.IocManager.DynamicProxy" Version="3.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
+    <ProjectReference Include="..\Virgo.Infrastructure\Virgo.Infrastructure.csproj" />
+  </ItemGroup>
+
 
   
 </Project>

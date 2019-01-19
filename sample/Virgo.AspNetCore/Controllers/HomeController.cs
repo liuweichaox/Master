@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Virgo.AspNetCore.Models;
+using Virgo.Infrastructure;
 
 namespace Virgo.AspNetCore.Controllers
 {
     public class HomeController : Controller
     {
+        public IOrderService OrderService { get; set; }
+        public IInfrastruxtureTest InfrastruxtureTest { get; set; }
         public IActionResult Index()
         {
             return View();
