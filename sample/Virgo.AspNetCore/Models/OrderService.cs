@@ -8,5 +8,9 @@ namespace Virgo.AspNetCore.Models
 {
     public class OrderService : IOrderService, ITransientDependency
     {
+        public string Say()
+        {
+           return "Virgo";
+        }
     }
 }

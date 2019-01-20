@@ -5,22 +5,31 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Autofac.Extras.DynamicProxy;
 using Autofac.Extras.IocManager;
+using Autofac.Extras.IocManager.DynamicProxy;
+using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Virgo.AspNetCore.Controllers;
+using Virgo.AspNetCore.Models;
 using Virgo.Infrastructure;
 
 namespace Virgo.AspNetCore
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment ev)
         {
             Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(ev.ContentRootPath)
+                .AddJsonFile("Configs/myjson.json", true, true);
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -35,7 +44,7 @@ namespace Virgo.AspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddControllersAsServices();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             #region Autofac接管Ioc
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
             builder.RegisterServices(r =>
@@ -43,9 +52,33 @@ namespace Virgo.AspNetCore
                 r.BeforeRegistrationCompleted += ((sender, args) =>
                 {
                     args.ContainerBuilder.Populate(services);
-                    args.ContainerBuilder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly()).PropertiesAutowired();
                 });
-                r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());               
+
+                r.UseBuilder(b =>
+                {
+
+                    b.RegisterCallback(x =>
+                    {
+                        x.Registered += (sender, e) =>
+                         {
+
+                             Type implType = e.ComponentRegistration.Activator.LimitType;
+                             if (typeof(ITransientDependency).IsAssignableFrom(implType)&& implType != typeof(AopInterceptor))//如果继承了ITransientDependency或者间接实现了ITransientDependency
+                             {
+                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                             };
+                             if (typeof(ILifetimeScopeDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ILifetimeScopeDependency或者间接实现了ILifetimeScopeDependency
+                             {
+                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                             };
+                             if (typeof(ISingletonDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ISingletonDependency或者间接实现了ISingletonDependency
+                             {
+                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                             };
+                         };
+                    });
+                });
+                r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
             });
             builder.UseInfrastructure();
             var resolver = builder.CreateResolver().UseIocManager();

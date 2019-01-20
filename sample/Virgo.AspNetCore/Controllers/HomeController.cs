@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac.Extras.DynamicProxy;
+using Autofac.Extras.IocManager;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Virgo.AspNetCore.Models;
@@ -12,10 +14,16 @@ namespace Virgo.AspNetCore.Controllers
 {
     public class HomeController : Controller
     {
-        public IOrderService OrderService { get; set; }
-        public IInfrastruxtureTest InfrastruxtureTest { get; set; }
+        public readonly IOrderService _orderService;
+        private readonly IInfrastruxtureTest _infrastruxtureTest;
+        public HomeController(IOrderService orderService, IInfrastruxtureTest test)
+        {
+            _orderService = orderService;
+            _infrastruxtureTest = test;
+        }
         public IActionResult Index()
         {
+            var say = _orderService.Say();
             return View();
         }
 

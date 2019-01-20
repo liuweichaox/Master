@@ -7,5 +7,6 @@ namespace Virgo.AspNetCore.Models
 {
     public interface IOrderService
     {
+        string Say();
     }
 }

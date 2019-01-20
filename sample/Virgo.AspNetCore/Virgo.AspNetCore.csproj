@@ -16,6 +16,10 @@
     <ProjectReference Include="..\Virgo.Infrastructure\Virgo.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Attributes\" />
+  </ItemGroup>
+
 
   
 </Project>
