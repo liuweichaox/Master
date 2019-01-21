@@ -21,8 +21,8 @@ namespace Virgo.Aliyun.Sms
             var verifiedCode = new Random().Next(100000, 999999).ToString();
             string product = "Dysmsapi";//短信API产品名称（短信产品名固定，无需修改）
             string domain = "dysmsapi.aliyuncs.com";//短信API产品域名（接口地址固定，无需修改）
-            string accessKeyId = "LTAIT2YSydE6pOhL";//你的accessKeyId，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-            string accessKeySecret = "c5r20mdqNUubbErKFDOe84fJgjX5OC";//你的accessKeySecret，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
+            string accessKeyId = "";//你的accessKeyId，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
+            string accessKeySecret = "";//你的accessKeySecret，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
             IClientProfile profile = DefaultProfile.GetProfile("cn-hangzhou", accessKeyId, accessKeySecret);
             DefaultProfile.AddEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
             IAcsClient acsClient = new DefaultAcsClient(profile);
