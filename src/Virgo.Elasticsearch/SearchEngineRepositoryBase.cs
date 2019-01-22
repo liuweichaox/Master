@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Virgo.Elasticsearch
 {
     /// <summary>
-    /// <see cref="ISearchEngineRepository"/>搜索引擎仓储抽象实现类类
+    /// <see cref="ISearchEngineRepository"/>搜索引擎仓储抽基础类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class SearchEngineRepositoryBase<T> : ISearchEngineRepository<T> where T : class
+    public  class SearchEngineRepositoryBase<T> : ISearchEngineRepository<T> where T : class
     {
         /// <summary>
         /// Elasticsearch客户端
