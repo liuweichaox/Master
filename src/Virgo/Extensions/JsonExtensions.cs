@@ -11,7 +11,7 @@ namespace Virgo.Extensions
         {
             return JsonConvert.SerializeObject(obj);
         }
-        public string T ToObject<T>(this string s)
+        public static T ToObject<T>(this string s)
         {
             return JsonConvert.DeserializeObject<T>(s);
         }
