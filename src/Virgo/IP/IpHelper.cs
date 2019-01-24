@@ -10,22 +10,17 @@ namespace Virgo.IP
 {
     public static class IpHelper
     {
-        /// <summary>
-        /// If you add IPTools.International and IPTools.China to your project.The IPTools.China is Default IpSearcher.
-        /// </summary>
         private static readonly IIpSearcher  searcher;
 
-
         static IpHelper()
-
         {
             try
             {              
-                if (IpToolSettings.DefalutSearcherType == IpSearcherType.China)
+                if (IpSettings.DefalutSearcherType == IpSearcherType.China)
                 {
                     searcher = new IpSimpleSearcher();
                 }
-                if (IpToolSettings.DefalutSearcherType == IpSearcherType.International)
+                if (IpSettings.DefalutSearcherType == IpSearcherType.International)
                 {
                     searcher = new IpComplexSearcher();
                 }
@@ -38,9 +33,9 @@ namespace Virgo.IP
 
 
         /// <summary>
-        /// Use DefaultSearcher get ip addredd information.
+        /// 使用默认搜索器获取IP地址信息。
         /// </summary>
-        /// <param name="ip"></param>
+        /// <param name="ip">IP地址</param>
         /// <returns></returns>
         public static IpInfo Search(string ip)
         {
@@ -48,12 +43,10 @@ namespace Virgo.IP
         }
 
         /// <summary>
-        /// Use DefaultSearcher get ip addredd information with i8n.
-        /// <para/>
-        /// Now support IPTools.China.
+        /// 使用默认搜索器获取i8n的IP地址信息。
         /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="langCode">language code.eg. zh-CN, en.</param>
+        /// <param name="ip">IP地址</param>
+        /// <param name="langCode">语言代码.eg。 zh-CN，en。</param>
         /// <returns></returns>
         public static IpInfo SearchWithI18N(string ip, string langCode = "")
         {

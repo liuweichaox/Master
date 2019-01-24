@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Virgo.IP
 {
-    public class IpToolSettings
+    /// <summary>
+    /// IP设置
+    /// </summary>
+    public class IpSettings
     {
         /// <summary>
         /// 默认语言代码，例如:zh-CN，en

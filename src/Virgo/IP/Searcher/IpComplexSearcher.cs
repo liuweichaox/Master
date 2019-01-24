@@ -15,7 +15,7 @@ namespace Virgo.IP.Searcher
         public IpComplexSearcher()
         {
             var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/ip/data/GeoLite2-City.mmdb");
-            if (IpToolSettings.LoadInternationalDbToMemory)
+            if (IpSettings.LoadInternationalDbToMemory)
             {
                 MemoryMappedFile file = MemoryMappedFile.CreateFromFile(dbPath);
                 _search = new DatabaseReader(file.CreateViewStream());
@@ -65,7 +65,7 @@ namespace Virgo.IP.Searcher
 
             if (string.IsNullOrEmpty(langCode))
             {
-                langCode = IpToolSettings.DefaultLanguage;
+                langCode = IpSettings.DefaultLanguage;
             }
 
             if (_search.TryCity(ip, out var city))
