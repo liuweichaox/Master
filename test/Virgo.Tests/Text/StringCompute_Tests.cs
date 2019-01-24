@@ -13,7 +13,6 @@ namespace Virgo.Tests.Text
         [Fact]
         public void Simple_Compute_Test()
         {
-            var d = IpHelper.Search("39.108.80.222");
             var compute = new StringCompute("世界，你好。", "你好，世界。");
             compute.Compute();
             var computeResult = compute.ComputeResult;
