@@ -14,7 +14,7 @@ namespace Virgo.IP.Searcher
 
         public IpComplexSearcher()
         {
-            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/ip/data/GeoLite2-City.mmdb");
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ip", "data", "GeoLite2-City.mmdb");
             if (IpSettings.LoadInternationalDbToMemory)
             {
                 MemoryMappedFile file = MemoryMappedFile.CreateFromFile(dbPath);

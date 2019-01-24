@@ -12,7 +12,7 @@ namespace Virgo.IP.Searcher
 
         public IpSimpleSearcher()
         {
-            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "/ip/data/ip2region.db");
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ip","data", "ip2region.db");
             _search = new DbSearcher(dbPath);
         }
 

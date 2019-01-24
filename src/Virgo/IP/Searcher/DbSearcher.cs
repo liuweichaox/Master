@@ -7,6 +7,9 @@ using Virgo.IP.Models;
 
 namespace Virgo.IP.Searcher
 {
+    /// <summary>
+    /// 二进制搜索
+    /// </summary>
     public class DbSearcher : IDisposable
     {
         const int BTREE_ALGORITHM = 1;
