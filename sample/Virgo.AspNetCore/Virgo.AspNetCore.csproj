@@ -20,6 +20,15 @@
     <Folder Include="Attributes\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="IP\Data\GeoLite2-City.mmdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="IP\Data\ip2region.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
   
 </Project>
