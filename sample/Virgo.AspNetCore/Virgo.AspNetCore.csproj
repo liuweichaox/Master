@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
     <ProjectReference Include="..\Virgo.Infrastructure\Virgo.Infrastructure.csproj" />
   </ItemGroup>
 
