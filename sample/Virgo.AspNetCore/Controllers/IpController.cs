@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Virgo.IP;
 using Virgo.Extensions;
 using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Virgo.AspNetCore.Controllers
 {
@@ -23,7 +24,8 @@ namespace Virgo.AspNetCore.Controllers
             {
                 ip = "127.0.0.1";
             }
-            if (!IPAddress.TryParse(ip, out var iPAddress))
+            Regex regex = new Regex(@"^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$");
+            if (!regex.IsMatch(ip))
             {
                 ip = "127.0.0.1";
             }
