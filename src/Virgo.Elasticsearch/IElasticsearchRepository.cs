@@ -9,7 +9,7 @@ namespace Virgo.Elasticsearch
     /// <summary>
     /// 搜索引擎仓储基类接口
     /// </summary>
-    public interface ISearchEngineRepository<T> where T : class
+    public interface IElasticsearchRepository<T> where T : class
     {
         /// <summary>
         /// Elasticsearch客户端

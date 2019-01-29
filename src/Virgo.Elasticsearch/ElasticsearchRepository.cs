@@ -13,7 +13,7 @@ namespace Virgo.Elasticsearch
     /// <see cref="ISearchEngineRepository"/>搜索引擎仓储抽基础类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public  class SearchEngineRepositoryBase<T> : ISearchEngineRepository<T> where T : class
+    public  class ElasticsearchRepository<T> : IElasticsearchRepository<T> where T : class
     {
         /// <summary>
         /// Elasticsearch客户端
@@ -28,7 +28,7 @@ namespace Virgo.Elasticsearch
         /// </summary>
         /// <param name="uri"></param>
         /// <param name="defaultIndex"></param>
-        protected SearchEngineRepositoryBase(Uri uri, string defaultIndex = null)
+        protected ElasticsearchRepository(Uri uri, string defaultIndex = null)
         {
             var connection = new ConnectionSettings(uri).DefaultIndex(defaultIndex);
             Index = defaultIndex;
