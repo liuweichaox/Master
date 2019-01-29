@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Virgo.Domain.Uow
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork:IDisposable
     {
     }
 }
