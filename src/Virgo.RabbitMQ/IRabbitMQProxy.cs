@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Virgo.RabbitMQ
 {
-    public interface IRabbitProxy
+    public interface IRabbitMQProxy
     {
         bool Publish<T>(string queueName, T message)
             where T : QueueMessage;

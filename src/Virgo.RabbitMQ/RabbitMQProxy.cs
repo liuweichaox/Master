@@ -10,11 +10,11 @@ using System.Text;
 
 namespace Virgo.RabbitMQ
 {
-    public class RabbitProxy : IRabbitProxy
+    public class RabbitMQProxy : IRabbitMQProxy
     {
 
         private readonly IRabbitMQConfiguration _mQConfiguration;
-        public RabbitProxy(IRabbitMQConfiguration mQConfiguration)
+        public RabbitMQProxy(IRabbitMQConfiguration mQConfiguration)
         {
             _mQConfiguration = mQConfiguration;
         }
