@@ -13,7 +13,7 @@ namespace Virgo.Domain.Uow
             _uowManager = uowManager;
         }
         public void Intercept(IInvocation invocation)
-        {
+        {            
             if (_uowManager.Current != null)
             {
                 invocation.Proceed();
