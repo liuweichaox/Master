@@ -47,24 +47,23 @@ namespace Virgo.AspNetCore
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             #region Autofac接管Ioc
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
+         
             builder.RegisterServices(r =>
             {
                 r.BeforeRegistrationCompleted += ((sender, args) =>
                 {
                     args.ContainerBuilder.Populate(services);
                 });
-
+                
                 r.UseBuilder(b =>
-                {
-
+                {                   
                     b.RegisterCallback(x =>
                     {
                         x.Registered += (sender, e) =>
                          {
-
                              Type implType = e.ComponentRegistration.Activator.LimitType;
                              if (typeof(ITransientDependency).IsAssignableFrom(implType)&& implType != typeof(AopInterceptor))//如果继承了ITransientDependency或者间接实现了ITransientDependency
-                             {
+                             {  
                                  e.ComponentRegistration.InterceptedBy<AopInterceptor>();
                              };
                              if (typeof(ILifetimeScopeDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ILifetimeScopeDependency或者间接实现了ILifetimeScopeDependency
@@ -81,7 +80,7 @@ namespace Virgo.AspNetCore
                 r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
             });
             builder.UseInfrastructure();
-            var resolver = builder.CreateResolver().UseIocManager();
+            var resolver = builder.CreateResolver().UseIocManager(); 
             return new AutofacServiceProvider(resolver.Container);
             #endregion
         }

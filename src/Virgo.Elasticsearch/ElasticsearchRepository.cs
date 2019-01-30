@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 namespace Virgo.Elasticsearch
 {
     /// <summary>
-    /// <see cref="ISearchEngineRepository"/>搜索引擎仓储抽基础类
+    /// <see cref="IElasticsearchRepository"/>搜索引擎仓储抽基础类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public  class ElasticsearchRepository<T> : IElasticsearchRepository<T> where T : class
+    public class ElasticsearchRepository<T> : IElasticsearchRepository<T> where T : class
     {
         /// <summary>
         /// Elasticsearch客户端
@@ -295,7 +295,7 @@ namespace Virgo.Elasticsearch
             try
             {
                 var documentPath = new DocumentPath<T>(document);
-                var updateResponse = await ElasticClient.UpdateAsync<T>(documentPath, selector);
+                 var updateResponse = await ElasticClient.UpdateAsync<T>(documentPath, selector);
                 result = updateResponse.ApiCall.Success;
             }
             catch (Exception)

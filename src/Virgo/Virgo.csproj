@@ -10,8 +10,10 @@
     <PackageReference Include="aliyun-net-sdk-dysmsapi" Version="1.0.0" />
     <PackageReference Include="Autofac" Version="4.9.0-beta1" />
     <PackageReference Include="Autofac.Extras.IocManager" Version="3.2.2" />
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
     <PackageReference Include="MaxMind.GeoIP2" Version="3.0.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.ServiceFabric" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
