@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Virgo.Extensions
 {
-    public static class JsonExtensions
+    public static class ObjectExtensions
     {
         /// <summary>
         /// 将类型序列化为字符串
@@ -50,6 +50,5 @@ namespace Virgo.Extensions
                 return false;
             }
         }
-
     }
 }
