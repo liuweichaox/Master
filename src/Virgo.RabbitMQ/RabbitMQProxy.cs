@@ -46,7 +46,7 @@ namespace Virgo.RabbitMQ
                     Password = _mQConfiguration.Password ?? ""
                 };
                 using (var conn = factory.CreateConnection())
-                {
+                {                 
                     using (var channel = conn.CreateModel())
                     {
                         //在MQ上定义一个持久化队列，如果名称相同不会重复创建
