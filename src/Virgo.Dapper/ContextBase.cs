@@ -67,7 +67,9 @@ namespace Virgo.Dapper
         #endregion Abstract methods
 
         #region 方法
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         protected ContextBase()
         {
             _connection = CreateConnection();
