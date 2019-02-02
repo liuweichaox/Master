@@ -1,36 +1,31 @@
 ﻿using Castle.DynamicProxy;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Reflection;
 
 namespace Virgo.Domain.Uow
 {
     internal class UnitOfWorkInterceptor : IInterceptor
     {
-        private readonly IUnitOfWorkManager _uowManager;
-        public UnitOfWorkInterceptor(IUnitOfWorkManager uowManager)
+        private readonly IUnitOfWork _unitOfWork;
+        public UnitOfWorkInterceptor()
         {
-            _uowManager = uowManager;
+        }
+        public UnitOfWorkInterceptor(IUnitOfWork unitOfWork)
+        {
+            _unitOfWork = unitOfWork;
         }
         public void Intercept(IInvocation invocation)
-        {            
-            if (_uowManager.Current != null)
+        {
+           var uowAttr = invocation.MethodInvocationTarget.GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;
+            if (invocation.MethodInvocationTarget.IsDefined(typeof(UnitOfWorkAttribute), true)&& !uowAttr.IsDisabled)
             {
-                invocation.Proceed();
-                return;
+                using (var uow = _unitOfWork.Begin(uowAttr.CreateOptions()))
+                {
+                    invocation.Proceed();
+                    uow.Complete();
+                }
             }
-            var uowAttr = UnitOfWorkHelper.GetUnitOfWorkAttributeOrNull(invocation.MethodInvocationTarget);
-            if (uowAttr == null || uowAttr.IsDisabled)
-            {
-                invocation.Proceed();
-                return;
-            }
-            using (var uow = _uowManager.Begin(uowAttr.CreateOptions()))
-            {
-                invocation.Proceed();
-
-                uow.Complete();
-            }
+            invocation.Proceed();
+            return;
         }
     }
 }

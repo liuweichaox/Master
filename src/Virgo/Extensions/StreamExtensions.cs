@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Virgo.Extensions
 {
@@ -10,12 +11,21 @@ namespace Virgo.Extensions
     /// </summary>
     public static class StreamExtensions
     {
-        public static byte[] GetAllBytes(this Stream stream)
+        public static async Task<byte[]> GetAllBytesAsync(this Stream stream)
         {
             using (var memoryStream = new MemoryStream())
             {
-                stream.CopyTo(memoryStream);
+                await stream.CopyToAsync(memoryStream);
                 return memoryStream.ToArray();
+            }
+        }
+
+        public static async Task<MemoryStream> GetStreamAsync(this byte[] buffer)
+        {
+            using (var stream = new MemoryStream())
+            {
+                await stream.WriteAsync(buffer, 0, buffer.Length);
+                return stream;
             }
         }
     }

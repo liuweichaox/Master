@@ -1,27 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Transactions;
 
 namespace Virgo.Domain.Uow
 {
     /// <summary>
-    /// 标记方法(或类的所有方法)是否使用事务提交，如果标记启用事务提交，则所有操作将在打开数据库后一并提交，失败将回滚   
+    /// 标记方法是否使用事务提交，如果标记启用事务提交，则所有操作将在打开数据库后一并提交，失败将回滚
     /// </summary>
     /// <remarks>
     /// 如果调用此方法之外已存在一个工作单元，并不会影响，因为他们将会使用同一个事务提交
     /// </remarks>
-    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Interface,AllowMultiple =false,Inherited =true)]    
-    public class UnitOfWorkAttribute:Attribute
+    [AttributeUsage(AttributeTargets.Method,AllowMultiple =false,Inherited =false)]
+    public class UnitOfWorkAttribute : Attribute
     {
         /// <summary>
         /// 事务作用域
         /// </summary>
         public TransactionScopeOption? Scope { get; set; }
-        /// <summary>
-        /// 是否事务性,默认非事务提交
-        /// </summary>
-        public bool? IsTransactional { get; set; }
         /// <summary>
         /// 超时时间
         /// </summary>
@@ -30,61 +24,22 @@ namespace Virgo.Domain.Uow
         /// 事务隔离级别
         /// </summary>
         public IsolationLevel? IsolationLevel { get; set; }
+
         /// <summary>
         /// 设置是否禁用工作单元
         /// </summary>
         public bool IsDisabled { get; set; }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
         public UnitOfWorkAttribute()
         {
+
         }
         /// <summary>
         /// 创建<see cref="UnitOfWorkAttribute"/>新实例
         /// </summary>
-        /// <param name="isTransactional">是否事务化</param>
-        public UnitOfWorkAttribute(bool isTransactional)
+        /// <param name="isDisabled">设置是否禁用工作单元,默认false</param>
+        public UnitOfWorkAttribute(bool isDisabled)
         {
-            this.IsTransactional = isTransactional;
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="timeOut">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(int timeOut)
-        {
-            this.Timeout = TimeSpan.FromSeconds(timeOut);
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="isTransactional">是否事务化</param>
-        /// <param name="timeout">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(bool isTransactional, int timeout)
-        {
-            IsTransactional = isTransactional;
-            Timeout = TimeSpan.FromSeconds(timeout);
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="isolationLevel">事务隔离级别</param>
-        public UnitOfWorkAttribute(IsolationLevel isolationLevel)
-        {
-            IsTransactional = false;
-            IsolationLevel = isolationLevel;
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="isolationLevel">事务隔离级别</param>
-        /// <param name="timeout">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(IsolationLevel isolationLevel, int timeout)
-        {
-            IsTransactional = false;
-            IsolationLevel = isolationLevel;
-            Timeout = TimeSpan.FromSeconds(timeout);
+            IsDisabled = isDisabled;
         }
         /// <summary>
         /// 创建<see cref="UnitOfWorkAttribute"/>新实例
@@ -92,26 +47,33 @@ namespace Virgo.Domain.Uow
         /// <param name="scope">事务作用域</param>
         public UnitOfWorkAttribute(TransactionScopeOption scope)
         {
-            IsTransactional = true;
             Scope = scope;
         }
         /// <summary>
         /// 创建<see cref="UnitOfWorkAttribute"/>新实例
         /// </summary>
         /// <param name="scope">事务作用域</param>
-        /// <param name="timeout">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(TransactionScopeOption scope, int timeout)
+        /// <param name="timeOut">超时时间，单位（秒）</param>
+        public UnitOfWorkAttribute(TransactionScopeOption scope, int timeOut)
         {
-            IsTransactional = false;
             Scope = scope;
-            Timeout = TimeSpan.FromSeconds(timeout);
+            Timeout = TimeSpan.FromSeconds(timeOut);
         }
-
+        /// <summary>
+        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
+        /// </summary>
+        /// <param name="scope">事务作用域</param>
+        /// <param name="isolationLevel">事务隔离级别</param>
+        /// <param name="timeOut">超时时间，单位（秒）</param>
+        public UnitOfWorkAttribute(TransactionScopeOption scope, IsolationLevel isolationLevel,int timeOut)
+        {
+            Scope = scope;
+            Timeout = TimeSpan.FromSeconds(timeOut);
+        }
         internal UnitOfWorkOptions CreateOptions()
         {
             return new UnitOfWorkOptions
             {
-                IsTransactional = IsTransactional,
                 IsolationLevel = IsolationLevel,
                 Timeout = Timeout,
                 Scope = Scope

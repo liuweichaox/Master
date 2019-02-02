@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
+using Virgo.Domain.Uow;
 
 namespace Virgo.Domain.Uow
 {
@@ -22,16 +22,8 @@ namespace Virgo.Domain.Uow
         /// </summary>
         event EventHandler Disposed;
         /// <summary>
-        /// 获取当前工作单元的选项值（事务性）
-        /// </summary>
-        UnitOfWorkOptions Options { get; }
-        /// <summary>
         /// 当前资源是否已释放
         /// </summary>
-        bool IsDisposed { get; }
-        /// <summary>
-        /// 保存所有更改
-        /// </summary>
-        void SaveChanges();
+        bool IsDisposed { get; }        
     }
 }

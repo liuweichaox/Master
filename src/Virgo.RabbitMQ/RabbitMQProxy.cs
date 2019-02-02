@@ -12,7 +12,6 @@ namespace Virgo.RabbitMQ
 {
     public class RabbitMQProxy : IRabbitMQProxy
     {
-
         private readonly IRabbitMQConfiguration _mQConfiguration;
         public RabbitMQProxy(IRabbitMQConfiguration mQConfiguration)
         {
