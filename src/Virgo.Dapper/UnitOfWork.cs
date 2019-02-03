@@ -1,63 +1,29 @@
-﻿using System;
+﻿using Autofac.Extras.IocManager;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Transactions;
 
 namespace Virgo.Dapper
 {
     /// <summary>
     /// <see cref="IUnitOfWork"/>的实现类
     /// </summary>
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork,ISingletonDependency
     {
-        /// <summary>
-        /// Dapper上下文
-        /// </summary>
-        private readonly IContext _context;
-
-        /// <summary>
-        /// 创建Dapper上下文实例，开启新的数据库事务
-        /// </summary>
-        /// <param name="context">Dapper上下文</param>
-        public UnitOfWork(IContext context)
+        public UnitOfWork()
         {
-            _context = context;
-
-            // 开始事务
-            _context.BeginTransaction();
-        }
-
-        /// <summary>
-        /// 将更改保存到上下文中
-        /// </summary>
-        public void SaveChanges()
-        {
-
         }
         /// <summary>
-        /// 释放资源
+        /// 提交事务操作
         /// </summary>
-        public void Dispose()
+        /// <param name="action">改变数据的操作</param>
+        public void Commit(Action action)
         {
-            
-        }
-        /// <summary>
-        /// 提交事务
-        /// </summary>
-        public void Commit()
-        {
-            if (!_context.IsTransactionStarted)
-                throw new InvalidOperationException("Transaction have already been commited or disposed.");
-
-            // 提交事务
-            _context.Commit();
-        }
-
-        public void Rollback()
-        {
-            if (_context.IsTransactionStarted)
+            using (TransactionScope transaction=new TransactionScope())
             {
-                // 回滚事务
-                _context.Rollback();
+                action?.Invoke();
+                transaction.Complete();
             }
         }
     }

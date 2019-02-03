@@ -11,13 +11,13 @@ namespace Virgo.Domain.Entities
     [Serializable]
     public abstract class Entity<TPrimaryKey> : IEntity<TPrimaryKey> where TPrimaryKey : struct
     {
-        public TPrimaryKey Id { get; set; }
+        public virtual TPrimaryKey Id { get; set; }
     }
     /// <summary>
     /// <see cref="IEntity"/>抽象实现类-主键为String类型
     /// </summary>
     public abstract class Entity : IEntity
     {
-        public string Id { get; set; }
+        public virtual string Id { get; set; }
     }
 }

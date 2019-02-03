@@ -7,16 +7,12 @@ namespace Virgo.Dapper
     /// <summary>
     /// 工作单元接口
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
         /// 提交事务操作
         /// </summary>
-        void Commit();
-
-        /// <summary>
-        /// 回滚事务的操作
-        /// </summary>
-        void Rollback();
+        /// <param name="action">改变数据的操作</param>
+        void Commit(Action action);
     }
 }

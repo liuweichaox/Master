@@ -11,7 +11,7 @@ namespace Virgo.Dapper
     /// <summary>
     /// Dapper仓储接口
     /// </summary>
-    public interface IDapperRepository<TEntity, TprimaryKey> where TEntity:class,IEntity<TprimaryKey>
+    public interface IDapperRepository<TEntity> where TEntity:class
     {
         /// <summary>
         /// 删除单个实体
