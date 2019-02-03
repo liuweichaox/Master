@@ -9,7 +9,7 @@ using static Dapper.SqlMapper;
 namespace Virgo.Dapper
 {
     /// <summary>
-    /// 上下文接口
+    /// Dapper上下文接口
     /// </summary>
     public interface IContext : IDisposable
     {
