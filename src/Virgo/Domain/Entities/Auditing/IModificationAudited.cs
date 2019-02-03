@@ -5,8 +5,9 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 此接口由希望存储修改信息的实体最后修改者和修改时间
+    /// 修改审计属性接口
     /// </summary>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public interface IModificationAudited<TPrimaryKey> : IHasModificationTime where TPrimaryKey : struct
     {
         /// <summary>
@@ -14,6 +15,9 @@ namespace Virgo.Domain.Entities.Auditing
         /// </summary>
         TPrimaryKey? LastModifierUserId { get; set; }
     }
+    /// <summary>
+    /// 修改审计属性接口-主键为String类型
+    /// </summary>
     public interface IModificationAudited : IHasModificationTime
     {
         string LastModifierUserId { get; set; }

@@ -432,9 +432,6 @@ namespace Virgo.Dapper
 
         public void Dispose()
         {
-            if (_isTransactionStarted)
-                Rollback();
-
             _connection.Close();
             _connection.Dispose();
             _connection = null;

@@ -5,9 +5,9 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 此类可用于简化实现<see cref="iaudited"/>
+    /// <see cref="IAudited"/>实现类
     /// </summary>
-    /// <typeparam name="TPrimaryKey">实体的主键类型</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     [Serializable]
     public abstract class AuditedEntity<TPrimaryKey> : CreationAuditedEntity<TPrimaryKey>, IAudited<TPrimaryKey> where TPrimaryKey : struct
     {
@@ -21,6 +21,9 @@ namespace Virgo.Domain.Entities.Auditing
         /// </summary>
         public virtual TPrimaryKey? LastModifierUserId { get; set; }
     }
+    /// <summary>
+    ///  <see cref="IAudited"/>实现类-主键为String类型
+    /// </summary>
     [Serializable]
     public abstract class AuditedEntity : CreationAuditedEntity, IAudited
     {

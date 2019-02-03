@@ -10,8 +10,13 @@ namespace Virgo.Dapper
     public interface IUnitOfWork : IDisposable
     {
         /// <summary>
-        /// 将更改保存到上下文中
+        /// 提交事务操作
         /// </summary>
-        void SaveChanges();
+        void Commit();
+
+        /// <summary>
+        /// 回滚事务的操作
+        /// </summary>
+        void Rollback();
     }
 }

@@ -31,16 +31,28 @@ namespace Virgo.Dapper
         /// </summary>
         public void SaveChanges()
         {
+
+        }
+        /// <summary>
+        /// 释放资源
+        /// </summary>
+        public void Dispose()
+        {
+            
+        }
+        /// <summary>
+        /// 提交事务
+        /// </summary>
+        public void Commit()
+        {
             if (!_context.IsTransactionStarted)
                 throw new InvalidOperationException("Transaction have already been commited or disposed.");
 
             // 提交事务
             _context.Commit();
         }
-        /// <summary>
-        /// 释放资源
-        /// </summary>
-        public void Dispose()
+
+        public void Rollback()
         {
             if (_context.IsTransactionStarted)
             {

@@ -5,8 +5,9 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 希望此接口存实现（保存）审计相关属性
+    /// 创建审计属性接口
     /// </summary>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public interface ICreationAudited<TPrimaryKey> : IHasCreationTime where TPrimaryKey : struct
     {
         /// <summary>
@@ -14,6 +15,9 @@ namespace Virgo.Domain.Entities.Auditing
         /// </summary>
         TPrimaryKey? CreatorUserId { get; set; }
     }
+    /// <summary>
+    /// 创建审计属性接口-主键为String类型
+    /// </summary>
     public interface ICreationAudited : IHasCreationTime
     {
         string CreatorUserId { get; set; }

@@ -5,8 +5,9 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 希望此接口存实现（删除）审计相关属性
+    /// 删除审计属性接口
     /// </summary>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public interface IDeletionAudited<TPrimaryKey> : IHasDeletionTime where TPrimaryKey : struct
     {
         /// <summary>
@@ -14,6 +15,9 @@ namespace Virgo.Domain.Entities.Auditing
         /// </summary>
         TPrimaryKey? DeleterUserId { get; set; }
     }
+    /// <summary>
+    /// 删除审计属性接口-主键为String类型
+    /// </summary>
     public interface IDeletionAudited : IHasDeletionTime
     {
         string DeleterUserId { get; set; }

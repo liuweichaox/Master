@@ -5,7 +5,7 @@ using System.Text;
 namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
-    /// 希望此接口存储实体的创建时间属性
+    /// 创建时间属性接口
     /// </summary>
     public interface IHasCreationTime
     {
