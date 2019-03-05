@@ -10,6 +10,10 @@ using static Dapper.SqlMapper;
 
 namespace Virgo.Dapper
 {
+    /// <summary>
+    /// Dapper仓储抽象实现类
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public abstract class DapperRepository<TEntity> : IDapperRepository<TEntity> where TEntity : class
     {
         protected readonly IDbConfiguration _dbConfiguration;
