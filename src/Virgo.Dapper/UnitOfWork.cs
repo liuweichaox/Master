@@ -1,30 +1,22 @@
-﻿using Autofac.Extras.IocManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
-using System.Transactions;
 
 namespace Virgo.Dapper
 {
-    /// <summary>
-    /// <see cref="IUnitOfWork"/>的实现类
-    /// </summary>
-    public class UnitOfWork : IUnitOfWork,ISingletonDependency
+    public class UnitOfWork : UnitOfWorkBase
     {
-        public UnitOfWork()
+        private readonly DbConfiguration _configuration;
+        public UnitOfWork(DbConfiguration configuration) : base(configuration)
         {
+            _configuration = configuration;
         }
-        /// <summary>
-        /// 提交事务操作
-        /// </summary>
-        /// <param name="action">改变数据的操作</param>
-        public void Commit(Action action)
+
+        public override IDbConnection CreateConnection()
         {
-            using (TransactionScope transaction=new TransactionScope())
-            {
-                action?.Invoke();
-                transaction.Complete();
-            }
+            return new SqlConnection(_configuration.ConnectionString;
         }
     }
 }

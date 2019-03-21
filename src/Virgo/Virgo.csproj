@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="aliyun-net-sdk-core" Version="1.1.12" />
+    <PackageReference Include="aliyun-net-sdk-core" Version="1.2.5" />
     <PackageReference Include="aliyun-net-sdk-dysmsapi" Version="1.0.0" />
-    <PackageReference Include="Autofac" Version="4.9.0-beta1" />
+    <PackageReference Include="Autofac" Version="4.9.1" />
     <PackageReference Include="Autofac.Extras.IocManager" Version="3.2.2" />
     <PackageReference Include="Autofac.Extras.IocManager.DynamicProxy" Version="3.2.2" />
     <PackageReference Include="Castle.Core" Version="4.3.1" />
@@ -16,11 +16,11 @@
     <PackageReference Include="MaxMind.GeoIP2" Version="3.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.ServiceFabric" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
-    <PackageReference Include="MySql.Data" Version="8.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0-preview3.19153.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.0.0-preview3.19153.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="Nito.AsyncEx" Version="4.0.1" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.0.0-pre-06" />
     <PackageReference Include="System.Data.SqlClient" Version="4.7.0-preview3.19128.7" />
   </ItemGroup>
 
