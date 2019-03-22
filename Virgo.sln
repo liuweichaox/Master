@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.AspNetCore", "sample\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Infrastructure", "sample\Virgo.Infrastructure\Virgo.Infrastructure.csproj", "{4B440515-D93C-4939-9974-A2AF3FBB333E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.RabbitMQ", "src\Virgo.RabbitMQ\Virgo.RabbitMQ.csproj", "{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.RabbitMQ", "src\Virgo.RabbitMQ\Virgo.RabbitMQ.csproj", "{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.Dapper.Tests", "test\Virgo.Dapper.Tests\Virgo.Dapper.Tests.csproj", "{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +124,7 @@ Global
 		{3AD9FB88-BAC6-49D4-9400-C7FA30B05F37} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{4B440515-D93C-4939-9974-A2AF3FBB333E} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{9FB7D1BE-F02A-4B8A-B60E-65D90F15B2EF} = {75E3E399-89DC-4838-98CD-2C3795B2DCF6}
+		{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCA8524E-1E53-4254-BC3E-1D733F1D4C42}

@@ -6,12 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="aliyun-net-sdk-core" Version="1.2.5" />
+    <PackageReference Include="aliyun-net-sdk-core" Version="1.2.6" />
     <PackageReference Include="aliyun-net-sdk-dysmsapi" Version="1.0.0" />
     <PackageReference Include="Autofac" Version="4.9.1" />
     <PackageReference Include="Autofac.Extras.IocManager" Version="3.2.2" />
     <PackageReference Include="Autofac.Extras.IocManager.DynamicProxy" Version="3.2.2" />
     <PackageReference Include="Castle.Core" Version="4.3.1" />
+    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.3.0" />
     <PackageReference Include="MaxMind.GeoIP2" Version="3.0.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.ServiceFabric" Version="2.2.2" />

@@ -19,6 +19,11 @@ namespace Virgo.AspNetCore
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            .ConfigureAppConfiguration((hostingContext, app) =>
+            {
+                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                .AddJsonFile("Configs/myjson.json", true, true);
+            })
+            .UseStartup<Startup>();
     }
 }

@@ -9,7 +9,7 @@ namespace Virgo.Domain.Uow
 {
     public static class UnitOfWorkExtensions
     {
-        public static IIocBuilder UseUnitOfWork(this IIocBuilder builder)
+        public static IIocBuilder UseUnitOfWorkInterceptor(this IIocBuilder builder)
         {
             builder.RegisterServices(r =>
             {

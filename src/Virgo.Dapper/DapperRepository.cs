@@ -26,11 +26,14 @@ namespace Virgo.Dapper
             _transaction = unitOfWork.Transaction;
         }
 
-        public abstract IDbConnection CreateDbConnection();
-
         public bool Delete(TEntity entityToDelete)
         {
             return SqlMapperExtensions.Delete(_connection, entityToDelete, _transaction, _commandTimeout);
+        }
+
+        public bool Delete(IEnumerable<TEntity> entities)
+        {
+            return SqlMapperExtensions.Delete(_connection, entities, _transaction, _commandTimeout);
         }
 
         public bool DeleteAll()
@@ -46,6 +49,16 @@ namespace Virgo.Dapper
         public async Task<bool> DeleteAsync(TEntity entityToDelete)
         {
             return await SqlMapperExtensions.DeleteAsync(_connection, entityToDelete, _transaction, _commandTimeout);
+        }
+
+        public async Task<bool> DeleteAsync(IEnumerable<TEntity> entities)
+        {
+            return await SqlMapperExtensions.DeleteAsync(_connection, entities, _transaction, _commandTimeout);
+        }
+
+        public async Task<bool> DeleuteAllAsync()
+        {
+            return await SqlMapperExtensions.DeleteAllAsync<TEntity>(_connection, _transaction, _commandTimeout);
         }
 
         public TReturn ExecuteScalar<TReturn>(string sql, object param = null, CommandType? commandType = null) where TReturn : class
@@ -83,9 +96,19 @@ namespace Virgo.Dapper
             return SqlMapperExtensions.Insert(_connection, entityToInsert, _transaction, _commandTimeout);
         }
 
+        public long Insert(IEnumerable<TEntity> entities)
+        {
+            return SqlMapperExtensions.Insert(_connection, entities, _transaction, _commandTimeout);
+        }
+
         public async Task<int> InsertAsync(TEntity entityToInsert, ISqlAdapter sqlAdapter = null)
         {
             return await SqlMapperExtensions.InsertAsync(_connection, entityToInsert, _transaction, _commandTimeout, sqlAdapter);
+        }
+
+        public async Task<int> InsertAsync(IEnumerable<TEntity> entities, ISqlAdapter sqlAdapter = null)
+        {
+            return await SqlMapperExtensions.InsertAsync(_connection, entities, _transaction, _commandTimeout, sqlAdapter);
         }
 
         public IEnumerable<TReturn> Query<TReturn>(string sql, object param = null, CommandType? commandType = null) where TReturn : class
@@ -153,9 +176,19 @@ namespace Virgo.Dapper
             return SqlMapperExtensions.Update(_connection, entityToUpdate, _transaction, _commandTimeout);
         }
 
+        public bool Update(IEnumerable<TEntity> entities)
+        {
+            return SqlMapperExtensions.Update(_connection, entities, _transaction, _commandTimeout);
+        }
+
         public async Task<bool> UpdateAsync(TEntity entityToUpdate)
         {
             return await SqlMapperExtensions.UpdateAsync(_connection, entityToUpdate, _transaction, _commandTimeout);
+        }
+
+        public async Task<bool> UpdateAsync(IEnumerable<TEntity> entities)
+        {
+            return await SqlMapperExtensions.UpdateAsync(_connection, entities, _transaction, _commandTimeout);
         }
     }
 }

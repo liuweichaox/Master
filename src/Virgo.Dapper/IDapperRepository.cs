@@ -11,7 +11,7 @@ namespace Virgo.Dapper
     /// <summary>
     /// Dapper仓储接口
     /// </summary>
-    public interface IDapperRepository<TEntity> where TEntity:class
+    public interface IDapperRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 删除单个实体
@@ -20,6 +20,13 @@ namespace Virgo.Dapper
         /// <param name="entityToDelete">要删除的实体</param>
         /// <returns></returns>
         bool Delete(TEntity entityToDelete);
+        /// <summary>
+        /// 删除多个实体
+        /// </summary>
+        /// <typeparam name="T">要删除的类型</typeparam>
+        /// <param name="entities">要删除的实体</param>
+        /// <returns></returns>
+        bool Delete(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// 删除单个实体
@@ -28,6 +35,13 @@ namespace Virgo.Dapper
         /// <param name="entityToDelete">要删除的实体</param>
         /// <returns></returns>
         Task<bool> DeleteAsync(TEntity entityToDelete);
+        /// <summary>
+        /// 删除多个实体
+        /// </summary>
+        /// <typeparam name="T">要删除的类型</typeparam>
+        /// <param name="entities">要删除的实体</param>
+        /// <returns></returns>
+        Task<bool> DeleteAsync(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// 删除所有实体
@@ -40,8 +54,8 @@ namespace Virgo.Dapper
         /// 删除所有实体
         /// </summary>
         /// <typeparam name="T">要删除的类型</typeparam>
-        /// <returns></returns>
-        Task<bool> DeleteAllAsync();
+        /// <returns></retrns>
+        Task<bool> DeleuteAllAsync();
 
         /// <summary>
         /// 查询所有实体
@@ -80,6 +94,13 @@ namespace Virgo.Dapper
         /// <param name="entityToInsert">要插入的实体</param>
         /// <returns></returns>
         long Insert(TEntity entityToInsert);
+        /// <summary>
+        /// 插入实体
+        /// </summary>
+        /// <typeparam name="T">要插入的类型</typeparam>
+        /// <param name="entities">要插入的实体</param>
+        /// <returns></returns>
+        long Insert(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// 插入实体
@@ -88,6 +109,13 @@ namespace Virgo.Dapper
         /// <param name="entityToInsert">要插入的实体</param>
         /// <returns></returns>
         Task<int> InsertAsync(TEntity entityToInsert, ISqlAdapter sqlAdapter = null);
+        /// <summary>
+        /// 插入实体
+        /// </summary>
+        /// <typeparam name="T">要插入的类型</typeparam>
+        /// <param name="entities">要插入的实体</param>
+        /// <returns></returns>
+        Task<int> InsertAsync(IEnumerable<TEntity> entities, ISqlAdapter sqlAdapter = null);
 
         /// <summary>
         /// 更新实体
@@ -96,6 +124,13 @@ namespace Virgo.Dapper
         /// <param name="entityToUpdate">要跟新的实体</param>
         /// <returns></returns>
         bool Update(TEntity entityToUpdate);
+        /// <summary>
+        /// 更新实体
+        /// </summary>
+        /// <typeparam name="T">要更新的类型</typeparam>
+        /// <param name="entities">要跟新的实体</param>
+        /// <returns></returns>
+        bool Update(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// 更新实体
@@ -104,6 +139,13 @@ namespace Virgo.Dapper
         /// <param name="entityToUpdate">要跟新的实体</param>
         /// <returns></returns>
         Task<bool> UpdateAsync(TEntity entityToUpdate);
+        /// <summary>
+        /// 更新实体
+        /// </summary>
+        /// <typeparam name="T">要更新的类型</typeparam>
+        /// <param name="entities">要跟新的实体</param>
+        /// <returns></returns>
+        Task<bool> UpdateAsync(IEnumerable<TEntity> entities);
 
         /// <summary>
         /// 查询首行受列
@@ -112,7 +154,7 @@ namespace Virgo.Dapper
         /// <param name="sql">要执行的查询</param>
         /// <param name="param">要传递的参数（如果有)</param>
         /// <param name="commandType">命令类型</param>
-        TReturn ExecuteScalar<TReturn>(string sql, object param = null, CommandType? commandType = null) where TReturn:class;
+        TReturn ExecuteScalar<TReturn>(string sql, object param = null, CommandType? commandType = null) where TReturn : class;
 
         /// <summary>
         /// 查询首行受列

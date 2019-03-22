@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Virgo.Redis\Virgo.Redis.csproj" />
-    <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
     <ProjectReference Include="..\Virgo.TestBase\Virgo.TestBase.csproj" />
   </ItemGroup>
 

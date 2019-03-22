@@ -26,10 +26,6 @@ namespace Virgo.AspNetCore
         public Startup(IConfiguration configuration, IHostingEnvironment ev)
         {
             Configuration = configuration;
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(ev.ContentRootPath)
-                .AddJsonFile("Configs/myjson.json", true, true);
-            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
