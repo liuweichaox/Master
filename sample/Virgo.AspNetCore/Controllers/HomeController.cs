@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Virgo.AspNetCore.Models;
 using Virgo.Infrastructure;
 using System.Globalization;
+using Virgo.Domain.Uow;
+
 namespace Virgo.AspNetCore.Controllers
 {
     public class HomeController : Controller
@@ -21,6 +23,7 @@ namespace Virgo.AspNetCore.Controllers
             _orderService = orderService;
             _infrastruxtureTest = test;
         }
+
         public IActionResult Index()
         {
             var say = _orderService.Say();

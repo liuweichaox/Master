@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Virgo.Dapper\Virgo.Dapper.csproj" />
     <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
   </ItemGroup>
 

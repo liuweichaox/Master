@@ -153,8 +153,8 @@ namespace Virgo.Domain.Uow
             {
                 return;
             }
-            Transaction.Dispose();
-            Connection.Dispose();
+            Connection?.Dispose();
+            Transaction?.Dispose();
             IsDisposed = true;
             if (!_succeed)
             {
