@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Transactions;
+using System.Data;
 
 namespace Virgo.Domain.Uow
 {
@@ -12,72 +12,14 @@ namespace Virgo.Domain.Uow
     [AttributeUsage(AttributeTargets.Method,AllowMultiple =false,Inherited =false)]
     public class UnitOfWorkAttribute : Attribute
     {
-        /// <summary>
-        /// 事务作用域
-        /// </summary>
-        public TransactionScopeOption? Scope { get; set; }
-        /// <summary>
-        /// 超时时间
-        /// </summary>
-        public TimeSpan? Timeout { get; set; }
-        /// <summary>
-        /// 事务隔离级别
-        /// </summary>
-        public IsolationLevel? IsolationLevel { get; set; }
-
-        /// <summary>
-        /// 设置是否禁用工作单元
-        /// </summary>
-        public bool IsDisabled { get; set; }
         public UnitOfWorkAttribute()
         {
 
         }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="isDisabled">设置是否禁用工作单元,默认false</param>
-        public UnitOfWorkAttribute(bool isDisabled)
+        public IsolationLevel?  IsolationLevel { get; set; }
+        public UnitOfWorkAttribute(IsolationLevel isolationLevel)
         {
-            IsDisabled = isDisabled;
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="scope">事务作用域</param>
-        public UnitOfWorkAttribute(TransactionScopeOption scope)
-        {
-            Scope = scope;
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="scope">事务作用域</param>
-        /// <param name="timeOut">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(TransactionScopeOption scope, int timeOut)
-        {
-            Scope = scope;
-            Timeout = TimeSpan.FromSeconds(timeOut);
-        }
-        /// <summary>
-        /// 创建<see cref="UnitOfWorkAttribute"/>新实例
-        /// </summary>
-        /// <param name="scope">事务作用域</param>
-        /// <param name="isolationLevel">事务隔离级别</param>
-        /// <param name="timeOut">超时时间，单位（秒）</param>
-        public UnitOfWorkAttribute(TransactionScopeOption scope, IsolationLevel isolationLevel,int timeOut)
-        {
-            Scope = scope;
-            Timeout = TimeSpan.FromSeconds(timeOut);
-        }
-        internal UnitOfWorkOptions CreateOptions()
-        {
-            return new UnitOfWorkOptions
-            {
-                IsolationLevel = IsolationLevel,
-                Timeout = Timeout,
-                Scope = Scope
-            };
+            IsolationLevel = isolationLevel;
         }
     }
 }

@@ -1,31 +1,33 @@
 ﻿using System;
-using System.Transactions;
+using System.Data;
 
 namespace Virgo.Domain.Uow
 {
     /// <summary>
-    /// 定义一个工作单元，
-    /// 这个接口是框架内部使用。
-    /// 应用程序使用<see cref="Begin(UnitOfWorkOptions)"/>来开启一个新的事务
+    /// 工作单元
     /// </summary>
     public interface IUnitOfWork : IActiveUnitOfWork, IDisposable
     {
         /// <summary>
-        /// 环境事务
+        /// 事务
         /// </summary>
-        TransactionScope Transaction { get; set; }
+        IDbTransaction Transaction { get; set; }
         /// <summary>
-        /// 默认工作单元
+        /// 连接器
         /// </summary>
-        IUnitOfWork Begin();
+        IDbConnection Connection { get; }
         /// <summary>
-        /// 根据给定选项开启工作单元
+        /// 开启事务
         /// </summary>
-        /// <param name="options">工作单元选项<see cref="UnitOfWorkOptions"/></param>
-        IUnitOfWork Begin(UnitOfWorkOptions options);
+        /// <param name="isolationLevel">事务隔离级别</param>
+        void BeginTransaction(IsolationLevel? isolationLevel = null);
         /// <summary>
-        /// 完成工作单元，保存所有更改并提交事务
+        /// 提交事务操作
         /// </summary>
-        void Complete();
+        void Commit();
+        /// <summary>
+        /// 事务回滚
+        /// </summary>
+        void Rollback();
     }
 }

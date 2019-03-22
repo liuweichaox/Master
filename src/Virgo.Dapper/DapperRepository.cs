@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Virgo.Domain.Entities;
+using Virgo.Domain.Uow;
 using static Dapper.SqlMapper;
 
 namespace Virgo.Dapper
@@ -16,12 +17,11 @@ namespace Virgo.Dapper
     /// <typeparam name="TEntity"></typeparam>
     public abstract class DapperRepository<TEntity> : IDapperRepository<TEntity> where TEntity : class
     {
-        protected readonly IDbTransaction _transaction;
-        protected readonly IDbConnection _connection;
-        protected readonly int? _commandTimeout;
+        private readonly IDbTransaction _transaction;
+        private readonly IDbConnection _connection;
+        private readonly int? _commandTimeout;
         public DapperRepository(IUnitOfWork unitOfWork)
         {
-            _commandTimeout = unitOfWork.CommandTimeout;
             _connection = unitOfWork.Connection;
             _transaction = unitOfWork.Transaction;
         }

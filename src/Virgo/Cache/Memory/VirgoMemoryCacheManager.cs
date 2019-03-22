@@ -11,7 +11,7 @@ namespace Virgo.Cache.Memory
     /// <summary>
     /// 实现<see cref ="ICacheManager"/>以使用MemoryCache
     /// </summary>
-    public class VirgoMemoryCacheManager : CacheManagerBase, ISingletonDependency
+    public class VirgoMemoryCacheManager : CacheManagerBase
     {
 
         public ILogger Logger { get; set; }

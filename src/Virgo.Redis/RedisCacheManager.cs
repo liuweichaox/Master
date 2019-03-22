@@ -10,7 +10,7 @@ namespace Virgo.Redis
     /// <summary>
     /// 用于创建<see cref ="RedisCache"/>实例
     /// </summary>
-    public class RedisCacheManager : CacheManagerBase, ISingletonDependency
+    public class RedisCacheManager : CacheManagerBase
     {
         /// <summary>
         /// 初始化<see cref ="AbpRedisCacheManager"/>类的新实例
