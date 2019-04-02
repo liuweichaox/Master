@@ -11,7 +11,7 @@ namespace Virgo.Dapper.Tests
     {
         public override IDbConnection CreateConnection()
         {
-            return new MySqlConnection(""); 
+            return new MySqlConnection("");
         }
     }
 }
