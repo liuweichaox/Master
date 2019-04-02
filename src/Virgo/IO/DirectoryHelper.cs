@@ -14,11 +14,11 @@ namespace Virgo.IO
         /// Creates a new directory if it does not exists.
         /// </summary>
         /// <param name="directory">Directory to create</param>
-        public static void CreateIfNotExists(string directory)
+        public static void CreateIfNotExists(string dir)
         {
-            if (!Directory.Exists(directory))
+            if (!Directory.Exists(dir))
             {
-                Directory.CreateDirectory(directory);
+                Directory.CreateDirectory(dir);
             }
         }
     }
