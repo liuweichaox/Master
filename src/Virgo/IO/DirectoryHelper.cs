@@ -18,6 +18,7 @@ namespace Virgo.IO
         {
             if (!Directory.Exists(directory))
             {
+
                 Directory.CreateDirectory(directory);
             }
         }
