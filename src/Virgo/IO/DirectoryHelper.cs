@@ -16,7 +16,7 @@ namespace Virgo.IO
         /// <param name="directory">Directory to create</param>
         public static void CreateIfNotExists(string directory)
         {
-            if (!Directory.Exists(dir))
+            if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory);
             }
