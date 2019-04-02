@@ -1,4 +1,5 @@
 ﻿using Autofac.Extras.IocManager;
+using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Virgo.Dapper.Tests
                 build.UseUnitOfWorkInterceptor();
                 build.RegisterServices(r =>
                 {
+                    r.Register<IInterceptor, UnitOfWorkInterceptor>(Lifetime.Transient);
                     r.Register<IUnitOfWork, UnifOfWork>(Lifetime.LifetimeScope);
                     r.Register<IUserInfoRepository, UserInfoRepository>(Lifetime.LifetimeScope);
                 });

@@ -1,9 +1,14 @@
 ﻿using Castle.DynamicProxy;
 using System.Reflection;
 using System.Data;
+using Autofac.Extras.IocManager;
+
 namespace Virgo.Domain.Uow
 {
-    internal class UnitOfWorkInterceptor : IInterceptor
+    /// <summary>
+    /// <see cref="IUnitOfWork"/>AOP模式执行
+    /// </summary>
+    public class UnitOfWorkInterceptor : IInterceptor, ITransientDependency
     {
         private readonly IUnitOfWork _unitOfWork;
         public UnitOfWorkInterceptor()
