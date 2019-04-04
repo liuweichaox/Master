@@ -48,30 +48,5 @@ namespace Virgo.Common
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             return qrCodeImage;
         }
-        /// <summary>
-        /// 保存位图
-        /// </summary>
-        /// <param name="bitmap"></param>
-        /// <param name="savePath"></param>
-        /// <returns>保存路径</returns>
-        public static string SaveBitmap(Bitmap bitmap, string savePath)
-        {
-            string resFile = "";
-            try
-            {
-                if (!Directory.Exists(savePath))
-                {
-                    Directory.CreateDirectory(savePath);
-                }
-                string fileName = Path.GetTempFileName() + ".bmp";
-                resFile = savePath + fileName;
-                bitmap.Save(savePath + fileName, ImageFormat.Bmp);
-                bitmap.Dispose();
-            }
-            catch
-            {
-            }
-            return resFile;
-        }
     }
 }
