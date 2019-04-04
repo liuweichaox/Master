@@ -13,7 +13,8 @@ namespace Virgo.Domain.Entities
     [Serializable]
     public abstract class Entity<TPrimaryKey> : IEntity<TPrimaryKey> where TPrimaryKey : struct
     {
-        //区别：ExplicitKey 不自增主键
+        //Dapper区别：
+        //      ExplicitKey 不自增主键
         //      Key 自增主键
         [ExplicitKey]
         public virtual TPrimaryKey Id { get; set; }

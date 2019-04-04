@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Virgo.Utils
+namespace Virgo.Data
 {
     /// <summary>
     /// MsSql工具类
