@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Virgo.Common
 {
-    public static class HttpContentUtils
+    public static class HttpContentHelper
     {
         /// <summary>
         /// Object转换为StreamContent

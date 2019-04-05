@@ -13,7 +13,7 @@ namespace Virgo.Data
     /// <summary>
     /// MySql工具类
     /// </summary>
-    public static class MySqlUtils
+    public static class MySqlHelper
     {
         /// <summary>
         /// 批量导入(同步方法)

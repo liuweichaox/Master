@@ -10,7 +10,7 @@ namespace Virgo.Data
     /// <summary>
     /// MsSql工具类
     /// </summary>
-    public static class MsSqlUtils
+    public static class MsSqlHelper
     {
         /// <summary>
         /// 批量插入(同步方法)

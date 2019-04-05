@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using static Virgo.Common.HttpContentUtils;
+using static Virgo.Common.HttpContentHelper;
 namespace Virgo.Net
 {
     /// <summary>

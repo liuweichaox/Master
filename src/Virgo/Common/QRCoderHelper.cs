@@ -11,7 +11,7 @@ namespace Virgo.Common
     /// <summary>
     /// <see cref="QRCode"/>辅助类
     /// </summary>
-    public static class QRCoderUtils
+    public static class QRCoderHelper
     {
         /// <summary>
         /// 生成二维码
