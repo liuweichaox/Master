@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Virgo.Infrastructure
+namespace Virgo.Infrastructure.Sample
 {
     public interface IInfrastruxtureTest
     {

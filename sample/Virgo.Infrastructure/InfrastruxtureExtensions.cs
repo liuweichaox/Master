@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace Virgo.Infrastructure
+namespace Virgo.Infrastructure.Sample
 {
     public static class InfrastruxtureExtensions
     {

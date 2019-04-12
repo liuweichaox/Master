@@ -42,12 +42,12 @@ namespace Virgo.AspNetCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvcCore().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             #region Autofac接管Ioc
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
 
             //注入的先后顺序很重要
-            builder.UseVirgo().UseInfrastructure().UseUnitOfWorkInterceptor();
+            //builder.UseVirgo().UseInfrastructure().UseUnitOfWorkInterceptor();
 
             builder.RegisterServices(r =>
             {
@@ -56,35 +56,35 @@ namespace Virgo.AspNetCore
                     args.ContainerBuilder.Populate(services);
                 });
 
-                r.UseBuilder(b =>
-                {
-                    b.RegisterCallback(x =>
-                    {
-                        x.Registered += (sender, e) =>
-                         {
-                             Type implType = e.ComponentRegistration.Activator.LimitType;
-                             if (typeof(ITransientDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ITransientDependency或者间接实现了ITransientDependency
-                             {
-                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
-                             };
-                             if (typeof(ILifetimeScopeDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ILifetimeScopeDependency或者间接实现了ILifetimeScopeDependency
-                             {
-                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
-                             };
-                             if (typeof(ISingletonDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ISingletonDependency或者间接实现了ISingletonDependency
-                             {
-                                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
-                             };
-                         };
-                    });
-                });
+                //r.UseBuilder(b =>
+                //{
+                //    b.RegisterCallback(x =>
+                //    {
+                //        x.Registered += (sender, e) =>
+                //         {
+                //             Type implType = e.ComponentRegistration.Activator.LimitType;
+                //             if (typeof(ITransientDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ITransientDependency或者间接实现了ITransientDependency
+                //             {
+                //                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                //             };
+                //             if (typeof(ILifetimeScopeDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ILifetimeScopeDependency或者间接实现了ILifetimeScopeDependency
+                //             {
+                //                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                //             };
+                //             if (typeof(ISingletonDependency).IsAssignableFrom(implType) && implType != typeof(AopInterceptor))//如果继承了ISingletonDependency或者间接实现了ISingletonDependency
+                //             {
+                //                 e.ComponentRegistration.InterceptedBy<AopInterceptor>();
+                //             };
+                //         };
+                //    });
+                //});
 
                 r.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
             });
 
- 
 
-            var resolver = builder.CreateResolver().UseIocManager(); 
+
+            var resolver = builder.CreateResolver().UseIocManager();
             return new AutofacServiceProvider(resolver.Container);
             #endregion
         }
@@ -99,7 +99,7 @@ namespace Virgo.AspNetCore
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-            }
+            };
 
             app.UseStaticFiles();
             app.UseCookiePolicy();

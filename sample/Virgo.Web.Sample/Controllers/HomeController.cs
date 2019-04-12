@@ -3,30 +3,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Autofac.Extras.DynamicProxy;
-using Autofac.Extras.IocManager;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Virgo.AspNetCore.Models;
-using Virgo.Infrastructure;
-using System.Globalization;
-using Virgo.Domain.Uow;
+using Virgo.Web.Sample.Models;
 
-namespace Virgo.AspNetCore.Controllers
+namespace Virgo.Web.Sample.Controllers
 {
     public class HomeController : Controller
     {
-        public readonly IOrderService _orderService;
-        private readonly IInfrastruxtureTest _infrastruxtureTest;
-        public HomeController(IOrderService orderService, IInfrastruxtureTest test)
-        {
-            _orderService = orderService;
-            _infrastruxtureTest = test;
-        }
-
         public IActionResult Index()
         {
-            var say = _orderService.Say();
             return View();
         }
 

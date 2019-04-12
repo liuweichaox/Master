@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Text;
 using Virgo.Domain.Uow;
 
-namespace Virgo.Infrastructure.Domain.Uow
+namespace Virgo.Infrastructure.Sample.Domain.Uow
 {
     public class UnitOfWork : UnitOfWorkBase
     {
