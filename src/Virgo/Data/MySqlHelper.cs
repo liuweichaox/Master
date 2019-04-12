@@ -16,7 +16,7 @@ namespace Virgo.Data
     {
         /// <summary>
         /// 批量导入(同步方法)
-        /// </summary>
+        /// </summary> 
         /// <param name="_mySqlConnection"></param>
         /// <param name="dt"></param>
         /// <returns></returns>
