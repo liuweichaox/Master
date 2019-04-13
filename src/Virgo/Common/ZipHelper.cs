@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Virgo.Common
 {
     /// <summary>
     /// Zip 辅助类
     /// </summary>
-    public static class Zip
+    public static class ZipHelper
     {
         private static object OperateLock { get; } = new object();
         /// <summary>

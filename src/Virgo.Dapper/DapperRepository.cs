@@ -19,7 +19,7 @@ namespace Virgo.Dapper
     {
         private readonly IDbTransaction _transaction;
         private readonly IDbConnection _connection;
-        private readonly int? _commandTimeout;
+        private readonly int? _commandTimeout=null;
         public DapperRepository(IUnitOfWork unitOfWork)
         {
             _connection = unitOfWork.Connection;
