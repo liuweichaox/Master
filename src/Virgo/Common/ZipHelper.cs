@@ -2,19 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Virgo.Common
 {
     /// <summary>
-    /// Zip 辅助类
+    /// 压缩解压操作类，使用的是SharpZipLib
     /// </summary>
-    public static class ZipHelper
+    public static partial class ZipHelper
     {
         private static object OperateLock { get; } = new object();
-        /// <summary>
-        /// 设置字节数组大小,默认为4096
-        /// </summary>
-        public static int BufferSize { get; set; } = 4096;
+
         /// <summary>
         /// 压缩文件
         /// </summary>
@@ -157,7 +155,12 @@ namespace Virgo.Common
             }
         }
         /// <summary>
-        /// 检查压缩等级是否合法
+        /// 设置字节数组大小,默认为4096
+        /// </summary>
+        public static int BufferSize { get; set; } = 4096;
+
+        /// <summary>
+        /// 检查压缩等级是否合法.
         /// </summary>
         /// <param name="compressionLevel">等级值</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -229,9 +232,9 @@ namespace Virgo.Common
                 }
                 return true;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new System.Exception("压缩文件失败", ex);
+                throw new Exception("压缩文件失败", ex);
             }
         }
 
@@ -293,9 +296,9 @@ namespace Virgo.Common
                 }
                 return true;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new System.Exception("文件解压发生错误", ex);
+                throw new Exception("文件解压发生错误", ex);
             }
         }
 
@@ -396,9 +399,9 @@ namespace Virgo.Common
                     }
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new System.Exception("压缩字节数组发生错误", ex);
+                throw new Exception("压缩字节数组发生错误", ex);
             }
         }
 
@@ -440,9 +443,9 @@ namespace Virgo.Common
                     writeStream.Close();
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                throw new System.Exception("解压字节数组发生错误", ex);
+                throw new Exception("解压字节数组发生错误", ex);
             }
             return result;
         }
