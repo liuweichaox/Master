@@ -39,7 +39,7 @@ namespace Virgo.Web.Sample.Middlewares
             string socketId = context.Request.Cookies["UserId"]?.ToString();
             if (!string.IsNullOrWhiteSpace(socketId))
             {
-                _sockets.AddOrUpdate(socketId, currentSocket, (key, websocket) => { websocket = currentSocket; return websocket; });
+                _sockets.AddOrUpdate(socketId, currentSocket, (key, websocket) =>currentSocket);
             }
             while (!currentSocket.CloseStatus.HasValue)
             {
@@ -48,7 +48,6 @@ namespace Virgo.Web.Sample.Middlewares
                     break;
                 }
                 string response = await ReceiveStringAsync(currentSocket, ct);
-                MsgTemplate msg = JsonConvert.DeserializeObject<MsgTemplate>(response);
                 if (string.IsNullOrEmpty(response))
                 {
                     if (currentSocket.State != WebSocketState.Open)
@@ -57,23 +56,23 @@ namespace Virgo.Web.Sample.Middlewares
                     }
                     continue;
                 }
-
+                MsgTemplate msg = JsonConvert.DeserializeObject<MsgTemplate>(response);
                 foreach (var socket in _sockets)
                 {
                     if (socket.Value.State != WebSocketState.Open)
                     {
                         continue;
                     }
-                    if (string.IsNullOrWhiteSpace(msg.ReceiverID) || socket.Key == msg.ReceiverID)
+
+                    if ((string.IsNullOrWhiteSpace(msg.ReceiverID)&& socket.Key!=socketId) || socket.Key == msg.ReceiverID)
                     {
                         await SendStringAsync(socket.Value, JsonConvert.SerializeObject(msg), ct);
                     }
                 }
             }
             _sockets.TryRemove(socketId, out var webSocket);
-            webSocket.Dispose();
-            await currentSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", ct);
-            currentSocket.Dispose();
+            await currentSocket.CloseAsync(webSocket.CloseStatus.Value, webSocket.CloseStatusDescription, ct);
+            currentSocket?.Dispose();
         }
 
         /// <summary>
