@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Virgo.Domain.Uow;
 using Virgo.Infrastructure.Sample;
 using Virgo.Web.Sample.Aop;
+using Virgo.Web.Sample.Middlewares;
 
 namespace Virgo.Web.Sample
 {
@@ -103,7 +104,11 @@ namespace Virgo.Web.Sample
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseWebSockets();
+            app.Map("/ws", builder =>
+            {
+                app.UseChatWebSocketMiddleware();
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

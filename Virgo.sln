@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.RabbitMQ", "src\Virgo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Dapper.Tests", "test\Virgo.Dapper.Tests\Virgo.Dapper.Tests.csproj", "{3B16BE4C-5D06-4F09-93CC-28B179E3A3AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.Web.Sample", "sample\Virgo.Web.Sample\Virgo.Web.Sample.csproj", "{FA26CEB4-4998-4314-994D-DBA4443727CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Web.Sample", "sample\Virgo.Web.Sample\Virgo.Web.Sample.csproj", "{FA26CEB4-4998-4314-994D-DBA4443727CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
