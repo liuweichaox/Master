@@ -10,6 +10,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Virgo.Web.Sample.Middlewares
 {
@@ -39,7 +40,7 @@ namespace Virgo.Web.Sample.Middlewares
             string socketId = context.Request.Cookies["UserId"]?.ToString();
             if (!string.IsNullOrWhiteSpace(socketId))
             {
-                _sockets.AddOrUpdate(socketId, currentSocket, (key, websocket) =>currentSocket);
+                _sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) =>currentSocket);
             }
             while (!currentSocket.CloseStatus.HasValue)
             {
