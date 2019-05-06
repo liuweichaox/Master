@@ -9,26 +9,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <style>
-    table {
-        border: 0
-    }
+        table {
+            border: 0
+        }
 
-    .commslog-data {
-        font-family: Consolas, Courier New, Courier, monospace;
-    }
+        .commslog-data {
+            font-family: Consolas, Courier New, Courier, monospace;
+        }
 
-    .commslog-server {
-        background-color: red;
-        color: white
-    }
+        .commslog-server {
+            background-color: red;
+            color: white
+        }
 
-    .commslog-client {
-        background-color: green;
-        color: white
-    }
-
-  </style >
-    </head>
+        .commslog-client {
+            background-color: green;
+            color: white
+        }
+    </style>
+</head>
 <body>
     <h1>WebSocket Sample Application</h1>
     <p id="stateLabel">Ready to connect...</p>
@@ -124,13 +123,11 @@
 
         connectButton.onclick = function () {
             var msgObj = getMsgObj();
-            if (msgObj.SenderID.trim().length == 0) {
+            if (msgObj.SenderID.trim().length === 0) {
                 return;
             }
-            delCookie("UserId");
-            setCookie("UserId", msgObj.SenderID);
             stateLabel.innerHTML = "Connecting";
-            socket = new WebSocket(connectionUrl.value);
+            socket = new WebSocket(connectionUrl.value + `?UserId=${escape(msgObj.SenderID)}`);
             socket.onopen = function (event) {
                 updateState();
                 commsLog.innerHTML += '<tr>' +

@@ -37,7 +37,7 @@ namespace Virgo.Web.Sample.Middlewares
             }
             CancellationToken ct = context.RequestAborted;
             var currentSocket = await context.WebSockets.AcceptWebSocketAsync();
-            string socketId = context.Request.Cookies["UserId"]?.ToString();
+            var socketId = context.Request.Query["UserId"].ToString();
             if (!string.IsNullOrWhiteSpace(socketId))
             {
                 _sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) =>currentSocket);
