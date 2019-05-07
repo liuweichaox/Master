@@ -39,7 +39,7 @@ namespace Virgo.Web.Sample
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddSession();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             #region Autofac接管Ioc
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
@@ -101,6 +101,7 @@ namespace Virgo.Web.Sample
                 app.UseHsts();
             }
 
+            app.UseSession();
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
