@@ -13,11 +13,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Virgo.Data;
 using static Virgo.Common.HttpContentHelper;
-namespace Virgo.Net
+namespace Virgo.Common
 {
-   /// <summary>
-   /// <see cref="HttpContent"/>辅助类
-   /// </summary>
+    /// <summary>
+    /// <see cref="HttpContent"/>辅助类
+    /// </summary>
     public static class HttpClientHelper
     {
         /// <summary>

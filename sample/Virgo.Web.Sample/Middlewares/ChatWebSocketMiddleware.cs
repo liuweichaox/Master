@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using Virgo.Extensions;
 
 namespace Virgo.Web.Sample.Middlewares
 {
@@ -40,7 +41,7 @@ namespace Virgo.Web.Sample.Middlewares
             var socketId = context.Request.Query["UserId"].ToString();
             if (!string.IsNullOrWhiteSpace(socketId))
             {
-                _sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) =>currentSocket);
+                _sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) => currentSocket);
             }
             while (!currentSocket.CloseStatus.HasValue)
             {
@@ -48,7 +49,7 @@ namespace Virgo.Web.Sample.Middlewares
                 {
                     break;
                 }
-                string response = await ReceiveStringAsync(currentSocket, ct);
+                string response = await currentSocket.ReceiveStringAsync(ct);
                 if (string.IsNullOrEmpty(response))
                 {
                     if (currentSocket.State != WebSocketState.Open)
@@ -65,62 +66,15 @@ namespace Virgo.Web.Sample.Middlewares
                         continue;
                     }
 
-                    if ((string.IsNullOrWhiteSpace(msg.ReceiverID)&& socket.Key!=socketId) || socket.Key == msg.ReceiverID)
+                    if ((string.IsNullOrWhiteSpace(msg.ReceiverID) && socket.Key != socketId) || socket.Key == msg.ReceiverID)
                     {
-                        await SendStringAsync(socket.Value, JsonConvert.SerializeObject(msg), ct);
+                        await socket.Value.SendStringAsync(JsonConvert.SerializeObject(msg), ct);
                     }
                 }
             }
             _sockets.TryRemove(socketId, out var webSocket);
             await currentSocket.CloseAsync(webSocket.CloseStatus.Value, webSocket.CloseStatusDescription, ct);
             currentSocket?.Dispose();
-        }
-
-        /// <summary>
-        /// 发送消息
-        /// </summary>
-        /// <param name="socket"></param>
-        /// <param name="data"></param>
-        /// <param name="ct"></param>
-        /// <returns></returns>
-        private static Task SendStringAsync(WebSocket socket, string data, CancellationToken ct = default)
-        {
-            var buffer = Encoding.UTF8.GetBytes(data);
-            var segment = new ArraySegment<byte>(buffer);
-            return socket.SendAsync(segment, WebSocketMessageType.Text, true, ct);
-        }
-        /// <summary>
-        /// 接收消息
-        /// </summary>
-        /// <param name="socket"></param>
-        /// <param name="ct"></param>
-        /// <returns></returns>
-        private static async Task<string> ReceiveStringAsync(WebSocket socket, CancellationToken ct = default)
-        {
-            var buffer = new ArraySegment<byte>(new byte[8192]);
-            using (var ms = new MemoryStream())
-            {
-                WebSocketReceiveResult result;
-                do
-                {
-                    ct.ThrowIfCancellationRequested();
-
-                    result = await socket.ReceiveAsync(buffer, ct);
-                    ms.Write(buffer.Array, buffer.Offset, result.Count);
-                }
-                while (!result.EndOfMessage);
-
-                ms.Seek(0, SeekOrigin.Begin);
-                if (result.MessageType != WebSocketMessageType.Text)
-                {
-                    return null;
-                }
-
-                using (var reader = new StreamReader(ms, Encoding.UTF8))
-                {
-                    return await reader.ReadToEndAsync();
-                }
-            }
         }
     }
     /// <summary>

@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using static Virgo.Common.HttpContentHelper;
-namespace Virgo.Net
+namespace Virgo.Common
 {
     /// <summary>
     /// <see cref="WebRequest"/>辅助类
