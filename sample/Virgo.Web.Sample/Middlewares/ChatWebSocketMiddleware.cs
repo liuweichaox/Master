@@ -84,7 +84,7 @@ namespace Virgo.Web.Sample.Middlewares
     {
         public static IApplicationBuilder UseChatWebSocketMiddleware(this IApplicationBuilder builder)
         {
-            return builder.UseMiddleware<ChatWebSocketMiddleware>();
+            return builder.UseMiddleware<ChatWebSocketMiddleware>(); 
         }
     }
     /// <summary>
