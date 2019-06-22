@@ -13,20 +13,16 @@ namespace Virgo.Extensions
     {
         public static async Task<byte[]> GetAllBytesAsync(this Stream stream)
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                await stream.CopyToAsync(memoryStream);
-                return memoryStream.ToArray();
-            }
+            using var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+            return memoryStream.ToArray();
         }
 
         public static async Task<MemoryStream> GetStreamAsync(this byte[] buffer)
         {
-            using (var stream = new MemoryStream())
-            {
-                await stream.WriteAsync(buffer, 0, buffer.Length);
-                return stream;
-            }
+            using var stream = new MemoryStream();
+            await stream.WriteAsync(buffer, 0, buffer.Length);
+            return stream;
         }
     }
 }

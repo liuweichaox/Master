@@ -36,29 +36,25 @@ namespace Virgo.Extensions
         public static async Task<string> ReceiveStringAsync(this WebSocket socket, CancellationToken ct = default)
         {
             var buffer = new ArraySegment<byte>(new byte[8192]);
-            using (var ms = new MemoryStream())
+            using var ms = new MemoryStream();
+            WebSocketReceiveResult result;
+            do
             {
-                WebSocketReceiveResult result;
-                do
-                {
-                    ct.ThrowIfCancellationRequested();
+                ct.ThrowIfCancellationRequested();
 
-                    result = await socket.ReceiveAsync(buffer, ct);
-                    ms.Write(buffer.Array, buffer.Offset, result.Count);
-                }
-                while (!result.EndOfMessage);
-
-                ms.Seek(0, SeekOrigin.Begin);
-                if (result.MessageType != WebSocketMessageType.Text)
-                {
-                    return null;
-                }
-
-                using (var reader = new StreamReader(ms, Encoding.UTF8))
-                {
-                    return await reader.ReadToEndAsync();
-                }
+                result = await socket.ReceiveAsync(buffer, ct);
+                ms.Write(buffer.Array, buffer.Offset, result.Count);
             }
+            while (!result.EndOfMessage);
+
+            ms.Seek(0, SeekOrigin.Begin);
+            if (result.MessageType != WebSocketMessageType.Text)
+            {
+                return null;
+            }
+
+            using var reader = new StreamReader(ms, Encoding.UTF8);
+            return await reader.ReadToEndAsync();
         }
     }
 }

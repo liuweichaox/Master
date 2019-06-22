@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
@@ -49,6 +50,26 @@ namespace Virgo.Extensions
                 result = default;
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 执行对象的深层复制
+        /// </summary>
+        /// <typeparam name="T">要复制的对象的类型</typeparam>
+        /// <param name="obj">要复制的对象实例</param>
+        /// <returns>The copied object.</returns>
+        public static T DeepClone<T>(this T obj)
+        {
+            object retval;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                DataContractSerializer ser = new DataContractSerializer(typeof(T));
+                ser.WriteObject(ms, obj);
+                ms.Seek(0, SeekOrigin.Begin);
+                retval = ser.ReadObject(ms);
+                ms.Close();
+            }
+            return (T)retval;
         }
     }
 }

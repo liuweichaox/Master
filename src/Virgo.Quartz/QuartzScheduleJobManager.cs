@@ -15,7 +15,7 @@ namespace Virgo.Quartz
 
         private volatile bool _isRunning;
 
-        private static AsyncLock _asyncLock = new AsyncLock();
+        private static readonly AsyncLock _asyncLock = new AsyncLock();
 
         private async Task<IScheduler> SchedulerAsync()
         {
