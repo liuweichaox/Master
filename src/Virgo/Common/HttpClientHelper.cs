@@ -25,12 +25,15 @@ namespace Virgo.Common
         /// <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
         /// </summary>
         /// <param name="url">请求地址</param>
+        /// <param name="data">请求参数</param>
+        /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> GetAsync(string url, object data)
+        public static async Task<string> GetAsync(string url, object data, Action<HttpRequestHeaders> action=null)
         {
             string jsonString = string.Empty;
             using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
             {
+                action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
                 {
@@ -50,13 +53,15 @@ namespace Virgo.Common
         /// <para><see cref="StringContent"/>后台使用[FromBody]接受参数</para>
         /// </summary>
         /// <param name="url">请求地址</param>
-        /// <param name="data">请求参数</param>
+        /// <param name="content">请求参数</param>
+        /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> PostAsync(string url, HttpContent content)
+        public static async Task<string> PostAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             string jsonString = string.Empty;
             using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
             {
+                action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.PostAsync(url, content);
                 if (response.IsSuccessStatusCode)
                 {
@@ -77,13 +82,15 @@ namespace Virgo.Common
         /// <para><see cref="StringContent"/>后台使用[FromBody]接受参数</para>
         /// </summary>
         /// <param name="url">请求地址</param>
-        /// <param name="data">请求参数</param>
+        /// <param name="content">请求参数</param>
+        /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> PutAsync(string url, HttpContent content)
+        public static async Task<string> PutAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             string jsonString = string.Empty;
             using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
             {
+                action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.PutAsync(url, content);
                 if (response.IsSuccessStatusCode)
                 {
@@ -101,12 +108,15 @@ namespace Virgo.Common
         /// <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
         /// </summary>
         /// <param name="url">请求地址</param>
+        /// <param name="data">请求参数</param>
+        /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> DeleteAsync(string url, object data)
+        public static async Task<string> DeleteAsync(string url, object data, Action<HttpRequestHeaders> action = null)
         {
             string jsonString = string.Empty;
             using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
             {
+                action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
                 {
@@ -126,12 +136,14 @@ namespace Virgo.Common
         /// <param name="url">请求地址</param>
         /// <param name="method">请求方法</param>
         /// <param name="content">请求内容</param>
+        /// <param name="action">Http请求头设置</param>
         /// <returns></returns>
-        public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content)
+        public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             string jsonString = string.Empty;
             using (var client = new HttpClient())
             {
+                action?.Invoke(client.DefaultRequestHeaders);
                 using (var httpRequestMessage = new HttpRequestMessage(method, url))
                 {
                     httpRequestMessage.Content = content;

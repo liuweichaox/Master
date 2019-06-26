@@ -13,7 +13,7 @@ namespace Virgo.Redis
     public class RedisCacheManager : CacheManagerBase
     {
         /// <summary>
-        /// 初始化<see cref ="AbpRedisCacheManager"/>类的新实例
+        /// 初始化<see cref ="RedisCacheManager"/>类的新实例
         /// </summary>
         public RedisCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
             : base(iocManager, configuration)

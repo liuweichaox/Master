@@ -15,7 +15,7 @@ namespace Virgo.Redis
         private readonly Lazy<ConnectionMultiplexer> _connectionMultiplexer;
 
         /// <summary>
-        /// 初始化<see cref ="AbpRedisCacheDatabaseProvider"/>类的新实例
+        /// 初始化<see cref="ConnectionMultiplexer"/>的实例
         /// </summary>
         public RedisCacheProvider(IRedisCaCheConfiguration configuration)
         {

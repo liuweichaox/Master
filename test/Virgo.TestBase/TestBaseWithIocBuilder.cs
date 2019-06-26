@@ -5,7 +5,7 @@ using Xunit;
 namespace Virgo.TestBase
 {
     /// <summary>
-    /// Ê¹ÓÃ<see cref="Autofac.Extras.IocManager.IocBuilder"/>²âÊÔ»ùÀà
+    /// Ê¹ï¿½ï¿½<see cref="Autofac.Extras.IocManager.IocBuilder"/>ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
     /// </summary>
     public class TestBaseWithIocBuilder
     {

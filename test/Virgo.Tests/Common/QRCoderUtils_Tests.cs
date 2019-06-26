@@ -11,8 +11,8 @@ namespace Virgo.Tests.Common
         [Fact]
         public void QRCode_Test()
         {
-           var bitmap= QRCoderHelper.QRCode("http://virgo.vanfj.com");
-            bitmap.Save("C:/dddd.bmp");
+           var bitmap= QRCoderHelper.QRCode("virgo.vanfj.com");
+            bitmap.Save("D:/QRCode.bmp");
         }
     }
 }
