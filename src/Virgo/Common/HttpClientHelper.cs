@@ -38,10 +38,8 @@ namespace Virgo.Common
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
-                    using (var reader = new StreamReader(stream))
-                    {
-                        jsonString = await reader.ReadToEndAsync();
-                    }
+                    using var reader = new StreamReader(stream);
+                    jsonString = await reader.ReadToEndAsync();
                 }
             }
             return jsonString;
@@ -66,10 +64,8 @@ namespace Virgo.Common
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
-                    using (var reader = new StreamReader(stream))
-                    {
-                        jsonString = await reader.ReadToEndAsync();
-                    }
+                    using var reader = new StreamReader(stream);
+                    jsonString = await reader.ReadToEndAsync();
                 }
             }
             return jsonString;
@@ -95,10 +91,8 @@ namespace Virgo.Common
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = response.Content.ReadAsStreamAsync().Result;
-                    using (var reader = new StreamReader(stream))
-                    {
-                        jsonString = await reader.ReadToEndAsync();
-                    }
+                    using var reader = new StreamReader(stream);
+                    jsonString = await reader.ReadToEndAsync();
                 }
             }
             return jsonString;
@@ -121,10 +115,8 @@ namespace Virgo.Common
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
-                    using (var reader = new StreamReader(stream))
-                    {
-                        jsonString = await reader.ReadToEndAsync();
-                    }
+                    using var reader = new StreamReader(stream);
+                    jsonString = await reader.ReadToEndAsync();
                 }
             }
             return jsonString;
@@ -144,12 +136,10 @@ namespace Virgo.Common
             using (var client = new HttpClient())
             {
                 action?.Invoke(client.DefaultRequestHeaders);
-                using (var httpRequestMessage = new HttpRequestMessage(method, url))
-                {
-                    httpRequestMessage.Content = content;
-                    HttpResponseMessage httpResponse = await client.SendAsync(httpRequestMessage);
-                    jsonString = await httpResponse.Content.ReadAsStringAsync();
-                }
+                using var httpRequestMessage = new HttpRequestMessage(method, url);
+                httpRequestMessage.Content = content;
+                HttpResponseMessage httpResponse = await client.SendAsync(httpRequestMessage);
+                jsonString = await httpResponse.Content.ReadAsStringAsync();
             }
             return jsonString;
         }
