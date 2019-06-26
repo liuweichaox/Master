@@ -1,17 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
-using Virgo.Data;
 using static Virgo.Common.HttpContentHelper;
 namespace Virgo.Common
 {
@@ -28,11 +21,21 @@ namespace Virgo.Common
         /// <param name="data">请求参数</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> GetAsync(string url, object data, Action<HttpRequestHeaders> action=null)
-        {
-            string jsonString = string.Empty;
-            using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
+        public static async Task<string> GetAsync(string url, object data, Action<HttpRequestHeaders> action = null)
+        { 
+            if (url.ToLower().StartsWith("https"))
             {
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            }
+            string jsonString = string.Empty;
+            using (var handler = new HttpClientHandler())
+            {
+                handler.AllowAutoRedirect = true;
+                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+                using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
