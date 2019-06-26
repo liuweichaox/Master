@@ -9,7 +9,7 @@ using static Virgo.Common.HttpContentHelper;
 namespace Virgo.Common
 {
     /// <summary>
-    /// <see cref="HttpContent"/>辅助类
+    /// <see cref="HttpClient"/>辅助类
     /// </summary>
     public static class HttpClientHelper
     {
@@ -22,7 +22,7 @@ namespace Virgo.Common
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
         public static async Task<string> GetAsync(string url, object data, Action<HttpRequestHeaders> action = null)
-        { 
+        {
             if (url.ToLower().StartsWith("https"))
             {
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
@@ -59,19 +59,31 @@ namespace Virgo.Common
         /// <returns>JSON字符串</returns>
         public static async Task<string> PostAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
-            string jsonString = string.Empty;
-            using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
+            if (url.ToLower().StartsWith("https"))
             {
-                action?.Invoke(client.DefaultRequestHeaders);
-                var response = await client.PostAsync(url, content);
-                if (response.IsSuccessStatusCode)
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            }
+            string jsonString = string.Empty;
+            using (var handler = new HttpClientHandler())
+            {
+                handler.AllowAutoRedirect = true;
+                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+                using (var client = new HttpClient(handler))
                 {
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    using var reader = new StreamReader(stream);
-                    jsonString = await reader.ReadToEndAsync();
+                    action?.Invoke(client.DefaultRequestHeaders);
+                    var response = await client.PostAsync(url, content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var stream = await response.Content.ReadAsStreamAsync();
+                        using var reader = new StreamReader(stream);
+                        jsonString = await reader.ReadToEndAsync();
+                    }
                 }
             }
-            return jsonString;
+            return await Task.FromResult(jsonString);
         }
 
         /// <summary>
@@ -86,9 +98,19 @@ namespace Virgo.Common
         /// <returns>JSON字符串</returns>
         public static async Task<string> PutAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
-            string jsonString = string.Empty;
-            using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
+            if (url.ToLower().StartsWith("https"))
             {
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            }
+            string jsonString = string.Empty;
+            using (var handler = new HttpClientHandler())
+            {
+                handler.AllowAutoRedirect = true;
+                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+                using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.PutAsync(url, content);
                 if (response.IsSuccessStatusCode)
@@ -98,7 +120,7 @@ namespace Virgo.Common
                     jsonString = await reader.ReadToEndAsync();
                 }
             }
-            return jsonString;
+            return await Task.FromResult(jsonString);
         }
         /// <summary>
         /// 通过HttpClient发起Delete请求
@@ -110,9 +132,19 @@ namespace Virgo.Common
         /// <returns>JSON字符串</returns>
         public static async Task<string> DeleteAsync(string url, object data, Action<HttpRequestHeaders> action = null)
         {
-            string jsonString = string.Empty;
-            using (var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip }))
+            if (url.ToLower().StartsWith("https"))
             {
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            }
+            string jsonString = string.Empty;
+            using (var handler = new HttpClientHandler())
+            {
+                handler.AllowAutoRedirect = true;
+                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+                using var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
                 action?.Invoke(client.DefaultRequestHeaders);
                 var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
@@ -122,7 +154,7 @@ namespace Virgo.Common
                     jsonString = await reader.ReadToEndAsync();
                 }
             }
-            return jsonString;
+            return await Task.FromResult(jsonString);
         }
 
         /// <summary>
@@ -135,16 +167,28 @@ namespace Virgo.Common
         /// <returns></returns>
         public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
-            string jsonString = string.Empty;
-            using (var client = new HttpClient())
+            if (url.ToLower().StartsWith("https"))
             {
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            }
+            string jsonString = string.Empty;
+            using (var handler = new HttpClientHandler())
+            {
+                handler.AllowAutoRedirect = true;
+                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+                using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var httpRequestMessage = new HttpRequestMessage(method, url);
-                httpRequestMessage.Content = content;
+                using var httpRequestMessage = new HttpRequestMessage(method, url)
+                {
+                    Content = content
+                };
                 HttpResponseMessage httpResponse = await client.SendAsync(httpRequestMessage);
                 jsonString = await httpResponse.Content.ReadAsStringAsync();
             }
-            return jsonString;
+            return await Task.FromResult(jsonString);
         }
 
     }
