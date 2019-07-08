@@ -24,7 +24,7 @@ namespace Virgo.Tests.Cache
         public MemoryCacheManager_Tests()
         {
             Building(builder =>
-            {
+            {              
                 builder.RegisterServices(r =>
                 {
                     r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);

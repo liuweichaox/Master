@@ -4,26 +4,26 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Virgo.Diagnostics
+namespace Virgo.Win32
 {
     /// <summary>
     /// C#.Net后台执行CMD命令辅助类
-    /// <para>RunCmdAsync方法可以在程序中一次执行多个CMD命令</para>
+    /// <para>ExecuteAsync方法可以在程序中一次执行多个CMD命令</para>
     /// <para>使用示例：</para>
     /// <para>分别在CMD执行 systeminfo、ipconfig/all 命令</para>
     /// <para>执行：var result= await CmdHelper.RunCmdAsync( new string[] { "systeminfo", "ipconfig/all" });</para>
     /// </summary>   
-    public static class CmdProcessHelper
+    public static class WindowsCommand
     {
         /// <summary>
         /// 执行CMD命令
         /// </summary>
-        /// <param name="CmdText">CMD执行命令</param>
+        /// <param name="dosCommand">CMD执行命令</param>
         /// <returns>命令执行结果</returns>
-        public static async Task<List<string[]>> RunCmdAsync(string[] CmdText)
+        public static async Task<List<string[]>> ExecuteAsync(string[] dosCommand)
         {
             List<string[]> list = new List<string[]>();
-            string cmd = string.Join("&", CmdText) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
+            string cmd = string.Join("&", dosCommand) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
             using (var p = new Process())
             {
                 p.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";//设置要启动的应用程序

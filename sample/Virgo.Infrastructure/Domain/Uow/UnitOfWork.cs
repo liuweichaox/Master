@@ -12,7 +12,7 @@ namespace Virgo.Infrastructure.Sample.Domain.Uow
     {
         public override IDbConnection CreateConnection()
         {
-            return new MySqlConnection("server=core.lyrewing.com;user id=root;password=Justdoit2018$;database=aio;SslMode=none");
+            return new MySqlConnection();
         }
     }
 }

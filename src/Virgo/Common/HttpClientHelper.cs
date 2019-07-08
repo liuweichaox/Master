@@ -37,7 +37,7 @@ namespace Virgo.Common
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
+                using var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -71,16 +71,14 @@ namespace Virgo.Common
                 handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
                 handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
-                using (var client = new HttpClient(handler))
+                using var client = new HttpClient(handler);
+                action?.Invoke(client.DefaultRequestHeaders);
+                using var response = await client.PostAsync(url, content);
+                if (response.IsSuccessStatusCode)
                 {
-                    action?.Invoke(client.DefaultRequestHeaders);
-                    var response = await client.PostAsync(url, content);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var stream = await response.Content.ReadAsStreamAsync();
-                        using var reader = new StreamReader(stream);
-                        jsonString = await reader.ReadToEndAsync();
-                    }
+                    var stream = await response.Content.ReadAsStreamAsync();
+                    using var reader = new StreamReader(stream);
+                    jsonString = await reader.ReadToEndAsync();
                 }
             }
             return await Task.FromResult(jsonString);
@@ -112,7 +110,7 @@ namespace Virgo.Common
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                var response = await client.PutAsync(url, content);
+                using var response = await client.PutAsync(url, content);
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = response.Content.ReadAsStreamAsync().Result;
@@ -146,7 +144,7 @@ namespace Virgo.Common
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
                 action?.Invoke(client.DefaultRequestHeaders);
-                var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
+                using var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -166,7 +164,7 @@ namespace Virgo.Common
         /// <param name="action">Http请求头设置</param>
         /// <returns></returns>
         public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content, Action<HttpRequestHeaders> action = null)
-        {
+        {            
             if (url.ToLower().StartsWith("https"))
             {
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
@@ -185,7 +183,7 @@ namespace Virgo.Common
                 {
                     Content = content
                 };
-                HttpResponseMessage httpResponse = await client.SendAsync(httpRequestMessage);
+                using var httpResponse = await client.SendAsync(httpRequestMessage);
                 jsonString = await httpResponse.Content.ReadAsStringAsync();
             }
             return await Task.FromResult(jsonString);

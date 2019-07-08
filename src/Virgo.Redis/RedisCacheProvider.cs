@@ -23,7 +23,7 @@ namespace Virgo.Redis
             _connectionMultiplexer = new Lazy<ConnectionMultiplexer>(CreateConnectionMultiplexer);
         }
         private ConnectionMultiplexer CreateConnectionMultiplexer()
-        {
+        {            
             return ConnectionMultiplexer.Connect(_configuration.ConnectionString);
         }
         /// <summary>

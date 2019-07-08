@@ -14,12 +14,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+            <state relative-caret-position="90">
+              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
               <folding>
                 <marker date="1558054336530" expanded="true" signature="6:183" ph="..." />
                 <marker date="1558054336530" expanded="true" signature="212:3605" ph="{...}" />
@@ -43,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/Virgo.Tests/Cache/MemoryCacheManager_Tests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="45">
               <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
               <folding>
                 <marker date="1558054336541" expanded="false" signature="6:384" ph="..." />
@@ -68,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/Virgo.Tests/Common/QRCoderUtils_Tests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="135">
+              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
               <folding>
                 <marker date="1561528037574" expanded="false" signature="6:99" ph="..." />
                 <marker date="1561528037574" expanded="true" signature="129:356" ph="{...}" />
@@ -83,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Middlewares/ChatWebSocketMiddleware.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
+            <state relative-caret-position="975">
               <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
               <folding>
                 <marker date="1558054335531" expanded="false" signature="6:356" ph="..." />
@@ -135,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Controllers/ChatController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="150">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <marker date="1558054334969" expanded="false" signature="6:185" ph="..." />
@@ -165,7 +165,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Aop/AopInterceptor.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -175,6 +175,37 @@
                 <marker date="1558054334969" expanded="true" signature="188:503" ph="{...}" />
                 <marker date="1558054334969" expanded="true" signature="259:501" ph="{...}" />
                 <marker date="1558054334969" expanded="true" signature="319:495" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Startup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <marker date="1561598174048" expanded="true" signature="6:690" ph="..." />
+                <marker date="1561598174048" expanded="true" signature="718:4656" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="745:4654" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="804:867" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="1102:3582" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="1188:1385" ph="{...}" />
+                <marker date="1561598174048" expanded="false" signature="1490:3572" ph="Autofac接管Ioc" />
+                <marker date="1561598174048" expanded="true" signature="1763:3408" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="1849:1930" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="1984:3310" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="2050:3290" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="2132:3267" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="2405:2557" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="2752:2904" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="3087:3239" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="3770:4648" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="3817:3894" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="3911:4170" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="4365:4430" ph="{...}" />
+                <marker date="1561598174048" expanded="true" signature="4478:4636" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -280,16 +311,15 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
-    <option name="y" value="-838" />
-    <option name="width" value="1093" />
-    <option name="height" value="583" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectView">
     <navigator currentView="SolutionExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -301,6 +331,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AssemblyExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -311,122 +342,7 @@
             <path>
               <item name="" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Dapper.Tests" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Quartz.Tests" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Quartz.Tests" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Quartz.Tests" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Dependencies" type="24d0babc:SolutionExplorerModelNode" />
-              <item name=".NETCoreApp 2.2" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Redis.Tests" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Tests" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Tests" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Cache" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="02-test" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Tests" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Common" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
               <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Aop" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Middlewares" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Views" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Chat" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo.Web.Sample" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="wwwroot" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="css" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -455,11 +371,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.Web.Sample">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.Web.Sample: IIS Express (1)">
     <configuration name="Virgo.Web.Sample" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sample/Virgo.Web.Sample/Virgo.Web.Sample.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
       <option name="LAUNCH_PROFILE_NAME" value="Virgo.Web.Sample" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Virgo.Web.Sample: IIS Express (1)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sample/Virgo.Web.Sample/Virgo.Web.Sample.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
@@ -486,6 +417,11 @@
         <option name="Build" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue=".NET Launch Settings Profile.Virgo.Web.Sample: IIS Express (1)" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\89370\AppData\Roaming\Subversion</configuration>
@@ -498,11 +434,12 @@
       <option name="presentableId" value="Default" />
       <updated>1561520196514</updated>
       <workItem from="1561520200920" duration="3689000" />
+      <workItem from="1561942447679" duration="73000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3689000" />
+    <option name="totallyTimeSpent" value="3762000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -514,22 +451,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-838" width="1096" height="1936" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.45226616" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.4571124" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="调试" />
-      <window_info anchor="bottom" id="NuGet" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="运行" />
-      <window_info anchor="bottom" id="Unit Tests" visible="true" weight="0.32948294" />
-      <window_info anchor="bottom" id="REST Client" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" weight="0.32948294" />
-      <window_info anchor="bottom" id="Build" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -537,18 +463,29 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" weight="0.3297975" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" weight="0.3297975" />
+      <window_info anchor="bottom" id="NuGet" order="7" />
+      <window_info anchor="bottom" id="运行" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info active="true" anchor="bottom" id="Build" order="12" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Unit Tests" order="13" weight="0.32911393" />
+      <window_info anchor="bottom" id="REST Client" order="14" />
+      <window_info anchor="bottom" id="Terminal" order="15" />
+      <window_info anchor="bottom" id="Event Log" order="16" side_tool="true" weight="0.32948294" />
+      <window_info anchor="bottom" id="调试" order="17" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" weight="0.3297975" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" weight="0.3297975" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1164,35 +1101,6 @@
     <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/appsettings.Development.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Startup.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="59" column="21" lean-forward="true" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding>
-            <marker date="1558054335547" expanded="false" signature="6:636" ph="..." />
-            <marker date="1558054335547" expanded="true" signature="664:4603" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="691:4601" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="750:813" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1048:3529" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1134:1331" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1437:3519" ph="Autofac接管Ioc" />
-            <marker date="1558054335547" expanded="true" signature="1710:3355" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1796:1877" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1931:3257" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="1997:3237" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="2079:3214" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="2352:2504" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="2699:2851" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="3034:3186" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="3717:4595" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="3764:3841" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="3858:4117" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="4312:4377" ph="{...}" />
-            <marker date="1558054335547" expanded="true" signature="4425:4583" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheManager.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1301,8 +1209,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+        <state relative-caret-position="90">
+          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
           <folding>
             <marker date="1558054336530" expanded="true" signature="6:183" ph="..." />
             <marker date="1558054336530" expanded="true" signature="212:3605" ph="{...}" />
@@ -1324,7 +1232,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/Virgo.Tests/Cache/MemoryCacheManager_Tests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="45">
           <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding>
             <marker date="1558054336541" expanded="false" signature="6:384" ph="..." />
@@ -1347,8 +1255,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/Virgo.Tests/Common/QRCoderUtils_Tests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="9" lean-forward="true" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="135">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
           <folding>
             <marker date="1561528037574" expanded="false" signature="6:99" ph="..." />
             <marker date="1561528037574" expanded="true" signature="129:356" ph="{...}" />
@@ -1360,7 +1268,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Middlewares/ChatWebSocketMiddleware.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
+        <state relative-caret-position="975">
           <caret line="82" column="41" selection-start-line="82" selection-start-column="41" selection-end-line="82" selection-end-column="41" />
           <folding>
             <marker date="1558054335531" expanded="false" signature="6:356" ph="..." />
@@ -1408,7 +1316,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Controllers/ChatController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="150">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <marker date="1558054334969" expanded="false" signature="6:185" ph="..." />
@@ -1444,6 +1352,35 @@
             <marker date="1558054334969" expanded="true" signature="188:503" ph="{...}" />
             <marker date="1558054334969" expanded="true" signature="259:501" ph="{...}" />
             <marker date="1558054334969" expanded="true" signature="319:495" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Startup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding>
+            <marker date="1561598174048" expanded="true" signature="6:690" ph="..." />
+            <marker date="1561598174048" expanded="true" signature="718:4656" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="745:4654" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="804:867" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="1102:3582" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="1188:1385" ph="{...}" />
+            <marker date="1561598174048" expanded="false" signature="1490:3572" ph="Autofac接管Ioc" />
+            <marker date="1561598174048" expanded="true" signature="1763:3408" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="1849:1930" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="1984:3310" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="2050:3290" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="2132:3267" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="2405:2557" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="2752:2904" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="3087:3239" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="3770:4648" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="3817:3894" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="3911:4170" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="4365:4430" ph="{...}" />
+            <marker date="1561598174048" expanded="true" signature="4478:4636" ph="{...}" />
           </folding>
         </state>
       </provider>
