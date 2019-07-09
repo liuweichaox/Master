@@ -9,12 +9,8 @@ using System.Threading.Tasks;
 namespace Virgo.Win32
 {
     /// <summary>
-    /// C#.Net后台执行CMD命令辅助类
-    /// <para>ExecuteAsync方法可以在程序中一次执行多个CMD命令</para>
-    /// <para>使用示例：</para>
-    /// <para>分别在CMD执行 systeminfo、ipconfig/all 命令</para>
-    /// <para>执行：var result= await CmdHelper.RunCmdAsync( new string[] { "systeminfo", "ipconfig/all" });</para>
-    /// </summary>   
+    /// 命令提示符
+    /// </summary>
     public static class WindowsCommand
     {
         /// <summary>

@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Virgo.Extensions
 {
+    /// <summary>
+    /// <see cref="object"/>拓展方法
+    /// </summary>
     public static class ObjectExtensions
     {
         /// <summary>
