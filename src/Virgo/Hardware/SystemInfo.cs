@@ -16,7 +16,7 @@ namespace Virgo.Hardware
     /// <summary>
     /// 硬件信息，部分功能需要C++支持
     /// </summary>
-    public static partial class SystemInfo
+    public static class SystemInfo
     {
         #region 字段
 

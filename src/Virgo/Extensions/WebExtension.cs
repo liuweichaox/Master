@@ -8,7 +8,7 @@ namespace Virgo.Extensions
 {
 
     /// <summary>
-    /// <see cref="HttpContext"/>拓展类
+    /// <see cref="HttpContext"/>的拓展方法
     /// </summary>
     public static class WebExtension
     {
