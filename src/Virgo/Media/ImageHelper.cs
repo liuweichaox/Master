@@ -14,7 +14,7 @@ namespace Virgo.Media
     /// <summary>
     /// 图片处理
     /// </summary>
-    public static class ImageUtilities
+    public static class ImageHelper
     {
         #region 正方型裁剪并缩放
 

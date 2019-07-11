@@ -16,11 +16,6 @@ namespace Virgo.Web.Sample.Controllers
     {
         public IActionResult Index()
         {
-            var hiPerf=HiPerfTimer.StartNew();
-            hiPerf.Start();
-            Thread.Sleep(1);
-            hiPerf.Stop();
-            var sss=hiPerf.Duration;
             return View();
         }
 

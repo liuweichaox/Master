@@ -8,7 +8,7 @@ using System.IO;
 using System.Net.Http;
 using System.Text;
 
-namespace Virgo.Common
+namespace Virgo.Net.Http
 {
     public static class HttpContentHelper
     {

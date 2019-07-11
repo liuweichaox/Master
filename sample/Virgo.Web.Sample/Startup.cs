@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Virgo.AspNetCore;
 using Virgo.Domain.Uow;
 using Virgo.Infrastructure.Sample;
 using Virgo.Web.Sample.Aop;
@@ -107,6 +108,7 @@ namespace Virgo.Web.Sample
             }
 
             //app.UseHttpsRedirection();
+            app.UseStaticHttpContext();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseWebSockets();

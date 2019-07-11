@@ -5,8 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using static Virgo.Common.HttpContentHelper;
-namespace Virgo.Common
+using static Virgo.Net.Http.HttpContentHelper;
+namespace Virgo.Net.Http
 {
     /// <summary>
     /// <see cref="HttpClient"/>辅助类

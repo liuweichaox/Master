@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Virgo.Common
+namespace Virgo.Files
 {
     /// <summary>
     /// 压缩解压操作类，使用的是SharpZipLib

@@ -12,6 +12,7 @@ namespace Virgo.Web.Sample.Controllers
     {
         public IActionResult Index()
         {
+           
             return View();
         }
     }

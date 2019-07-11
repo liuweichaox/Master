@@ -13,19 +13,9 @@ namespace Virgo.AspNetCore
     /// <summary>
     /// 依赖注入<see cref="ServiceCollection"/>容器扩展方法
     /// </summary>
-    public static class ServiceCollectionExtensions
+    public static class HttpContext2Extensions
     {
-        /// <summary>
-        /// 注入7z压缩
-        /// </summary>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddSevenZipCompressor(this IServiceCollection services)
-        {
-            services.AddHttpClient();
-            services.TryAddTransient<ISevenZipCompressor, SevenZipCompressor>();
-            return services;
-        }
+
 
         /// <summary>
         /// 注入HttpContext静态对象，方便在任意地方获取HttpContext，app.UseStaticHttpContext();

@@ -7,7 +7,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Virgo.Net
+namespace Virgo.Net.Http
 {
     /// <summary>
     /// <see cref="WebSocket"/>帮助类

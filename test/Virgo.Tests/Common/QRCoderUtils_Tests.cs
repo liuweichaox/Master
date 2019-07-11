@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Virgo.Common;
+﻿using Virgo.Media;
 using Xunit;
 
 namespace Virgo.Tests.Common
 {
-   public class QRCoderHelper_Tests
+    public class QRCoderHelper_Tests
     {
         [Fact]
         public void QRCode_Test()
