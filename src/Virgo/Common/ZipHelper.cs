@@ -9,7 +9,7 @@ namespace Virgo.Common
     /// <summary>
     /// 压缩解压操作类，使用的是SharpZipLib
     /// </summary>
-    public static partial class ZipHelper
+    public static class ZipHelper
     {
         private static object OperateLock { get; } = new object();
 
