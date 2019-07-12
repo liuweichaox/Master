@@ -56,6 +56,18 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
+        /// 将字符串序列化为匿名类型
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="s"></param>
+        /// <param name="anonymousTypeObject"></param>
+        /// <returns></returns>
+        public static T DeserializeAnonymousType<T>(this string s, T anonymousTypeObject)
+        {
+            return JsonConvert.DeserializeAnonymousType(s, anonymousTypeObject);
+        }
+
+        /// <summary>
         /// 执行对象的深层复制
         /// </summary>
         /// <typeparam name="T">要复制的对象的类型</typeparam>
