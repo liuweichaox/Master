@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static Virgo.Net.Http.HttpContentHelper;
@@ -23,20 +25,33 @@ namespace Virgo.Net.Http
         public static async Task<string> GetAsync(string url, object data)
         {
             string jsonString = string.Empty;
-            var request = (HttpWebRequest)WebRequest.Create($"{url}?{BuildParam(ToKeyValuePair(data))}");
-            request.Method = HttpMethod.Get.Method;
-            request.ContentType = "application/json";
-            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            var response = (HttpWebResponse)(await request.GetResponseAsync());
-            if (response.StatusCode == HttpStatusCode.OK)
+            HttpWebRequest httpRequest = null;
+            HttpWebResponse httpResponse = null;
+            if (url.Contains("https://"))
             {
-                using (var stream = new StreamReader(response.GetResponseStream()))
-                {
-                    jsonString = await stream.ReadToEndAsync();
-                }
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            }
+            httpRequest = (HttpWebRequest)WebRequest.Create($"{url}?{BuildParam(ToKeyValuePair(data))}");
+            httpRequest.Method = HttpMethod.Get.Method;
+            httpRequest.ContentType = "application/json; charset=UTF-8";
+            httpRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            try
+            {
+                httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
+            }
+            catch (WebException ex)
+            {
+                httpResponse = (HttpWebResponse)ex.Response;
+            }
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                using var stream = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8);
+                jsonString = await stream.ReadToEndAsync();
             }
             return jsonString;
         }
+
         /// <summary>
         /// 通过WebRequest发起Post请求
         /// </summary>
@@ -44,24 +59,44 @@ namespace Virgo.Net.Http
         /// <param name="data">请求参数</param>
         /// <returns>JSON字符串</returns>
         public static async Task<string> PostAsync(string url, object data)
-        {            
+        {
             string jsonString = string.Empty;
-            var request = (HttpWebRequest)WebRequest.Create(url);
-            request.ContentType = "application/json";
-            request.Method = HttpMethod.Post.Method;
-            request.Timeout = Int32.MaxValue;
-            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-            var jsonToSend = JsonConvert.SerializeObject(data, Formatting.None, new IsoDateTimeConverter());
-            byte[] btBodys = Encoding.UTF8.GetBytes(jsonToSend);
-            request.ContentLength = btBodys.Length;
-            request.GetRequestStream().Write(btBodys, 0, btBodys.Length);
-            var response = (HttpWebResponse)(await request.GetResponseAsync());
-            if (response.StatusCode == HttpStatusCode.OK)
+            HttpWebRequest httpRequest = null;
+            HttpWebResponse httpResponse = null;
+            if (url.Contains("https://"))
             {
-                using (var stream = new StreamReader(response.GetResponseStream(), Encoding.UTF8))
-                {
-                    jsonString = await stream.ReadToEndAsync();
-                }
+                ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+                httpRequest = (HttpWebRequest)WebRequest.CreateDefault(new Uri(url));
+            }
+            else
+            {
+                httpRequest = (HttpWebRequest)WebRequest.Create(url);
+            }
+            httpRequest.ContentType = "application/json; charset=UTF-8";
+            httpRequest.Method = HttpMethod.Post.Method;
+            httpRequest.Timeout = Int32.MaxValue;
+            httpRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            var bodys = JsonConvert.SerializeObject(data, Formatting.None, new IsoDateTimeConverter());
+            byte[] btBodys = Encoding.UTF8.GetBytes(bodys);
+            if (0 < btBodys.Length)
+            {
+                httpRequest.ContentLength = btBodys.Length;
+                using Stream stream = httpRequest.GetRequestStream();
+                stream.Write(btBodys, 0, btBodys.Length);
+            }
+            try
+            {
+                httpResponse = (HttpWebResponse)await httpRequest.GetResponseAsync();
+            }
+            catch (WebException ex)
+            {
+                httpResponse = (HttpWebResponse)ex.Response;
+            }
+            if (httpResponse.StatusCode == HttpStatusCode.OK)
+            {
+                using var stream = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8);
+                jsonString = await stream.ReadToEndAsync();
             }
             return jsonString;
         }

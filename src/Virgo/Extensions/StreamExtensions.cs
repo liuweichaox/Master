@@ -12,18 +12,40 @@ namespace Virgo.Extensions
     /// </summary>
     public static class StreamExtensions
     {
-        public static async Task<byte[]> GetAllBytesAsync(this Stream stream)
+        /// <summary>
+        /// 将流转换为字节
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static async Task<byte[]> GetBytesAsync(this Stream stream)
         {
             using var memoryStream = new MemoryStream();
             await stream.CopyToAsync(memoryStream);
             return memoryStream.ToArray();
         }
 
+        /// <summary>
+        /// 将字节转换为流
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <returns></returns>
         public static async Task<MemoryStream> GetStreamAsync(this byte[] buffer)
         {
             using var stream = new MemoryStream();
             await stream.WriteAsync(buffer, 0, buffer.Length);
             return stream;
+        }
+
+        /// <summary>
+        /// 将流转换为base64编码字符串
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <returns></returns>
+        public static string GetBase64String(this Stream stream)
+        {
+            BinaryReader br = new BinaryReader(stream);
+            byte[] contentBytes = br.ReadBytes(Convert.ToInt32(stream.Length));
+            return Convert.ToBase64String(contentBytes);
         }
 
         /// <summary>
@@ -35,7 +57,7 @@ namespace Virgo.Extensions
         public static void CopyToFile(this Stream fs, string dest, int bufferSize = 1024 * 8 * 1024)
         {
             using (FileStream fsWrite = new FileStream(dest, FileMode.OpenOrCreate, FileAccess.ReadWrite))
-            {               
+            {
                 byte[] buf = new byte[bufferSize];
                 int len = 0;
                 while ((len = fs.Read(buf, 0, buf.Length)) != 0)
@@ -75,7 +97,7 @@ namespace Virgo.Extensions
         /// <param name="ms"></param>
         /// <param name="filename"></param>
         public static void SaveFile(this MemoryStream ms, string filename)
-        {            
+        {
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite))
             {
                 byte[] buffer = ms.ToArray(); // 转化为byte格式存储
