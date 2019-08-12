@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Virgo
 {
+    /// <summary>
+    /// Virgo拓展类
+    /// </summary>
    public static  class VirgoExtensions
     {
         /// <summary>
