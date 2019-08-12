@@ -44,7 +44,7 @@ namespace Virgo.Net.Http
         /// <param name="data">请求参数</param>
         /// <returns>JSON字符串</returns>
         public static async Task<string> PostAsync(string url, object data)
-        {
+        {            
             string jsonString = string.Empty;
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json";
