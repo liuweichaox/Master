@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace Virgo.Net
+namespace Virgo.Systems
 {
     /// <summary>
     /// 取线程内唯一对象

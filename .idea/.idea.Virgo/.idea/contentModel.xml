@@ -51,6 +51,9 @@
           <e p="HomeController.cs" t="Include" />
           <e p="IpController.cs" t="Include" />
         </e>
+        <e p="Filters" t="Include">
+          <e p="AuditActionFilter.cs" t="Include" />
+        </e>
         <e p="IP" t="Include">
           <e p="Data" t="Include">
             <e p="GeoLite2-City.mmdb" t="Include" />
@@ -168,6 +171,10 @@
             <e p="SmsSender.cs" t="Include" />
           </e>
         </e>
+        <e p="AspNetCore" t="Include">
+          <e p="HttpContext2.cs" t="Include" />
+          <e p="HttpContext2Extensions.cs" t="Include" />
+        </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="Cache" t="Include">
           <e p="CacheBase.cs" t="Include" />
@@ -190,19 +197,9 @@
           <e p="TypedCacheExtensions.cs" t="Include" />
           <e p="TypedCacheWrapper.cs" t="Include" />
         </e>
-        <e p="Common" t="Include">
-          <e p="HttpClientHelper.cs" t="Include" />
-          <e p="HttpContentHelper.cs" t="Include" />
-          <e p="QRCoderHelper.cs" t="Include" />
-          <e p="WebRequestHelper.cs" t="Include" />
-          <e p="ZipHelper.cs" t="Include" />
-        </e>
         <e p="Data" t="Include">
           <e p="MsSqlHelper.cs" t="Include" />
           <e p="MySqlHelper.cs" t="Include" />
-        </e>
-        <e p="Diagnostics" t="Include">
-          <e p="CmdProcessHelper.cs" t="Include" />
         </e>
         <e p="Domain" t="Include">
           <e p="Entities" t="Include">
@@ -239,14 +236,35 @@
           </e>
         </e>
         <e p="Extensions" t="Include">
+          <e p="CollectionsExtensions.cs" t="Include" />
           <e p="ComparableExtensions.cs" t="Include" />
-          <e p="CsvExtensions.cs" t="Include" />
+          <e p="ConvertExtensions.cs" t="Include" />
           <e p="DatatableExtensions.cs" t="Include" />
           <e p="DateTimeExtensions.cs" t="Include" />
           <e p="ObjectExtensions.cs" t="Include" />
+          <e p="RandomExtensions.cs" t="Include" />
           <e p="StreamExtensions.cs" t="Include" />
           <e p="StringExtensions.cs" t="Include" />
+          <e p="WebExtension.cs" t="Include" />
           <e p="WebSocketExtensions.cs" t="Include" />
+        </e>
+        <e p="Files" t="Include">
+          <e p="ISevenZipCompressor.cs" t="Include" />
+          <e p="SevenZipCompressor.cs" t="Include" />
+          <e p="SevenZipCompressorExtensions.cs" t="Include" />
+          <e p="WinrarHelper.cs" t="Include" />
+          <e p="ZipHelper.cs" t="Include" />
+        </e>
+        <e p="Hardware" t="Include">
+          <e p="CPU_INFO.cs" t="Include" />
+          <e p="CpuInfo.cs" t="Include" />
+          <e p="DiskData.cs" t="Include" />
+          <e p="MemoryInfo.cs" t="Include" />
+          <e p="NetData.cs" t="Include" />
+          <e p="RamInfo.cs" t="Include" />
+          <e p="SystemInfo.cs" t="Include" />
+          <e p="SystemtimeInfo.cs" t="Include" />
+          <e p="Unit.cs" t="Include" />
         </e>
         <e p="IO" t="Include">
           <e p="DirectoryHelper.cs" t="Include" />
@@ -275,8 +293,26 @@
             <e p="IpSimpleSearcher.cs" t="Include" />
           </e>
         </e>
+        <e p="Media" t="Include">
+          <e p="ImageHelper.cs" t="Include" />
+          <e p="QRCoderHelper.cs" t="Include" />
+          <e p="ThumbnailCutMode.cs" t="Include" />
+        </e>
         <e p="Net" t="Include">
-          <e p="WebSocketsHelper.cs" t="Include" />
+          <e p="Http" t="Include">
+            <e p="HttpClientHelper.cs" t="Include" />
+            <e p="HttpContentHelper.cs" t="Include" />
+            <e p="HttpHeaders.cs" t="Include" />
+            <e p="WebRequestHelper.cs" t="Include" />
+            <e p="WebSocketsHelper.cs" t="Include" />
+          </e>
+          <e p="Mime" t="Include">
+            <e p="ContentType.cs" t="Include" />
+            <e p="DefaultMimeItems.cs" t="Include" />
+            <e p="IMimeMapper.cs" t="Include" />
+            <e p="MimeMapper.cs" t="Include" />
+            <e p="MimeMappingItem.cs" t="Include" />
+          </e>
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -288,18 +324,42 @@
         <e p="Reflection" t="Include">
           <e p="ReflectionHelper.cs" t="Include" />
         </e>
+        <e p="Security" t="Include">
+          <e p="HashEncode.cs" t="Include" />
+          <e p="RsaCrypt.cs" t="Include" />
+        </e>
         <e p="Snowflake" t="Include">
           <e p="DisposableAction.cs" t="Include" />
           <e p="IdGenerator.cs" t="Include" />
           <e p="IdWorker.cs" t="Include" />
           <e p="TimeExtensions.cs" t="Include" />
         </e>
+        <e p="Strings" t="Include">
+          <e p="NumberFormater.cs" t="Include" />
+          <e p="ValidateCode.cs" t="Include" />
+        </e>
+        <e p="Systems" t="Include">
+          <e p="CallContext.cs" t="Include" />
+          <e p="ConcurrentLimitedQueue.cs" t="Include" />
+          <e p="Disposable.cs" t="Include" />
+          <e p="HiPerfTimer.cs" t="Include" />
+          <e p="LimitedQueue.cs" t="Include" />
+        </e>
         <e p="Text" t="Include">
           <e p="StringCompute.cs" t="Include" />
           <e p="StringHelper.cs" t="Include" />
         </e>
+        <e p="Validator" t="Include">
+          <e p="ComplexPasswordAttribute.cs" t="Include" />
+          <e p="MaxValueAttribute.cs" t="Include" />
+          <e p="MinValueAttribute.cs" t="Include" />
+        </e>
         <e p="Virgo.csproj" t="IncludeRecursive" />
         <e p="VirgoExtensions.cs" t="Include" />
+        <e p="Win32" t="Include">
+          <e p="Windows.cs" t="Include" />
+          <e p="WindowsCommand.cs" t="Include" />
+        </e>
       </e>
       <e p="src\Virgo.Dapper" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -330,6 +390,7 @@
       </e>
       <e p="src\Virgo.EntityFrameworkCore" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="IRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
@@ -337,10 +398,12 @@
             </e>
           </e>
         </e>
+        <e p="RepositoryBase.cs" t="Include" />
         <e p="Virgo.EntityFrameworkCore.csproj" t="IncludeRecursive" />
       </e>
       <e p="src\Virgo.MongoDB" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
+        <e p="MongoDbClient.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netstandard2.0" t="Include">
