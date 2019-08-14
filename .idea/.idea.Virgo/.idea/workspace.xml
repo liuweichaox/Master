@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
+    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="Submit Code">
       <change beforePath="$PROJECT_DIR$/src/Virgo.Redis/RedisCacheManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Redis/RedisCacheManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Virgo.Redis/RedisCacheProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Redis/RedisCacheProvider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Virgo.TestBase/TestBaseWithIocBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Virgo.TestBase/TestBaseWithIocBuilder.cs" afterDir="false" />
@@ -106,8 +106,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+            <state relative-caret-position="120">
+              <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
               <folding>
                 <marker date="1562659921185" expanded="false" signature="6:66" ph="..." />
                 <marker date="1562659921185" expanded="true" signature="91:828" ph="{...}" />
@@ -371,45 +371,6 @@
               <item name="" type="784c90a0:SolutionExplorerRootNode" />
               <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
             </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Security" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Systems" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Text" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="01-src" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Validator" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -512,12 +473,12 @@
       <updated>1561520196514</updated>
       <workItem from="1561520200920" duration="3689000" />
       <workItem from="1561942447679" duration="73000" />
-      <workItem from="1565691441143" duration="420000" />
+      <workItem from="1565691441143" duration="602000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4182000" />
+    <option name="totallyTimeSpent" value="4364000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,6 +526,10 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Submit Code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Submit Code" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -1413,8 +1378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="31" column="9" lean-forward="true" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        <state relative-caret-position="120">
+          <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
           <folding>
             <marker date="1562659921185" expanded="false" signature="6:66" ph="..." />
             <marker date="1562659921185" expanded="true" signature="91:828" ph="{...}" />

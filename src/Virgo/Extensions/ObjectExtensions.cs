@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -85,6 +87,30 @@ namespace Virgo.Extensions
                 ms.Close();
             }
             return (T)retval;
+        }
+
+        /// <summary>
+        /// 属性验证是否通过
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static bool IsValid<T>(this T data)
+        {
+            if (data == null)
+                throw new ArgumentNullException(nameof(data));
+
+            var validationResult = new List<ValidationResult>();
+            var result =System.ComponentModel.DataAnnotations.Validator.TryValidateObject(data, new ValidationContext(data), validationResult, false);
+
+            if (!result)
+            {
+                foreach (var item in validationResult)
+                {
+                    Debug.WriteLine($"ERROR::{item.MemberNames}:{item.ErrorMessage}");
+                }
+            }
+            return result;
         }
     }
 }
