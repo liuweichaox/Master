@@ -1,8 +1,6 @@
-﻿using Autofac.Extras.IocManager;
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Redis
 {

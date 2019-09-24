@@ -1,8 +1,7 @@
-﻿using Autofac.Extras.IocManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Text;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Cache.Configuration
 {

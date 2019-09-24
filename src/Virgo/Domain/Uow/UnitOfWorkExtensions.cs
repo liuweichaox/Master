@@ -1,30 +1,27 @@
-﻿using Castle.Core;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Reflection;
-using Autofac.Extras.IocManager;
-using System;
-using Autofac.Extras.IocManager.DynamicProxy;
 
 namespace Virgo.Domain.Uow
 {
     public static class UnitOfWorkExtensions
     {
-        public static IIocBuilder UseUnitOfWorkInterceptor(this IIocBuilder builder)
+        public static IServiceCollection UseUnitOfWorkInterceptor(this IServiceCollection services)
         {
-            builder.RegisterServices(r =>
-            {
-                r.UseBuilder(b =>
-                {
-                    b.RegisterCallback(x => x.Registered += (sender, e) =>
-                        {
-                            if (e.ComponentRegistration.Activator.LimitType.GetMethods().Any(m => m.IsDefined(typeof(UnitOfWorkAttribute), true)))
-                            {
-                                e.ComponentRegistration.InterceptedBy<UnitOfWorkInterceptor>();
-                            }
-                        });
-                });
-            });
-            return builder;
+            //services.RegisterServices(r =>
+            //{
+            //    r.UseBuilder(b =>
+            //    {
+            //        b.RegisterCallback(x => x.Registered += (sender, e) =>
+            //            {
+            //                if (e.ComponentRegistration.Activator.LimitType.GetMethods().Any(m => m.IsDefined(typeof(UnitOfWorkAttribute), true)))
+            //                {
+            //                    e.ComponentRegistration.InterceptedBy<UnitOfWorkInterceptor>();
+            //                }
+            //            });
+            //    });
+            //});
+            return services;
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using Autofac.Extras.IocManager;
-using System;
+﻿using System;
 using System.Data;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Domain.Uow
 {

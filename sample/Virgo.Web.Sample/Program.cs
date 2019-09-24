@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,15 +18,17 @@ namespace Virgo.Web.Sample
         {
             CreateHostBuilder(args).Build().Run();
         }
+
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, app) =>
-            {
-                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath).AddJsonFile("Configs/myjson.json", true, true);
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
+        Host.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration((hostingContext, app) =>
+        {
+            app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+            .AddJsonFile("Configs/myjson.json", true, true);
+        })
+        .ConfigureWebHostDefaults(webBuilder =>
+        {
+            webBuilder.UseStartup<Startup>();
+        });
     }
 }

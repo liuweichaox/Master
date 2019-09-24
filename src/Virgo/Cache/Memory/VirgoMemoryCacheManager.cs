@@ -1,10 +1,7 @@
-﻿using Autofac.Extras.IocManager;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Virgo.Cache.Configuration;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Cache.Memory
 {

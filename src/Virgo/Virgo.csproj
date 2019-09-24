@@ -9,8 +9,6 @@
     <PackageReference Include="aliyun-net-sdk-core" Version="1.2.9" />
     <PackageReference Include="aliyun-net-sdk-dysmsapi" Version="1.0.0" />
     <PackageReference Include="Autofac" Version="4.9.2" />
-    <PackageReference Include="Autofac.Extras.IocManager" Version="3.2.2" />
-    <PackageReference Include="Autofac.Extras.IocManager.DynamicProxy" Version="3.2.2" />
     <PackageReference Include="Castle.Core" Version="4.4.0" />
     <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.1" />

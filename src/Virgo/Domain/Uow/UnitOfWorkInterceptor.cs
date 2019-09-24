@@ -1,7 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using System.Reflection;
-using System.Data;
-using Autofac.Extras.IocManager;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Domain.Uow
 {

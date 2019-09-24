@@ -2,12 +2,9 @@
 using Aliyun.Acs.Core.Exceptions;
 using Aliyun.Acs.Core.Profile;
 using Aliyun.Acs.Dysmsapi.Model.V20170525;
-using Autofac.Extras.IocManager;
-using Microsoft.Extensions.Caching.Memory;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Aliyun.Sms
 {

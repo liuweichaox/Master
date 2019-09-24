@@ -1,17 +1,14 @@
-﻿using Autofac.Extras.IocManager;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Infrastructure.Sample
 {
     public static class InfrastruxtureExtensions
     {
-        public static IIocBuilder UseInfrastructure(this IIocBuilder builder)
+        public static IServiceCollection UseInfrastructure(this IServiceCollection builder)
         {
             var assembly = typeof(InfrastruxtureExtensions).Assembly;
-            builder.RegisterServices(r => r.RegisterAssemblyByConvention(assembly));
+            builder.RegisterAssemblyByConvention(assembly);
             return builder;
         }
     }

@@ -1,9 +1,6 @@
-﻿using Autofac.Extras.IocManager;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Virgo.Cache;
+﻿using Virgo.Cache;
 using Virgo.Cache.Configuration;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Redis
 {
@@ -23,8 +20,8 @@ namespace Virgo.Redis
 
         protected override ICache CreateCacheImplementation(string name)
         {
-            var provider = IocManager.Resolve<IRedisCacheProvider>();
-            return new RedisCache(name, provider);
+            //var provider = IocManager.Resolve<IRedisCacheProvider>();
+            return new RedisCache(name, /*provider*/null);
         }
     }
 }
