@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace Virgo.Web.Sample
@@ -14,16 +15,17 @@ namespace Virgo.Web.Sample
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().Run();
         }
-
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, app) =>
             {
-                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-                .AddJsonFile("Configs/myjson.json", true, true);
+                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath).AddJsonFile("Configs/myjson.json", true, true);
             })
-            .UseStartup<Startup>();
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }

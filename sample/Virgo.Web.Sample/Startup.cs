@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Virgo.AspNetCore;
 using Virgo.Domain.Uow;
 using Virgo.Infrastructure.Sample;
@@ -43,10 +44,11 @@ namespace Virgo.Web.Sample
 
             services.AddHttpClient();
 
-            services.AddMvc(options=> 
+            services.AddControllersWithViews(options=> 
             {
                 options.Filters.Add<AuditActionFilter>();
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
             #region Autofac接管Ioc
             var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
 
@@ -94,7 +96,7 @@ namespace Virgo.Web.Sample
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -116,11 +118,12 @@ namespace Virgo.Web.Sample
             {
                 app.UseChatWebSocketMiddleware();
             });
-            app.UseMvc(routes =>
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
             {
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
