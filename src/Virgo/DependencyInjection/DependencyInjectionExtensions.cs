@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Virgo.Extensions;
 
 namespace Virgo.DependencyInjection
 {
@@ -20,7 +21,7 @@ namespace Virgo.DependencyInjection
         /// <returns></returns>
         public static IServiceCollection RegisterAssemblyByConvention(this IServiceCollection services, params Assembly[] assemblies)
         {
-            if (assemblies?.Any() == false)
+            if (assemblies.IsNullOrEmpty())
             {
                 throw new Exception("assemblies cannot be empty.");
             }
@@ -42,9 +43,12 @@ namespace Virgo.DependencyInjection
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
             {
-                var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x=>x.Name.ToUpper().Contains(type.Name.ToUpper()));
-                var serviceLifetime = FindServiceLifetime(typeof(TServiceLifetime));
-                services.Add(new ServiceDescriptor(itype, type, serviceLifetime));
+                var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x => x.Name.ToUpper().Contains(type.Name.ToUpper()));
+                if (!itype.IsNull())
+                {
+                    var serviceLifetime = FindServiceLifetime(typeof(TServiceLifetime));
+                    services.Add(new ServiceDescriptor(itype, type, serviceLifetime));
+                }
             }
         }
 

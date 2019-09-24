@@ -9,13 +9,26 @@ using Virgo.Strings;
 using Virgo.Net.Mime;
 using Virgo.Systems;
 using System.Threading;
-
+using Virgo.AspNetCore.Models;
+using Virgo.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 namespace Virgo.Web.Sample.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IIocManager _iocManager;
+        private IOrderService _orderService;
+        public HomeController(IIocManager iocManager)
+        {
+            _iocManager = iocManager;
+        }
         public IActionResult Index()
         {
+            _orderService = _iocManager.ServiceProvider.GetService<IOrderService>();
+            var result = _orderService.Fuck();
+            Debug.WriteLine("----------------------------------------------------------");
+            Debug.WriteLine(result);
+            Debug.WriteLine("----------------------------------------------------------");
             return View();
         }
 

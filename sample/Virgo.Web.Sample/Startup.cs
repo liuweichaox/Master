@@ -43,7 +43,13 @@ namespace Virgo.Web.Sample
 
             services.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
-            services.UseInfrastructure();
+            services.UseVirgo().UseInfrastructure();
+
+            services.AddSingleton<IIocManager, IocManager>(provide =>
+            {
+                IocManager.Instance.ServiceProvider = provide;
+                return IocManager.Instance;
+            });
             //#region Autofac接管Ioc
             //var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
 
@@ -98,7 +104,6 @@ namespace Virgo.Web.Sample
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
             app.UseStaticHttpContext();
             app.UseStaticFiles();
             app.UseCookiePolicy();
