@@ -42,9 +42,12 @@ namespace Virgo.DependencyInjection
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
             {
-                var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x=>x.Name.ToUpper().Contains(type.Name.ToUpper()));
-                var serviceLifetime = FindServiceLifetime(typeof(TServiceLifetime));
-                services.Add(new ServiceDescriptor(itype, type, serviceLifetime));
+                var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x => x.Name.ToUpper().Contains(type.Name.ToUpper()));
+                if (itype != null)
+                {
+                    var serviceLifetime = FindServiceLifetime(typeof(TServiceLifetime));
+                    services.Add(new ServiceDescriptor(itype, type, serviceLifetime));
+                }
             }
         }
 
