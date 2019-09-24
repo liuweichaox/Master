@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Virgo.Web.Sample.Models;
 using Virgo.Strings;
 using Virgo.Net.Mime;
-using Virgo.Systems;
-using System.Threading;
 using Virgo.AspNetCore.Models;
 using Virgo.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +19,7 @@ namespace Virgo.Web.Sample.Controllers
         }
         public IActionResult Index()
         {
-            _orderService = _iocManager.ServiceProvider.GetService<IOrderService>();
+            _orderService = _iocManager.ServiceProvider.GetService<IOrderService>();            
             var result = _orderService.Fuck();
             Debug.WriteLine("----------------------------------------------------------");
             Debug.WriteLine(result);
