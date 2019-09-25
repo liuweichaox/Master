@@ -6,5 +6,6 @@ namespace Virgo.DependencyInjection
 {
     public interface IIocManager
     {
+        IServiceProvider ServiceProvider { get; set; }
     }
 }

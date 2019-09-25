@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Virgo.Extensions
@@ -241,6 +242,14 @@ namespace Virgo.Extensions
             });
         }
 
+        #endregion
+
+        #region Valid
+
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> objs)
+        {
+            return objs == null || objs.Count() == 0;
+        }
         #endregion
     }
 }
