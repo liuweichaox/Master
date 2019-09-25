@@ -19,7 +19,7 @@ namespace Virgo.DependencyInjection
         /// <param name="services"></param>
         /// <param name="assemblies"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterAssemblyByConvention(this IServiceCollection services, params Assembly[] assemblies)
+        public static IServiceCollection AddAssembly(this IServiceCollection services, params Assembly[] assemblies)
         {
             if (assemblies.IsNullOrEmpty())
             {
@@ -39,7 +39,7 @@ namespace Virgo.DependencyInjection
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         public static void RegisterDependenciesByAssembly<TServiceLifetime>(IServiceCollection services, Assembly assembly)
-        {
+        {            
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
             {
@@ -68,6 +68,20 @@ namespace Virgo.DependencyInjection
             }
 
             throw new ArgumentOutOfRangeException($"Provided ServiceLifetime type is invalid. Lifetime:{type.Name}");
+        }
+
+        /// <summary>
+        /// 注册IocManager
+        /// 在ConfigureServices方法最后一行使用
+        /// </summary>
+        /// <param name="services"></param>
+        public static void AddIocManager(this IServiceCollection services)
+        {
+            services.AddSingleton<IIocManager, IocManager>(provide =>
+            {
+                IocManager.Instance.ServiceProvider = provide;
+                return IocManager.Instance;
+            });
         }
     }
 }

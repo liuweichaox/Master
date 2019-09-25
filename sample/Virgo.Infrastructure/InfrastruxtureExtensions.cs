@@ -8,7 +8,7 @@ namespace Virgo.Infrastructure.Sample
         public static IServiceCollection UseInfrastructure(this IServiceCollection builder)
         {
             var assembly = typeof(InfrastruxtureExtensions).Assembly;
-            builder.RegisterAssemblyByConvention(assembly);
+            builder.AddAssembly(assembly);
             return builder;
         }
     }
