@@ -15,16 +15,17 @@ namespace Virgo.Dapper.Tests
     {
         public UnifOfWork_Tests()
         {
-            Building(build =>
-            {
-                build.UseUnitOfWorkInterceptor();
-                build.RegisterServices(r =>
-                {
-                    r.Register<IInterceptor, UnitOfWorkInterceptor>(Lifetime.Transient);
-                    r.Register<IUnitOfWork, UnifOfWork>(Lifetime.LifetimeScope);
-                    r.Register<IUserInfoRepository, UserInfoRepository>(Lifetime.LifetimeScope);
-                });
-            });
+            //注释
+            //Building(build =>
+            //{
+            //    build.UseUnitOfWorkInterceptor();
+            //    build.RegisterServices(r =>
+            //    {
+            //        r.Register<IInterceptor, UnitOfWorkInterceptor>(Lifetime.Transient);
+            //        r.Register<IUnitOfWork, UnifOfWork>(Lifetime.LifetimeScope);
+            //        r.Register<IUserInfoRepository, UserInfoRepository>(Lifetime.LifetimeScope);
+            //    });
+            //});
         }
 
         [UnitOfWork]
