@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Virgo.DependencyInjection
 {
-    public class IocManager : IIocManager,ISingletonDependency
+    /// <summary>
+    /// <see cref="IIocManager"/>管理器实现类
+    /// </summary>
+    public class IocManager : IIocManager
     {
         static IocManager()
         {
