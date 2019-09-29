@@ -41,15 +41,11 @@ namespace Virgo.Web.Sample
                 options.Filters.Add<AuditActionFilter>();
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+            services.AddAssembly(Assembly.GetExecutingAssembly());
 
             services.UseVirgo().UseInfrastructure();
 
-            services.AddSingleton<IIocManager, IocManager>(provide =>
-            {
-                IocManager.Instance.ServiceProvider = provide;
-                return IocManager.Instance;
-            });
+            services.AddIocManager();
             //#region Autofac接管Ioc
             //var builder = IocBuilder.New.UseAutofacContainerBuilder().RegisterIocManager();
 

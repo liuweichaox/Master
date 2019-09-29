@@ -16,7 +16,7 @@ namespace Virgo
         public static IServiceCollection UseVirgo(this IServiceCollection services)
         {
             var assembly = typeof(VirgoExtensions).Assembly;
-            services.RegisterAssemblyByConvention(assembly);
+            services.AddAssembly(assembly);
             return services;
         }
     }

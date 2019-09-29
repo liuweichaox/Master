@@ -5,11 +5,11 @@ namespace Virgo.Infrastructure.Sample
 {
     public static class InfrastruxtureExtensions
     {
-        public static IServiceCollection UseInfrastructure(this IServiceCollection builder)
+        public static IServiceCollection UseInfrastructure(this IServiceCollection services)
         {
             var assembly = typeof(InfrastruxtureExtensions).Assembly;
-            builder.RegisterAssemblyByConvention(assembly);
-            return builder;
+            services.AddAssembly(assembly);
+            return services;
         }
     }
 }
