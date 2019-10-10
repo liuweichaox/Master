@@ -5,10 +5,10 @@ using System.Text;
 namespace Virgo.DependencyInjection
 {
     /// <summary>
-    ///    标记依赖项生命周期的接口
-    ///     <see cref="ILifetimeScopeDependency" />,
-    ///     <see cref="ITransientDependency" />,
-    ///     <see cref="ISingletonDependency" />
+    ///   标记依赖项生命周期的接口
+    ///   <see cref="ILifetimeScopeDependency" />,
+    ///   <see cref="ITransientDependency" />,
+    ///   <see cref="ISingletonDependency" />
     /// </summary>
     public interface ILifetime { }
 }
