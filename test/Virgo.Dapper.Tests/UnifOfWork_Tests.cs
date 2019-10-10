@@ -48,8 +48,10 @@ SET FOREIGN_KEY_CHECKS = 1;*/
             #endregion
             var un = The<IUnitOfWork>();
             var repository = The<IUserInfoRepository>();
-            un.BeginTransaction();
-            var users = new List<UserInfo>()
+            try
+            {
+                un.BeginTransaction();
+                var users = new List<UserInfo>()
             {
                 new UserInfo()
                 {
@@ -73,17 +75,22 @@ SET FOREIGN_KEY_CHECKS = 1;*/
                     UserName = "LiuDaDa"
                 }
             };
-            //增
-            await repository.InsertAsync(users);
-            //删
-            await repository.DeleteAsync(users[0]);
-            //查
-            var userInfos = await repository.GetAllAsync();
-            //改
-            var virgo = userInfos.FirstOrDefault();
-            virgo.UserName = "新名称";
-            await repository.UpdateAsync(virgo);
-            un.Commit();
+                //增
+                await repository.InsertAsync(users);
+                //删
+                await repository.DeleteAsync(users[0]);
+                //查
+                var userInfos = await repository.GetAllAsync();
+                //改
+                var virgo = userInfos.FirstOrDefault();
+                virgo.UserName = "新名称";
+                await repository.UpdateAsync(virgo);
+                un.Commit();
+            }
+            catch (Exception ex)
+            {
+                un.Rollback();
+            }
         }
     }
 }
