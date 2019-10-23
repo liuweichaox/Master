@@ -15,5 +15,10 @@ namespace Virgo.DependencyInjection
         }
         public static IocManager Instance { get; private set; }
         public IServiceProvider ServiceProvider { get; set; }
+
+        public TService GetInstance<TService>()
+        {
+            return (TService)ServiceProvider.GetService(typeof(TService));
+        }
     }
 }

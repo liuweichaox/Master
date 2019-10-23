@@ -10,5 +10,6 @@ namespace Virgo.DependencyInjection
     public interface IIocManager
     {
         IServiceProvider ServiceProvider { get; set; }
+        TService GetInstance<TService>();
     }
 }
