@@ -16,26 +16,9 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/CallContext.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-              <folding>
-                <marker date="1565691838235" expanded="false" signature="6:127" ph="..." />
-                <marker date="1565691838235" expanded="true" signature="152:939" ph="{...}" />
-                <marker date="1565691838235" expanded="true" signature="159:249" ph="/// 取线程内唯一对象 ... " />
-                <marker date="1565691838235" expanded="true" signature="288:937" ph="{...}" />
-                <marker date="1565691838235" expanded="true" signature="422:554" ph="/// 设置值 ... " />
-                <marker date="1565691838235" expanded="true" signature="684:808" ph="/// 获取值 ... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/ConcurrentLimitedQueue.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="105">
               <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding>
                 <marker date="1562660289276" expanded="false" signature="6:122" ph="..." />
@@ -58,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/Disposable.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="90">
               <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
               <folding>
                 <marker date="1562826471028" expanded="false" signature="6:66" ph="..." />
@@ -103,13 +86,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+            <state relative-caret-position="585">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
               <folding>
-                <marker date="1562659921185" expanded="false" signature="6:66" ph="..." />
                 <marker date="1562659921185" expanded="true" signature="91:828" ph="{...}" />
                 <marker date="1562659921185" expanded="true" signature="98:184" ph="/// 定长队列 ... " />
                 <marker date="1562659921185" expanded="true" signature="228:826" ph="{...}" />
@@ -124,54 +106,67 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sample/Virgo.Infrastructure/IInfrastruxtureTest.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+              <folding>
+                <marker date="1558054334953" expanded="true" signature="52:109" ph="{...}" />
+                <marker date="1558054334953" expanded="true" signature="95:107" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkBase.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1652">
-              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+            <state relative-caret-position="225">
+              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
               <folding>
-                <marker date="1558054335843" expanded="false" signature="6:65" ph="..." />
-                <marker date="1558054335843" expanded="true" signature="93:4364" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="100:160" ph="/// 工作单元基类，所有工作单元类继承自此类 ... " />
-                <marker date="1558054335843" expanded="true" signature="241:4362" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="256:314" ph="/// 当前资源是否已释放 ... " />
-                <marker date="1558054335843" expanded="true" signature="376:427" ph="/// 事务 ... " />
-                <marker date="1558054335843" expanded="true" signature="492:543" ph="/// 连接 ... " />
-                <marker date="1558054335843" expanded="true" signature="601:658" ph="/// 事务提交成功事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="712:768" ph="/// 事务释放时事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="821:878" ph="/// 事务提交失败事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="956:1060" ph="/// &lt;see cref=&quot;BeginTransaction(IsolationLevel?)&quot;/&gt;方法是否被调用过 ... " />
-                <marker date="1558054335843" expanded="true" signature="1106:1183" ph="/// &lt;see cref=&quot;Commit&quot;/&gt;方法是否被调用过 ... " />
-                <marker date="1558054335843" expanded="true" signature="1230:1291" ph="/// 当前工作单元是否成功完成 ... " />
-                <marker date="1558054335843" expanded="true" signature="1331:1390" ph="/// 工作单元失败异常原因 ... " />
-                <marker date="1558054335843" expanded="true" signature="1437:1540" ph="/// 构造函数 ... " />
-                <marker date="1558054335843" expanded="true" signature="1572:1760" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="1687:1750" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="1769:1826" ph="/// 工作单元完成事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="1861:1935" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="1944:2041" ph="/// 提交失败事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="2085:2174" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2183:2238" ph="/// 资源释放事件 ... " />
-                <marker date="1558054335843" expanded="true" signature="2272:2345" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2354:2412" ph="/// 工作单元是否已开启 ... " />
-                <marker date="1558054335843" expanded="true" signature="2449:2619" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2491:2574" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2628:2686" ph="/// 工作单元是否已提交 ... " />
-                <marker date="1558054335843" expanded="true" signature="2724:2888" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2767:2842" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="2955:3058" ph="/// 开启事务 ... " />
-                <marker date="1558054335843" expanded="true" signature="3134:3390" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3271:3380" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3399:3452" ph="/// 提交事务 ... " />
-                <marker date="1558054335843" expanded="true" signature="3481:3794" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3537:3667" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3700:3784" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3803:3856" ph="/// 回滚事务 ... " />
-                <marker date="1558054335843" expanded="true" signature="3887:3943" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="3952:4005" ph="/// 资源释放 ... " />
-                <marker date="1558054335843" expanded="true" signature="4035:4356" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="4073:4125" ph="{...}" />
-                <marker date="1558054335843" expanded="true" signature="4254:4320" ph="{...}" />
+                <marker date="1569561917149" expanded="false" signature="6:65" ph="..." />
+                <marker date="1569561917149" expanded="true" signature="93:4364" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="100:160" ph="/// 工作单元基类，所有工作单元类继承自此类 ... " />
+                <marker date="1569561917149" expanded="true" signature="241:4362" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="256:314" ph="/// 当前资源是否已释放 ... " />
+                <marker date="1569561917149" expanded="true" signature="376:427" ph="/// 事务 ... " />
+                <marker date="1569561917149" expanded="true" signature="492:543" ph="/// 连接 ... " />
+                <marker date="1569561917149" expanded="true" signature="601:658" ph="/// 事务提交成功事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="712:768" ph="/// 事务释放时事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="821:878" ph="/// 事务提交失败事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="956:1060" ph="/// &lt;see cref=&quot;BeginTransaction(IsolationLevel?)&quot;/&gt;方法是否被调用过 ... " />
+                <marker date="1569561917149" expanded="true" signature="1106:1183" ph="/// &lt;see cref=&quot;Commit&quot;/&gt;方法是否被调用过 ... " />
+                <marker date="1569561917149" expanded="true" signature="1230:1291" ph="/// 当前工作单元是否成功完成 ... " />
+                <marker date="1569561917149" expanded="true" signature="1331:1390" ph="/// 工作单元失败异常原因 ... " />
+                <marker date="1569561917149" expanded="true" signature="1437:1540" ph="/// 构造函数 ... " />
+                <marker date="1569561917149" expanded="true" signature="1572:1760" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="1687:1750" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="1769:1826" ph="/// 工作单元完成事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="1861:1935" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="1944:2041" ph="/// 提交失败事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="2085:2174" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2183:2238" ph="/// 资源释放事件 ... " />
+                <marker date="1569561917149" expanded="true" signature="2272:2345" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2354:2412" ph="/// 工作单元是否已开启 ... " />
+                <marker date="1569561917149" expanded="true" signature="2449:2619" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2491:2574" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2628:2686" ph="/// 工作单元是否已提交 ... " />
+                <marker date="1569561917149" expanded="true" signature="2724:2888" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2767:2842" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="2955:3058" ph="/// 开启事务 ... " />
+                <marker date="1569561917149" expanded="true" signature="3134:3390" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3271:3380" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3399:3452" ph="/// 提交事务 ... " />
+                <marker date="1569561917149" expanded="true" signature="3481:3794" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3537:3667" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3700:3784" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3803:3856" ph="/// 回滚事务 ... " />
+                <marker date="1569561917149" expanded="true" signature="3887:3943" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="3952:4005" ph="/// 资源释放 ... " />
+                <marker date="1569561917149" expanded="true" signature="4035:4356" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="4073:4125" ph="{...}" />
+                <marker date="1569561917149" expanded="true" signature="4254:4320" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -180,8 +175,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/AggregateRoot.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            <state relative-caret-position="165">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
                 <marker date="1558054335797" expanded="false" signature="6:66" ph="..." />
                 <marker date="1558054335797" expanded="true" signature="99:478" ph="{...}" />
@@ -197,8 +192,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="165">
+              <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
               <folding>
                 <marker date="1558054335828" expanded="false" signature="6:144" ph="..." />
                 <marker date="1558054335828" expanded="true" signature="177:647" ph="{...}" />
@@ -215,7 +210,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IAggregateRoot.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="105">
               <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding>
                 <marker date="1558054335828" expanded="false" signature="6:66" ph="..." />
@@ -232,7 +227,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="135">
               <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
               <folding>
                 <marker date="1558054335828" expanded="false" signature="6:99" ph="..." />
@@ -283,6 +278,7 @@
     <setting file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Middlewares/ChatWebSocketMiddleware.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/HiPerfTimer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/CallContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/sample/Virgo.Infrastructure/IInfrastruxtureTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/Disposable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/ConcurrentLimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
@@ -363,19 +359,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="SolutionExplorer">
-        <subPane>
-          <expand>
-            <path>
-              <item name="" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="show-all-files" value="false" />
-      </pane>
       <pane id="FileSystemExplorer">
         <subPane>
           <expand>
@@ -386,6 +369,24 @@
           </expand>
           <select />
         </subPane>
+      </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="Virgo" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="03-sample" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
       </pane>
     </panes>
   </component>
@@ -474,11 +475,12 @@
       <workItem from="1561520200920" duration="3689000" />
       <workItem from="1561942447679" duration="73000" />
       <workItem from="1565691441143" duration="602000" />
+      <workItem from="1571898241533" duration="103000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4364000" />
+    <option name="totallyTimeSpent" value="4467000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -492,7 +494,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15183803" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15343633" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -541,22 +543,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ICreationAudited.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <marker date="1558054335812" expanded="false" signature="6:66" ph="..." />
-            <marker date="1558054335812" expanded="true" signature="108:623" ph="{...}" />
-            <marker date="1558054335812" expanded="true" signature="115:219" ph="/// 创建审计属性接口 ... " />
-            <marker date="1558054335812" expanded="true" signature="316:443" ph="{...}" />
-            <marker date="1558054335812" expanded="true" signature="331:388" ph="/// 创建此实体的用户 ... " />
-            <marker date="1558054335812" expanded="true" signature="448:509" ph="/// 创建审计属性接口-主键为String类型 ... " />
-            <marker date="1558054335812" expanded="true" signature="566:621" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IDeletionAudited.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1183,137 +1169,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkBase.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1652">
-          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <marker date="1558054335843" expanded="false" signature="6:65" ph="..." />
-            <marker date="1558054335843" expanded="true" signature="93:4364" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="100:160" ph="/// 工作单元基类，所有工作单元类继承自此类 ... " />
-            <marker date="1558054335843" expanded="true" signature="241:4362" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="256:314" ph="/// 当前资源是否已释放 ... " />
-            <marker date="1558054335843" expanded="true" signature="376:427" ph="/// 事务 ... " />
-            <marker date="1558054335843" expanded="true" signature="492:543" ph="/// 连接 ... " />
-            <marker date="1558054335843" expanded="true" signature="601:658" ph="/// 事务提交成功事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="712:768" ph="/// 事务释放时事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="821:878" ph="/// 事务提交失败事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="956:1060" ph="/// &lt;see cref=&quot;BeginTransaction(IsolationLevel?)&quot;/&gt;方法是否被调用过 ... " />
-            <marker date="1558054335843" expanded="true" signature="1106:1183" ph="/// &lt;see cref=&quot;Commit&quot;/&gt;方法是否被调用过 ... " />
-            <marker date="1558054335843" expanded="true" signature="1230:1291" ph="/// 当前工作单元是否成功完成 ... " />
-            <marker date="1558054335843" expanded="true" signature="1331:1390" ph="/// 工作单元失败异常原因 ... " />
-            <marker date="1558054335843" expanded="true" signature="1437:1540" ph="/// 构造函数 ... " />
-            <marker date="1558054335843" expanded="true" signature="1572:1760" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="1687:1750" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="1769:1826" ph="/// 工作单元完成事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="1861:1935" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="1944:2041" ph="/// 提交失败事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="2085:2174" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2183:2238" ph="/// 资源释放事件 ... " />
-            <marker date="1558054335843" expanded="true" signature="2272:2345" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2354:2412" ph="/// 工作单元是否已开启 ... " />
-            <marker date="1558054335843" expanded="true" signature="2449:2619" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2491:2574" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2628:2686" ph="/// 工作单元是否已提交 ... " />
-            <marker date="1558054335843" expanded="true" signature="2724:2888" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2767:2842" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="2955:3058" ph="/// 开启事务 ... " />
-            <marker date="1558054335843" expanded="true" signature="3134:3390" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3271:3380" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3399:3452" ph="/// 提交事务 ... " />
-            <marker date="1558054335843" expanded="true" signature="3481:3794" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3537:3667" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3700:3784" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3803:3856" ph="/// 回滚事务 ... " />
-            <marker date="1558054335843" expanded="true" signature="3887:3943" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="3952:4005" ph="/// 资源释放 ... " />
-            <marker date="1558054335843" expanded="true" signature="4035:4356" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="4073:4125" ph="{...}" />
-            <marker date="1558054335843" expanded="true" signature="4254:4320" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding>
-            <marker date="1558054335828" expanded="false" signature="6:144" ph="..." />
-            <marker date="1558054335828" expanded="true" signature="177:647" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="184:311" ph="/// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口 ... " />
-            <marker date="1558054335828" expanded="true" signature="353:477" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="368:434" ph="/// 此实体的唯一标识符 ... " />
-            <marker date="1558054335828" expanded="true" signature="483:564" ph="/// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口-主键为String类型 ... " />
-            <marker date="1558054335828" expanded="true" signature="593:645" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-          <folding>
-            <marker date="1558054335828" expanded="false" signature="6:99" ph="..." />
-            <marker date="1558054335828" expanded="true" signature="132:767" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="140:258" ph="/// &lt;see cref=&quot;IEntity&quot;/&gt;抽象实现类 ... " />
-            <marker date="1558054335828" expanded="true" signature="373:538" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="388:458" ph="/* Dapper区别： ... */" />
-            <marker date="1558054335828" expanded="true" signature="543:622" ph="/// &lt;see cref=&quot;IEntity&quot;/&gt;抽象实现类-主键为String类型 ... " />
-            <marker date="1558054335828" expanded="true" signature="684:765" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IAggregateRoot.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <marker date="1558054335828" expanded="false" signature="6:66" ph="..." />
-            <marker date="1558054335828" expanded="true" signature="99:443" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="106:209" ph="/// 聚合根接口 ... " />
-            <marker date="1558054335828" expanded="true" signature="306:319" ph="{...}" />
-            <marker date="1558054335828" expanded="true" signature="324:382" ph="/// 聚合根接口-主键为String类型 ... " />
-            <marker date="1558054335828" expanded="true" signature="428:441" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/AggregateRoot.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <marker date="1558054335797" expanded="false" signature="6:66" ph="..." />
-            <marker date="1558054335797" expanded="true" signature="99:478" ph="{...}" />
-            <marker date="1558054335797" expanded="true" signature="106:210" ph="/// 聚合根实现类 ... " />
-            <marker date="1558054335797" expanded="true" signature="332:344" ph="{...}" />
-            <marker date="1558054335797" expanded="true" signature="349:408" ph="/// 聚合跟实现类-主键为String类型 ... " />
-            <marker date="1558054335797" expanded="true" signature="464:476" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/CallContext.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding>
-            <marker date="1565691838235" expanded="false" signature="6:127" ph="..." />
-            <marker date="1565691838235" expanded="true" signature="152:939" ph="{...}" />
-            <marker date="1565691838235" expanded="true" signature="159:249" ph="/// 取线程内唯一对象 ... " />
-            <marker date="1565691838235" expanded="true" signature="288:937" ph="{...}" />
-            <marker date="1565691838235" expanded="true" signature="422:554" ph="/// 设置值 ... " />
-            <marker date="1565691838235" expanded="true" signature="684:808" ph="/// 获取值 ... " />
+            <marker date="1569561917179" expanded="true" signature="152:939" ph="{...}" />
+            <marker date="1569561917179" expanded="true" signature="159:249" ph="/// 取线程内唯一对象 ... " />
+            <marker date="1569561917179" expanded="true" signature="288:937" ph="{...}" />
+            <marker date="1569561917179" expanded="true" signature="422:554" ph="/// 设置值 ... " />
+            <marker date="1569561917179" expanded="true" signature="684:808" ph="/// 获取值 ... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/ConcurrentLimitedQueue.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="105">
           <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding>
             <marker date="1562660289276" expanded="false" signature="6:122" ph="..." />
@@ -1334,7 +1206,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/Disposable.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="90">
           <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
             <marker date="1562826471028" expanded="false" signature="6:66" ph="..." />
@@ -1376,12 +1248,124 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <marker date="1569561917149" expanded="false" signature="6:65" ph="..." />
+            <marker date="1569561917149" expanded="true" signature="93:4364" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="100:160" ph="/// 工作单元基类，所有工作单元类继承自此类 ... " />
+            <marker date="1569561917149" expanded="true" signature="241:4362" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="256:314" ph="/// 当前资源是否已释放 ... " />
+            <marker date="1569561917149" expanded="true" signature="376:427" ph="/// 事务 ... " />
+            <marker date="1569561917149" expanded="true" signature="492:543" ph="/// 连接 ... " />
+            <marker date="1569561917149" expanded="true" signature="601:658" ph="/// 事务提交成功事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="712:768" ph="/// 事务释放时事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="821:878" ph="/// 事务提交失败事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="956:1060" ph="/// &lt;see cref=&quot;BeginTransaction(IsolationLevel?)&quot;/&gt;方法是否被调用过 ... " />
+            <marker date="1569561917149" expanded="true" signature="1106:1183" ph="/// &lt;see cref=&quot;Commit&quot;/&gt;方法是否被调用过 ... " />
+            <marker date="1569561917149" expanded="true" signature="1230:1291" ph="/// 当前工作单元是否成功完成 ... " />
+            <marker date="1569561917149" expanded="true" signature="1331:1390" ph="/// 工作单元失败异常原因 ... " />
+            <marker date="1569561917149" expanded="true" signature="1437:1540" ph="/// 构造函数 ... " />
+            <marker date="1569561917149" expanded="true" signature="1572:1760" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="1687:1750" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="1769:1826" ph="/// 工作单元完成事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="1861:1935" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="1944:2041" ph="/// 提交失败事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="2085:2174" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2183:2238" ph="/// 资源释放事件 ... " />
+            <marker date="1569561917149" expanded="true" signature="2272:2345" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2354:2412" ph="/// 工作单元是否已开启 ... " />
+            <marker date="1569561917149" expanded="true" signature="2449:2619" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2491:2574" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2628:2686" ph="/// 工作单元是否已提交 ... " />
+            <marker date="1569561917149" expanded="true" signature="2724:2888" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2767:2842" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="2955:3058" ph="/// 开启事务 ... " />
+            <marker date="1569561917149" expanded="true" signature="3134:3390" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3271:3380" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3399:3452" ph="/// 提交事务 ... " />
+            <marker date="1569561917149" expanded="true" signature="3481:3794" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3537:3667" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3700:3784" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3803:3856" ph="/// 回滚事务 ... " />
+            <marker date="1569561917149" expanded="true" signature="3887:3943" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="3952:4005" ph="/// 资源释放 ... " />
+            <marker date="1569561917149" expanded="true" signature="4035:4356" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="4073:4125" ph="{...}" />
+            <marker date="1569561917149" expanded="true" signature="4254:4320" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/AggregateRoot.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <marker date="1558054335797" expanded="false" signature="6:66" ph="..." />
+            <marker date="1558054335797" expanded="true" signature="99:478" ph="{...}" />
+            <marker date="1558054335797" expanded="true" signature="106:210" ph="/// 聚合根实现类 ... " />
+            <marker date="1558054335797" expanded="true" signature="332:344" ph="{...}" />
+            <marker date="1558054335797" expanded="true" signature="349:408" ph="/// 聚合跟实现类-主键为String类型 ... " />
+            <marker date="1558054335797" expanded="true" signature="464:476" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <marker date="1558054335828" expanded="false" signature="6:144" ph="..." />
+            <marker date="1558054335828" expanded="true" signature="177:647" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="184:311" ph="/// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口 ... " />
+            <marker date="1558054335828" expanded="true" signature="353:477" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="368:434" ph="/// 此实体的唯一标识符 ... " />
+            <marker date="1558054335828" expanded="true" signature="483:564" ph="/// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口-主键为String类型 ... " />
+            <marker date="1558054335828" expanded="true" signature="593:645" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IAggregateRoot.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <marker date="1558054335828" expanded="false" signature="6:66" ph="..." />
+            <marker date="1558054335828" expanded="true" signature="99:443" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="106:209" ph="/// 聚合根接口 ... " />
+            <marker date="1558054335828" expanded="true" signature="306:319" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="324:382" ph="/// 聚合根接口-主键为String类型 ... " />
+            <marker date="1558054335828" expanded="true" signature="428:441" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <marker date="1558054335828" expanded="false" signature="6:99" ph="..." />
+            <marker date="1558054335828" expanded="true" signature="132:767" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="140:258" ph="/// &lt;see cref=&quot;IEntity&quot;/&gt;抽象实现类 ... " />
+            <marker date="1558054335828" expanded="true" signature="373:538" ph="{...}" />
+            <marker date="1558054335828" expanded="true" signature="388:458" ph="/* Dapper区别： ... */" />
+            <marker date="1558054335828" expanded="true" signature="543:622" ph="/// &lt;see cref=&quot;IEntity&quot;/&gt;抽象实现类-主键为String类型 ... " />
+            <marker date="1558054335828" expanded="true" signature="684:765" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="43" lean-forward="true" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        <state relative-caret-position="585">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
-            <marker date="1562659921185" expanded="false" signature="6:66" ph="..." />
             <marker date="1562659921185" expanded="true" signature="91:828" ph="{...}" />
             <marker date="1562659921185" expanded="true" signature="98:184" ph="/// 定长队列 ... " />
             <marker date="1562659921185" expanded="true" signature="228:826" ph="{...}" />
@@ -1391,6 +1375,17 @@
             <marker date="1562659921185" expanded="true" signature="549:640" ph="/// 入队 ... " />
             <marker date="1562659921185" expanded="true" signature="680:820" ph="{...}" />
             <marker date="1562659921185" expanded="true" signature="722:777" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/Virgo.Infrastructure/IInfrastruxtureTest.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <marker date="1558054334953" expanded="true" signature="52:109" ph="{...}" />
+            <marker date="1558054334953" expanded="true" signature="95:107" ph="{...}" />
           </folding>
         </state>
       </provider>

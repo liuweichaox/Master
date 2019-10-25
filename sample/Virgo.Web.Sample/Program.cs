@@ -20,15 +20,16 @@ namespace Virgo.Web.Sample
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-        .ConfigureAppConfiguration((hostingContext, app) =>
-        {
-            app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+            Host.CreateDefaultBuilder(args)
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+            .ConfigureAppConfiguration((hostingContext, app) =>
+            {
+                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
             .AddJsonFile("Configs/myjson.json", true, true);
-        })
-        .ConfigureWebHostDefaults(webBuilder =>
-        {
-            webBuilder.UseStartup<Startup>();
-        });
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }

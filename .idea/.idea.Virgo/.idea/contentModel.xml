@@ -29,7 +29,7 @@
         <e p="InfrastruxtureTest.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.Infrastructure.Sample.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -70,7 +70,7 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Web.Sample.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -201,6 +201,15 @@
           <e p="MsSqlHelper.cs" t="Include" />
           <e p="MySqlHelper.cs" t="Include" />
         </e>
+        <e p="DependencyInjection" t="Include">
+          <e p="DependencyInjectionExtensions.cs" t="Include" />
+          <e p="IIocManager.cs" t="Include" />
+          <e p="ILifetime.cs" t="Include" />
+          <e p="ILifetimeScopeDependency.cs" t="Include" />
+          <e p="IocManager.cs" t="Include" />
+          <e p="ISingletonDependency.cs" t="Include" />
+          <e p="ITransientDependency.cs" t="Include" />
+        </e>
         <e p="Domain" t="Include">
           <e p="Entities" t="Include">
             <e p="AggregateRoot.cs" t="Include" />
@@ -241,6 +250,7 @@
           <e p="ConvertExtensions.cs" t="Include" />
           <e p="DatatableExtensions.cs" t="Include" />
           <e p="DateTimeExtensions.cs" t="Include" />
+          <e p="LinqExtensions.cs" t="Include" />
           <e p="ObjectExtensions.cs" t="Include" />
           <e p="RandomExtensions.cs" t="Include" />
           <e p="StreamExtensions.cs" t="Include" />
@@ -316,7 +326,7 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -368,7 +378,7 @@
         <e p="IDapperRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.Dapper.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -381,7 +391,7 @@
         <e p="IElasticsearchRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.Elasticsearch.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -393,7 +403,7 @@
         <e p="IRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.EntityFrameworkCore.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -406,7 +416,7 @@
         <e p="MongoDbClient.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.MongoDB.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -419,7 +429,7 @@
         <e p="JobBase.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.Quartz.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -433,7 +443,7 @@
         <e p="IRabbitMQProxy.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.RabbitMQ.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -449,7 +459,7 @@
         <e p="IRedisCacheProvider.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netstandard2.0" t="Include">
+            <e p="netstandard2.1" t="Include">
               <e p="Virgo.Redis.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -467,7 +477,7 @@
         <e p="IUserInfoRepository.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Dapper.Tests.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -482,7 +492,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Quartz.Tests.AssemblyInfo.cs" t="Include" />
               <e p="Virgo.Quartz.Tests.Program.cs" t="Include" />
             </e>
@@ -495,7 +505,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Redis.Tests.AssemblyInfo.cs" t="Include" />
               <e p="Virgo.Redis.Tests.Program.cs" t="Include" />
             </e>
@@ -508,7 +518,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.TestBase.AssemblyInfo.cs" t="Include" />
               <e p="Virgo.TestBase.Program.cs" t="Include" />
             </e>
@@ -532,7 +542,7 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.2" t="Include">
+            <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Tests.AssemblyInfo.cs" t="Include" />
               <e p="Virgo.Tests.Program.cs" t="Include" />
             </e>

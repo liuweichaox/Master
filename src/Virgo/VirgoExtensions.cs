@@ -11,7 +11,7 @@ namespace Virgo
         /// <summary>
         /// 注入Virgo
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="services"></param>
         /// <returns></returns>
         public static IServiceCollection UseVirgo(this IServiceCollection services)
         {
