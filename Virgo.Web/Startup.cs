@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Virgo.Application.IServices;
-using Virgo.Application.Services;
+using Virgo.Application.IService;
+using Virgo.Application.Service;
 using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
 using Virgo.Web.Filters;
 using Virgo.Web.Middlewares;
+using Virgo.Web.Tests;
 
 namespace Virgo.Web
 {
@@ -31,10 +32,8 @@ namespace Virgo.Web
 
             services.AddHttpClient();
 
-            services.AddControllersWithViews(options =>
-            {
-                options.Filters.Add<AuditActionFilter>();
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllersWithViews(options => { options.Filters.Add<AuditActionFilter>(); })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
 
             //services.UseVirgo().UseInfrastructure().UseApplication();
@@ -45,23 +44,23 @@ namespace Virgo.Web
 
             services.AddOptions();
         }
+
         public void ConfigureContainer(ContainerBuilder builder)
         {
-
             builder.RegisterCallback(x => x.Registered += X_Registered);
 
             //builder.RegisterUnitOfWorkInterceptor();
-            builder.RegisterType<CustomService>().As<ICustomService>();
 
-            //×¢²áÅäÖÃÈÝÆ÷Ê±½«µ÷ÓÃµÄ»Øµ÷¡£
+            //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ»Øµï¿½ï¿½ï¿½
 
             //builder.RegisterInterceptorBy<CustomInterceptor>(typeof(ITransientDependency));
         }
 
         private void X_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
         {
+            //ï¿½ï¿½È¡ï¿½ï¿½ï¿½×¢ï¿½ï¿½.ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¡ï¿½ï¿½Öªï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             var implType = e.ComponentRegistration.Activator.LimitType;
-            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name+ Environment.NewLine);
+            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name + Environment.NewLine);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,10 +78,7 @@ namespace Virgo.Web
             app.UseStaticHttpContext();
 
             app.UseWebSockets();
-            app.Map("/ws", builder =>
-            {
-                app.UseChatWebSocketMiddleware();
-            });
+            app.Map("/ws", builder => { app.UseChatWebSocketMiddleware(); });
             app.UseStaticFiles();
 
             app.UseRouting();

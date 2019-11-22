@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
@@ -26,7 +27,7 @@ namespace Virgo.Web.Middlewares
 
         public ChatWebSocketMiddleware(RequestDelegate next)
         {
-            _next = next;
+               _next = next;
         }
 
         public async Task Invoke(HttpContext context)

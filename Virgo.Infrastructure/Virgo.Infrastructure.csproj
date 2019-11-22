@@ -12,4 +12,8 @@
     <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository" />
+  </ItemGroup>
+
 </Project>
