@@ -1,18 +1,21 @@
-using System;
+using System.Reflection;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Virgo.Application.IService;
-using Virgo.Application.Service;
+using Virgo.Application;
+using Virgo.Application.Interfaces;
+using Virgo.Application.Services;
 using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
 using Virgo.Web.Filters;
+using Virgo.Web.Interceptors;
 using Virgo.Web.Middlewares;
-using Virgo.Web.Tests;
 
 namespace Virgo.Web
 {
@@ -38,29 +41,18 @@ namespace Virgo.Web
 
             //services.UseVirgo().UseInfrastructure().UseApplication();
 
-            //services.AddAssembly(Assembly.GetExecutingAssembly());
+            services.AddAssembly(Assembly.GetExecutingAssembly());
 
-            services.AddIocManager();
+            services.AddApplication();
+            //services.AddIocManager();
 
             services.AddOptions();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterCallback(x => x.Registered += X_Registered);
-
-            //builder.RegisterUnitOfWorkInterceptor();
-
-            //ע����������ʱ�����õĻص���
-
-            //builder.RegisterInterceptorBy<CustomInterceptor>(typeof(ITransientDependency));
-        }
-
-        private void X_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
-        {
-            //��ȡ���ע��.��ȡ���ڴ���ʵ���ļ������� ��ȡ��֪���ʵ����ת�������������
-            var implType = e.ComponentRegistration.Activator.LimitType;
-            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name + Environment.NewLine);
+            builder.RegisterInterceptorBy<CustomInterceptor>();
+            builder.RegisterType<CustomInterceptor>().As<IInterceptor>();        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

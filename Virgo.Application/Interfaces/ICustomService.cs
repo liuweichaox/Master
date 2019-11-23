@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Virgo.Application.IService
+namespace Virgo.Application.Interfaces
 {
     /// <summary>
     /// 自定义服务接口
@@ -13,6 +13,6 @@ namespace Virgo.Application.IService
         /// 调用方法
         /// </summary>
         /// <returns></returns>
-        string Call();
+        bool Call();
     }
 }

@@ -16,7 +16,7 @@ namespace Virgo.Application
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection UseApplication(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             var assembly = typeof(ApplicationExtensions).Assembly;
             services.AddAssembly(assembly);

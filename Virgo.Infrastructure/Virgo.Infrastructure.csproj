@@ -10,10 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Repository" />
+    <ProjectReference Include="..\Virgo.Domain\Virgo.Domain.csproj" />
   </ItemGroup>
 
 </Project>
