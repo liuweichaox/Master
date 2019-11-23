@@ -29,5 +29,11 @@ namespace Virgo.Web
             {
                 webBuilder.UseStartup<Startup>();
             });
+
+        private static void CallBack_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
+        {
+            var implType = e.ComponentRegistration.Activator.LimitType;
+            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name + Environment.NewLine);
+        }
     }
 }

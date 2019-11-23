@@ -1,5 +1,8 @@
 using System;
+using System.IO;
+using System.Reflection;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,8 +14,8 @@ using Virgo.Application.Services;
 using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
 using Virgo.Web.Filters;
+using Virgo.Web.Interceptors;
 using Virgo.Web.Middlewares;
-
 namespace Virgo.Web
 {
     public class Startup
@@ -31,6 +34,8 @@ namespace Virgo.Web
 
             services.AddHttpClient();
 
+            services.AddDistributedMemoryCache();
+
             services.AddControllersWithViews(options =>
             {
                 options.Filters.Add<AuditActionFilter>();
@@ -45,23 +50,24 @@ namespace Virgo.Web
 
             services.AddOptions();
         }
+
         public void ConfigureContainer(ContainerBuilder builder)
         {
+            
 
-            builder.RegisterCallback(x => x.Registered += X_Registered);
+            builder.RegisterCallback(x => x.Registered += CallBack_Registered);
 
+            builder.RegisterType<CustomInterceptor>();//注册拦截器
+            builder.RegisterType<CustomService>().As<ICustomService>().InterceptedBy(typeof(CustomInterceptor)).EnableInterfaceInterceptors();//注册cat并为其添加拦截器
             //builder.RegisterUnitOfWorkInterceptor();
-            builder.RegisterType<CustomService>().As<ICustomService>();
-
-            //注册配置容器时将调用的回调。
-
+            //注册配置容器时将调用的回调
             //builder.RegisterInterceptorBy<CustomInterceptor>(typeof(ITransientDependency));
         }
 
-        private void X_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
+        private void CallBack_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
         {
             var implType = e.ComponentRegistration.Activator.LimitType;
-            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name+ Environment.NewLine);
+            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name + Environment.NewLine);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

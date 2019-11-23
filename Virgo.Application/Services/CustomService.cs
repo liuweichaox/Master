@@ -6,6 +6,7 @@ using Virgo.DependencyInjection;
 
 namespace Virgo.Application.Services
 {
+    
     public class CustomService : ICustomService, ITransientDependency
     {
         public string Call()
