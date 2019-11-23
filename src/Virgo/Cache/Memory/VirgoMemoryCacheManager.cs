@@ -16,8 +16,8 @@ namespace Virgo.Cache.Memory
         /// <summary>
         /// 构造函数
         /// </summary>
-        public VirgoMemoryCacheManager(IIocManager iocManager,ICachingConfiguration configuration)
-            : base(iocManager,configuration)
+        public VirgoMemoryCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
+            : base(iocManager, configuration)
         {
             Logger = NullLogger.Instance;
         }

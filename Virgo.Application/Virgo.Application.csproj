@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Virgo.Domain\Virgo.Domain.csproj" />
     <ProjectReference Include="..\Virgo.Infrastructure\Virgo.Infrastructure.csproj" />
   </ItemGroup>
 

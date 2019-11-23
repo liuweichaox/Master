@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Virgo.Domain.SeedWork
 {
@@ -51,7 +49,7 @@ namespace Virgo.Domain.SeedWork
                 return false;
             }
 
-            ValueObject other = (ValueObject) obj;
+            ValueObject other = (ValueObject)obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
             IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
             while (thisValues.MoveNext() && otherValues.MoveNext())

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Virgo.Cache
@@ -9,7 +8,7 @@ namespace Virgo.Cache
     /// 定义可以按键存储和获取项目的缓存
     /// </summary>
     public interface ICache : IDisposable
-    {  
+    {
         /// <summary>
         /// 唯一的缓存名称
         /// </summary>

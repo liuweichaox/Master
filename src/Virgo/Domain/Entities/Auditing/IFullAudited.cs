@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Domain.Entities.Auditing
+﻿namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
     /// 创建/更新/删除审计相关属性接口
     /// </summary>
     /// <typeparam name="TPrimaryKey">主键类型</typeparam>
-    public interface IFullAudited<TPrimaryKey> : IAudited<TPrimaryKey>, IDeletionAudited<TPrimaryKey> where TPrimaryKey:struct
+    public interface IFullAudited<TPrimaryKey> : IAudited<TPrimaryKey>, IDeletionAudited<TPrimaryKey> where TPrimaryKey : struct
     {
 
     }

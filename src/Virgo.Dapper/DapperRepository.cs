@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using Dapper.Contrib.Extensions;
-using Virgo.Domain.Entities;
 using Virgo.Domain.Uow;
 using static Dapper.SqlMapper;
 
@@ -19,7 +16,7 @@ namespace Virgo.Dapper
     {
         private readonly IDbTransaction _transaction;
         private readonly IDbConnection _connection;
-        private readonly int? _commandTimeout=null;
+        private readonly int? _commandTimeout = null;
         public DapperRepository(IUnitOfWork unitOfWork)
         {
             _connection = unitOfWork.Connection;

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Dapper
+﻿namespace Virgo.Dapper
 {
     public class DbConfiguration
     {

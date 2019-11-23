@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Domain.Entities.Auditing
+﻿namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
     /// 创建审计属性接口

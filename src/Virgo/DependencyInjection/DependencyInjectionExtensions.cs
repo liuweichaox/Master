@@ -1,10 +1,8 @@
 ﻿using Autofac;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using Virgo.Extensions;
 
 namespace Virgo.DependencyInjection
@@ -20,7 +18,7 @@ namespace Virgo.DependencyInjection
         /// <param name="services"></param>
         /// <param name="assemblies"></param>
         /// <returns></returns>
-        public static IServiceCollection RegisterAssembly(this ContainerBuilder  builder, params Assembly[] assemblies)
+        public static ContainerBuilder RegisterAssembly(this ContainerBuilder builder, params Assembly[] assemblies)
         {
             if (assemblies.IsNullOrEmpty())
             {
@@ -32,15 +30,15 @@ namespace Virgo.DependencyInjection
                 RegisterDependenciesByAssembly<ITransientDependency>(builder, assembly);
                 RegisterDependenciesByAssembly<ILifetimeScopeDependency>(builder, assembly);
             }
-            return services;
+            return builder;
         }
 
         /// <summary>
-        ///     Registers the assembly by convention.
+        /// 注册程序集
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         public static void RegisterDependenciesByAssembly<TServiceLifetime>(ContainerBuilder builder, Assembly assembly)
-        {            
+        {
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
             {

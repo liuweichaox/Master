@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.RabbitMQ
+﻿namespace Virgo.RabbitMQ
 {
     public interface IRabbitMQConfiguration
     {

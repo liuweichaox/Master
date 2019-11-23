@@ -21,7 +21,6 @@ namespace Virgo.Aliyun.Sms
             string accessKeyId = "";//你的accessKeyId，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
             string accessKeySecret = "";//你的accessKeySecret，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
             IClientProfile profile = DefaultProfile.GetProfile("cn-hangzhou", accessKeyId, accessKeySecret);
-            DefaultProfile.AddEndpoint("cn-hangzhou", "cn-hangzhou", product, domain);
             IAcsClient acsClient = new DefaultAcsClient(profile);
             SendSmsResponse response = null;
             await Task.Run(() =>

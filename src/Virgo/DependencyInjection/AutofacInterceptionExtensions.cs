@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Virgo.DependencyInjection
 {
@@ -104,7 +103,7 @@ namespace Virgo.DependencyInjection
 
                 var implType = e.ComponentRegistration.Activator.LimitType;
                 System.Diagnostics.Debug.WriteLine("Register   implType " + implType.Name);
-            if (typeof(ILifetime).IsAssignableFrom(implType) && !typeof(IInterceptor).IsAssignableFrom(implType))
+                if (typeof(ILifetime).IsAssignableFrom(implType) && !typeof(IInterceptor).IsAssignableFrom(implType))
                 {
                     System.Diagnostics.Debug.WriteLine("RegisterInterceptorBy Register  " + implType.Name);
                     e.ComponentRegistration.InterceptedBy<TInterceptor>();

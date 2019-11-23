@@ -5,8 +5,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 
 namespace Virgo.Extensions
 {
@@ -101,7 +99,7 @@ namespace Virgo.Extensions
                 throw new ArgumentNullException(nameof(data));
 
             var validationResult = new List<ValidationResult>();
-            var result =System.ComponentModel.DataAnnotations.Validator.TryValidateObject(data, new ValidationContext(data), validationResult, false);
+            var result = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(data, new ValidationContext(data), validationResult, false);
 
             if (!result)
             {

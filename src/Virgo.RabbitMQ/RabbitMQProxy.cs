@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -27,7 +26,7 @@ namespace Virgo.RabbitMQ
         public bool Publish<T>(string queueName, T model) where T : QueueMessage
         {
             if (string.IsNullOrEmpty(_mQConfiguration.Url))
-            {        
+            {
                 return false;
             }
             if (model == null)
@@ -35,7 +34,7 @@ namespace Virgo.RabbitMQ
                 return false;
             }
             //序列化对象
-            var msg =JsonConvert.SerializeObject(model);
+            var msg = JsonConvert.SerializeObject(model);
             try
             {
                 var factory = new ConnectionFactory
@@ -45,7 +44,7 @@ namespace Virgo.RabbitMQ
                     Password = _mQConfiguration.Password ?? ""
                 };
                 using (var conn = factory.CreateConnection())
-                {                 
+                {
                     using (var channel = conn.CreateModel())
                     {
                         //在MQ上定义一个持久化队列，如果名称相同不会重复创建
@@ -55,7 +54,7 @@ namespace Virgo.RabbitMQ
 
                         //设置消息持久化
                         IBasicProperties properties = channel.CreateBasicProperties();
-                        
+
                         //非持久化1,持久化2
                         properties.DeliveryMode = 2;
 
@@ -107,7 +106,7 @@ namespace Virgo.RabbitMQ
                         properties.DeliveryMode = 2;
                         foreach (var item in list)
                         {
-                            var msg =JsonConvert.SerializeObject(item);
+                            var msg = JsonConvert.SerializeObject(item);
                             //在MQ上定义一个持久化队列，如果名称相同不会重复创建
                             byte[] bytes = Encoding.UTF8.GetBytes(msg);
                             //发送消息到队列
@@ -166,7 +165,7 @@ namespace Virgo.RabbitMQ
 
                                     byte[] bytes = ea.Body;
                                     msg = Encoding.UTF8.GetString(bytes);
-                                    var instance =JsonConvert.DeserializeObject<T>(msg);
+                                    var instance = JsonConvert.DeserializeObject<T>(msg);
                                     var success = func(instance);
                                     //应答确认
                                     if (success)
@@ -194,7 +193,7 @@ namespace Virgo.RabbitMQ
                             };
 
                             //消费队列，并设置应答模式为程序主动应答
-                            channel.BasicConsume(queueName, false, consumer);                     
+                            channel.BasicConsume(queueName, false, consumer);
 
                         }
                     }

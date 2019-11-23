@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.15" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
     <ProjectReference Include="..\Virgo.Domain\Virgo.Domain.csproj" />
   </ItemGroup>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Cache
+﻿namespace Virgo.Cache
 {
     /// <summary>
     /// <see cref ="ICacheManager"/>的扩展方法

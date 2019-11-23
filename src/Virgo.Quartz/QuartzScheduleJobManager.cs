@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Nito.AsyncEx;
+﻿using Nito.AsyncEx;
 using Quartz;
 using Quartz.Impl;
+using System;
+using System.Threading.Tasks;
 
 namespace Virgo.Quartz
 {

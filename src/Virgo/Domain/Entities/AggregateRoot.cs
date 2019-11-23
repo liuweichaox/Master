@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Domain.Entities
+﻿namespace Virgo.Domain.Entities
 {
     /// <summary>
     /// 聚合根实现类

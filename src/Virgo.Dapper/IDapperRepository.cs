@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Text;
 using System.Threading.Tasks;
-using Virgo.Domain.Entities;
 using static Dapper.SqlMapper;
 
 namespace Virgo.Dapper

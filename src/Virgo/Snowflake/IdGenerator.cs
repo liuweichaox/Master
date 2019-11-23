@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Snowflake
+﻿namespace Virgo.Snowflake
 {
     /// <summary>
     /// 雪花ID生成器

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
 using Virgo.IP.Models;
 using Virgo.IP.Searcher;
 
@@ -10,12 +6,12 @@ namespace Virgo.IP
 {
     public static class IpHelper
     {
-        private static readonly IIpSearcher  searcher;
+        private static readonly IIpSearcher searcher;
 
         static IpHelper()
         {
             try
-            {              
+            {
                 if (IpSettings.DefalutSearcherType == IpSearcherType.China)
                 {
                     searcher = new IpSimpleSearcher();

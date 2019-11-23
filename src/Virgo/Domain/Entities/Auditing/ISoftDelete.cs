@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Domain.Entities.Auditing
+﻿namespace Virgo.Domain.Entities.Auditing
 {
     /// <summary>
     /// 软删除属性接口

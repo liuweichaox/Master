@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using QRCoder;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Text;
-using QRCoder;
 
 namespace Virgo.Media
 {
@@ -25,7 +20,7 @@ namespace Virgo.Media
         /// <param name="white_edge">二维码白边</param>
         /// <returns>位图</returns>
         public static Bitmap QRCode(string msg, int version, int pixel, string icon_path, int icon_size, int icon_border, bool white_edge)
-        {           
+        {
             QRCoder.QRCodeGenerator code_generator = new QRCoder.QRCodeGenerator();
 
             QRCoder.QRCodeData code_data = code_generator.CreateQrCode(msg, QRCoder.QRCodeGenerator.ECCLevel.M/* 这里设置容错率的一个级别 */, true, true, QRCoder.QRCodeGenerator.EciMode.Utf8, version);
@@ -35,7 +30,7 @@ namespace Virgo.Media
             Bitmap icon = new Bitmap(icon_path);
 
             Bitmap bmp = code.GetGraphic(pixel, Color.Black, Color.White, icon, icon_size, icon_border, white_edge);
-         
+
             return bmp;
 
         }

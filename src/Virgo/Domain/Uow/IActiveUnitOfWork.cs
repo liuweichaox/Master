@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
-using Virgo.Domain.Uow;
 
 namespace Virgo.Domain.Uow
 {
@@ -24,6 +22,6 @@ namespace Virgo.Domain.Uow
         /// <summary>
         /// 当前资源是否已释放
         /// </summary>
-        bool IsDisposed { get; }        
+        bool IsDisposed { get; }
     }
 }

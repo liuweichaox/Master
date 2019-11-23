@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Hardware
+﻿namespace Virgo.Hardware
 {
     /// <summary>
     /// 内存条模型

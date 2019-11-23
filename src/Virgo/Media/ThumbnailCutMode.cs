@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Media
+﻿namespace Virgo.Media
 {
     /// <summary>
     /// 图像裁剪模式

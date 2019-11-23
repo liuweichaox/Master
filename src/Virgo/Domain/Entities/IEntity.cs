@@ -1,10 +1,4 @@
-﻿using Dapper.Contrib.Extensions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace Virgo.Domain.Entities
+﻿namespace Virgo.Domain.Entities
 {
     /// <summary>
     /// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口
@@ -22,7 +16,7 @@ namespace Virgo.Domain.Entities
     /// 定义基本实体类型的接口，系统中的所有实体都必须实现此接口-主键为String类型
     /// </summary>
     public interface IEntity
-    {        
+    {
         string Id { get; set; }
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Diagnostics;
 using Virgo.Application.Interfaces;
 using Virgo.Web.Models;
 
@@ -24,7 +21,7 @@ namespace Virgo.Web.Controllers
         public IActionResult Index()
         {
             var result = _customService.Call();
-            _logger.LogInformation(Environment.NewLine + result+ Environment.NewLine);
+            _logger.LogInformation(Environment.NewLine + result + Environment.NewLine);
             return View();
         }
 

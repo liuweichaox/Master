@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace Virgo.Extensions
@@ -18,7 +15,7 @@ namespace Virgo.Extensions
         /// <param name="request"></param>
         /// <returns></returns>
         public static string GetAbsoluteUri(this HttpRequest request)
-        {           
+        {
             return new StringBuilder()
                 .Append(request.Scheme)
                 .Append("://")

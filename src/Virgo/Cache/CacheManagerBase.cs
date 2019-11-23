@@ -23,7 +23,7 @@ namespace Virgo.Cache
         /// 构造函数
         /// </summary>
         /// <param name="configuration"></param>
-        protected CacheManagerBase(IIocManager iocManager,ICachingConfiguration configuration)
+        protected CacheManagerBase(IIocManager iocManager, ICachingConfiguration configuration)
         {
             IocManager = iocManager;
             Configuration = configuration;

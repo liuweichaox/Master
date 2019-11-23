@@ -1,7 +1,4 @@
 ﻿using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Virgo.Extensions;
 using Xunit;
 
@@ -14,7 +11,7 @@ namespace Virgo.Tests.Extensions
         {
             var flag1 = 2.IsBetween(1, 3);
             flag1.ShouldBe(true);
-            var flag2= 4.IsBetween(1, 3);
+            var flag2 = 4.IsBetween(1, 3);
             flag2.ShouldBe(false);
         }
     }

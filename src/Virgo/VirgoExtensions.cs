@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autofac;
 using Virgo.DependencyInjection;
 
 namespace Virgo
@@ -13,11 +13,11 @@ namespace Virgo
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection UseVirgo(this IServiceCollection services)
+        public static ContainerBuilder UseVirgo(this ContainerBuilder builder)
         {
             var assembly = typeof(VirgoExtensions).Assembly;
-            services.AddAssembly(assembly);
-            return services;
+            builder.RegisterAssembly(assembly);
+            return builder;
         }
     }
 }

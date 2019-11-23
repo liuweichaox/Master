@@ -1,9 +1,7 @@
 ﻿using MaxMind.GeoIP2;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.MemoryMappedFiles;
-using System.Text;
 using Virgo.IP.Models;
 
 namespace Virgo.IP.Searcher

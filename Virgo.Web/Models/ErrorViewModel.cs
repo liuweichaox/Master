@@ -1,5 +1,3 @@
-using System;
-
 namespace Virgo.Web.Models
 {
     public class ErrorViewModel

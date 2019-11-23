@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Hardware
+﻿namespace Virgo.Hardware
 {
     /// <summary>
     /// 字节单位枚举

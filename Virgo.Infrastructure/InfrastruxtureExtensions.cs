@@ -1,7 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Autofac;
 using Virgo.DependencyInjection;
 
 namespace Virgo.Infrastructure
@@ -16,11 +13,11 @@ namespace Virgo.Infrastructure
         /// </summary>
         /// <param name="services"></param>
         /// <returns></returns>
-        public static IServiceCollection UseInfrastructure(this IServiceCollection services)
+        public static ContainerBuilder RegisterInfrastructure(this ContainerBuilder builder)
         {
             var assembly = typeof(InfrastruxtureExtensions).Assembly;
-            services.AddAssembly(assembly);
-            return services;
+            builder.RegisterAssembly(assembly);
+            return builder;
         }
     }
 }

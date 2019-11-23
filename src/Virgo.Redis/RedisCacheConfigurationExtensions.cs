@@ -1,7 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
 
@@ -19,7 +16,7 @@ namespace Virgo.Redis
         public static void AddRedis(this IServiceCollection services)
         {
             services.AddSingleton<ICachingConfiguration, CachingConfiguration>();
-            services.AddSingleton<IRedisCaCheConfiguration,RedisCaCheConfiguration>();
+            services.AddSingleton<IRedisCaCheConfiguration, RedisCaCheConfiguration>();
             services.AddSingleton<IRedisCacheProvider, RedisCacheProvider>();
             services.AddSingleton<ICacheManager, RedisCacheManager>();
         }

@@ -1,6 +1,5 @@
 using Autofac.Extras.IocManager;
 using System;
-using Xunit;
 
 namespace Virgo.TestBase
 {

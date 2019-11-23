@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Redis
+﻿namespace Virgo.Redis
 {
     /// <summary>
     /// Redis缓存配置

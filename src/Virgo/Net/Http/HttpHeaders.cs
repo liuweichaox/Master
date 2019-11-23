@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Net.Http
+﻿namespace Virgo.Net.Http
 {
     public static class HttpHeaders
     {

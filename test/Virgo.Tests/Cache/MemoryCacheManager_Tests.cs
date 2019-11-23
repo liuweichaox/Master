@@ -1,14 +1,7 @@
-﻿using Autofac;
-using Autofac.Extras.IocManager;
-using Castle.DynamicProxy;
-using Castle.MicroKernel.Registration;
-using Castle.Windsor;
-using Castle.Windsor.Proxy;
+﻿using Autofac.Extras.IocManager;
 using Shouldly;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 using Virgo.Cache;
 using Virgo.Cache.Configuration;
 using Virgo.Cache.Memory;
@@ -17,14 +10,14 @@ using Xunit;
 
 namespace Virgo.Tests.Cache
 {
-    public class MemoryCacheManager_Tests:TestBaseWithIocBuilder
+    public class MemoryCacheManager_Tests : TestBaseWithIocBuilder
     {
         private readonly ICacheManager _cacheManager;
         private readonly ITypedCache<string, MyCacheItem> _cache;
         public MemoryCacheManager_Tests()
         {
             Building(builder =>
-            {              
+            {
                 builder.RegisterServices(r =>
                 {
                     r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);

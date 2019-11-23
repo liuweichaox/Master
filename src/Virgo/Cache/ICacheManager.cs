@@ -1,10 +1,9 @@
 ﻿using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Virgo.Cache
-{  
+{
     /// <summary>
     /// <see cref="ICache"/> 对象的上层容器
     /// 缓存管理器应该作为Singleton工作，并跟踪和管理<see cref ="ICache"/>对象

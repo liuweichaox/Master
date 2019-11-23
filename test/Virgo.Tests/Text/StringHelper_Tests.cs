@@ -1,24 +1,21 @@
 ﻿using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Virgo.Text;
 using Xunit;
 
 namespace Virgo.Tests.Text
 {
-   public class StringHelper_Tests
+    public class StringHelper_Tests
     {
         [Fact]
         public void Simple_ConvertToTraditional_Test()
         {
-           var text= StringHelper.ConvertToTraditional("刘伟超");
+            var text = StringHelper.ConvertToTraditional("刘伟超");
             text.ShouldBe("劉偉超");
-        } 
+        }
         [Fact]
         public void Simple_ConvertToSimplified_Test()
         {
-           var text= StringHelper.ConvertToSimplified("劉偉超");
+            var text = StringHelper.ConvertToSimplified("劉偉超");
             text.ShouldBe("刘伟超");
         }
 

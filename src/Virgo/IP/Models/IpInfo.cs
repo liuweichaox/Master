@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.IP.Models
+﻿namespace Virgo.IP.Models
 {
     public class IpInfo
     {

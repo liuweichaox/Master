@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using Virgo.Domain.Uow;
+﻿using Virgo.Domain.Uow;
 
 namespace Virgo.Dapper.Tests
 {

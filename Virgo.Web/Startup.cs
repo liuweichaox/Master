@@ -1,6 +1,4 @@
-using System.Reflection;
 using Autofac;
-using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,10 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Virgo.Application;
-using Virgo.Application.Interfaces;
-using Virgo.Application.Services;
 using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
+using Virgo.Infrastructure;
 using Virgo.Web.Filters;
 using Virgo.Web.Interceptors;
 using Virgo.Web.Middlewares;
@@ -38,21 +35,14 @@ namespace Virgo.Web
             services.AddControllersWithViews(options => { options.Filters.Add<AuditActionFilter>(); })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-
-            //services.UseVirgo().UseInfrastructure().UseApplication();
-
-            services.AddAssembly(Assembly.GetExecutingAssembly());
-
-            services.AddApplication();
-            //services.AddIocManager();
-
             services.AddOptions();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterInterceptorBy<CustomInterceptor>();
-            builder.RegisterType<CustomInterceptor>().As<IInterceptor>();        
+            builder.RegisterType<CustomInterceptor>().As<IInterceptor>();
+            //builder.RegisterInfrastructure().RegisterApplication();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

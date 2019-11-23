@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.DependencyInjection
+﻿namespace Virgo.DependencyInjection
 {
     /// <summary>
     /// 确定接口或类的生存期

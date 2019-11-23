@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 using Virgo.Domain.Entities;
 
 namespace Virgo.Dapper.Tests

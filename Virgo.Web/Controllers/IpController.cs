@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Virgo.IP;
-using Virgo.Extensions;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Http;
+using Virgo.Extensions;
+using Virgo.IP;
 
 namespace Virgo.Web.Controllers
 {
@@ -11,8 +11,8 @@ namespace Virgo.Web.Controllers
         [HttpGet]
         [Route("IpSearch")]
         public IActionResult Search(string key)
-        {          
-           
+        {
+
             if (key.IsNullOrEmpty())
             {
                 key = HttpContext.Connection.RemoteIpAddress.ToString();

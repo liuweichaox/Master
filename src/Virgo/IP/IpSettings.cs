@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.IP
+﻿namespace Virgo.IP
 {
     /// <summary>
     /// IP设置

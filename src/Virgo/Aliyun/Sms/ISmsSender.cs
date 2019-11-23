@@ -1,7 +1,4 @@
 ﻿using Aliyun.Acs.Dysmsapi.Model.V20170525;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Virgo.Aliyun.Sms

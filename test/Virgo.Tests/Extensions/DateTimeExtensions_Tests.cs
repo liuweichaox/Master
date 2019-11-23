@@ -1,7 +1,5 @@
 ﻿using Shouldly;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Virgo.Extensions;
 using Xunit;
 
@@ -11,7 +9,7 @@ namespace Virgo.Tests.Extensions
     {
         [Fact]
         public void Simple_ToUnixTimestamp_Test()
-        { 
+        {
             var unixTime = DateTime.Parse("2019/1/1 0:00:00").ToUnixTimestamp();
             unixTime.ShouldBe(1546272000L);
         }

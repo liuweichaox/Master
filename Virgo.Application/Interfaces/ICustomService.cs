@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.Application.Interfaces
+﻿namespace Virgo.Application.Interfaces
 {
     /// <summary>
     /// 自定义服务接口

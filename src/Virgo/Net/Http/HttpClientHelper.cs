@@ -164,7 +164,7 @@ namespace Virgo.Net.Http
         /// <param name="action">Http请求头设置</param>
         /// <returns></returns>
         public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content, Action<HttpRequestHeaders> action = null)
-        {            
+        {
             if (url.ToLower().StartsWith("https"))
             {
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;

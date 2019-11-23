@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Virgo.Elasticsearch
@@ -295,7 +294,7 @@ namespace Virgo.Elasticsearch
             try
             {
                 var documentPath = new DocumentPath<T>(document);
-                 var updateResponse = await ElasticClient.UpdateAsync<T>(documentPath, selector);
+                var updateResponse = await ElasticClient.UpdateAsync<T>(documentPath, selector);
                 result = updateResponse.ApiCall.Success;
             }
             catch (Exception)

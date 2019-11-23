@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Virgo.Domain.Entities.Auditing
 {
@@ -9,7 +7,7 @@ namespace Virgo.Domain.Entities.Auditing
     /// </summary>
     /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     [Serializable]
-    public class FullAuditedAggregateRoot<TPrimaryKey> : AuditedAggregateRoot<TPrimaryKey>, IFullAudited<TPrimaryKey> where TPrimaryKey:struct
+    public class FullAuditedAggregateRoot<TPrimaryKey> : AuditedAggregateRoot<TPrimaryKey>, IFullAudited<TPrimaryKey> where TPrimaryKey : struct
     {
         /// <summary>
         /// 此实体是否已删除

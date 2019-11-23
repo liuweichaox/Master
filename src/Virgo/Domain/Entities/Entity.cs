@@ -1,7 +1,4 @@
-﻿using Dapper.Contrib.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace Virgo.Domain.Entities
 {
@@ -16,7 +13,7 @@ namespace Virgo.Domain.Entities
         //Dapper区别：
         //      ExplicitKey 不自增主键
         //      Key 自增主键
-        [ExplicitKey]
+        //[ExplicitKey]
         public virtual TPrimaryKey Id { get; set; }
     }
     /// <summary>
@@ -25,7 +22,7 @@ namespace Virgo.Domain.Entities
     [Serializable]
     public abstract class Entity : IEntity
     {
-        [ExplicitKey]
+        //[ExplicitKey]
         public virtual string Id { get; set; }
     }
 }

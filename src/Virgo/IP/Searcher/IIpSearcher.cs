@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Virgo.IP.Models;
+﻿using Virgo.IP.Models;
 
 namespace Virgo.IP.Searcher
 {
