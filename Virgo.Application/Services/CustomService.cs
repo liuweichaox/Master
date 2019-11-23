@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Virgo.Application.IServices;
+using Virgo.Application.Interfaces;
 using Virgo.DependencyInjection;
 
 namespace Virgo.Application.Services
 {
-    
     public class CustomService : ICustomService, ITransientDependency
     {
-        public string Call()
+        public bool Call()
         {
-            return "Service Call";
+            System.Diagnostics.Debug.WriteLine("Service Calling");
+            return true;
         }
     }
 }

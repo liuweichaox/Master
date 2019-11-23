@@ -4,11 +4,19 @@ using System.Collections.Generic;
 using System.Text;
 using Virgo.DependencyInjection;
 
-namespace Virgo.Infrastructure
+namespace Virgo.Application
 {
+    /// <summary>
+    /// Application拓展类
+    /// </summary>
     public static class ApplicationExtensions
     {
-        public static IServiceCollection UseApplication(this IServiceCollection services)
+        /// <summary>
+        /// 注入Application容器
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             var assembly = typeof(ApplicationExtensions).Assembly;
             services.AddAssembly(assembly);

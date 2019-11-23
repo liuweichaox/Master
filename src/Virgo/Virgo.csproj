@@ -17,8 +17,9 @@
     <PackageReference Include="Microsoft.ApplicationInsights.ServiceFabric" Version="2.2.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0-preview3.19553.2" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.6.0-preview6.19303.8" />
     <PackageReference Include="MySql.Data" Version="8.0.15" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2-beta1" />
@@ -31,12 +32,6 @@
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.5.0" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.12" />
     <PackageReference Include="System.Management" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Http">
-      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.http\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Http.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

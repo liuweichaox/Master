@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Virgo.DependencyInjection
         /// <param name="services"></param>
         /// <param name="assemblies"></param>
         /// <returns></returns>
-        public static IServiceCollection AddAssembly(this IServiceCollection services, params Assembly[] assemblies)
+        public static IServiceCollection RegisterAssembly(this ContainerBuilder  builder, params Assembly[] assemblies)
         {
             if (assemblies.IsNullOrEmpty())
             {
@@ -27,9 +28,9 @@ namespace Virgo.DependencyInjection
             }
             foreach (var assembly in assemblies)
             {
-                RegisterDependenciesByAssembly<ISingletonDependency>(services, assembly);
-                RegisterDependenciesByAssembly<ITransientDependency>(services, assembly);
-                RegisterDependenciesByAssembly<ILifetimeScopeDependency>(services, assembly);
+                RegisterDependenciesByAssembly<ISingletonDependency>(builder, assembly);
+                RegisterDependenciesByAssembly<ITransientDependency>(builder, assembly);
+                RegisterDependenciesByAssembly<ILifetimeScopeDependency>(builder, assembly);
             }
             return services;
         }
@@ -38,7 +39,7 @@ namespace Virgo.DependencyInjection
         ///     Registers the assembly by convention.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
-        public static void RegisterDependenciesByAssembly<TServiceLifetime>(IServiceCollection services, Assembly assembly)
+        public static void RegisterDependenciesByAssembly<TServiceLifetime>(ContainerBuilder builder, Assembly assembly)
         {            
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
@@ -46,8 +47,18 @@ namespace Virgo.DependencyInjection
                 var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x => x.Name.ToUpper().Contains(type.Name.ToUpper()));
                 if (!itype.IsNull())
                 {
-                    var serviceLifetime = FindServiceLifetime(typeof(TServiceLifetime));
-                    services.Add(new ServiceDescriptor(itype, type, serviceLifetime));
+                    if (typeof(TServiceLifetime) == typeof(ISingletonDependency))
+                    {
+                        builder.RegisterType(type).As(itype).SingleInstance();
+                    }
+                    if (typeof(TServiceLifetime) == typeof(ITransientDependency))
+                    {
+                        builder.RegisterType(type).As(itype).InstancePerDependency();
+                    }
+                    if (typeof(TServiceLifetime) == typeof(ILifetimeScopeDependency))
+                    {
+                        builder.RegisterType(type).As(itype).InstancePerLifetimeScope();
+                    }
                 }
             }
         }

@@ -97,20 +97,18 @@ namespace Virgo.DependencyInjection
         /// <param name="builder"></param>
         /// <param name="types"></param>
         /// <returns></returns>
-        public static ContainerBuilder RegisterInterceptorBy<TInterceptor>(this ContainerBuilder builder, params Type[] types) where TInterceptor : IInterceptor
+        public static ContainerBuilder RegisterInterceptorBy<TInterceptor>(this ContainerBuilder builder) where TInterceptor : IInterceptor
         {
             builder.RegisterCallback(x => x.Registered += (sender, e) =>
             {
-                
+
                 var implType = e.ComponentRegistration.Activator.LimitType;
-                System.Diagnostics.Debug.WriteLine("||||||||||||||||"+implType.Name);
-                foreach (var type in types)
+                System.Diagnostics.Debug.WriteLine("Register   implType " + implType.Name);
+            if (typeof(ILifetime).IsAssignableFrom(implType) && !typeof(IInterceptor).IsAssignableFrom(implType))
                 {
-                    //if (flag && !typeof(IInterceptor).IsAssignableFrom(typeof(TInterceptor)))
-                    //{
-                    //    e.ComponentRegistration.InterceptedBy<TInterceptor>();
-                    //};
-                }
+                    System.Diagnostics.Debug.WriteLine("RegisterInterceptorBy Register  " + implType.Name);
+                    e.ComponentRegistration.InterceptedBy<TInterceptor>();
+                };
             });
             return builder;
         }

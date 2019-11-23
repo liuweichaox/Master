@@ -1,21 +1,22 @@
-using System;
-using System.IO;
 using System.Reflection;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
+using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Virgo.Application.IServices;
+using Virgo.Application;
+using Virgo.Application.Interfaces;
 using Virgo.Application.Services;
 using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
 using Virgo.Web.Filters;
 using Virgo.Web.Interceptors;
 using Virgo.Web.Middlewares;
+
 namespace Virgo.Web
 {
     public class Startup
@@ -34,40 +35,24 @@ namespace Virgo.Web
 
             services.AddHttpClient();
 
-            services.AddDistributedMemoryCache();
-
-            services.AddControllersWithViews(options =>
-            {
-                options.Filters.Add<AuditActionFilter>();
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddControllersWithViews(options => { options.Filters.Add<AuditActionFilter>(); })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
 
             //services.UseVirgo().UseInfrastructure().UseApplication();
 
-            //services.AddAssembly(Assembly.GetExecutingAssembly());
+            services.AddAssembly(Assembly.GetExecutingAssembly());
 
-            services.AddIocManager();
+            services.AddApplication();
+            //services.AddIocManager();
 
             services.AddOptions();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            
-
-            builder.RegisterCallback(x => x.Registered += CallBack_Registered);
-
-            builder.RegisterType<CustomInterceptor>();//注册拦截器
-            builder.RegisterType<CustomService>().As<ICustomService>().InterceptedBy(typeof(CustomInterceptor)).EnableInterfaceInterceptors();//注册cat并为其添加拦截器
-            //builder.RegisterUnitOfWorkInterceptor();
-            //注册配置容器时将调用的回调
-            //builder.RegisterInterceptorBy<CustomInterceptor>(typeof(ITransientDependency));
-        }
-
-        private void CallBack_Registered(object sender, Autofac.Core.ComponentRegisteredEventArgs e)
-        {
-            var implType = e.ComponentRegistration.Activator.LimitType;
-            System.Diagnostics.Debug.WriteLine(Environment.NewLine + implType.Name + Environment.NewLine);
+            builder.RegisterInterceptorBy<CustomInterceptor>();
+            builder.RegisterType<CustomInterceptor>().As<IInterceptor>();        
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,10 +70,7 @@ namespace Virgo.Web
             app.UseStaticHttpContext();
 
             app.UseWebSockets();
-            app.Map("/ws", builder =>
-            {
-                app.UseChatWebSocketMiddleware();
-            });
+            app.Map("/ws", builder => { app.UseChatWebSocketMiddleware(); });
             app.UseStaticFiles();
 
             app.UseRouting();

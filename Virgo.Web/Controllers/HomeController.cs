@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Virgo.Application.IServices;
+using Virgo.Application.Interfaces;
 using Virgo.Web.Models;
 
 namespace Virgo.Web.Controllers
