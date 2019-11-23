@@ -16,9 +16,7 @@
     <PackageReference Include="Microsoft.ApplicationInsights.ServiceFabric" Version="2.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="3.1.0-preview3.19553.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0-preview3.19553.2" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.0-preview3.19553.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0-preview3.19553.2" />
     <PackageReference Include="Microsoft.Win32.Registry" Version="4.7.0-preview3.19551.4" />
     <PackageReference Include="MySql.Data" Version="8.0.18" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

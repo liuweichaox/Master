@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
     <ProjectReference Include="..\Virgo.Application\Virgo.Application.csproj" />
   </ItemGroup>
 
@@ -24,6 +23,12 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="3.1.0-preview3.19553.2" />
+    <PackageReference Include="Microsoft.Extensions.PlatformAbstractions" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
