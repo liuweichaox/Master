@@ -82,7 +82,7 @@ namespace Virgo.Extensions
                 isMatch = true;
                 return new Uri(s);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 isMatch = false;
                 return null;

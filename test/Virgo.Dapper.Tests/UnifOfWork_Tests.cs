@@ -84,7 +84,7 @@ SET FOREIGN_KEY_CHECKS = 1;*/
                 await repository.UpdateAsync(virgo);
                 un.Commit();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 un.Rollback();
             }

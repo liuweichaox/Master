@@ -75,7 +75,7 @@ namespace Virgo.Hardware
 
                 CompactFormat = false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

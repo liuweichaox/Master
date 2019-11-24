@@ -10,4 +10,9 @@
     <Folder Include="Cache\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Virgo\Virgo.csproj" />
+    <ProjectReference Include="..\Virgo.TestBase\Virgo.TestBase.csproj" />
+  </ItemGroup>
+
 </Project>

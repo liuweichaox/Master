@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Virgo.Domain.Interfaces
+﻿namespace Virgo.Domain.Interfaces
 {
     /// <summary>
     /// 定义泛型仓储接口，并继承IDisposable，显式释放资源

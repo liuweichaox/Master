@@ -1,5 +1,8 @@
 using Autofac.Extras.IocManager;
 using System;
+using Virgo.DependencyInjection;
+using IIocManager = Autofac.Extras.IocManager.IIocManager;
+using IocManager = Autofac.Extras.IocManager.IocManager;
 
 namespace Virgo.TestBase
 {

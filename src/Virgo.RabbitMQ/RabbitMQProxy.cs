@@ -64,7 +64,7 @@ namespace Virgo.RabbitMQ
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -116,7 +116,7 @@ namespace Virgo.RabbitMQ
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -179,12 +179,12 @@ namespace Virgo.RabbitMQ
                                         //消息未确认
                                     }
                                 }
-                                catch (EndOfStreamException ex)//捕获队列服务端关闭的异常
+                                catch (EndOfStreamException)//捕获队列服务端关闭的异常
                                 {
                                     isClose = true;
                                     return;
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     //Logger.Error("队列异常，联系管理员吧：" + queueName + ":" + msg + "ex:" + ex);
                                     isClose = true;
@@ -198,7 +198,7 @@ namespace Virgo.RabbitMQ
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     isClose = true;
                 }

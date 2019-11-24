@@ -1,7 +1,5 @@
 ﻿using Autofac;
 using Virgo.DependencyInjection;
-using Virgo.Strings;
-using Virgo.Text;
 
 namespace Virgo.Infrastructure
 {

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using System;
 
 namespace Virgo.DependencyInjection
 {
