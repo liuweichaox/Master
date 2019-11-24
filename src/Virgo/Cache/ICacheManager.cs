@@ -1,6 +1,6 @@
-﻿using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Virgo.Cache
 {
@@ -24,6 +24,6 @@ namespace Virgo.Cache
         /// 缓存的唯一且区分大小写的名称
         /// </param>
         /// <returns>缓存引用</returns>
-        [NotNull] ICache GetCache([NotNull] string name);
+        ICache GetCache([NotNull] string name);
     }
 }

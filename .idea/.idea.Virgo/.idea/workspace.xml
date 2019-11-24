@@ -43,7 +43,6 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ICreationAudited.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Controllers/IpController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IDeletionAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Virgo.Web/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Controllers/ChatController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/sample/Virgo.Web.Sample/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/HiPerfTimer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,7 +89,6 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DbConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/IDapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Virgo.Web/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.EntityFrameworkCore/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.EntityFrameworkCore/RepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
@@ -260,7 +258,7 @@
       <workItem from="1565691441143" duration="602000" />
       <workItem from="1571898241533" duration="103000" />
       <workItem from="1574385382929" duration="1730000" />
-      <workItem from="1574530172649" duration="822000" />
+      <workItem from="1574530172649" duration="1899000" />
     </task>
     <servers />
   </component>

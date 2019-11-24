@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autofac;
+using System;
 
 namespace Virgo.DependencyInjection
 {
@@ -12,11 +13,14 @@ namespace Virgo.DependencyInjection
             Instance = new IocManager();
         }
         public static IocManager Instance { get; private set; }
-        public IServiceProvider ServiceProvider { get; set; }
+        /// <summary>
+        /// Autofac容器
+        /// </summary>
+        public ILifetimeScope AutofacContainer { get; set; }
 
         public TService GetInstance<TService>()
         {
-            return (TService)ServiceProvider.GetService(typeof(TService));
+            return AutofacContainer.Resolve<TService>();
         }
     }
 }

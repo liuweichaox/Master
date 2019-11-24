@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
@@ -81,16 +83,11 @@ namespace Virgo.DependencyInjection
 
         /// <summary>
         /// 注册IocManager
-        /// 在ConfigureServices方法最后一行使用
         /// </summary>
         /// <param name="services"></param>
-        public static void AddIocManager(this IServiceCollection services)
+        public static void UseIocManager(this IApplicationBuilder app)
         {
-            services.AddSingleton<IIocManager, IocManager>(provide =>
-            {
-                IocManager.Instance.ServiceProvider = provide;
-                return IocManager.Instance;
-            });
+            IocManager.Instance.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
         }
     }
 }
