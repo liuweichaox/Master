@@ -3,11 +3,12 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Virgo.Application.Interfaces;
 
 namespace Virgo.Presentation.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -16,10 +17,11 @@ namespace Virgo.Presentation.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly ICustomService _customService;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ICustomService customService)
         {
             _logger = logger;
+            _customService = customService;
         }
 
         [HttpGet]
@@ -33,6 +35,11 @@ namespace Virgo.Presentation.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpGet]
+        public bool Call()
+        {
+            return _customService.Call();
         }
     }
 }

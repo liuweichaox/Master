@@ -29,18 +29,15 @@ namespace Virgo.Domain.SeedWork
             foreach (var info in fields)
             {
                 var instance = new T();
-                var locatedValue = info.GetValue(instance) as T;
 
-                if (locatedValue != null)
+                if (info.GetValue(instance) is T locatedValue)
                     yield return locatedValue;
             }
         }
 
         public override bool Equals(object obj)
         {
-            var otherValue = obj as Enumeration;
-
-            if (otherValue == null)
+            if (!(obj is Enumeration otherValue))
                 return false;
 
             var typeMatches = GetType().Equals(obj.GetType());

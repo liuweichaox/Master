@@ -43,8 +43,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Application", "Virgo.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Presentation", "Virgo.Presentation\Virgo.Presentation.csproj", "{079DB446-A80C-43DA-83F6-D3AB0D2534F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Presentatiosssn", "Presentation\Virgo.Presentatiosssn.csproj", "{56920D40-ECA9-459D-BB2D-393B3DC4D842}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,10 +117,6 @@ Global
 		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56920D40-ECA9-459D-BB2D-393B3DC4D842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56920D40-ECA9-459D-BB2D-393B3DC4D842}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56920D40-ECA9-459D-BB2D-393B3DC4D842}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56920D40-ECA9-459D-BB2D-393B3DC4D842}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

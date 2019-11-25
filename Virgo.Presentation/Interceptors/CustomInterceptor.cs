@@ -7,9 +7,9 @@ namespace Virgo.Presentation.Interceptors
     {
         public void Intercept(IInvocation invocation)
         {
-            System.Diagnostics.Debug.WriteLine(invocation.Method + "执行之前。。。");
+            System.Diagnostics.Debug.WriteLine(invocation.Method + " Proceed Befor");
             invocation.Proceed();
-            System.Diagnostics.Debug.WriteLine(invocation.Method + "执行之后。。。");
+            System.Diagnostics.Debug.WriteLine(invocation.Method + " Proceed After");
         }
     }
 }

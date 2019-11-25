@@ -63,24 +63,6 @@ namespace Virgo.DependencyInjection
             }
         }
 
-        private static ServiceLifetime FindServiceLifetime(Type type)
-        {
-            if (type == typeof(ISingletonDependency))
-            {
-                return ServiceLifetime.Singleton;
-            }
-            if (type == typeof(ITransientDependency))
-            {
-                return ServiceLifetime.Singleton;
-            }
-            if (type == typeof(ILifetimeScopeDependency))
-            {
-                return ServiceLifetime.Singleton;
-            }
-
-            throw new ArgumentOutOfRangeException($"Provided ServiceLifetime type is invalid. Lifetime:{type.Name}");
-        }
-
         /// <summary>
         /// 注册IocManager
         /// </summary>
