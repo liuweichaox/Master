@@ -15,7 +15,7 @@ namespace Virgo.DependencyInjection
     /// </summary>
     public static class AutofacInterceptionExtensions
     {
-        private static readonly ProxyGenerator generator = new ProxyGenerator();
+        private static readonly ProxyGenerator Generator = new ProxyGenerator();
 
         public static IRegistrationBuilder<TService, ConcreteReflectionActivatorData, SingleRegistrationStyle> EnableInterception<TService, TInterceptor>(
             this IRegistrationBuilder<TService, ConcreteReflectionActivatorData, SingleRegistrationStyle> registration)
@@ -24,7 +24,7 @@ namespace Virgo.DependencyInjection
             return EnableInterception(registration, new Type[] { typeof(TService) }, new Type[] { typeof(TInterceptor) });
         }
 
-        public static IRegistrationBuilder<TService, ConcreteReflectionActivatorData, SingleRegistrationStyle> EnableInterception<TService>(
+        private static IRegistrationBuilder<TService, ConcreteReflectionActivatorData, SingleRegistrationStyle> EnableInterception<TService>(
             this IRegistrationBuilder<TService, ConcreteReflectionActivatorData, SingleRegistrationStyle> registration,
             Type[] interfacesToIntercept,
             Type[] interceptors
@@ -38,7 +38,7 @@ namespace Virgo.DependencyInjection
             InterceptedBy<TInterceptor>(registration, false);
         }
 
-        public static void InterceptedBy<TInterceptor>(this IComponentRegistration registration, bool interceptAdditionalInterfaces) where TInterceptor : IInterceptor
+        private static void InterceptedBy<TInterceptor>(this IComponentRegistration registration, bool interceptAdditionalInterfaces) where TInterceptor : IInterceptor
         {
             InterceptedBy(registration, interceptAdditionalInterfaces, typeof(TInterceptor));
         }
@@ -48,45 +48,39 @@ namespace Virgo.DependencyInjection
             InterceptedBy(registration, false, interceptorTypes);
         }
 
-        public static void InterceptedBy(this IComponentRegistration registration, bool interceptAddtionalInterfaces, params Type[] interceptorTypes)
+        private static void InterceptedBy(this IComponentRegistration registration, bool interceptAddtionalInterfaces, params Type[] interceptorTypes)
         {
             registration.Activating += (sender, e) => { ApplyInterception(interceptorTypes, e, interceptAddtionalInterfaces); };
         }
 
         private static void ApplyInterception(Type[] interceptorTypes, IActivatingEventArgs<object> e, bool interceptAdditionalInterfaces)
         {
-            Type type = e.Instance.GetType();
+            var type = e.Instance.GetType();
 
             if (e.Component.Services.OfType<IServiceWithType>().Any(swt => !swt.ServiceType.GetTypeInfo().IsVisible) || type.Namespace == "Castle.Proxies")
             {
                 return;
             }
 
-            Type[] proxiedInterfaces = type.GetInterfaces().Where(i => i.GetTypeInfo().IsVisible).ToArray();
+            var proxiedInterfaces = type.GetInterfaces().Where(i => i.GetTypeInfo().IsVisible).ToArray();
             if (!proxiedInterfaces.Any())
             {
                 return;
             }
 
-            Type theInterface = proxiedInterfaces.First();
-            Type[] interfaces = proxiedInterfaces.Skip(1).ToArray();
+            var theInterface = proxiedInterfaces.First();
+            var interfaces = proxiedInterfaces.Skip(1).ToArray();
 
-            IList<IInterceptor> interceptorInstances = new List<IInterceptor>();
-            foreach (Type interceptorType in interceptorTypes)
-            {
-                interceptorInstances.Add((IInterceptor)e.Context.Resolve(interceptorType));
-            }
+            IList<IInterceptor> interceptorInstances = interceptorTypes.Select(interceptorType => (IInterceptor) e.Context.Resolve(interceptorType)).ToList();
 
-            if (interceptorInstances.Count > 0)
-            {
-                IInterceptor[] interceptors = interceptorInstances.ToArray();
+            if (interceptorInstances.Count <= 0) return;
+            var interceptors = interceptorInstances.ToArray();
 
-                object interceptedInstance = interceptAdditionalInterfaces
-                    ? generator.CreateInterfaceProxyWithTargetInterface(theInterface, interfaces, e.Instance, interceptors)
-                    : generator.CreateInterfaceProxyWithTargetInterface(theInterface, e.Instance, interceptors);
+            object interceptedInstance = interceptAdditionalInterfaces
+                ? Generator.CreateInterfaceProxyWithTargetInterface(theInterface, interfaces, e.Instance, interceptors)
+                : Generator.CreateInterfaceProxyWithTargetInterface(theInterface, e.Instance, interceptors);
 
-                e.ReplaceInstance(interceptedInstance);
-            }
+            e.ReplaceInstance(interceptedInstance);
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace Virgo.Text
         /// 全角空格为12288，半角空格为32
         /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
         /// </remarks>
-        public static string ConvertToSBC(string text)
+        public static string ConvertToSbc(string text)
         {
             if (text == null) return null;
             //半角转全角：
@@ -54,7 +54,7 @@ namespace Virgo.Text
         /// 全角空格为12288，半角空格为32
         /// 其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
         /// </remarks>
-        public static string ConvertToDBC(string text)
+        public static string ConvertToDbc(string text)
         {
             if (text == null) return null;
             var c = text.ToCharArray();
@@ -83,9 +83,9 @@ namespace Virgo.Text
         public static string StringToUnicode(string s)
         {
             if (s == null) return null;
-            var charbuffers = s.ToCharArray();
+            var chauffeurs = s.ToCharArray();
             var sb = new StringBuilder();
-            foreach (var t in charbuffers)
+            foreach (var t in chauffeurs)
             {
                 var buffer = Encoding.Unicode.GetBytes(t.ToString());
                 sb.Append($"\\u{buffer[1]:X2}{buffer[0]:X2}");
@@ -134,11 +134,9 @@ namespace Virgo.Text
             for (var i = 0; i < text.Length; i++)
             {
                 var c = text[i];
-                if (c >= 0x4e00 && c <= 0x9fa5)
-                {
-                    var k = Traditional[c - 0x4e00];
-                    if (k != c) sb[i] = k;
-                }
+                if (c < 0x4e00 || c > 0x9fa5) continue;
+                var k = Traditional[c - 0x4e00];
+                if (k != c) sb[i] = k;
             }
 
             return sb.ToString();
@@ -156,11 +154,9 @@ namespace Virgo.Text
             for (var i = 0; i < text.Length; i++)
             {
                 var c = text[i];
-                if (c >= 0x4e00 && c <= 0x9fa5)
-                {
-                    var k = Simplified[c - 0x4e00];
-                    if (k != c) sb[i] = k;
-                }
+                if (c < 0x4e00 || c > 0x9fa5) continue;
+                var k = Simplified[c - 0x4e00];
+                if (k != c) sb[i] = k;
             }
             return sb.ToString();
         }

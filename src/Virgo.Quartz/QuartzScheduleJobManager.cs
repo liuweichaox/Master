@@ -17,16 +17,12 @@ namespace Virgo.Quartz
 
         private async Task<IScheduler> SchedulerAsync()
         {
-            if (_scheduler == null)
+            if (_scheduler != null) return _scheduler;
+            using (await _asyncLock.LockAsync())
             {
-                using (await _asyncLock.LockAsync())
-                {
-                    if (_scheduler == null)
-                    {
-                        var factory = new StdSchedulerFactory();
-                        _scheduler = await factory.GetScheduler();
-                    }
-                }
+                if (_scheduler != null) return _scheduler;
+                var factory = new StdSchedulerFactory();
+                _scheduler = await factory.GetScheduler();
             }
             return _scheduler;
         }

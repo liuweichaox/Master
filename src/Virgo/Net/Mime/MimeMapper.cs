@@ -51,18 +51,16 @@ namespace Virgo.Net.Mime
         /// <returns></returns>
         public IMimeMapper Extend(params MimeMappingItem[] extensions)
         {
-            if (extensions != null)
+            if (extensions == null) return this;
+            foreach (var mapping in extensions)
             {
-                foreach (var mapping in extensions)
+                if (MimeTypes.ContainsKey(mapping.Extension))
                 {
-                    if (MimeTypes.ContainsKey(mapping.Extension))
-                    {
-                        MimeTypes[mapping.Extension] = mapping.MimeType;
-                    }
-                    else
-                    {
-                        MimeTypes.Add(mapping.Extension, mapping.MimeType);
-                    }
+                    MimeTypes[mapping.Extension] = mapping.MimeType;
+                }
+                else
+                {
+                    MimeTypes.Add(mapping.Extension, mapping.MimeType);
                 }
             }
             return this;

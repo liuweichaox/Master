@@ -6,7 +6,7 @@ namespace Virgo.IP
 {
     public static class IpHelper
     {
-        private static readonly IIpSearcher searcher;
+        private static readonly IIpSearcher Searcher;
 
         static IpHelper()
         {
@@ -14,11 +14,11 @@ namespace Virgo.IP
             {
                 if (IpSettings.DefalutSearcherType == IpSearcherType.China)
                 {
-                    searcher = new IpSimpleSearcher();
+                    Searcher = new IpSimpleSearcher();
                 }
                 if (IpSettings.DefalutSearcherType == IpSearcherType.International)
                 {
-                    searcher = new IpComplexSearcher();
+                    Searcher = new IpComplexSearcher();
                 }
             }
             catch (System.Exception e)
@@ -35,7 +35,7 @@ namespace Virgo.IP
         /// <returns></returns>
         public static IpInfo Search(string ip)
         {
-            return searcher.Search(ip);
+            return Searcher.Search(ip);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Virgo.IP
         /// <returns></returns>
         public static IpInfo SearchWithI18N(string ip, string langCode = "")
         {
-            return searcher.SearchWithI18N(ip, langCode);
+            return Searcher.SearchWithI18N(ip, langCode);
         }
     }
 }

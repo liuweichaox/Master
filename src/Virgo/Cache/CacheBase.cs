@@ -50,7 +50,7 @@ namespace Virgo.Cache
                 Logger.LogError(ex.ToString(), ex);
             }
 
-            if (item == null)
+            if (item != null) return item;
             {
                 lock (SyncObj)
                 {
@@ -63,7 +63,7 @@ namespace Virgo.Cache
                         Logger.LogError(ex.ToString(), ex);
                     }
 
-                    if (item == null)
+                    if (item != null) return item;
                     {
                         item = factory(key);
 
@@ -105,7 +105,7 @@ namespace Virgo.Cache
                 items = new object[keys.Length];
             }
 
-            if (items.Any(i => i == null))
+            if (items.All(i => i != null)) return items;
             {
                 lock (SyncObj)
                 {
@@ -134,7 +134,7 @@ namespace Virgo.Cache
                         }
                     }
 
-                    if (fetched.Any())
+                    if (!fetched.Any()) return items;
                     {
                         try
                         {
@@ -164,7 +164,7 @@ namespace Virgo.Cache
                 Logger.LogError(ex.ToString(), ex);
             }
 
-            if (item == null)
+            if (item != null) return item;
             {
                 using (await _asyncLock.LockAsync())
                 {
@@ -177,7 +177,7 @@ namespace Virgo.Cache
                         Logger.LogError(ex.ToString(), ex);
                     }
 
-                    if (item == null)
+                    if (item != null) return item;
                     {
                         item = await factory(key);
 
@@ -219,7 +219,7 @@ namespace Virgo.Cache
                 items = new object[keys.Length];
             }
 
-            if (items.Any(i => i == null))
+            if (items.All(i => i != null)) return items;
             {
                 using (await _asyncLock.LockAsync())
                 {
@@ -248,7 +248,7 @@ namespace Virgo.Cache
                         }
                     }
 
-                    if (fetched.Any())
+                    if (!fetched.Any()) return items;
                     {
                         try
                         {
@@ -286,9 +286,9 @@ namespace Virgo.Cache
 
         public virtual void Set(KeyValuePair<string, object>[] pairs, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
         {
-            foreach (var pair in pairs)
+            foreach (var (key, value) in pairs)
             {
-                Set(pair.Key, pair.Value, slidingExpireTime, absoluteExpireTime);
+                Set(key, value, slidingExpireTime, absoluteExpireTime);
             }
         }
 

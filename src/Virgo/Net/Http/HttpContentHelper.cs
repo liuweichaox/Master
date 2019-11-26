@@ -56,9 +56,9 @@ namespace Virgo.Net.Http
                 multipartFormDataContent.Add(new StreamContent(item.OpenReadStream()), item.Name, item.FileName);
             }
 
-            foreach (var item in JObject.FromObject(data))
+            foreach (var (key, value) in JObject.FromObject(data))
             {
-                multipartFormDataContent.Add(new StringContent(item.Value.ToString()), item.Key);
+                multipartFormDataContent.Add(new StringContent(value.ToString()), key);
             }
             return multipartFormDataContent;
         }
@@ -113,16 +113,16 @@ namespace Virgo.Net.Http
 
             if (paramArray != null && paramArray.Count > 0)
             {
-                var parms = "";
-                foreach (var item in paramArray)
+                var palms = "";
+                foreach (var (key, value) in paramArray)
                 {
-                    parms += string.Format("{0}={1}&", Encode(item.Key, encode), Encode(item.Value, encode));
+                    palms += $"{Encode(key, encode)}={Encode(value, encode)}&";
                 }
-                if (parms != "")
+                if (palms != "")
                 {
-                    parms = parms.TrimEnd('&');
+                    palms = palms.TrimEnd('&');
                 }
-                url += parms;
+                url += palms;
 
             }
             return url;
@@ -137,9 +137,9 @@ namespace Virgo.Net.Http
         {
             var param = new List<KeyValuePair<string, string>>();
             var values = JObject.FromObject(data);
-            foreach (var item in values)
+            foreach (var (key, value) in values)
             {
-                param.Add(new KeyValuePair<string, string>(item.Key, item.Value.ToString()));
+                param.Add(new KeyValuePair<string, string>(key, value.ToString()));
             }
             return param;
         }        /// <summary>
@@ -148,12 +148,9 @@ namespace Virgo.Net.Http
                  /// <param name="content">内容</param>
                  /// <param name="encode">编码类型</param>
                  /// <returns></returns>
-        public static string Encode(string content, Encoding encode = null)
+        private static string Encode(string content, Encoding encode = null)
         {
-            if (encode == null) return content;
-
-            return System.Web.HttpUtility.UrlEncode(content, Encoding.UTF8);
-
+            return encode == null ? content : System.Web.HttpUtility.UrlEncode(content, Encoding.UTF8);
         }
 
         /// <summary>
@@ -164,10 +161,7 @@ namespace Virgo.Net.Http
         /// <returns></returns>
         public static string Decode(string content, Encoding encode = null)
         {
-            if (encode == null) return content;
-
-            return System.Web.HttpUtility.UrlDecode(content, Encoding.UTF8);
-
+            return encode == null ? content : System.Web.HttpUtility.UrlDecode(content, Encoding.UTF8);
         }
     }
 }

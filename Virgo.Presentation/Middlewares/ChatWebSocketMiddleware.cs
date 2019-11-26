@@ -15,7 +15,7 @@ namespace Virgo.Presentation.Middlewares
     /// </summary>
     public class ChatWebSocketMiddleware
     {
-        private static readonly ConcurrentDictionary<string, WebSocket> _sockets = new ConcurrentDictionary<string, WebSocket>();
+        private static readonly ConcurrentDictionary<string, WebSocket> Sockets = new ConcurrentDictionary<string, WebSocket>();
 
         private readonly RequestDelegate _next;
 
@@ -31,12 +31,12 @@ namespace Virgo.Presentation.Middlewares
                 await _next.Invoke(context);
                 return;
             }
-            CancellationToken ct = context.RequestAborted;
+            var ct = context.RequestAborted;
             var currentSocket = await context.WebSockets.AcceptWebSocketAsync();
             var socketId = context.Request.Query["UserId"].ToString();
             if (!string.IsNullOrWhiteSpace(socketId))
             {
-                _sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) => currentSocket);
+                Sockets.AddOrUpdate(HttpUtility.UrlDecode(socketId), currentSocket, (key, websocket) => currentSocket);
             }
             while (!currentSocket.CloseStatus.HasValue)
             {
@@ -44,7 +44,7 @@ namespace Virgo.Presentation.Middlewares
                 {
                     break;
                 }
-                string response = await currentSocket.ReceiveStringAsync(ct);
+                var response = await currentSocket.ReceiveStringAsync(ct);
                 if (string.IsNullOrEmpty(response))
                 {
                     if (currentSocket.State != WebSocketState.Open)
@@ -53,22 +53,23 @@ namespace Virgo.Presentation.Middlewares
                     }
                     continue;
                 }
-                MsgTemplate msg = JsonConvert.DeserializeObject<MsgTemplate>(response);
-                foreach (var socket in _sockets)
+                var msg = JsonConvert.DeserializeObject<MsgTemplate>(response);
+                foreach (var (key, value) in Sockets)
                 {
-                    if (socket.Value.State != WebSocketState.Open)
+                    if (value.State != WebSocketState.Open)
                     {
                         continue;
                     }
 
-                    if ((string.IsNullOrWhiteSpace(msg.ReceiverID) && socket.Key != socketId) || socket.Key == msg.ReceiverID)
+                    if ((string.IsNullOrWhiteSpace(msg.ReceiverID) && key != socketId) || key == msg.ReceiverID)
                     {
-                        await socket.Value.SendStringAsync(JsonConvert.SerializeObject(msg), ct);
+                        await value.SendStringAsync(JsonConvert.SerializeObject(msg), ct);
                     }
                 }
             }
-            _sockets.TryRemove(socketId, out var webSocket);
-            await currentSocket.CloseAsync(webSocket.CloseStatus.Value, webSocket.CloseStatusDescription, ct);
+            Sockets.TryRemove(socketId, out var webSocket);
+            if (webSocket.CloseStatus != null)
+                await currentSocket.CloseAsync(webSocket.CloseStatus.Value, webSocket.CloseStatusDescription, ct);
             currentSocket?.Dispose();
         }
     }

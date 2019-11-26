@@ -22,41 +22,39 @@ namespace Virgo.Win32
         /// <exception cref="Exception">命令参数无效，必须传入一个控制台能被cmd.exe可执行程序; 如：ping 127.0.0.1</exception>
         public static string Execute(int outtime = 0, params string[] dosCommand)
         {
-            string output = "";
-            if (dosCommand != null && dosCommand.Any())
+            var output = "";
+            if (dosCommand == null || !dosCommand.Any())
+                throw new Exception("命令参数无效，必须传入一个控制台能被cmd.exe可执行程序;\n如：ping 127.0.0.1");
+            var cmd = string.Join("&", dosCommand) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
+            using (var process = new Process()) //创建进程对象  
             {
-                string cmd = string.Join("&", dosCommand) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
-                using (Process process = new Process()) //创建进程对象  
+                var starting = new ProcessStartInfo(); //创建进程时使用的一组值，如下面的属性  
+                starting.FileName = "cmd.exe"; //设定需要执行的命令程序  
+                //以下是隐藏cmd窗口的方法  
+                starting.Arguments = "/c" + cmd; //设定参数，要输入到命令程序的字符，其中"/c"表示执行完命令后马上退出  
+                starting.UseShellExecute = false; //不使用系统外壳程序启动  
+                starting.RedirectStandardInput = false; //不重定向输入  
+                starting.RedirectStandardOutput = true; //重定向输出，而不是默认的显示在dos控制台上  
+                starting.CreateNoWindow = true; //不创建窗口  
+                process.StartInfo = starting;
+
+                if (process.Start()) //开始进程  
                 {
-                    ProcessStartInfo startinfo = new ProcessStartInfo(); //创建进程时使用的一组值，如下面的属性  
-                    startinfo.FileName = "cmd.exe"; //设定需要执行的命令程序  
-                    //以下是隐藏cmd窗口的方法  
-                    startinfo.Arguments = "/c" + cmd; //设定参数，要输入到命令程序的字符，其中"/c"表示执行完命令后马上退出  
-                    startinfo.UseShellExecute = false; //不使用系统外壳程序启动  
-                    startinfo.RedirectStandardInput = false; //不重定向输入  
-                    startinfo.RedirectStandardOutput = true; //重定向输出，而不是默认的显示在dos控制台上  
-                    startinfo.CreateNoWindow = true; //不创建窗口  
-                    process.StartInfo = startinfo;
-
-                    if (process.Start()) //开始进程  
+                    if (outtime == 0)
                     {
-                        if (outtime == 0)
-                        {
-                            process.WaitForExit();
-                        }
-                        else
-                        {
-                            process.WaitForExit(outtime);
-                        }
-
-                        output = process.StandardOutput.ReadToEnd(); //读取进程的输出  
+                        process.WaitForExit();
                     }
-                }
+                    else
+                    {
+                        process.WaitForExit(outtime);
+                    }
 
-                return output;
+                    output = process.StandardOutput.ReadToEnd(); //读取进程的输出  
+                }
             }
 
-            throw new Exception("命令参数无效，必须传入一个控制台能被cmd.exe可执行程序;\n如：ping 127.0.0.1");
+            return output;
+
         }
 
         /// <summary>
@@ -67,7 +65,7 @@ namespace Virgo.Win32
         public static async Task<string> ExecuteAsync(string[] dosCommand)
         {
             string output = "";
-            string cmd = string.Join("&", dosCommand) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
+            var cmd = string.Join("&", dosCommand) + " &exit";//说明：不管命令是否成功均执行exit命令，否则当调用ReadToEnd()方法时，会处于假死状
             using (var p = new Process())
             {
                 p.StartInfo.FileName = @"C:\Windows\System32\cmd.exe";//设置要启动的应用程序

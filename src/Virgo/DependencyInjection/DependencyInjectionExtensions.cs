@@ -17,7 +17,7 @@ namespace Virgo.DependencyInjection
         /// <summary>
         /// 注册程序集组件
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="builder"></param>
         /// <param name="assemblies"></param>
         /// <returns></returns>
         public static ContainerBuilder RegisterAssembly(this ContainerBuilder builder, params Assembly[] assemblies)
@@ -38,27 +38,26 @@ namespace Virgo.DependencyInjection
         /// <summary>
         /// 注册程序集
         /// </summary>
+        /// <param name="builder"></param>
         /// <param name="assembly">The assembly.</param>
-        public static void RegisterDependenciesByAssembly<TServiceLifetime>(ContainerBuilder builder, Assembly assembly)
+        private static void RegisterDependenciesByAssembly<TServiceLifetime>(ContainerBuilder builder, Assembly assembly)
         {
             var types = assembly.GetTypes().Where(x => typeof(TServiceLifetime).GetTypeInfo().IsAssignableFrom(x) && x.GetTypeInfo().IsClass && !x.GetTypeInfo().IsAbstract && !x.GetTypeInfo().IsSealed).ToList();
             foreach (var type in types)
             {
                 var itype = type.GetTypeInfo().GetInterfaces().FirstOrDefault(x => x.Name.ToUpper().Contains(type.Name.ToUpper()));
-                if (!itype.IsNull())
+                if (itype.IsNull()) continue;
+                if (typeof(TServiceLifetime) == typeof(ISingletonDependency))
                 {
-                    if (typeof(TServiceLifetime) == typeof(ISingletonDependency))
-                    {
-                        builder.RegisterType(type).As(itype).SingleInstance();
-                    }
-                    if (typeof(TServiceLifetime) == typeof(ITransientDependency))
-                    {
-                        builder.RegisterType(type).As(itype).InstancePerDependency();
-                    }
-                    if (typeof(TServiceLifetime) == typeof(ILifetimeScopeDependency))
-                    {
-                        builder.RegisterType(type).As(itype).InstancePerLifetimeScope();
-                    }
+                    builder.RegisterType(type).As(itype).SingleInstance();
+                }
+                if (typeof(TServiceLifetime) == typeof(ITransientDependency))
+                {
+                    builder.RegisterType(type).As(itype).InstancePerDependency();
+                }
+                if (typeof(TServiceLifetime) == typeof(ILifetimeScopeDependency))
+                {
+                    builder.RegisterType(type).As(itype).InstancePerLifetimeScope();
                 }
             }
         }

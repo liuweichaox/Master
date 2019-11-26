@@ -22,14 +22,14 @@ namespace Virgo.Tests.Text
         [Fact]
         public void Simple_ConvertToSBC_Test()
         {
-            var text = StringHelper.ConvertToSBC("2019 Virgo");
+            var text = StringHelper.ConvertToSbc("2019 Virgo");
             text.ShouldBe("２０１９　Ｖｉｒｇｏ");
         }
 
         [Fact]
         public void Simple_ConvertToDBC_Test()
         {
-            var text = StringHelper.ConvertToDBC("２０１９　Ｖｉｒｇｏ");
+            var text = StringHelper.ConvertToDbc("２０１９　Ｖｉｒｇｏ");
             text.ShouldBe("2019 Virgo");
         }
 

@@ -176,9 +176,9 @@ namespace Virgo.Files
                     return null;
                 }
             }).Where(u => u != null).ToList();
-            foreach (var fileEntry in dic)
+            foreach (var (key, value) in dic)
             {
-                archive.AddEntry(Path.Combine(rootdir, fileEntry.Value), fileEntry.Key);
+                archive.AddEntry(Path.Combine(rootdir, value), key);
             }
 
             if (remoteUrls.Any())
@@ -193,15 +193,15 @@ namespace Virgo.Files
                             var res = await t;
                             if (res.IsSuccessStatusCode)
                             {
-                                Stream stream = await res.Content.ReadAsStreamAsync();
+                                var stream = await res.Content.ReadAsStreamAsync();
                                 streams[Path.Combine(rootdir, Path.GetFileName(HttpUtility.UrlDecode(url.AbsolutePath)))] = stream;
                             }
                         }
                     }).Wait();
                 });
-                foreach (var kv in streams)
+                foreach (var (key, value) in streams)
                 {
-                    archive.AddEntry(kv.Key, kv.Value);
+                    archive.AddEntry(key, value);
                 }
             }
 

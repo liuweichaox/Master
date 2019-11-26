@@ -5,7 +5,7 @@ namespace Virgo.Snowflake
     public class IdWorker
     {
         //基准时间
-        public const long Twepoch = 1288834974657L;
+        private const long Twepoch = 1288834974657L;
         //机器标识位数
         const int WorkerIdBits = 5;
         //数据标志位数
@@ -23,7 +23,7 @@ namespace Virgo.Snowflake
         //数据ID偏左移17位
         private const int DatacenterIdShift = SequenceBits + WorkerIdBits;
         //时间毫秒左移22位
-        public const int TimestampLeftShift = SequenceBits + WorkerIdBits + DatacenterIdBits;
+        private const int TimestampLeftShift = SequenceBits + WorkerIdBits + DatacenterIdBits;
 
         private long _sequence = 0L;
         private long _lastTimestamp = -1L;

@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\89370\.nuget\packages\microsoft.net.test.sdk\16.0.1\build\netcoreapp1.0" t="Include">
-      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
-    </e>
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.0\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\89370\.nuget\packages\xunit.runner.visualstudio\2.4.1\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
     <e p="C:\Users\89370\.Rider2019.2\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\89370\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Virgo.-2019288869.00" t="ExcludeRecursive" />
     <e p="C:\Users\89370\Documents\GitHub\Virgo" t="IncludeFlat">
@@ -17,48 +8,6 @@
       <e p="02-test" t="Include" />
       <e p="03-sample" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Presentation" t="IncludeRecursive">
-        <e p="appsettings.Development.json" t="Include" />
-        <e p="appsettings.json" t="Include" />
-        <e p="bin" t="ExcludeRecursive" />
-        <e p="Configs" t="Include">
-          <e p="myjson.json" t="Include" />
-        </e>
-        <e p="Controllers" t="Include">
-          <e p="ChatController.cs" t="Include" />
-          <e p="IpController.cs" t="Include" />
-          <e p="WeatherForecastController.cs" t="Include" />
-        </e>
-        <e p="Filters" t="Include">
-          <e p="AuditActionFilter.cs" t="Include" />
-        </e>
-        <e p="Interceptors" t="Include">
-          <e p="CustomInterceptor.cs" t="Include" />
-        </e>
-        <e p="IP" t="Include">
-          <e p="Data" t="Include">
-            <e p="GeoLite2-City.mmdb" t="Include" />
-            <e p="ip2region.db" t="Include" />
-          </e>
-        </e>
-        <e p="Middlewares" t="Include">
-          <e p="ChatWebSocketMiddleware.cs" t="Include" />
-        </e>
-        <e p="obj" t="ExcludeRecursive">
-          <e p="Debug" t="Include">
-            <e p="netcoreapp3.0" t="Include">
-              <e p="Virgo.Presentation.AssemblyInfo.cs" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Program.cs" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="launchSettings.json" t="Include" />
-        </e>
-        <e p="Startup.cs" t="Include" />
-        <e p="Virgo.Presentation.csproj" t="IncludeRecursive" />
-        <e p="WeatherForecast.cs" t="Include" />
-      </e>
       <e p="src\Virgo" t="IncludeRecursive">
         <e p="Aliyun" t="Include">
           <e p="Sms" t="Include">
@@ -389,7 +338,6 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Quartz.Tests.AssemblyInfo.cs" t="Include" />
-              <e p="Virgo.Quartz.Tests.Program.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -402,7 +350,6 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Redis.Tests.AssemblyInfo.cs" t="Include" />
-              <e p="Virgo.Redis.Tests.Program.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -415,7 +362,6 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.TestBase.AssemblyInfo.cs" t="Include" />
-              <e p="Virgo.TestBase.Program.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -439,7 +385,6 @@
           <e p="Debug" t="Include">
             <e p="netcoreapp3.0" t="Include">
               <e p="Virgo.Tests.AssemblyInfo.cs" t="Include" />
-              <e p="Virgo.Tests.Program.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -507,6 +452,50 @@
           <e p="Repository.cs" t="Include" />
         </e>
         <e p="Virgo.Infrastructure.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="Virgo.Presentation" t="IncludeRecursive">
+        <e p="appsettings.Development.json" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Configs" t="Include">
+          <e p="myjson.json" t="Include" />
+        </e>
+        <e p="Controllers" t="Include">
+          <e p="IpController.cs" t="Include" />
+          <e p="WeatherForecastController.cs" t="Include" />
+        </e>
+        <e p="Filters" t="Include">
+          <e p="AuditActionFilter.cs" t="Include" />
+        </e>
+        <e p="Interceptors" t="Include">
+          <e p="CustomInterceptor.cs" t="Include" />
+        </e>
+        <e p="IP" t="Include">
+          <e p="Data" t="Include">
+            <e p="GeoLite2-City.mmdb" t="Include" />
+            <e p="ip2region.db" t="Include" />
+          </e>
+        </e>
+        <e p="Middlewares" t="Include">
+          <e p="ChatWebSocketMiddleware.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="Virgo.Presentation.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="launchSettings.json" t="Include" />
+        </e>
+        <e p="Startup.cs" t="Include" />
+        <e p="Virgo.Presentation.csproj" t="IncludeRecursive" />
+        <e p="WeatherForecast.cs" t="Include" />
+        <e p="wwwroot" t="Include">
+          <e p="chat.html" t="Include" />
+        </e>
       </e>
       <e p="Virgo.sln" t="IncludeFlat" />
     </e>
