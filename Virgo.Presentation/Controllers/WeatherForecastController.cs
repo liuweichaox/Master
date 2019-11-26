@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Virgo.Application.Interfaces;
+using Virgo.DependencyInjection;
 
 namespace Virgo.Presentation.Controllers
 {
@@ -40,6 +41,12 @@ namespace Virgo.Presentation.Controllers
         public bool Call()
         {
             return _customService.Call();
+        }
+
+        [HttpGet]
+        public bool Ioc()
+        {
+            return IocManager.Instance.GetInstance<ICustomService>().Call();
         }
     }
 }

@@ -58,6 +58,8 @@ namespace Virgo.Presentation
                 endpoints.MapControllers();
             });
 
+            app.UseIocManager();
+
             app.UseWebSockets();
             app.Map("/ws", builder => { app.UseChatWebSocketMiddleware(); });
             app.UseStaticFiles();
