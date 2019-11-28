@@ -1,3 +1,4 @@
+using AspectCore.Extensions.DependencyInjection;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -11,17 +12,20 @@ namespace Virgo.Presentation
         {
             CreateHostBuilder(args).Build().Run();
         }
+
+        /// <summary>
+        /// 创建宿主生成器
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-            .ConfigureAppConfiguration((hostingContext, app) =>
-            {
-                app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
-            .AddJsonFile("Configs/myjson.json", true, true);
-            })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
+                .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+                .ConfigureAppConfiguration((hostingContext, app) =>
+                {
+                    app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                        .AddJsonFile("Configs/myjson.json", true, true);
+                })
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

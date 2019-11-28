@@ -1,3 +1,6 @@
+using System;
+using System.Reflection;
+using AspectCore.Configuration;
 using Autofac;
 using Castle.DynamicProxy;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +13,13 @@ using Virgo.DependencyInjection;
 using Virgo.Infrastructure;
 using Virgo.Presentation.Interceptors;
 using Virgo.Presentation.Middlewares;
+using AspectCore.Extensions.DependencyInjection;
+using AspectCore.Injector;
+using Autofac.Extensions.DependencyInjection;
+using Virgo.Application.Interfaces;
+using Virgo.Application.Services;
+using Virgo.Domain.Interfaces;
+using Virgo.Infrastructure.Repository;
 
 namespace Virgo.Presentation
 {
@@ -22,26 +32,27 @@ namespace Virgo.Presentation
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // 此方法由运行时调用。使用此方法将服务添加到容器。
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddHttpContextAccessor();
 
             services.AddHttpClient();
 
             services.AddControllers();
-
+            
             services.AddOptions();
         }
+
+        //Autofac容器配置
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterInterceptorBy<CustomInterceptor>();
             builder.RegisterType<CustomInterceptor>();
-
+            builder.RegisterInterceptorBy<CustomInterceptor>();
             builder.RegisterInfrastructure().RegisterApplication();
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+        // 此方法由运行时调用。使用此方法配置HTTP请求管道。
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -53,10 +64,7 @@ namespace Virgo.Presentation
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseIocManager();
 

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\89370\.Rider2019.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\89370\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Virgo.-2019288869.00" t="ExcludeRecursive" />
-    <e p="C:\Users\89370\Documents\GitHub\Virgo" t="IncludeFlat">
+    <e p="C:\Users\89370\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Virgo.205626195.00" t="ExcludeRecursive" />
+    <e p="D:\GitHub\Virgo" t="IncludeFlat">
       <e p="01-src" t="Include" />
       <e p="02-test" t="Include" />
       <e p="03-sample" t="Include" />
@@ -469,6 +469,7 @@
         </e>
         <e p="Interceptors" t="Include">
           <e p="CustomInterceptor.cs" t="Include" />
+          <e p="CustomInterceptorAttribute.cs" t="Include" />
         </e>
         <e p="IP" t="Include">
           <e p="Data" t="Include">
