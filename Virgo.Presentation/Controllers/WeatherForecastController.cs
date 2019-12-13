@@ -8,7 +8,7 @@ using Virgo.DependencyInjection;
 using Virgo.Presentation.Models;
 
 namespace Virgo.Presentation.Controllers
-{
+{    
     [ApiController]
     [Route("[controller]/[action]")]
     public class WeatherForecastController : ControllerBase
