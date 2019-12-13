@@ -1,45 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
-namespace Virgo.Domain.SeedWork
+namespace Virgo.Domain.Models
 {
     /// <summary>
-    /// 值对象父类
+    /// 定义值对象基类 
+    /// 注意没有唯一标识了
     /// </summary>
-    public abstract class ValueObject
+    /// <typeparam name="T"></typeparam>
+    public abstract class ValueObject<T> where T : ValueObject<T>
     {
-        /// <summary>
-        /// 比较值对象是否相等
-        /// </summary>
-        /// <param name="left"></param>
-        /// <param name="right"></param>
-        /// <returns></returns>
-        protected static bool EqualOperator(ValueObject left, ValueObject right)
-        {
-            //^异或运算，异或同为true
-            if (left is null ^ right is null)
-            {
-                return false;
-            }
-
-            return left is null || left.Equals(right);
-        }
-
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
-        {
-            return !(EqualOperator(left, right));
-        }
-
         /// <summary>
         /// 获取值对象的属性
         /// </summary>
         /// <returns></returns>
         protected abstract IEnumerable<object> GetAtomicValues();
-
         /// <summary>
-        /// 比较值对象内部的属性全部相等
+        /// 重写方法 相等运算
         /// </summary>
-        /// <param name="obj">比较对象</param>
+        /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
         {
@@ -49,7 +30,7 @@ namespace Virgo.Domain.SeedWork
                 return false;
             }
 
-            ValueObject other = (ValueObject)obj;
+            T other = (T)obj;
             IEnumerator<object> thisValues = GetAtomicValues().GetEnumerator();
             IEnumerator<object> otherValues = other.GetAtomicValues().GetEnumerator();
             while (thisValues.MoveNext() && otherValues.MoveNext())
@@ -69,23 +50,47 @@ namespace Virgo.Domain.SeedWork
         }
 
         /// <summary>
-        /// 得到值对象所有属性HashCode总和作为值对象HashCode
+        /// 获取哈希
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return GetAtomicValues()
-                .Select(x => x != null ? x.GetHashCode() : 0)
-                .Aggregate((x, y) => x ^ y);
+            return GetAtomicValues().Select(x => x != null ? x.GetHashCode() : 0).Aggregate((x, y) => x ^ y);
         }
 
         /// <summary>
-        /// 获取拷贝
+        /// 重写方法 实体比较 ==
         /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         /// <returns></returns>
-        public ValueObject GetCopy()
+        public static bool operator ==(ValueObject<T> a, ValueObject<T> b)
         {
-            return this.MemberwiseClone() as ValueObject;
+            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+                return true;
+
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+                return false;
+
+            return a.Equals(b);
+        }
+        /// <summary>
+        /// 重写方法 实体比较 !=
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool operator !=(ValueObject<T> a, ValueObject<T> b)
+        {
+            return !(a == b);
+        }
+
+        /// <summary>
+        /// 克隆副本
+        /// </summary>
+        public virtual T Clone()
+        {
+            return (T)MemberwiseClone();
         }
     }
 }

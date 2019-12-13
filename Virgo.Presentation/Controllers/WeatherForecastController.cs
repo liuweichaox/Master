@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Virgo.Application.Interfaces;
 using Virgo.DependencyInjection;
+using Virgo.Presentation.Models;
 
 namespace Virgo.Presentation.Controllers
 {

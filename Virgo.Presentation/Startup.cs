@@ -20,6 +20,7 @@ using Virgo.Application.Interfaces;
 using Virgo.Application.Services;
 using Virgo.Domain.Interfaces;
 using Virgo.Infrastructure.Repository;
+using Virgo.Presentation.Extensions;
 
 namespace Virgo.Presentation
 {
@@ -35,13 +36,7 @@ namespace Virgo.Presentation
         // 此方法由运行时调用。使用此方法将服务添加到容器。
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpContextAccessor();
-
-            services.AddHttpClient();
-
-            services.AddControllers();
-            
-            services.AddOptions();
+            NativeInjectorBootStrapper.RegisterServices(services);
         }
 
         //Autofac容器配置

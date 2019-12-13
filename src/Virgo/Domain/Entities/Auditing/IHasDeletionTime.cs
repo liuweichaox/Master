@@ -8,7 +8,7 @@ namespace Virgo.Domain.Entities.Auditing
     public interface IHasDeletionTime : ISoftDelete
     {
         /// <summary>
-        /// Deletion time of this entity.
+        /// 该实体的删除时间
         /// </summary>
         DateTime? DeletionTime { get; set; }
     }
