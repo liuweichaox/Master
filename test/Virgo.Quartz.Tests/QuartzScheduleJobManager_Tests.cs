@@ -1,3 +1,4 @@
+using Autofac;
 using Autofac.Extras.IocManager;
 using Quartz;
 using Shouldly;
@@ -16,12 +17,9 @@ namespace Virgo.Quartz.Tests
         {
             Building(builder =>
             {
-                builder.RegisterServices(r =>
-                {
-                    r.Register(typeof(IQuartzScheduleJobManager), typeof(QuartzScheduleJobManager), Lifetime.Transient);
-                });
+                builder.RegisterType<QuartzScheduleJobManager>().As<IQuartzScheduleJobManager>().InstancePerDependency();
             });
-            _scheduleJobManager = LocalIocManager.Resolve<IQuartzScheduleJobManager>();
+            _scheduleJobManager = The<IQuartzScheduleJobManager>();
         }
         [Fact]
         public async Task Simple_Job_Test()

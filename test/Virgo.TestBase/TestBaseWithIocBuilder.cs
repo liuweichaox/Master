@@ -1,36 +1,54 @@
-using Autofac.Extras.IocManager;
+using Autofac;
 using System;
 using Virgo.DependencyInjection;
-using IIocManager = Autofac.Extras.IocManager.IIocManager;
-using IocManager = Autofac.Extras.IocManager.IocManager;
 
 namespace Virgo.TestBase
 {
     /// <summary>
-    /// ʹ��<see cref="Autofac.Extras.IocManager.IocBuilder"/>���Ի���
+    /// 使用<see cref="IIocManager"/>的测试基类
     /// </summary>
     public class TestBaseWithIocBuilder
     {
-        protected IIocBuilder IocBuilder;
+        /// <summary>
+        /// Autofac容器
+        /// </summary>
+        protected ContainerBuilder IocBuilder;
+        /// <summary>
+        /// <see cref="IIocManager"/>实例
+        /// </summary>
         protected IIocManager LocalIocManager;
 
+        /// <summary>
+        /// 测试基类构造器
+        /// </summary>
         protected TestBaseWithIocBuilder()
         {
             LocalIocManager = new IocManager();
-            IocBuilder = Autofac.Extras.IocManager.IocBuilder.New
-                               .UseAutofacContainerBuilder()
-                               .RegisterIocManager(LocalIocManager);
+            IocBuilder = new ContainerBuilder();
         }
 
-        protected IResolver Building(Action<IIocBuilder> builderAction)
+        /// <summary>
+        /// 创建<see cref="ContainerBuilder"/>实例
+        /// </summary>
+        /// <param name="builderAction"></param>
+        /// <returns></returns>
+        protected IContainer Building(Action<ContainerBuilder> builderAction)
         {
+            IocBuilder.RegisterType<IocManager>().As<IIocManager>().SingleInstance();
             builderAction(IocBuilder);
-            return IocBuilder.CreateResolver().UseIocManager(LocalIocManager);
+            var container = IocBuilder.Build();
+            LocalIocManager.AutofacContainer = container;
+            return container;
         }
 
+        /// <summary>
+        /// 获取指定类型实例
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         protected T The<T>()
         {
-            return LocalIocManager.Resolve<T>();
+            return LocalIocManager.AutofacContainer.Resolve<T>();
         }
     }
 }

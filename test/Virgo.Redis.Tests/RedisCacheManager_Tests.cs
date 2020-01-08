@@ -1,4 +1,4 @@
-﻿using Autofac.Extras.IocManager;
+﻿using Autofac;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -17,26 +17,23 @@ namespace Virgo.Redis.Tests
         {
             Building(builder =>
             {
-                builder.RegisterServices(r =>
+                builder.RegisterType<CachingConfiguration>().As<ICachingConfiguration>().SingleInstance();
+                var instance = new RedisCaCheConfiguration()
                 {
-                    r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                    var instance = new RedisCaCheConfiguration()
-                    {
-                        DatabaseId = 0,
-                        HostAndPort = "localhost:6379",
-                        ConnectionString = "localhost:6379,Password=123456,ConnectTimeout=1000,ConnectRetry=1,SyncTimeout=10000"
-                    };
-                    r.Register<IRedisCaCheConfiguration, RedisCaCheConfiguration>(instance, Lifetime.Singleton);
-                    r.Register(typeof(IRedisCacheProvider), typeof(RedisCacheProvider), Lifetime.Singleton);
-                    r.Register(typeof(ICacheManager), typeof(RedisCacheManager), Lifetime.Singleton);
-                });
+                    DatabaseId = 0,
+                    HostAndPort = "localhost:6379",
+                    ConnectionString = "localhost:6379,Password=123456,ConnectTimeout=1000,ConnectRetry=1,SyncTimeout=10000"
+                };
+                builder.RegisterInstance<IRedisCaCheConfiguration>(instance);
+                builder.RegisterType<RedisCacheProvider>().As<IRedisCacheProvider>().SingleInstance();
+                builder.RegisterType<RedisCacheManager>().As<ICacheManager>().SingleInstance();
             });
-            _cacheManager = LocalIocManager.Resolve<ICacheManager>();
-            LocalIocManager.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
+            _cacheManager = The<ICacheManager>();
+            The<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
             });
-            LocalIocManager.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+            The<ICachingConfiguration>().Configure("MyCacheItems", cache =>
              {
                  cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
              });

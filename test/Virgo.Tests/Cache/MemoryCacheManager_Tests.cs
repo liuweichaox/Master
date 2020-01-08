@@ -1,4 +1,4 @@
-﻿using Autofac.Extras.IocManager;
+﻿using Autofac;
 using Shouldly;
 using System;
 using System.Collections.Generic;
@@ -18,23 +18,20 @@ namespace Virgo.Tests.Cache
         {
             Building(builder =>
             {
-                builder.RegisterServices(r =>
-                {
-                    r.Register(typeof(ICachingConfiguration), typeof(CachingConfiguration), Lifetime.Singleton);
-                    r.Register(typeof(ICacheManager), typeof(VirgoMemoryCacheManager), Lifetime.Singleton);
-                });
+                builder.RegisterType<CachingConfiguration>().As<ICachingConfiguration>().SingleInstance();
+                builder.RegisterType<VirgoMemoryCacheManager>().As<ICacheManager>().SingleInstance();
             });
             // var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
             //container.Register(Component.For(typeof(IIocManager), typeof(IocManager)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
             //container.Register(Component.For(typeof(ICacheManager), typeof(VirgoMemoryCacheManager)).LifestyleSingleton());
             //_cacheManager = container.Resolve<ICacheManager>(); 
-            _cacheManager = LocalIocManager.Resolve<ICacheManager>();
-            LocalIocManager.Resolve<ICachingConfiguration>().ConfigureAll(cache =>
+            _cacheManager = The<ICacheManager>();
+            The<ICachingConfiguration>().ConfigureAll(cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(24);
             });
-            LocalIocManager.Resolve<ICachingConfiguration>().Configure("MyCacheItems", cache =>
+            The<ICachingConfiguration>().Configure("MyCacheItems", cache =>
             {
                 cache.DefaultSlidingExpireTime = TimeSpan.FromHours(1);
             });

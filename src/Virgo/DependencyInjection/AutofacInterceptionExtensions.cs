@@ -94,7 +94,6 @@ namespace Virgo.DependencyInjection
         {
             builder.RegisterCallback(x => x.Registered += (sender, e) =>
             {
-
                 var implType = e.ComponentRegistration.Activator.LimitType;
                 System.Diagnostics.Debug.WriteLine("Register   implType " + implType.Name);
                 if (typeof(ILifetime).IsAssignableFrom(implType) && !typeof(IInterceptor).IsAssignableFrom(implType))
