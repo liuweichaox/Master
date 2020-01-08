@@ -74,6 +74,9 @@ namespace Virgo.Tests.Cache
     public class MyCacheItem
     {
         public int Value { get; set; }
+        public string Name { get; set; }
+        public string CreateTime { get; set; }
+
 
         public MyCacheItem()
         {
