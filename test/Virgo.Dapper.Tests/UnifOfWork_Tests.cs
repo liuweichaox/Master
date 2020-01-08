@@ -5,24 +5,20 @@ using System.Threading.Tasks;
 using Virgo.Domain.Uow;
 using Virgo.TestBase;
 using Xunit;
-
+using Autofac;
 namespace Virgo.Dapper.Tests
 {
     public class UnifOfWork_Tests : TestBaseWithIocBuilder
     {
         public UnifOfWork_Tests()
         {
-            //注释
-            //Building(build =>
-            //{
-            //    build.UseUnitOfWorkInterceptor();
-            //    build.RegisterServices(r =>
-            //    {
-            //        r.Register<IInterceptor, UnitOfWorkInterceptor>(Lifetime.Transient);
-            //        r.Register<IUnitOfWork, UnifOfWork>(Lifetime.LifetimeScope);
-            //        r.Register<IUserInfoRepository, UserInfoRepository>(Lifetime.LifetimeScope);
-            //    });
-            //});
+            Building(build =>
+            {           
+                build.RegisterUnitOfWorkInterceptor();
+                build.RegisterType<UnitOfWorkInterceptor>();
+                build.RegisterType<UnifOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+                build.RegisterType<UserInfoRepository>().As<IUserInfoRepository>().InstancePerLifetimeScope();
+            });
         }
 
         [UnitOfWork]
@@ -43,6 +39,7 @@ CREATE TABLE `users`  (
 
 SET FOREIGN_KEY_CHECKS = 1;*/
             #endregion
+
             var un = The<IUnitOfWork>();
             var repository = The<IUserInfoRepository>();
             try
