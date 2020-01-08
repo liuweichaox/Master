@@ -1,5 +1,4 @@
 using Autofac;
-using Autofac.Extras.IocManager;
 using Quartz;
 using Shouldly;
 using System;

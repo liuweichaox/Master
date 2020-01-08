@@ -4,6 +4,9 @@ using Virgo.Domain.Interfaces;
 
 namespace Virgo.Application.Services
 {
+    /// <summary>
+    /// <see cref="ICustomService"/>服务实现类
+    /// </summary>
     public class CustomService : ICustomService, ITransientDependency
     {
         private readonly IRepository _repository;
