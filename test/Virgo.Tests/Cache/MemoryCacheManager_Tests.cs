@@ -21,11 +21,6 @@ namespace Virgo.Tests.Cache
                 builder.RegisterType<CachingConfiguration>().As<ICachingConfiguration>().SingleInstance();
                 builder.RegisterType<VirgoMemoryCacheManager>().As<ICacheManager>().SingleInstance();
             });
-            // var container = new WindsorContainer(new DefaultProxyFactory(new ProxyGenerator()));
-            //container.Register(Component.For(typeof(IIocManager), typeof(IocManager)).LifestyleSingleton());
-            //container.Register(Component.For(typeof(ICachingConfiguration), typeof(CachingConfiguration)).LifestyleSingleton());
-            //container.Register(Component.For(typeof(ICacheManager), typeof(VirgoMemoryCacheManager)).LifestyleSingleton());
-            //_cacheManager = container.Resolve<ICacheManager>(); 
             _cacheManager = The<ICacheManager>();
             The<ICachingConfiguration>().ConfigureAll(cache =>
             {

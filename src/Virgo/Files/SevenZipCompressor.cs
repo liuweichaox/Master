@@ -67,7 +67,7 @@ namespace Virgo.Files
             using (var archive = CreateZipArchive(files, rootdir))
             {
                 archive.SaveTo(zipFile, new WriterOptions(CompressionType.Deflate)
-                {
+                { 
                     LeaveStreamOpen = true,
                     ArchiveEncoding = new ArchiveEncoding()
                     {
@@ -216,7 +216,7 @@ namespace Virgo.Files
         private Dictionary<string, string> GetFileEntryMaps(List<string> files)
         {
             List<string> fileList = new List<string>();
-
+          
             void GetFilesRecurs(string path)
             {
                 //遍历目标文件夹的所有文件

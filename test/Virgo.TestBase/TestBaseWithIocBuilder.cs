@@ -1,4 +1,5 @@
 using Autofac;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using Virgo.DependencyInjection;
 
@@ -32,13 +33,12 @@ namespace Virgo.TestBase
         /// </summary>
         /// <param name="builderAction"></param>
         /// <returns></returns>
-        protected IContainer Building(Action<ContainerBuilder> builderAction)
+        protected ILifetimeScope Building(Action<ContainerBuilder> builderAction)
         {
             IocBuilder.RegisterType<IocManager>().As<IIocManager>().SingleInstance();
             builderAction(IocBuilder);
-            var container = IocBuilder.Build();
-            LocalIocManager.AutofacContainer = container;
-            return container;
+            LocalIocManager.AutofacContainer = IocBuilder.Build();
+            return LocalIocManager.AutofacContainer;
         }
 
         /// <summary>
