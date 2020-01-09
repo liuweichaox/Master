@@ -8,7 +8,7 @@ namespace Virgo.AspNetCore
     /// <summary>
     /// 依赖注入<see cref="ServiceCollection"/>容器扩展方法
     /// </summary>
-    public static class HttpContext2Extensions
+    public static class HttpContext2Extension
     {
 
 
