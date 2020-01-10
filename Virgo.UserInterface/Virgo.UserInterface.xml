@@ -220,5 +220,10 @@
             <param name="env"></param>
             <param name="provider"></param>
         </member>
+        <member name="T:Virgo.UserInterface.JobService">
+            <summary>
+            Job
+            </summary>
+        </member>
     </members>
 </doc>

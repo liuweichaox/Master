@@ -95,6 +95,9 @@ namespace Virgo.UserInterface
         }
     }
 
+    /// <summary>
+    /// Job
+    /// </summary>
     public class JobService : VirgoBackgroundService
     {
         private readonly ILogger<JobService> _logger;
@@ -117,3 +120,5 @@ namespace Virgo.UserInterface
         {
             return str.Split('|')[new Random().Next(str.Length - 1)];
         }
+    }
+}

@@ -3,6 +3,9 @@ using System.Threading.Tasks;
 
 namespace Virgo.Aliyun.Sms
 {
+    /// <summary>
+    /// 发送短信的接口
+    /// </summary>
     public interface ISmsSender
     {
         /// <summary>

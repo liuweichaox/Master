@@ -13,9 +13,9 @@ namespace Virgo.Data
     {
         /// <summary>
         /// 批量导入(同步方法)
-        /// </summary> 
+        /// </summary>
         /// <param name="_mySqlConnection"></param>
-        /// <param name="dt"></param>
+        /// <param name="table"></param>
         /// <returns></returns>
         public static int BulkLoad(MySqlConnection _mySqlConnection, DataTable table)
         {
@@ -43,7 +43,7 @@ namespace Virgo.Data
         /// 批量导入(异步方法)
         /// </summary>
         /// <param name="_mySqlConnection"></param>
-        /// <param name="dt"></param>
+        /// <param name="table"></param>
         /// <returns></returns>
         public static async Task<int> BulkLoadAsync(MySqlConnection _mySqlConnection, DataTable table)
         {
