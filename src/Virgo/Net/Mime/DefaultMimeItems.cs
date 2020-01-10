@@ -104,8 +104,8 @@ namespace Virgo.Net.Mime
             //<!-- OpenDocument Master Document -->
             new MimeMappingItem{Extension = "odm", MimeType = "application/vnd.oasis.opendocument.text-master"},
     
-            //<!-- OpenDocument Presentation -->
-            new MimeMappingItem{Extension = "odp", MimeType = "application/vnd.oasis.opendocument.presentation"},
+            //<!-- OpenDocument UserInterface -->
+            new MimeMappingItem{Extension = "odp", MimeType = "application/vnd.oasis.opendocument.UserInterface"},
     
             //<!-- OpenDocument Spreadsheet -->
             new MimeMappingItem{Extension = "ods", MimeType = "application/vnd.oasis.opendocument.spreadsheet"},
@@ -119,8 +119,8 @@ namespace Virgo.Net.Mime
             //<!-- HTML Document Template -->
             new MimeMappingItem{Extension = "oth", MimeType = "application/vnd.oasis.opendocument.text-web"},
     
-            //<!-- OpenDocument Presentation Template -->
-            new MimeMappingItem{Extension = "otp", MimeType = "application/vnd.oasis.opendocument.presentation-template"},
+            //<!-- OpenDocument UserInterface Template -->
+            new MimeMappingItem{Extension = "otp", MimeType = "application/vnd.oasis.opendocument.UserInterface-template"},
     
             //<!-- OpenDocument Spreadsheet Template -->
             new MimeMappingItem{Extension = "ots", MimeType = "application/vnd.oasis.opendocument.spreadsheet-template "},

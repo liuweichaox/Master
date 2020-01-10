@@ -1,4 +1,7 @@
-﻿using Virgo.Application.Interfaces;
+﻿using System;
+using Virgo.Application.Interfaces;
+using Virgo.Application.Models.Requests;
+using Virgo.Application.Models.Responses;
 using Virgo.DependencyInjection;
 using Virgo.Domain.Interfaces;
 
@@ -9,15 +12,23 @@ namespace Virgo.Application.Services
     /// </summary>
     public class CustomService : ICustomService, ITransientDependency
     {
+        /// <summary>
+        /// <see cref="IRepository"/>仓储实例
+        /// </summary>
         private readonly IRepository _repository;
         public CustomService(IRepository repository)
         {
             _repository = repository;
         }
-        public bool Call()
+        public CostomResponse Call(CustomRequest request)
         {
             System.Diagnostics.Debug.WriteLine("CustomService Calling");
-            return _repository.Call();
+            _repository.Call();
+            return new CostomResponse()
+            {
+                Id = request.Id,
+                Date = DateTime.Now
+            };
         }
     }
 }

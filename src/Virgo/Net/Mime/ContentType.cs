@@ -97,12 +97,12 @@
         public const string Odg = "application/vnd.oasis.opendocument.graphics";
         public const string Odi = "application/vnd.oasis.opendocument.image";
         public const string Odm = "application/vnd.oasis.opendocument.text-master";
-        public const string Odp = "application/vnd.oasis.opendocument.presentation";
+        public const string Odp = "application/vnd.oasis.opendocument.UserInterface";
         public const string Ods = "application/vnd.oasis.opendocument.spreadsheet";
         public const string Odt = "application/vnd.oasis.opendocument.text";
         public const string Otg = "application/vnd.oasis.opendocument.graphics-template";
         public const string Oth = "application/vnd.oasis.opendocument.text-web";
-        public const string Otp = "application/vnd.oasis.opendocument.presentation-template";
+        public const string Otp = "application/vnd.oasis.opendocument.UserInterface-template";
         public const string Ots = "application/vnd.oasis.opendocument.spreadsheet-template ";
         public const string Ott = "application/vnd.oasis.opendocument.text-template";
         public const string Pbm = "image/x-portable-bitmap";

@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Infrastructure", "Vir
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Application", "Virgo.Application\Virgo.Application.csproj", "{F65E58A7-47FF-427B-B091-8896C8C62938}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Presentation", "Virgo.Presentation\Virgo.Presentation.csproj", "{079DB446-A80C-43DA-83F6-D3AB0D2534F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.UserInterface", "Virgo.UserInterface\Virgo.UserInterface.csproj", "{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,10 +113,10 @@ Global
 		{F65E58A7-47FF-427B-B091-8896C8C62938}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F65E58A7-47FF-427B-B091-8896C8C62938}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F65E58A7-47FF-427B-B091-8896C8C62938}.Release|Any CPU.Build.0 = Release|Any CPU
-		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{079DB446-A80C-43DA-83F6-D3AB0D2534F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,7 +138,7 @@ Global
 		{6D3B2C00-72AB-43F6-8699-356855C179BA} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{A905F508-B481-4B07-A059-5DB32A4A0939} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{F65E58A7-47FF-427B-B091-8896C8C62938} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
-		{079DB446-A80C-43DA-83F6-D3AB0D2534F1} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
+		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCA8524E-1E53-4254-BC3E-1D733F1D4C42}

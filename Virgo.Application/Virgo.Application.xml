@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Virgo.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Virgo.Application.ApplicationExtensions">
+            <summary>
+            Application拓展类
+            </summary>
+        </member>
+        <member name="M:Virgo.Application.ApplicationExtensions.RegisterApplication(Autofac.ContainerBuilder)">
+            <summary>
+            注入Application容器
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Application.Interfaces.ICustomService">
+            <summary>
+            自定义服务接口
+            </summary>
+        </member>
+        <member name="M:Virgo.Application.Interfaces.ICustomService.Call(Virgo.Application.Models.Requests.CustomRequest)">
+            <summary>
+            调用方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Application.Models.Requests.CustomRequest">
+            <summary>
+            自定义请求实体示例
+            </summary>
+        </member>
+        <member name="P:Virgo.Application.Models.Requests.CustomRequest.Id">
+            <summary>
+            Guid Xml GO GO GO
+            </summary>
+        </member>
+        <member name="T:Virgo.Application.Models.Responses.CostomResponse">
+            <summary>
+            自定义响应实体示例
+            </summary>
+        </member>
+        <member name="P:Virgo.Application.Models.Responses.CostomResponse.Id">
+            <summary>
+            XML ID
+            </summary>
+        </member>
+        <member name="P:Virgo.Application.Models.Responses.CostomResponse.Date">
+            <summary>
+            XML DATE
+            </summary>
+        </member>
+        <member name="T:Virgo.Application.Services.CustomService">
+            <summary>
+            <see cref="T:Virgo.Application.Interfaces.ICustomService"/>服务实现类
+            </summary>
+        </member>
+        <member name="F:Virgo.Application.Services.CustomService._repository">
+            <summary>
+            <see cref="T:Virgo.Domain.Interfaces.IRepository"/>仓储实例
+            </summary>
+        </member>
+    </members>
+</doc>
