@@ -112,8 +112,8 @@ namespace Virgo.UserInterface
         string str = "遇到什么困难也不要怕|微笑着面对他|消除恐惧最好的办法就是战胜恐惧|坚持，才是胜利!|加油，奥里给!";
         public override void DoWork(object state)
         {
-            Debug.WriteLine($" for {ExcuteCount.ToString()} excuteing,{DateTime.Now} \r\n {GetStr()}");
-            _logger.LogInformation($" for {ExcuteCount.ToString()} excuteing,{DateTime.Now} \r\n {GetStr()}");
+            Debug.WriteLine($" for {ExcuteCount.ToString()} excuteing , {DateTime.Now} \r\n {GetStr()}");
+            _logger.LogInformation($" for {ExcuteCount.ToString()} excuteing , {DateTime.Now} \r\n {GetStr()}");
             ExcuteCount++;
         }
         public string GetStr()
