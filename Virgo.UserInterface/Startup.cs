@@ -118,7 +118,7 @@ namespace Virgo.UserInterface
         }
         public string GetStr()
         {
-            return str.Split('|')[new Random().Next(str.Length - 1)];
+            return str.Split('|')[new Random().Next(str.Split('|').Length - 1)];
         }
     }
 }
