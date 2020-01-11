@@ -1939,7 +1939,7 @@
         </member>
         <member name="M:Virgo.Extensions.ExcelExtensions.DynmaicCellToList``1(System.String[0:,0:])">
             <summary>
-            动态单元格数据转换成为强类型集合
+            动态单元格转换
             </summary>
             <typeparam name="T"></typeparam>
             <param name="data"></param>
