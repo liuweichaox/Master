@@ -19,7 +19,7 @@ namespace Virgo.Tests.Extensions
         /// 动态单元格转换
         /// </summary>
         [Fact]
-        public void CellsToList_Test()
+        public void ExcelToList_Test()
         {
             var dynmaicCell = new string[3, 3]
             {
@@ -36,7 +36,7 @@ namespace Virgo.Tests.Extensions
         /// <see cref="ExcelExtensions"/>测试带异常
         /// </summary>
         [Fact]
-        public void CellsToListWithException_Test()
+        public void ExcelToListWithException_Test()
         {
             var dynmaicCell = new string[3, 3]
             {
