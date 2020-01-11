@@ -200,6 +200,42 @@
             </summary>
             <param name="app"></param>
         </member>
+        <member name="T:Virgo.AspNetCore.ConfigurationHelper">
+            <summary>
+            获取配置辅助类
+            </summary>
+        </member>
+        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetIConfigurationRoot(System.String)">
+            <summary>
+            获取<see cref="T:Microsoft.Extensions.Configuration.IConfigurationRoot"/>实例
+            </summary>
+            <param name="basthPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetIConfigurationRoot(System.String,System.String)">
+            <summary>
+            获取指定环境的<see cref="T:Microsoft.Extensions.Configuration.IConfigurationRoot"/>实例
+            </summary>
+            <param name="environment"></param>
+            <param name="basthPath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetApplicationConfiguration``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+            <summary>
+            获取指定节点实例
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="iConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetConfigurationSection``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+            <summary>
+            获取指定节点实例
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="iConfig"></param>
+            <returns></returns>
+        </member>
         <member name="T:Virgo.Net.HttpContext2">
             <summary>
             实现类似于.NET Framework中的HttpContext静态对象，使用前需要在Startup中注入，ConfigureServices方法中：services.AddHttpContextAccessor();，Configure方法中：app.UseStaticHttpContext();
@@ -1894,6 +1930,19 @@
             将中的Unix时间戳转换为日期时间[10位时间戳]
             </summary>
             <param name="unixTime">这个Unix时间戳</param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Extensions.ExcelExtensions">
+            <summary>
+            Excel拓展
+            </summary>
+        </member>
+        <member name="M:Virgo.Extensions.ExcelExtensions.DynmaicCellToList``1(System.String[0:,0:])">
+            <summary>
+            动态单元格数据转换成为强类型集合
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
             <returns></returns>
         </member>
         <member name="T:Virgo.Extensions.LinqExtensions">
