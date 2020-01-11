@@ -52,7 +52,6 @@ namespace Virgo.Domain.Uow
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="defaultOptions"></param>
         public UnitOfWorkBase()
         {
             Connection = CreateConnection();

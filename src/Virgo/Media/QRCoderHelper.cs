@@ -4,7 +4,7 @@ using System.Drawing;
 namespace Virgo.Media
 {
     /// <summary>
-    /// <see cref="QRCode"/>辅助类
+    /// <see cref="QRCode(string)"/>辅助类
     /// </summary>
     public static class QRCoderHelper
     {

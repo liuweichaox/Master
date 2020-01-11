@@ -11,7 +11,7 @@ namespace Virgo
         /// <summary>
         /// 注入Virgo
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="builder"></param>
         /// <returns></returns>
         public static ContainerBuilder UseVirgo(this ContainerBuilder builder)
         {

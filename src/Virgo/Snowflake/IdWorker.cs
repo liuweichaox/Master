@@ -2,6 +2,9 @@
 
 namespace Virgo.Snowflake
 {
+    /// <summary>
+    /// Id生成器
+    /// </summary>
     public class IdWorker
     {
         //基准时间

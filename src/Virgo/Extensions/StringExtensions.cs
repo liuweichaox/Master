@@ -23,7 +23,11 @@ namespace Virgo.Extensions
         /// <param name="str"></param>
         /// <returns></returns>
         public static bool IsNullOrWhiteSpace(this string str) => string.IsNullOrWhiteSpace(str);
-
+        /// <summary>
+        /// 转换为MD5
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string ToMd5(this string str)
         {
             using var md5 = MD5.Create();

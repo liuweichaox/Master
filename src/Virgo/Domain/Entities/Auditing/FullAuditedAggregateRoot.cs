@@ -30,10 +30,17 @@ namespace Virgo.Domain.Entities.Auditing
     [Serializable]
     public class FullAuditedAggregateRoot : AuditedAggregateRoot, IFullAudited
     {
+        /// <summary>
+        /// /是否删除
+        /// </summary>
         public virtual bool IsDeleted { get; set; }
-
+        /// <summary>
+        /// 删除人
+        /// </summary>
         public virtual string DeleterUserId { get; set; }
-
+        /// <summary>
+        /// 删除时间
+        /// </summary>
         public virtual DateTime? DeletionTime { get; set; }
     }
 }

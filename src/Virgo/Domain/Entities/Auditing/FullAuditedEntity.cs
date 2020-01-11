@@ -30,9 +30,18 @@ namespace Virgo.Domain.Entities.Auditing
     [Serializable]
     public class FullAuditedEntity : AuditedEntity, IFullAudited
     {
+        /// <summary>
+        /// 是否软删
+        /// </summary>
         public virtual bool IsDeleted { get; set; }
+        /// <summary>
+        /// 删除人
+        /// </summary>
 
         public virtual string DeleterUserId { get; set; }
+        /// <summary>
+        /// 删除时间
+        /// </summary>
         public virtual DateTime? DeletionTime { get; set; }
     }
 }

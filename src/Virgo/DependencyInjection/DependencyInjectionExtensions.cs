@@ -65,7 +65,7 @@ namespace Virgo.DependencyInjection
         /// <summary>
         /// 注册IocManager
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="app"></param>
         public static void UseIocManager(this IApplicationBuilder app)
         {
             IocManager.Instance.AutofacContainer = app.ApplicationServices.GetAutofacRoot();

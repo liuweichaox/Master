@@ -16,7 +16,8 @@ namespace Virgo.Extensions
         /// <summary>
         /// 将类型序列化为字符串
         /// </summary>
-        /// <param name="obj"></param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="t"></param>
         /// <returns></returns>
         public static string Serialize<T>(this T t)
         {
@@ -26,7 +27,7 @@ namespace Virgo.Extensions
         /// <summary>
         /// 将字符串反序列化为类型
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
         /// <param name="s"></param>
         /// <returns></returns>
         public static TResult Deserialize<TResult>(this string s)

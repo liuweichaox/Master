@@ -11,7 +11,7 @@ namespace Virgo.Application
         /// <summary>
         /// 注入Application容器
         /// </summary>
-        /// <param name="services"></param>
+        /// <param name="builder"></param>
         /// <returns></returns>
         public static ContainerBuilder RegisterApplication(this ContainerBuilder builder)
         {

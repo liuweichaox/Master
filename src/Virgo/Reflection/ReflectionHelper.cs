@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace Virgo.Reflection
 {
+    /// <summary>
+    /// 反射版主类
+    /// </summary>
     public class ReflectionHelper
     {
         /// <summary>

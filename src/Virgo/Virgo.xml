@@ -21,11 +21,31 @@
             <see cref="T:Virgo.Aliyun.Sms.ISmsSender"/>实现类
             </summary>
         </member>
+        <member name="M:Virgo.Aliyun.Sms.SmsSender.SendSmsAsync(Aliyun.Acs.Dysmsapi.Model.V20170525.SendSmsRequest)">
+            <summary>
+            发送短信
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="T:Virgo.AspNetCore.ApiResult`1">
             <summary>
             Api返回类
             </summary>
             <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Virgo.AspNetCore.ApiResult`1.#ctor(`0,Virgo.AspNetCore.ApiStatus,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="data"></param>
+            <param name="status"></param>
+            <param name="message"></param>
+        </member>
+        <member name="P:Virgo.AspNetCore.ApiResult`1.Data">
+            <summary>
+            返回数据
+            </summary>
         </member>
         <member name="P:Virgo.AspNetCore.ApiResult`1.Code">
             <summary>
@@ -36,6 +56,19 @@
             <summary>
             消息
             </summary>
+        </member>
+        <member name="T:Virgo.AspNetCore.ApiResult">
+            <summary>
+            <see cref="T:Virgo.AspNetCore.ApiResult`1"/>默认实现方式
+            </summary>
+        </member>
+        <member name="M:Virgo.AspNetCore.ApiResult.#ctor(System.String,Virgo.AspNetCore.ApiStatus,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="data"></param>
+            <param name="status"></param>
+            <param name="message"></param>
         </member>
         <member name="T:Virgo.AspNetCore.ApiStatus">
             <summary>
@@ -66,6 +99,16 @@
             <summary>
             构造函数
             </summary>
+        </member>
+        <member name="M:Virgo.AspNetCore.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiStatus,System.String)">
+            <summary>
+            <see cref="M:Virgo.AspNetCore.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiStatus,System.String)"/>返回
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="status"></param>
+            <param name="message"></param>
+            <returns></returns>
         </member>
         <member name="M:Virgo.AspNetCore.ApplicationController.Success(System.String)">
             <summary>
@@ -180,6 +223,13 @@
             <summary>
             取消 API 文档需要输入版本信息
             </summary>
+        </member>
+        <member name="M:Virgo.AspNetCore.RemoveVersionFromParameter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            Apply
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
         </member>
         <member name="T:Virgo.AspNetCore.SwaggerExtensions">
             <summary>
@@ -305,6 +355,11 @@
             <param name="action">Http请求头设置</param>
             <returns></returns>
         </member>
+        <member name="T:Virgo.Net.Http.HttpContentHelper">
+            <summary>
+            <see cref="T:System.Net.Http.HttpContent"/>帮助类
+            </summary>
+        </member>
         <member name="M:Virgo.Net.Http.HttpContentHelper.ToStreamContent(System.Object)">
             <summary>
             Object转换为StreamContent
@@ -323,8 +378,9 @@
             <summary>
             将接受的文件和参数转换为MultipartFormDataContent
             </summary>
+            <param name="files"></param>
             <param name="data"></param>
-            <returns>MultipartFormDataContent</returns>
+            <returns></returns>
         </member>
         <member name="M:Virgo.Net.Http.HttpContentHelper.ToFormUrlEncodedContent(System.Object)">
             <summary>
@@ -378,6 +434,11 @@
             <param name="encode">编码类型</param>
             <returns></returns>
         </member>
+        <member name="T:Virgo.Net.Http.HttpHeaders">
+            <summary>
+            Http头部
+            </summary>
+        </member>
         <member name="T:Virgo.Net.Http.WebRequestHelper">
             <summary>
             <see cref="T:System.Net.WebRequest"/>辅助类
@@ -387,8 +448,9 @@
             <summary>
             通过WebRequest发起Get请求
             </summary>
-            <param name="url">请求地址</param>
-            <returns>JSON字符串</returns>
+            <param name="url"></param>
+            <param name="data"></param>
+            <returns></returns>
         </member>
         <member name="M:Virgo.Net.Http.WebRequestHelper.PostAsync(System.String,System.Object)">
             <summary>
@@ -568,11 +630,50 @@
             缓存管理器的基类
             </summary>
         </member>
+        <member name="F:Virgo.Cache.CacheManagerBase.IocManager">
+            <summary>
+            <see cref="T:Virgo.DependencyInjection.IIocManager"/>实例
+            </summary>
+        </member>
+        <member name="F:Virgo.Cache.CacheManagerBase.Configuration">
+            <summary>
+            配置中心实例
+            </summary>
+        </member>
+        <member name="F:Virgo.Cache.CacheManagerBase.Caches">
+            <summary>
+            缓存字典
+            </summary>
+        </member>
         <member name="M:Virgo.Cache.CacheManagerBase.#ctor(Virgo.DependencyInjection.IIocManager,Virgo.Cache.Configuration.ICachingConfiguration)">
             <summary>
             构造函数
             </summary>
+            <param name="iocManager"></param>
             <param name="configuration"></param>
+        </member>
+        <member name="M:Virgo.Cache.CacheManagerBase.GetAllCaches">
+            <summary>
+            获取所有缓存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Cache.CacheManagerBase.GetCache(System.String)">
+            <summary>
+            获取缓存
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Cache.CacheManagerBase.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="M:Virgo.Cache.CacheManagerBase.DisposeCaches">
+            <summary>
+            释放缓存
+            </summary>
         </member>
         <member name="M:Virgo.Cache.CacheManagerBase.CreateCacheImplementation(System.String)">
             <summary>
@@ -585,6 +686,39 @@
             <summary>
             <see cref ="T:Virgo.Cache.ICacheManager"/>的扩展方法
             </summary>
+        </member>
+        <member name="T:Virgo.Cache.Configuration.CachingConfiguration">
+            <summary>
+            <see cref="T:Virgo.Cache.Configuration.ICachingConfiguration"/>实现类
+            </summary>
+        </member>
+        <member name="P:Virgo.Cache.Configuration.CachingConfiguration.Configurators">
+            <summary>
+            缓存配置
+            </summary>
+        </member>
+        <member name="F:Virgo.Cache.Configuration.CachingConfiguration._configurators">
+            <summary>
+            缓存配置
+            </summary>
+        </member>
+        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.ConfigureAll(System.Action{Virgo.Cache.ICache})">
+            <summary>
+            配置全局
+            </summary>
+            <param name="initAction"></param>
+        </member>
+        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.Configure(System.String,System.Action{Virgo.Cache.ICache})">
+            <summary>
+            配置某个缓存
+            </summary>
+            <param name="cacheName"></param>
+            <param name="initAction"></param>
         </member>
         <member name="T:Virgo.Cache.Configuration.ICacheConfigurator">
             <summary>
@@ -823,10 +957,9 @@
         <member name="T:Virgo.Cache.ITypedCache`2">
             <summary>
             以类型化方式使用缓存的接口
-            使用<see cref ="!:CacheExtensions.AsTyped &lt;TKey，TValue&gt;"/>方法将<see cref ="T:Virgo.Cache.ICache"/>转换为此接口
             </summary>
-            <typeparam name="TKey">缓存项的键类型</typeparam>
-            <typeparam name="TValue">缓存项的值类型</typeparam>
+            <typeparam name="TKey">缓存的键</typeparam>
+            <typeparam name="TValue">缓存的值</typeparam>
         </member>
         <member name="P:Virgo.Cache.ITypedCache`2.Name">
             <summary>
@@ -994,19 +1127,41 @@
         </member>
         <member name="T:Virgo.Cache.TypedCacheExtensions">
             <summary>
-            <see cref ="!:ITypedCache &lt;TKey，TValue&gt;"/>的扩展方法
+            <see cref ="T:Virgo.Cache.ITypedCache`2"/>的扩展方法
             </summary>
         </member>
-        <member name="T:Virgo.Cache.TypedCacheWrapper`2">
+        <member name="M:Virgo.Cache.TypedCacheExtensions.Get``2(Virgo.Cache.ITypedCache{``0,``1},``0,System.Func{``1})">
             <summary>
-            实现<see cref ="!:ITypedCache &lt;TKey，TValue&gt;"/>以包装<see cref ="T:Virgo.Cache.ICache"/>
+            获取缓存对象
             </summary>
             <typeparam name="TKey"></typeparam>
             <typeparam name="TValue"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="factory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Cache.TypedCacheExtensions.GetAsync``2(Virgo.Cache.ITypedCache{``0,``1},``0,System.Func{System.Threading.Tasks.Task{``1}})">
+            <summary>
+            获取缓存对象
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="cache"></param>
+            <param name="key"></param>
+            <param name="factory"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Cache.TypedCacheWrapper`2">
+            <summary>
+            <see cref="T:Virgo.Cache.ITypedCache`2"/>实现
+            </summary>
+            <typeparam name="TKey">缓存的键</typeparam>
+            <typeparam name="TValue">缓存的值</typeparam>
         </member>
         <member name="M:Virgo.Cache.TypedCacheWrapper`2.#ctor(Virgo.Cache.ICache)">
             <summary>
-            创建一个新的<see cref ="!:TypedCacheWrapper &lt;TKey，TValue&gt;"/>对象
+            创建一个新的<see cref ="T:Virgo.Cache.TypedCacheWrapper`2"/>对象
             </summary>
             <param name="internalCache">实际的内部缓存</param>
         </member>
@@ -1055,13 +1210,62 @@
             Autofac拦截器拓展
             </summary>
         </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.EnableInterception``2(Autofac.Builder.IRegistrationBuilder{``0,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle})">
+            <summary>
+            启用类代理
+            </summary>
+            <typeparam name="TService">动态添加的接口</typeparam>
+            <typeparam name="TInterceptor">拦截器</typeparam>
+            <param name="registration"></param>
+            <returns></returns>
+            <remarks>REF:https://www.cnblogs.com/stulzq/p/8547839.html</remarks>
+        </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.EnableInterception``1(Autofac.Builder.IRegistrationBuilder{``0,Autofac.Builder.ConcreteReflectionActivatorData,Autofac.Builder.SingleRegistrationStyle},System.Type[],System.Type[])">
+            <summary>
+            启用类代理
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <param name="registration"></param>
+            <param name="interfacesToIntercept"></param>
+            <param name="interceptors"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.InterceptedBy``1(Autofac.Core.IComponentRegistration)">
+            <summary>
+            注册拦截
+            </summary>
+            <typeparam name="TInterceptor"></typeparam>
+            <param name="registration"></param>
+        </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.InterceptedBy(Autofac.Core.IComponentRegistration,System.Type[])">
+            <summary>
+            注册拦截器
+            </summary>
+            <param name="registration"></param>
+            <param name="interceptorTypes"></param>
+        </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.InterceptedBy(Autofac.Core.IComponentRegistration,System.Boolean,System.Type[])">
+            <summary>
+            注册拦截器
+            </summary>
+            <param name="registration"></param>
+            <param name="interceptAddtionalInterfaces"></param>
+            <param name="interceptorTypes"></param>
+        </member>
+        <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.ApplyInterception(System.Type[],Autofac.Core.IActivatingEventArgs{System.Object},System.Boolean)">
+            <summary>
+            申请拦截
+            </summary>
+            <param name="interceptorTypes"></param>
+            <param name="e"></param>
+            <param name="interceptAdditionalInterfaces"></param>
+        </member>
         <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.RegisterInterceptorBy``1(Autofac.ContainerBuilder)">
             <summary>
             注册拦截器
             </summary>
             <typeparam name="TInterceptor"></typeparam>
             <param name="builder"></param>
-            <param name="types"></param>
             <returns></returns>
         </member>
         <member name="T:Virgo.DependencyInjection.DependencyInjectionExtensions">
@@ -1088,7 +1292,7 @@
             <summary>
             注册IocManager
             </summary>
-            <param name="services"></param>
+            <param name="app"></param>
         </member>
         <member name="T:Virgo.DependencyInjection.IIocManager">
             <summary>
@@ -1114,10 +1318,27 @@
             <see cref="T:Virgo.DependencyInjection.IIocManager"/>管理器实现类
             </summary>
         </member>
+        <member name="M:Virgo.DependencyInjection.IocManager.#cctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:Virgo.DependencyInjection.IocManager.Instance">
+            <summary>
+            <see cref="T:Virgo.DependencyInjection.IIocManager"/>管理器实例
+            </summary>
+        </member>
         <member name="P:Virgo.DependencyInjection.IocManager.AutofacContainer">
             <summary>
             Autofac容器
             </summary>
+        </member>
+        <member name="M:Virgo.DependencyInjection.IocManager.GetInstance``1">
+            <summary>
+            获取指定类型实例
+            </summary>
+            <typeparam name="TService"></typeparam>
+            <returns></returns>
         </member>
         <member name="T:Virgo.DependencyInjection.ISingletonDependency">
             <summary>
@@ -1163,6 +1384,16 @@
             抽象实现<see cref ="T:Virgo.Domain.Entities.Auditing.IAudited"/>的聚合根-主键为String类型
             </summary>
         </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.AuditedAggregateRoot.LastModificationTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.AuditedAggregateRoot.LastModifierUserId">
+            <summary>
+            最后修改人
+            </summary>
+        </member>
         <member name="T:Virgo.Domain.Entities.Auditing.AuditedEntity`1">
             <summary>
             <see cref="T:Virgo.Domain.Entities.Auditing.IAudited"/>实现类
@@ -1182,6 +1413,16 @@
         <member name="T:Virgo.Domain.Entities.Auditing.AuditedEntity">
             <summary>
              <see cref="T:Virgo.Domain.Entities.Auditing.IAudited"/>实现类-主键为String类型
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.AuditedEntity.LastModificationTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.AuditedEntity.LastModifierUserId">
+            <summary>
+            最后修改人
             </summary>
         </member>
         <member name="T:Virgo.Domain.Entities.Auditing.CreationAuditedAggregateRoot`1">
@@ -1262,6 +1503,21 @@
             <see cref ="T:Virgo.Domain.Entities.Auditing.IFullAudited"/>完整审计的聚合根抽象实现类-主键为String类型
             </summary>
         </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedAggregateRoot.IsDeleted">
+            <summary>
+            /是否删除
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedAggregateRoot.DeleterUserId">
+            <summary>
+            删除人
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedAggregateRoot.DeletionTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
         <member name="T:Virgo.Domain.Entities.Auditing.FullAuditedEntity`1">
             <summary>
             <see cref="T:Virgo.Domain.Entities.Auditing.IFullAudited"/> 完整审计基类抽象实现类
@@ -1286,6 +1542,21 @@
         <member name="T:Virgo.Domain.Entities.Auditing.FullAuditedEntity">
             <summary>
             <see cref="T:Virgo.Domain.Entities.Auditing.IFullAudited"/> 完整审计基类抽象实现类-主键为String类型
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedEntity.IsDeleted">
+            <summary>
+            是否软删
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedEntity.DeleterUserId">
+            <summary>
+            删除人
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.FullAuditedEntity.DeletionTime">
+            <summary>
+            删除时间
             </summary>
         </member>
         <member name="T:Virgo.Domain.Entities.Auditing.IAudited`1">
@@ -1315,6 +1586,11 @@
             创建审计属性接口-主键为String类型
             </summary>
         </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.ICreationAudited.CreatorUserId">
+            <summary>
+            创建人
+            </summary>
+        </member>
         <member name="T:Virgo.Domain.Entities.Auditing.IDeletionAudited`1">
             <summary>
             删除审计属性接口
@@ -1329,6 +1605,11 @@
         <member name="T:Virgo.Domain.Entities.Auditing.IDeletionAudited">
             <summary>
             删除审计属性接口-主键为String类型
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.IDeletionAudited.DeleterUserId">
+            <summary>
+            最后删除人
             </summary>
         </member>
         <member name="T:Virgo.Domain.Entities.Auditing.IFullAudited`1">
@@ -1388,6 +1669,11 @@
             修改审计属性接口-主键为String类型
             </summary>
         </member>
+        <member name="P:Virgo.Domain.Entities.Auditing.IModificationAudited.LastModifierUserId">
+            <summary>
+            最后修改人
+            </summary>
+        </member>
         <member name="T:Virgo.Domain.Entities.Auditing.ISoftDelete">
             <summary>
             软删除属性接口
@@ -1404,9 +1690,19 @@
             </summary>
             <typeparam name="TPrimaryKey"></typeparam>
         </member>
+        <member name="P:Virgo.Domain.Entities.Entity`1.Id">
+            <summary>
+            自增主键[Key]
+            </summary>
+        </member>
         <member name="T:Virgo.Domain.Entities.Entity">
             <summary>
             <see cref="T:Virgo.Domain.Entities.IEntity"/>抽象实现类-主键为String类型
+            </summary>
+        </member>
+        <member name="P:Virgo.Domain.Entities.Entity.Id">
+            <summary>
+            非自增主键[ExplicitKey]
             </summary>
         </member>
         <member name="T:Virgo.Domain.Entities.IAggregateRoot`1">
@@ -1559,7 +1855,6 @@
             <summary>
             构造函数
             </summary>
-            <param name="defaultOptions"></param>
         </member>
         <member name="M:Virgo.Domain.Uow.UnitOfWorkBase.OnCompleted">
             <summary>
@@ -1905,18 +2200,18 @@
             </summary>
         </member>
         <member name="M:Virgo.Extensions.DateTimeExtensions.ConvertDateTimeToLong(System.DateTime)">
-            <summary>  
+            <summary>
             DateTime时间格式转换为时间戳格式[13位时间戳]
-            </summary>  
-            <param name="time">时间</param>  
-            <returns>long</returns>  
+            </summary>
+            <param name="datetime">时间</param>
+            <returns></returns>
         </member>
         <member name="M:Virgo.Extensions.DateTimeExtensions.ConvertLocalFromTimestamp(System.Int64)">
-            <summary>        
+            <summary>
             将本地时间戳转为C#格式时间[13位时间戳]   
-            </summary>        
-            <param name="timeStamp"></param>        
-            <returns></returns>        
+            </summary>
+            <param name="timestamp">时间戳</param>
+            <returns></returns>
         </member>
         <member name="M:Virgo.Extensions.DateTimeExtensions.ToUnixTimestamp(System.DateTime)">
             <summary>
@@ -1930,6 +2225,18 @@
             将中的Unix时间戳转换为日期时间[10位时间戳]
             </summary>
             <param name="unixTime">这个Unix时间戳</param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Extensions.EnumExtensions">
+            <summary>
+            <see cref="T:System.Enum"/>拓展
+            </summary>
+        </member>
+        <member name="M:Virgo.Extensions.EnumExtensions.GetDescription(System.Enum)">
+            <summary>
+            获取枚举的描述
+            </summary>
+            <param name="enum"></param>
             <returns></returns>
         </member>
         <member name="T:Virgo.Extensions.ExcelExtensions">
@@ -1977,14 +2284,15 @@
             <summary>
             将类型序列化为字符串
             </summary>
-            <param name="obj"></param>
+            <typeparam name="T"></typeparam>
+            <param name="t"></param>
             <returns></returns>
         </member>
         <member name="M:Virgo.Extensions.ObjectExtensions.Deserialize``1(System.String)">
             <summary>
             将字符串反序列化为类型
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="TResult"></typeparam>
             <param name="s"></param>
             <returns></returns>
         </member>
@@ -2028,6 +2336,11 @@
             </summary>
             <param name="obj"></param>
             <returns></returns>
+        </member>
+        <member name="T:Virgo.Extensions.RandomExtensions">
+            <summary>
+            随机数拓展
+            </summary>
         </member>
         <member name="M:Virgo.Extensions.RandomExtensions.StrictNext(System.Random,System.Int32)">
             <summary>
@@ -2123,6 +2436,13 @@
         <member name="M:Virgo.Extensions.StringExtensions.IsNullOrWhiteSpace(System.String)">
             <summary>
             判断字符串是否为空，或仅包含空格字符
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.StringExtensions.ToMd5(System.String)">
+            <summary>
+            转换为MD5
             </summary>
             <param name="str"></param>
             <returns></returns>
@@ -2850,6 +3170,33 @@
             字节单位枚举
             </summary>
         </member>
+        <member name="T:Virgo.IO.DirectoryHelper">
+            <summary>
+            <see cref="T:System.IO.Directory"/>帮助类
+            </summary>
+        </member>
+        <member name="M:Virgo.IO.DirectoryHelper.CreateIfNotExists(System.String)">
+            <summary>
+            创建目录
+            </summary>
+            <param name="directory"></param>
+        </member>
+        <member name="T:Virgo.IO.FileHelper">
+            <summary>
+            文件辅助类
+            </summary>
+        </member>
+        <member name="M:Virgo.IO.FileHelper.DeleteIfExists(System.String)">
+            <summary>
+            删除文件如果存在
+            </summary>
+            <param name="filePath"></param>
+        </member>
+        <member name="T:Virgo.IP.IpHelper">
+            <summary>
+            IP帮助类
+            </summary>
+        </member>
         <member name="M:Virgo.IP.IpHelper.Search(System.String)">
             <summary>
             使用默认搜索器获取IP地址信息。
@@ -2900,6 +3247,11 @@
             它可以使查询速度加倍。 只有使用IPTools.International才会生效。
             </summary>
         </member>
+        <member name="T:Virgo.IP.IpTool">
+            <summary>
+            IP工具
+            </summary>
+        </member>
         <member name="M:Virgo.IP.IpTool.Write(System.Byte[],System.Int32,System.UInt64,System.Int32)">
             <summary>
             Write specfield bytes to a byte array start from offset.
@@ -2937,6 +3289,66 @@
             <returns>
             Bytes gotten.
             </returns>
+        </member>
+        <member name="T:Virgo.IP.Models.IpInfo">
+            <summary>
+            IP信息
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.IpAddress">
+            <summary>
+            IP地址
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.CountryCode">
+            <summary>
+            国家编码
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.Province">
+            <summary>
+            省
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.ProvinceCode">
+            <summary>
+            省编码
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.City">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.PostCode">
+            <summary>
+            邮编
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.NetworkOperator">
+            <summary>
+            网络运营商
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.Latitude">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.Longitude">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:Virgo.IP.Models.IpInfo.AccuracyRadius">
+            <summary>
+            精度半径
+            </summary>
         </member>
         <member name="T:Virgo.IP.Searcher.DbSearcher">
             <summary>
@@ -3023,6 +3435,21 @@
             <summary>
             IP搜索接口
             </summary>
+        </member>
+        <member name="M:Virgo.IP.Searcher.IIpSearcher.Search(System.String)">
+            <summary>
+            搜索IP
+            </summary>
+            <param name="ip"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.IP.Searcher.IIpSearcher.SearchWithI18N(System.String,System.String)">
+            <summary>
+            搜索带国际化
+            </summary>
+            <param name="ip"></param>
+            <param name="langCode"></param>
+            <returns></returns>
         </member>
         <member name="T:Virgo.Media.ImageHelper">
             <summary>
@@ -3232,7 +3659,7 @@
         </member>
         <member name="T:Virgo.Media.QRCoderHelper">
             <summary>
-            <see cref="M:Virgo.Media.QRCoderHelper.QRCode(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Boolean)"/>辅助类
+            <see cref="M:Virgo.Media.QRCoderHelper.QRCode(System.String)"/>辅助类
             </summary>
         </member>
         <member name="M:Virgo.Media.QRCoderHelper.QRCode(System.String,System.Int32,System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
@@ -3271,6 +3698,11 @@
         <member name="F:Virgo.Media.ThumbnailCutMode.Cut">
             <summary>
             裁剪
+            </summary>
+        </member>
+        <member name="T:Virgo.Reflection.ReflectionHelper">
+            <summary>
+            反射版主类
             </summary>
         </member>
         <member name="M:Virgo.Reflection.ReflectionHelper.GetDescription``1(System.String)">
@@ -3507,6 +3939,11 @@
             雪花ID生成器
             </summary>
         </member>
+        <member name="T:Virgo.Snowflake.IdWorker">
+            <summary>
+            Id生成器
+            </summary>
+        </member>
         <member name="T:Virgo.Strings.ValidateCode">
             <summary>
             画验证码
@@ -3664,9 +4101,9 @@
         <member name="T:Virgo.Text.StringCompute">
             <summary>
             字符串相似度辅助类
-            <see cref="M:Virgo.Text.StringCompute.SpeedyCompute"/>计算相似度， 不记录比较时间
-            <see cref="M:Virgo.Text.StringCompute.Compute"/>计算相似度， 记录比较时间
-            </summary>
+            <see cref="M:Virgo.Text.StringCompute.SpeedyCompute(System.String,System.String)"/>计算相似度,不记录比较时间
+            <see cref="M:Virgo.Text.StringCompute.Compute(System.String,System.String)"/>计算相似度,记录比较时间
+            </summary> 
         </member>
         <member name="F:Virgo.Text.StringCompute._ArrChar1">
             <summary>
@@ -3903,7 +4340,7 @@
             <summary>
             注入Virgo
             </summary>
-            <param name="services"></param>
+            <param name="builder"></param>
             <returns></returns>
         </member>
         <member name="T:Virgo.Win32.Windows">

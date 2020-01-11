@@ -1,5 +1,8 @@
 ﻿namespace Virgo.Net.Http
 {
+    /// <summary>
+    /// Http头部
+    /// </summary>
     public static class HttpHeaders
     {
         public const string Accept = "Accept";

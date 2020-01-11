@@ -10,10 +10,9 @@ namespace Virgo.Domain.Entities
     [Serializable]
     public abstract class Entity<TPrimaryKey> : IEntity<TPrimaryKey> where TPrimaryKey : struct
     {
-        //Dapper区别：
-        //      ExplicitKey 不自增主键
-        //      Key 自增主键
-        //[ExplicitKey]
+        /// <summary>
+        /// 自增主键[Key]
+        /// </summary>
         public virtual TPrimaryKey Id { get; set; }
     }
     /// <summary>
@@ -22,7 +21,9 @@ namespace Virgo.Domain.Entities
     [Serializable]
     public abstract class Entity : IEntity
     {
-        //[ExplicitKey]
+        /// <summary>
+        /// 非自增主键[ExplicitKey]
+        /// </summary>
         public virtual string Id { get; set; }
     }
 }

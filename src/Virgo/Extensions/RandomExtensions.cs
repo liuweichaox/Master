@@ -3,6 +3,9 @@ using System.Diagnostics;
 
 namespace Virgo.Extensions
 {
+    /// <summary>
+    /// 随机数拓展
+    /// </summary>
     public static class RandomExtensions
     {
         /// <summary>

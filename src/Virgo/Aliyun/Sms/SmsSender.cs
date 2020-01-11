@@ -13,6 +13,11 @@ namespace Virgo.Aliyun.Sms
     /// </summary>
     public class SmsSender : ISmsSender, ISingletonDependency
     {
+        /// <summary>
+        /// 发送短信
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public async Task<SendSmsResponse> SendSmsAsync(SendSmsRequest request)
         {
             var verifiedCode = new Random().Next(100000, 999999).ToString();

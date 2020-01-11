@@ -16,6 +16,9 @@
     /// </summary>
     public interface IDeletionAudited : IHasDeletionTime
     {
+        /// <summary>
+        /// 最后删除人
+        /// </summary>
         string DeleterUserId { get; set; }
     }
 }

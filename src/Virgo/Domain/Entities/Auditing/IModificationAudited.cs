@@ -16,6 +16,9 @@
     /// </summary>
     public interface IModificationAudited : IHasModificationTime
     {
+        /// <summary>
+        /// 最后修改人
+        /// </summary>
         string LastModifierUserId { get; set; }
     }
 }

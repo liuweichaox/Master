@@ -4,6 +4,9 @@ using Virgo.IP.Searcher;
 
 namespace Virgo.IP
 {
+    /// <summary>
+    /// IP帮助类
+    /// </summary>
     public static class IpHelper
     {
         private static readonly IIpSearcher Searcher;

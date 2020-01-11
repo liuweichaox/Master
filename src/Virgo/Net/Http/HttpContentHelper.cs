@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Virgo.Net.Http
 {
+    /// <summary>
+    /// <see cref="HttpContent"/>帮助类
+    /// </summary>
     public static class HttpContentHelper
     {
         /// <summary>
@@ -42,8 +45,9 @@ namespace Virgo.Net.Http
         /// <summary>
         /// 将接受的文件和参数转换为MultipartFormDataContent
         /// </summary>
+        /// <param name="files"></param>
         /// <param name="data"></param>
-        /// <returns>MultipartFormDataContent</returns>
+        /// <returns></returns>
         public static HttpContent ToMultipartFormDataContent(IFormFileCollection files = null, object data = null)
         {
             if (files == null && data == null)

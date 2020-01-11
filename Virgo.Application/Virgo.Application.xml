@@ -13,7 +13,7 @@
             <summary>
             注入Application容器
             </summary>
-            <param name="services"></param>
+            <param name="builder"></param>
             <returns></returns>
         </member>
         <member name="T:Virgo.Application.Interfaces.ICustomService">
@@ -61,6 +61,19 @@
             <summary>
             <see cref="T:Virgo.Domain.Interfaces.IRepository"/>仓储实例
             </summary>
+        </member>
+        <member name="M:Virgo.Application.Services.CustomService.#ctor(Virgo.Domain.Interfaces.IRepository)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="repository"></param>
+        </member>
+        <member name="M:Virgo.Application.Services.CustomService.Call(Virgo.Application.Models.Requests.CustomRequest)">
+            <summary>
+            调用
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

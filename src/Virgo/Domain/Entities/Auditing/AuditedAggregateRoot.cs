@@ -26,8 +26,13 @@ namespace Virgo.Domain.Entities.Auditing
     [Serializable]
     public abstract class AuditedAggregateRoot : CreationAuditedAggregateRoot, IAudited
     {
+        /// <summary>
+        /// 最后修改时间
+        /// </summary>
         public virtual DateTime? LastModificationTime { get; set; }
-
+        /// <summary>
+        /// 最后修改人
+        /// </summary>
         public virtual string LastModifierUserId { get; set; }
     }
 }

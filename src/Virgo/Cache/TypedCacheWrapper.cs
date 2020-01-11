@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace Virgo.Cache
 {
     /// <summary>
-    /// 实现<see cref ="ITypedCache {TKey，TValue}"/>以包装<see cref ="ICache"/>
+    /// <see cref="ITypedCache{TKey, TValue}"/>实现
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
-    /// <typeparam name="TValue"></typeparam>
+    /// <typeparam name="TKey">缓存的键</typeparam>
+    /// <typeparam name="TValue">缓存的值</typeparam>
     public class TypedCacheWrapper<TKey, TValue> : ITypedCache<TKey, TValue>
     {
         public string Name
@@ -31,7 +31,7 @@ namespace Virgo.Cache
         public ICache InternalCache { get; private set; }
 
         /// <summary>
-        /// 创建一个新的<see cref ="TypedCacheWrapper {TKey，TValue}"/>对象
+        /// 创建一个新的<see cref ="TypedCacheWrapper{TKey, TValue}"/>对象
         /// </summary>
         /// <param name="internalCache">实际的内部缓存</param>
         public TypedCacheWrapper(ICache internalCache)

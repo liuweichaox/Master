@@ -2,6 +2,9 @@
 
 namespace Virgo.IP
 {
+    /// <summary>
+    /// IP工具
+    /// </summary>
     public static class IpTool
     {
         /// <summary>

@@ -16,6 +16,9 @@
     /// </summary>
     public interface ICreationAudited : IHasCreationTime
     {
+        /// <summary>
+        /// 创建人
+        /// </summary>
         string CreatorUserId { get; set; }
     }
 }

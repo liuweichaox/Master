@@ -12,6 +12,11 @@ namespace Virgo.AspNetCore
     /// </summary>
     public class RemoveVersionFromParameter : IOperationFilter
     {
+        /// <summary>
+        /// Apply
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <param name="context"></param>
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
             var versionParameter = operation.Parameters.Single(p => p.Name == "version");

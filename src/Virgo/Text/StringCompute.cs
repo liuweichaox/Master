@@ -4,9 +4,9 @@ namespace Virgo.Text
 {
     /// <summary>
     /// 字符串相似度辅助类
-    /// <see cref="SpeedyCompute"/>计算相似度， 不记录比较时间
-    /// <see cref="Compute"/>计算相似度， 记录比较时间
-    /// </summary>
+    /// <see cref="SpeedyCompute(string, string)"/>计算相似度,不记录比较时间
+    /// <see cref="Compute(string, string)"/>计算相似度,记录比较时间
+    /// </summary> 
     public class StringCompute
     {
         #region 私有变量

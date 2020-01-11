@@ -14,12 +14,21 @@ namespace Virgo.AspNetCore
     /// <typeparam name="T"></typeparam>
     public class ApiResult<T>
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="status"></param>
+        /// <param name="message"></param>
         public ApiResult(T data, ApiStatus status, string message)
         {
             Data = data;
             Code = status;
             Message = message;
         }
+        /// <summary>
+        /// 返回数据
+        /// </summary>
         public T Data { get; set; }
         /// <summary>
         /// 状态码
@@ -31,8 +40,17 @@ namespace Virgo.AspNetCore
         public string Message { get; set; }
     }
 
+    /// <summary>
+    /// <see cref="ApiResult{T}"/>默认实现方式
+    /// </summary>
     public class ApiResult : ApiResult<string>
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="status"></param>
+        /// <param name="message"></param>
         public ApiResult(string data, ApiStatus status, string message) : base(data, status, message)
         {
         }

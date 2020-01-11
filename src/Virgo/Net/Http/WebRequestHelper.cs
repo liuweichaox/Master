@@ -17,8 +17,9 @@ namespace Virgo.Net.Http
         /// <summary>
         /// 通过WebRequest发起Get请求
         /// </summary>
-        /// <param name="url">请求地址</param>
-        /// <returns>JSON字符串</returns>
+        /// <param name="url"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static async Task<string> GetAsync(string url, object data)
         {
             string jsonString = string.Empty;

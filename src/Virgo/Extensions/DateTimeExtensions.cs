@@ -7,22 +7,21 @@ namespace Virgo.Extensions
     /// </summary>
     public static class DateTimeExtensions
     {
-        /// <summary>  
+        /// <summary>
         /// DateTime时间格式转换为时间戳格式[13位时间戳]
-        /// </summary>  
-        /// <param name="time">时间</param>  
-        /// <returns>long</returns>  
+        /// </summary>
+        /// <param name="datetime">时间</param>
+        /// <returns></returns>
         public static long ConvertDateTimeToLong(this DateTime datetime)
         {
             DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);
             return (long)(datetime - UnixTimestampLocalZero).TotalMilliseconds;
         }
-
-        /// <summary>        
+        /// <summary>
         /// 将本地时间戳转为C#格式时间[13位时间戳]   
-        /// </summary>        
-        /// <param name="timeStamp"></param>        
-        /// <returns></returns>        
+        /// </summary>
+        /// <param name="timestamp">时间戳</param>
+        /// <returns></returns>
         public static DateTime ConvertLocalFromTimestamp(this long timestamp)
         {
             DateTime UnixTimestampLocalZero = System.TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc), TimeZoneInfo.Local);

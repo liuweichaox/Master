@@ -17,7 +17,14 @@ namespace Virgo.AspNetCore
         {
 
         }
-
+        /// <summary>
+        /// <see cref="ApiResult{T}(T, ApiStatus, string)"/>返回
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="data"></param>
+        /// <param name="status"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         [NonAction]
         public ApiResult<T> ApiResult<T>(T data, ApiStatus status, string message="")
         {

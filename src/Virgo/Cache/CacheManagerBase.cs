@@ -13,15 +13,25 @@ namespace Virgo.Cache
     /// </summary>
     public abstract class CacheManagerBase : ICacheManager, ISingletonDependency
     {
+        /// <summary>
+        /// <see cref="IIocManager"/>实例
+        /// </summary>
         protected readonly IIocManager IocManager;
 
+        /// <summary>
+        /// 配置中心实例
+        /// </summary>
         protected readonly ICachingConfiguration Configuration;
 
+        /// <summary>
+        /// 缓存字典
+        /// </summary>
         protected readonly ConcurrentDictionary<string, ICache> Caches;
 
         /// <summary>
         /// 构造函数
         /// </summary>
+        /// <param name="iocManager"></param>
         /// <param name="configuration"></param>
         protected CacheManagerBase(IIocManager iocManager, ICachingConfiguration configuration)
         {
@@ -29,12 +39,20 @@ namespace Virgo.Cache
             Configuration = configuration;
             Caches = new ConcurrentDictionary<string, ICache>();
         }
-
+        /// <summary>
+        /// 获取所有缓存
+        /// </summary>
+        /// <returns></returns>
         public IReadOnlyList<ICache> GetAllCaches()
         {
             return Caches.Values.ToImmutableList();
         }
 
+        /// <summary>
+        /// 获取缓存
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public virtual ICache GetCache(string name)
         {
             if (name == null)
@@ -57,12 +75,17 @@ namespace Virgo.Cache
             });
         }
 
+        /// <summary>
+        /// 释放资源
+        /// </summary>
         public virtual void Dispose()
         {
             DisposeCaches();
             Caches.Clear();
         }
-
+        /// <summary>
+        /// 释放缓存
+        /// </summary>
         protected virtual void DisposeCaches()
         {
             foreach (var cache in Caches)

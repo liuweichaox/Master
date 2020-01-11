@@ -9,7 +9,6 @@
         /// 默认Mime  - 如果没有找到任何其他映射则作为默认的Mime-Type
         /// </summary>
         public const string DefaultMime = "application/octet-stream";
-
         public const string Abs = "audio/x-mpeg";
         public const string Ai = "application/postscript";
         public const string Aif = "audio/x-aiff";
