@@ -109,7 +109,7 @@ namespace Virgo.Extensions
             return list;
         }
         /// <summary>
-        /// 读取Excel，将单元格数据转换为指定类型
+        /// 读取Excel，返回单元格数据强类型
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
@@ -126,7 +126,7 @@ namespace Virgo.Extensions
 
         #region 导出
         /// <summary>
-        /// 将集合对象转换为<see cref="ExcelPackage"/>
+        /// 导出Excel，返回ExcelPackage
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -160,7 +160,7 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
-        /// 将集合转换为Excel
+        /// 导出Excel，获取流
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -175,7 +175,7 @@ namespace Virgo.Extensions
             return stream;
         }
         /// <summary>
-        /// 将集合转换为Excel,并保存
+        /// 导出Excel,保存Excel文件
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
