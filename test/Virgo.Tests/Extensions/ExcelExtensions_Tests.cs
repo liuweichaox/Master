@@ -18,7 +18,7 @@ namespace Virgo.Tests.Extensions
         /// 动态单元格转换
         /// </summary>
         [Fact]
-        public void DynmaicCellToList_Test()
+        public void CellsToList_Test()
         {
             var dynmaicCell = new string[3, 3]
             {
@@ -26,8 +26,35 @@ namespace Virgo.Tests.Extensions
                 {"Jon","123456@gmail.com",DateTime.Now.ToString() },
                 {"Allen","98765@gmail.com",DateTime.Now.ToString()}
             };
-            var templates = dynmaicCell.DynmaicCellToList<ExcelTemplate>();
+
+            var templates = dynmaicCell.CellsToList<ExcelTemplate>();
             templates.Any(x => x.Name == "Jon").ShouldBe(true);
+        }
+
+        /// <summary>
+        /// <see cref="ExcelExtensions"/>测试带异常
+        /// </summary>
+        [Fact]
+        public void CellsToListWithException_Test()
+        {
+            var dynmaicCell = new string[3, 3]
+            {
+                {" 姓  名 "," 邮  箱 ","创建时间" },
+                {"Jon","123456@gmail.com","123" },
+                {"Allen","98765@gmail.com","abc"}
+            };
+
+            try
+            {
+                var templates = dynmaicCell.CellsToList<ExcelTemplate>();
+                templates.Any(x => x.Name == "Jon").ShouldBe(true);
+            }
+            catch (ExcelException ex)
+            {
+                ex.ExcelExceptions.Count.ShouldBe(2);
+            }
+
+
         }
     }
 

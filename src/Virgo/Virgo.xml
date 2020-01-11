@@ -2244,13 +2244,60 @@
             Excel拓展
             </summary>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.DynmaicCellToList``1(System.String[0:,0:])">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ReadWorksheet``1(System.IO.Stream,System.Int32)">
+            <summary>
+            读取Excel工作表，将单元格数据转换为指定类型
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="stream"></param>
+            <param name="worksheet"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.ExcelExtensions.ReadWorksheet(System.IO.Stream,System.Int32)">
+            <summary>
+            读取Excel工作表，将单元格数据转换为二维数组
+            </summary>
+            <param name="stream">Excel文件</param>
+            <param name="worksheet">指定工作表。默认第一个</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.ExcelExtensions.CellsToList``1(System.String[0:,0:])">
             <summary>
             动态单元格转换
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="data"></param>
+            <typeparam name="T">需要转换的类型</typeparam>
+            <param name="cells">Excel单元格数据</param>
             <returns></returns>
+        </member>
+        <member name="T:Virgo.Extensions.ExcelExceptionTemplate">
+            <summary>
+            Excel异常模板
+            </summary>
+        </member>
+        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Row">
+            <summary>
+            行
+            </summary>
+        </member>
+        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Column">
+            <summary>
+            列
+            </summary>
+        </member>
+        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.OriginalMessage">
+            <summary>
+            原始异常
+            </summary>
+        </member>
+        <member name="T:Virgo.Extensions.ExcelException">
+            <summary>
+            Excel异常
+            </summary>
         </member>
         <member name="T:Virgo.Extensions.LinqExtensions">
             <summary>
