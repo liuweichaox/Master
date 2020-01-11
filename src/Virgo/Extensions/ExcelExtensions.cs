@@ -22,8 +22,7 @@ namespace Virgo.Extensions
         {
             var cells = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
-            var type = typeof(T);
-            var propertyInfos = type.GetProperties();
+            var propertyInfos = typeof(T).GetProperties();
             for (int rowIndex = 0; rowIndex < data.GetLength(0); rowIndex++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
@@ -43,7 +42,7 @@ namespace Virgo.Extensions
                         var propertyName = propertyPosition.GetValueOrDefault(columnIndex);
                         if (propertyName != null)
                         {
-                            var property = type.GetProperty(propertyName);
+                            var property = propertyInfos.SingleOrDefault(x => x.Name == propertyName);
                             try
                             {
                                 var value = Convert.ChangeType(cell, property.PropertyType);
