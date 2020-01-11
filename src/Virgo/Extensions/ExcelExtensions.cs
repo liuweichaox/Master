@@ -15,26 +15,17 @@ namespace Virgo.Extensions
     /// </summary>
     public static class ExcelExtensions
     {
+        #region 导入
         /// <summary>
-        /// 读取Excel工作表，将单元格数据转换为指定类型
+        /// 读取Excel，将单元格数据转换为二维数组
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
         /// <param name="worksheet"></param>
         /// <returns></returns>
-        public static List<T> ReadWorksheet<T>(this Stream stream, int worksheet = 0) where T : class, new()
+        public static string[,] ReadExcel(this Stream stream, int worksheet = 0)
         {
-            var cells = ReadWorksheet(stream, worksheet);
-            return CellsToList<T>(cells);
-        }
-        /// <summary>
-        /// 读取Excel工作表，将单元格数据转换为二维数组
-        /// </summary>
-        /// <param name="stream">Excel文件</param>
-        /// <param name="worksheet">指定工作表。默认第一个</param>
-        /// <returns></returns>
-        public static string[,] ReadWorksheet(this Stream stream, int worksheet = 0)
-        {
+            if (stream == null)
+                throw new ArgumentException(nameof(stream));
             using var pck = new ExcelPackage(stream);
             var ws = pck.Workbook.Worksheets[worksheet];
             var minColumnNum = ws.Dimension.Start.Column; //工作区开始列
@@ -46,20 +37,22 @@ namespace Virgo.Extensions
             {
                 for (int col = minColumnNum; col <= maxColumnNum; col++)
                 {
-                    cells[row, col] = ws.Cells[row, col].ToString();
+                    cells[row - 1, col - 1] = ws.GetValue(row, col).ToString();
                 }
             }
             return cells;
         }
 
         /// <summary>
-        /// 动态单元格转换
+        /// 读取Excel，将集合转换为强类型结合
         /// </summary>
-        /// <typeparam name="T">需要转换的类型</typeparam>
-        /// <param name="cells">Excel单元格数据</param>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="cells"></param>
         /// <returns></returns>
-        public static List<T> CellsToList<T>(this string[,] cells) where T : class, new()
+        public static List<T> ExcelToList<T>(this string[,] cells) where T : class, new()
         {
+            if (cells == null)
+                throw new ArgumentException(nameof(cells));
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
@@ -115,6 +108,87 @@ namespace Virgo.Extensions
             }
             return list;
         }
+        /// <summary>
+        /// 读取Excel，将单元格数据转换为指定类型
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="stream"></param>
+        /// <param name="worksheet"></param>
+        /// <returns></returns>
+        public static List<T> ReadExcel<T>(this Stream stream, int worksheet = 0) where T : class, new()
+        {
+            if (stream == null)
+                throw new ArgumentException(nameof(stream));
+            var cells = ReadExcel(stream, worksheet);
+            return ExcelToList<T>(cells);
+        }
+        #endregion
+
+        #region 导出
+        /// <summary>
+        /// 将集合对象转换为<see cref="ExcelPackage"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static ExcelPackage ExportToExcel<T>(this List<T> list)
+        {
+            if (list == null || list.Any() == false)
+                throw new ArgumentException(nameof(list));
+            var type = typeof(T);
+            ExcelPackage package = new ExcelPackage();
+            ExcelWorksheet sheet = package.Workbook.Worksheets.Add(type.Name);
+            var propertyInfos = type.GetProperties();
+            var rows = list.Count;
+            var cols = propertyInfos.Length;
+            for (int row = 0; row < rows; row++)
+            {
+                var item = list[row];
+                for (int col = 0; col < cols; col++)
+                {
+                    var property = propertyInfos[col];
+                    if (row == 0)
+                    {
+                        var value = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
+                        sheet.SetValue(row + 1, col + 1, value);
+                    }
+                    var objVal = Convert.ChangeType(property.GetValue(item), property.PropertyType);
+                    sheet.SetValue(row + 2, col + 1, objVal.ToString());
+                }
+            }
+            return package;
+        }
+
+        /// <summary>
+        /// 将集合转换为Excel
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static MemoryStream ExportToStream<T>(this List<T> list)
+        {
+            if (list == null || list.Any() == false)
+                throw new ArgumentException(nameof(list));
+            using var package = ExportToExcel(list);
+            MemoryStream stream = new MemoryStream();
+            package.SaveAs(stream);
+            return stream;
+        }
+        /// <summary>
+        /// 将集合转换为Excel,并保存
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="path"></param>
+        public static void ExportToFile<T>(this List<T> list, string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                throw new ArgumentException(nameof(path));
+            using var package = ExportToExcel(list);
+            using FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            package.SaveAs(stream);
+        }
+        #endregion        
     }
 
     /// <summary>
@@ -123,11 +197,11 @@ namespace Virgo.Extensions
     public class ExcelExceptionTemplate
     {
         /// <summary>
-        /// 行
+        /// 行坐标
         /// </summary>
         public int Row { get; set; }
         /// <summary>
-        /// 列
+        /// 列坐标
         /// </summary>
         public int Column { get; set; }
         /// <summary>

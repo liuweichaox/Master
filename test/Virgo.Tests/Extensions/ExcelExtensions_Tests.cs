@@ -6,6 +6,7 @@ using Xunit;
 using Virgo.Extensions;
 using Shouldly;
 using System.Linq;
+using System.IO;
 
 namespace Virgo.Tests.Extensions
 {
@@ -27,7 +28,7 @@ namespace Virgo.Tests.Extensions
                 {"Allen","98765@gmail.com",DateTime.Now.ToString()}
             };
 
-            var templates = dynmaicCell.CellsToList<ExcelTemplate>();
+            var templates = dynmaicCell.ExcelToList<ExcelTemplate>();
             templates.Any(x => x.Name == "Jon").ShouldBe(true);
         }
 
@@ -46,7 +47,7 @@ namespace Virgo.Tests.Extensions
 
             try
             {
-                var templates = dynmaicCell.CellsToList<ExcelTemplate>();
+                var templates = dynmaicCell.ExcelToList<ExcelTemplate>();
                 templates.Any(x => x.Name == "Jon").ShouldBe(true);
             }
             catch (ExcelException ex)
@@ -55,6 +56,60 @@ namespace Virgo.Tests.Extensions
             }
 
 
+        }
+
+        /// <summary>
+        /// 导出Excel测试，创建Excel流
+        /// </summary>
+        [Fact]
+        public void ExportExcelToStream_Test()
+        {
+            var temps = new List<ExcelTemplate>()
+            {
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="12345@gamil.com",
+                    Name="Jon"
+                },
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="54321@gamil.com",
+                    Name="Allen"
+                }
+            };
+            using var stream = temps.ExportToStream();
+            stream.Length.ShouldBeGreaterThan(0);
+            var list = stream.ReadExcel<ExcelTemplate>();
+            list.ShouldNotBeNull();
+        }
+
+        /// <summary>
+        /// 导出Excel测试，导出为文件
+        /// </summary>
+        [Fact]
+        public void ExportExcelToFile_Test()
+        {
+            var temps = new List<ExcelTemplate>()
+            {
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="12345@gamil.com",
+                    Name="Jon"
+                },
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="54321@gamil.com",
+                    Name="Allen"
+                }
+            };
+            var path = "D:\\ExcelTest.xlxs";
+            temps.ExportToFile(path);
+            using StreamReader stream = new StreamReader(path);
+            stream.ReadToEnd().ShouldNotBeNull();
         }
     }
 
