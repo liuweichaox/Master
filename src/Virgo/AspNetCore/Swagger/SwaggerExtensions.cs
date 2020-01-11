@@ -49,7 +49,7 @@ namespace Virgo.AspNetCore
                 });
 
                 // 参数使用驼峰命名方式
-                options.DescribeAllParametersInCamelCase();
+                //options.DescribeAllParametersInCamelCase();
 
                 // 取消 API 文档需要输入版本信息
                 options.OperationFilter<RemoveVersionFromParameter>();

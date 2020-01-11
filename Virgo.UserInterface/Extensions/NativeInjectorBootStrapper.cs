@@ -22,7 +22,7 @@ namespace Virgo.UserInterface.Extensions
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+               // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
 
             services.AddOptions();
