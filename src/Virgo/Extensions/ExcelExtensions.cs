@@ -49,14 +49,15 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="cells"></param>
         /// <returns></returns>
+        /// <exception cref="ExcelException"></exception>
         public static List<T> ExcelToList<T>(this string[,] cells) where T : class, new()
         {
             if (cells == null)
                 throw new ArgumentException(nameof(cells));
+            var errors = new List<ExcelExceptionTemplate>();
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
-            var errors = new List<ExcelExceptionTemplate>();
             for (int row = 0; row < cells.GetLength(0); row++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
@@ -153,7 +154,7 @@ namespace Virgo.Extensions
                         sheet.SetValue(row + 1, col + 1, value);
                     }
                     var objVal = Convert.ChangeType(property.GetValue(item), property.PropertyType);
-                    sheet.SetValue(row + 2, col + 1, objVal.ToString());
+                    sheet.SetValue(row + 2, col + 1, objVal);
                 }
             }
             return package;
