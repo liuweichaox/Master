@@ -16,15 +16,30 @@ namespace Virgo.Tests.Extensions
     public class ExcelExtensions_Tests
     {
         /// <summary>
-        /// 读取Excel.将Excel转换为<see cref="List{T}"/>
+        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="File"/>
         /// </summary>
         [Fact]
-        public void ReadExcel_Test()
+        public void ExportExcelToFile_Test()
         {
+            var temps = new List<ExcelTemplate>()
+            {
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="12345@gamil.com",
+                    Name="Jon"
+                },
+                new ExcelTemplate()
+                {
+                    CreateTime=DateTime.Now,
+                    Email="54321@gamil.com",
+                    Name="Allen"
+                }
+            };
             var path = "D:\\ExcelTest.xlxs";
+            temps.ExportToFile(path);
             using FileStream stream = new FileStream(path, FileMode.Open);
-            var templates = stream.ReadExcel<ExcelTemplate>();
-            templates.ShouldNotBeNull();
+            stream.ShouldNotBeNull();
         }
 
         /// <summary>
@@ -53,30 +68,15 @@ namespace Virgo.Tests.Extensions
         }
 
         /// <summary>
-        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="File"/>
+        /// 读取Excel.将Excel转换为<see cref="List{T}"/>
         /// </summary>
         [Fact]
-        public void ExportExcelToFile_Test()
+        public void ReadExcel_Test()
         {
-            var temps = new List<ExcelTemplate>()
-            {
-                new ExcelTemplate()
-                {
-                    CreateTime=DateTime.Now,
-                    Email="12345@gamil.com",
-                    Name="Jon"
-                },
-                new ExcelTemplate()
-                {
-                    CreateTime=DateTime.Now,
-                    Email="54321@gamil.com",
-                    Name="Allen"
-                }
-            };
             var path = "D:\\ExcelTest.xlxs";
-            temps.ExportToFile(path);
             using FileStream stream = new FileStream(path, FileMode.Open);
-            stream.ShouldNotBeNull();
+            var templates = stream.ReadExcel<ExcelTemplate>();
+            templates.ShouldNotBeNull();
         }
     }
 

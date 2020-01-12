@@ -154,7 +154,7 @@ namespace Virgo.Extensions
                         var value = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
                         sheet.SetValue(row + 1, col + 1, value);
                     }
-                    var objVal = Convert.ChangeType(property.GetValue(item), property.PropertyType);
+                    var objVal = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
                     sheet.SetValue(row + 2, col + 1, objVal);
                 }
             }
