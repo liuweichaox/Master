@@ -16,50 +16,19 @@ namespace Virgo.Tests.Extensions
     public class ExcelExtensions_Tests
     {
         /// <summary>
-        /// 动态单元格转换
+        /// 读取Excel.将Excel转换为<see cref="List{T}"/>
         /// </summary>
         [Fact]
-        public void ExcelToList_Test()
+        public void ReadExcel_Test()
         {
-            var dynmaicCell = new string[3, 3]
-            {
-                {" 姓  名 "," 邮  箱 ","创建时间" },
-                {"Jon","123456@gmail.com",DateTime.Now.ToString() },
-                {"Allen","98765@gmail.com",DateTime.Now.ToString()}
-            };
-
-            var templates = dynmaicCell.ExcelToList<ExcelTemplate>();
-            templates.Any(x => x.Name == "Jon").ShouldBe(true);
+            var path = "D:\\ExcelTest.xlxs";
+            using FileStream stream = new FileStream(path, FileMode.Open);
+            var templates = stream.ReadExcel<ExcelTemplate>();
+            templates.ShouldNotBeNull();
         }
 
         /// <summary>
-        /// <see cref="ExcelExtensions"/>测试带异常
-        /// </summary>
-        [Fact]
-        public void ExcelToListWithException_Test()
-        {
-            var dynmaicCell = new string[3, 3]
-            {
-                {" 姓  名 "," 邮  箱 ","创建时间" },
-                {"Jon","123456@gmail.com","123" },
-                {"Allen","98765@gmail.com","abc"}
-            };
-
-            try
-            {
-                var templates = dynmaicCell.ExcelToList<ExcelTemplate>();
-                templates.Any(x => x.Name == "Jon").ShouldBe(true);
-            }
-            catch (ExcelException ex)
-            {
-                ex.ExcelExceptions.Count.ShouldBe(2);
-            }
-
-
-        }
-
-        /// <summary>
-        /// 导出Excel测试，创建Excel流
+        /// 导出Excel，将<see cref="List{T}"/>转为为<see cref="MemoryStream"/>
         /// </summary>
         [Fact]
         public void ExportExcelToStream_Test()
@@ -80,13 +49,11 @@ namespace Virgo.Tests.Extensions
                 }
             };
             using var stream = temps.ExportToStream();
-            stream.Length.ShouldBeGreaterThan(0);
-            var list = stream.ReadExcel<ExcelTemplate>();
-            list.ShouldNotBeNull();
+            stream.ShouldNotBeNull();
         }
 
         /// <summary>
-        /// 导出Excel测试，导出为文件
+        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="File"/>
         /// </summary>
         [Fact]
         public void ExportExcelToFile_Test()
@@ -108,8 +75,8 @@ namespace Virgo.Tests.Extensions
             };
             var path = "D:\\ExcelTest.xlxs";
             temps.ExportToFile(path);
-            using StreamReader stream = new StreamReader(path);
-            stream.ReadToEnd().ShouldNotBeNull();
+            using FileStream stream = new FileStream(path, FileMode.Open);
+            stream.ShouldNotBeNull();
         }
     }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using Virgo.IO;
 
 namespace Virgo.Extensions
 {
@@ -17,7 +18,7 @@ namespace Virgo.Extensions
     {
         #region 导入
         /// <summary>
-        /// 读取Excel，将单元格数据转换为二维数组
+        /// 读取Excel，将<see cref="Stream"/>转换为二维数组
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="worksheet"></param>
@@ -44,7 +45,7 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
-        /// 读取Excel，将集合转换为强类型结合
+        /// 读取Excel，将二维数组数据转换为<see cref="List{T}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="cells"></param>
@@ -110,7 +111,7 @@ namespace Virgo.Extensions
             return list;
         }
         /// <summary>
-        /// 读取Excel，返回单元格数据强类型
+        /// 读取Excel.将Excel转换为<see cref="List{T}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
@@ -127,7 +128,7 @@ namespace Virgo.Extensions
 
         #region 导出
         /// <summary>
-        /// 导出Excel，返回ExcelPackage
+        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="ExcelPackage"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -161,7 +162,7 @@ namespace Virgo.Extensions
         }
 
         /// <summary>
-        /// 导出Excel，获取流
+        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="MemoryStream"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -176,7 +177,7 @@ namespace Virgo.Extensions
             return stream;
         }
         /// <summary>
-        /// 导出Excel,保存Excel文件
+        /// 导出Excel.将<see cref="List{T}"/>转为为<see cref="File"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
@@ -185,6 +186,7 @@ namespace Virgo.Extensions
         {
             if (string.IsNullOrWhiteSpace(path))
                 throw new ArgumentException(nameof(path));
+            FileHelper.DeleteIfExists(path);
             using var package = ExportToExcel(list);
             using FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
             package.SaveAs(stream);
