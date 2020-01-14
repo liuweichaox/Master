@@ -57,7 +57,7 @@ namespace Virgo.Extensions
         {
             if (cells == null)
                 throw new ArgumentException(nameof(cells));
-            var errors = new List<ExcelExceptionTemplate>();
+            var errors = new List<ExcelExceptioInfo>();
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
@@ -88,14 +88,8 @@ namespace Virgo.Extensions
                             }
                             catch (Exception ex)
                             {
-                                var error = new ExcelExceptionTemplate()
-                                {
-                                    Column = col,
-                                    Row = row,
-                                    OriginalMessage = ex.Message,
-                                    StackTrace = ex.StackTrace,
-                                    Message = $"{row + 1}行{col + 1}列单元格：【{cell ?? ""}】转换为【{property.PropertyType.Name}】类型异常"
-                                };
+                                var msg = $"{row + 1}行{col + 1}列单元格：【{cell ?? ""}】转换为【{property.PropertyType.Name}】类型异常";
+                                var error = new ExcelExceptioInfo(row, col, msg, ex.Message, ex.StackTrace);
                                 errors.Add(error);
                             }
                         }
@@ -199,8 +193,28 @@ namespace Virgo.Extensions
     /// <summary>
     /// Excel异常模板
     /// </summary>
-    public class ExcelExceptionTemplate
+    public class ExcelExceptioInfo
     {
+        public ExcelExceptioInfo()
+        {
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="message"></param>
+        /// <param name="originalMessage"></param>
+        /// <param name="stackTrace"></param>
+        public ExcelExceptioInfo(int row, int column, string message, string originalMessage, string stackTrace)
+        {
+            Row = row;
+            Column = column;
+            Message = message;
+            OriginalMessage = originalMessage;
+            StackTrace = stackTrace;
+        }
         /// <summary>
         /// 行坐标
         /// </summary>
@@ -227,8 +241,8 @@ namespace Virgo.Extensions
     /// </summary>
     public class ExcelException : Exception
     {
-        public List<ExcelExceptionTemplate> ExcelExceptions;
-        public ExcelException(List<ExcelExceptionTemplate> excelExceptions)
+        public List<ExcelExceptioInfo> ExcelExceptions;
+        public ExcelException(List<ExcelExceptioInfo> excelExceptions)
         {
             ExcelExceptions = excelExceptions;
         }
