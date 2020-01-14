@@ -153,11 +153,11 @@ namespace Virgo.Extensions
                     var property = propertyInfos[col];
                     if (row == 0)
                     {
-                        var value = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
-                        sheet.SetValue(row + 1, col + 1, value);//第一行设置标题
+                        var title = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
+                        sheet.SetValue(row + 1, col + 1, title);//第一行设置标题
                     }
-                    var objVal = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
-                    sheet.SetValue(row + 2, col + 1, objVal);//第一条数据从第二行开始追加
+                    var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
+                    sheet.SetValue(row + 2, col + 1, val);//第一条数据从第二行开始追加
                 }
             }
             return package;
