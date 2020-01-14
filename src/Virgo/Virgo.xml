@@ -2246,15 +2246,15 @@
         </member>
         <member name="M:Virgo.Extensions.ExcelExtensions.ReadExcel(System.IO.Stream,System.Int32)">
             <summary>
-            读取Excel，将<see cref="T:System.IO.Stream"/>转换为二维数组
+            读取Excel，将<see cref="T:System.IO.Stream"/>转换为<see cref="!:string[][]"/>
             </summary>
             <param name="stream"></param>
             <param name="worksheet"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.ExcelToList``1(System.String[0:,0:])">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ExcelToList``1(System.String[][])">
             <summary>
-            读取Excel，将二维数组数据转换为<see cref="T:System.Collections.Generic.List`1"/>
+            读取Excel，将<see cref="!:string[][]"/>转换为<see cref="T:System.Collections.Generic.List`1"/>
             </summary>
             <typeparam name="T"></typeparam>
             <param name="cells"></param>

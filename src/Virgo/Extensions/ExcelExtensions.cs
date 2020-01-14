@@ -18,12 +18,12 @@ namespace Virgo.Extensions
     {
         #region 导入
         /// <summary>
-        /// 读取Excel，将<see cref="Stream"/>转换为二维数组
+        /// 读取Excel，将<see cref="Stream"/>转换为<see cref="string[][]"/>
         /// </summary>
         /// <param name="stream"></param>
         /// <param name="worksheet"></param>
         /// <returns></returns>
-        public static string[,] ReadExcel(this Stream stream, int worksheet = 0)
+        public static string[][] ReadExcel(this Stream stream, int worksheet = 0)
         {
             if (stream == null)
                 throw new ArgumentException(nameof(stream));
@@ -33,25 +33,27 @@ namespace Virgo.Extensions
             var maxColumnNum = ws.Dimension.End.Column; //工作区结束列
             var minRowNum = ws.Dimension.Start.Row; //工作区开始行号
             var maxRowNum = ws.Dimension.End.Row; //工作区结束行号
-            string[,] cells = new string[maxRowNum, maxColumnNum];
+            string[][] cells = new string[maxRowNum][];
             for (var row = minRowNum; row <= maxRowNum; row++)
             {
+                string[] rowItem = new string[maxColumnNum];
                 for (int col = minColumnNum; col <= maxColumnNum; col++)
                 {
-                    cells[row - 1, col - 1] = ws.GetValue(row, col).ToString();
+                    rowItem[col - 1] = ws.GetValue(row, col).ToString();
                 }
+                cells[row - 1] = rowItem;
             }
             return cells;
         }
 
         /// <summary>
-        /// 读取Excel，将二维数组数据转换为<see cref="List{T}"/>
+        /// 读取Excel，将<see cref="string[][]"/>转换为<see cref="List{T}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="cells"></param>
         /// <returns></returns>
         /// <exception cref="ExcelException"></exception>
-        public static List<T> ExcelToList<T>(this string[,] cells) where T : class, new()
+        public static List<T> ExcelToList<T>(this string[][] cells) where T : class, new()
         {
             if (cells == null)
                 throw new ArgumentException(nameof(cells));
@@ -59,12 +61,12 @@ namespace Virgo.Extensions
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
-            for (int row = 0; row < cells.GetLength(0); row++)
+            for (int row = 0; row < cells.Length; row++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
-                for (int col = 0; col < cells.GetLength(1); col++)
+                for (int col = 0; col < cells.Length; col++)
                 {
-                    var cell = cells[row, col];
+                    var cell = cells[row][col];
                     if (row == 0)
                     {
                         var propertyName = propertyInfos.SingleOrDefault(x => x.GetCustomAttribute<DescriptionAttribute>()?.Description == cell)?.Name;

@@ -7,6 +7,7 @@ using Virgo.Extensions;
 using Shouldly;
 using System.Linq;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace Virgo.Tests.Extensions
 {
