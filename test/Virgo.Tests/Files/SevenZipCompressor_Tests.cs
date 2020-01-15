@@ -1,17 +1,30 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Virgo.Files;
 using Virgo.TestBase;
 using Xunit;
 
 namespace Virgo.Tests.Files
 {
+    /// <summary>
+    /// <see cref="ISevenZipCompressor"/>测试类
+    /// </summary>
     public class SevenZipCompressor_Tests : TestBaseWithServiceCollection
     {
+        /// <summary>
+        /// <see cref="IServiceCollection"/>服务容器
+        /// </summary>
         private readonly IServiceProvider _serviceProvider;
+        /// <summary>
+        /// <see cref="ISevenZipCompressor"/>实例
+        /// </summary>
         private readonly ISevenZipCompressor _sevenZipCompressor;
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public SevenZipCompressor_Tests()
         {
             _serviceProvider = Building(build =>
@@ -27,7 +40,7 @@ namespace Virgo.Tests.Files
         [Fact]
         public void Decompress_Test()
         {
-            _sevenZipCompressor.Decompress("D:\\test.zip","D:\\Zip");
+            _sevenZipCompressor.Decompress("D:\\test.zip", "D:\\Zip");
         }
         /// <summary>
         /// 解压文件，自动检测压缩包类型
@@ -73,9 +86,9 @@ namespace Virgo.Tests.Files
             {
                 @"D:\A.TXT",
                 @"D:\B.TXT"
-            }; 
+            };
             var zipName = "D:\\test.zip";
-           var stream= _sevenZipCompressor.ZipStream(files, zipName);
+            var stream = _sevenZipCompressor.ZipStream(files, zipName);
             Assert.True(stream.Length > 0);
         }
     }

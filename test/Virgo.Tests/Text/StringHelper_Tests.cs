@@ -1,5 +1,8 @@
-﻿using Shouldly;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
+using Shouldly;
+using Virgo.TestBase;
 using Virgo.Text;
+using Virgo.UserInterface;
 using Xunit;
 
 namespace Virgo.Tests.Text

@@ -74,6 +74,11 @@ namespace Virgo.UserInterface.Controllers
         public void Delete(int id)
         {
         }
+        [HttpGet]
+        public int Add([FromQuery]int a, [FromQuery] int b)
+        {
+            return a + b;
+        }
     }
     public class OrderModel
     {

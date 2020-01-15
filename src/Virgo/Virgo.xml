@@ -2294,32 +2294,42 @@
             <param name="list"></param>
             <param name="path"></param>
         </member>
-        <member name="T:Virgo.Extensions.ExcelExceptionTemplate">
+        <member name="T:Virgo.Extensions.ExcelExceptioInfo">
             <summary>
             Excel异常模板
             </summary>
         </member>
-        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Row">
+        <member name="M:Virgo.Extensions.ExcelExceptioInfo.#ctor(System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+            <param name="message"></param>
+            <param name="originalMessage"></param>
+            <param name="stackTrace"></param>
+        </member>
+        <member name="P:Virgo.Extensions.ExcelExceptioInfo.Row">
             <summary>
             行坐标
             </summary>
         </member>
-        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Column">
+        <member name="P:Virgo.Extensions.ExcelExceptioInfo.Column">
             <summary>
             列坐标
             </summary>
         </member>
-        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.Message">
+        <member name="P:Virgo.Extensions.ExcelExceptioInfo.Message">
             <summary>
             错误消息
             </summary>
         </member>
-        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.OriginalMessage">
+        <member name="P:Virgo.Extensions.ExcelExceptioInfo.OriginalMessage">
             <summary>
             原始异常
             </summary>
         </member>
-        <member name="P:Virgo.Extensions.ExcelExceptionTemplate.StackTrace">
+        <member name="P:Virgo.Extensions.ExcelExceptioInfo.StackTrace">
             <summary>
             堆栈跟踪
             </summary>

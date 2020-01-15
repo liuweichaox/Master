@@ -22,7 +22,7 @@ namespace Virgo.UserInterface.Extensions
 
             services.AddControllers().AddNewtonsoftJson(options =>
             {
-               // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
             });
 
             services.AddOptions();
@@ -31,8 +31,8 @@ namespace Virgo.UserInterface.Extensions
 
             var xmlPaths = new List<string>()
             {
-            "Virgo.UserInterface.xml",
-            "Virgo.Application.xml"
+                "Virgo.UserInterface.xml",
+                "Virgo.Application.xml"
             };
             services.AddSwaggerStep(xmlPaths);
         }

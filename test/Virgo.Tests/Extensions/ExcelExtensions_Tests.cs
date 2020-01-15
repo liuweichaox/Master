@@ -39,8 +39,10 @@ namespace Virgo.Tests.Extensions
             };
             var path = "D:\\ExcelTest.xlxs";
             temps.ExportToFile(path);
-            using FileStream stream = new FileStream(path, FileMode.Open);
-            stream.ShouldNotBeNull();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                stream.ShouldNotBeNull();
+            }
         }
 
         /// <summary>
@@ -64,8 +66,10 @@ namespace Virgo.Tests.Extensions
                     Name="Allen"
                 }
             };
-            using var stream = temps.ExportToStream();
-            stream.ShouldNotBeNull();
+            using (var stream = temps.ExportToStream())
+            {
+                stream.ShouldNotBeNull();
+            }
         }
 
         /// <summary>
@@ -75,9 +79,11 @@ namespace Virgo.Tests.Extensions
         public void ReadExcel_Test()
         {
             var path = "D:\\ExcelTest.xlxs";
-            using FileStream stream = new FileStream(path, FileMode.Open);
-            var templates = stream.ReadExcel<ExcelTemplate>();
-            templates.ShouldNotBeNull();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                var templates = stream.ReadExcel<ExcelTemplate>();
+                templates.ShouldNotBeNull();
+            }
         }
     }
 
