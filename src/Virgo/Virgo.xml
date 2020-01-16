@@ -244,6 +244,13 @@
             <param name="services"></param>
             <param name="xmlPaths"></param>
         </member>
+        <member name="M:Virgo.AspNetCore.SwaggerExtensions.CreateInfoForApiVersion(Microsoft.AspNetCore.Mvc.ApiExplorer.ApiVersionDescription)">
+            <summary>
+            创建Api版本信息
+            </summary>
+            <param name="description"></param>
+            <returns></returns>
+        </member>
         <member name="M:Virgo.AspNetCore.SwaggerExtensions.UseSwaggerWithUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             添加Swagger中间件和SwaggerUI

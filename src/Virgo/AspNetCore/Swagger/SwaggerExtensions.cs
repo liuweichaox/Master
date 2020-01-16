@@ -62,11 +62,16 @@ namespace Virgo.AspNetCore
                 }
             });
         }
+        /// <summary>
+        /// 创建Api版本信息
+        /// </summary>
+        /// <param name="description"></param>
+        /// <returns></returns>
         static OpenApiInfo CreateInfoForApiVersion(ApiVersionDescription description)
         {
             var info = new OpenApiInfo()
             {
-                Title = $"Virgo v{description.ApiVersion}",
+                Title = $"Virgo v{description.ApiVersion} 接口文档",
                 Version = description.ApiVersion.ToString(),
                 Description = "多版本管理（点右上角版本切换）<br/>",
                 Contact = new OpenApiContact()
