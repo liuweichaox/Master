@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\src\Virgo.Elasticsearch\Virgo.Elasticsearch.csproj" />
     <ProjectReference Include="..\src\Virgo\Virgo.csproj" />
     <ProjectReference Include="..\Virgo.Domain\Virgo.Domain.csproj" />
   </ItemGroup>

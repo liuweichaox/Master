@@ -48,9 +48,8 @@ namespace Virgo.Elasticsearch
         /// 批量删除
         /// </summary>
         /// <param name="objects">删除的对象实体集合</param>
-        /// <param name="type">删除的对象类型</param>
         /// <returns>是否删除成功</returns>
-        Task<bool> DeleteManyAsync(IEnumerable<T> objects, TypeName type = null);
+        Task<bool> DeleteManyAsync(IEnumerable<T> objects);
         /// <summary>
         /// 根据ID判断对象是否存在
         /// </summary>
@@ -69,9 +68,8 @@ namespace Virgo.Elasticsearch
         /// 根据多个ID获取对象信息
         /// </summary>
         /// <param name="ids">主键集合</param>
-        /// <param name="type">类型名</param>
         /// <returns>对象集合</returns>
-        Task<List<T>> GetManyAsync(IEnumerable<string> ids, TypeName type = null);
+        Task<List<T>> GetManyAsync(IEnumerable<string> ids);
         /// <summary>
         /// 插入单挑数据
         /// </summary>
@@ -83,21 +81,14 @@ namespace Virgo.Elasticsearch
         /// 批量插入多条数据
         /// </summary>
         /// <param name="document">插入的对象集合</param>
-        /// <param name="type">类型</param>
         /// <returns>是否插入成功</returns>
-        Task<bool> IndexManyAsync(IEnumerable<T> document, TypeName type = null);
+        Task<bool> IndexManyAsync(IEnumerable<T> document);
         /// <summary>
         /// 刷新索引
         /// </summary>
         /// <param name="index">索引</param>
         /// <returns>返回是否刷新成功</returns>
         Task<bool> RefreshAsync(string index);
-        /// <summary>
-        /// 搜索
-        /// </summary>
-        /// <param name="selector">搜索条件</param>
-        /// <returns>对象型集合</returns>
-        Task<List<T>> SearchAsync(Func<SearchDescriptor<T>, ISearchRequest> selector = null);
         /// <summary>
         /// 更新执行字段
         /// </summary>

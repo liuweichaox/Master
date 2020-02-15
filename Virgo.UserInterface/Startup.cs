@@ -18,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using Virgo.Extensions;
 using Autofac.Extras.DynamicProxy;
+using System.Reflection;
 
 namespace Virgo.UserInterface
 {
@@ -56,8 +57,8 @@ namespace Virgo.UserInterface
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<CustomInterceptor>();
-            builder.RegisterInterceptorBy<CustomInterceptor>();
-            builder.RegisterInfrastructure().RegisterApplication();
+            //builder.RegisterInterceptorBy<CustomInterceptor>();
+            builder.RegisterAssembly(Assembly.GetExecutingAssembly()).RegisterInfrastructure().RegisterApplication();
         }
 
         /// <summary>

@@ -14,11 +14,17 @@
             <see cref="T:Virgo.Application.Interfaces.ICustomService"/>实例
             </summary>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.#ctor(Virgo.Application.Interfaces.ICustomService)">
+        <member name="F:Virgo.UserInterface.Controllers.ValueController._beautySpotRepository">
+            <summary>
+            仓储
+            </summary>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.#ctor(Virgo.Application.Interfaces.ICustomService,Virgo.UserInterface.Controllers.IBeautySpotRepository)">
             <summary>
             构造函数
             </summary>
             <param name="customService"></param>
+            <param name="beautySpotRepository"></param>
         </member>
         <member name="M:Virgo.UserInterface.Controllers.ValueController.Get(System.Int32)">
             <summary>
@@ -44,6 +50,67 @@
             DELETE: api/ApiWithActions/5
             </summary>
             <param name="id"></param>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.CreateIndex">
+            <summary>
+            创建索引
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.QueryLocation">
+            <summary>
+            地理位置搜索
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.CreateBeautySpot(System.String,System.Double,System.Double)">
+            <summary>
+            创建景点实体
+            </summary>
+            <param name="name">景点名称</param>
+            <param name="lat">维度</param>
+            <param name="lon">经度</param>
+            <returns></returns>    
+        </member>
+        <member name="T:Virgo.UserInterface.Controllers.BeautySpot">
+            <summary>
+            景点
+            </summary>    
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Id">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Country">
+            <summary>
+            国家
+            </summary>
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Ciry">
+            <summary>
+            城市
+            </summary>
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Location">
+            <summary>
+            位置（lat：纬度,lon：经度）
+            </summary>
+        </member>
+        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="T:Virgo.UserInterface.Controllers.OrderModel">
+            <summary>
+            订单模型
+            </summary>
         </member>
         <member name="P:Virgo.UserInterface.Controllers.OrderModel.OrderCode">
             <summary>

@@ -1,10 +1,16 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
+using Elasticsearch.Net;
 using Microsoft.AspNetCore.Mvc;
+using Nest;
 using Virgo.Application.Interfaces;
 using Virgo.Application.Models.Requests;
 using Virgo.Application.Models.Responses;
 using Virgo.AspNetCore;
+using Virgo.DependencyInjection;
+using Virgo.Elasticsearch;
 
 namespace Virgo.UserInterface.Controllers
 {
@@ -21,14 +27,20 @@ namespace Virgo.UserInterface.Controllers
         /// <see cref="ICustomService"/>实例
         /// </summary>
         private readonly ICustomService _customService;
+        /// <summary>
+        /// 仓储
+        /// </summary>
+        private readonly IBeautySpotRepository _beautySpotRepository;
 
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="customService"></param>
-        public ValueController(ICustomService customService)
+        /// <param name="beautySpotRepository"></param>
+        public ValueController(ICustomService customService, IBeautySpotRepository beautySpotRepository)
         {
             _customService = customService;
+            _beautySpotRepository = beautySpotRepository;
         }
 
         /// <summary>
@@ -61,7 +73,7 @@ namespace Virgo.UserInterface.Controllers
         /// Put:
         /// </summary>
         [HttpPut("{id}")]
-        public void Put(OrderModel  orderModel)
+        public void Put(OrderModel orderModel)
         {
 
         }
@@ -79,7 +91,127 @@ namespace Virgo.UserInterface.Controllers
         {
             return a + b;
         }
+
+        /// <summary>
+        /// 创建索引
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public string CreateIndex()
+        {
+            var deleteIndexResponse = _beautySpotRepository.ElasticClient.Indices.Delete("virgo");
+            var mappingResponse = _beautySpotRepository.ElasticClient.Indices.Create("virgo", c => c.Map<BeautySpot>(m => m.AutoMap()));
+            var data = new List<BeautySpot>()
+            {
+                CreateBeautySpot("东方明珠广播电视塔",31.245105,121.506377),
+                CreateBeautySpot("上海国际会议中心",31.245151,121.503475),
+                CreateBeautySpot("上海环球金融中心",31.240165,121.514263),
+                CreateBeautySpot("上海欢乐谷",31.10273,121.222777),
+                CreateBeautySpot("上海迪士尼乐园 ",31.148267,121.671964)
+            };
+            var bulkResponse = _beautySpotRepository.BulkAsync(data).Result;
+            return bulkResponse.ToString();
+        }
+
+        /// <summary>
+        /// 地理位置搜索
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public object QueryLocation()
+        {
+            var result = _beautySpotRepository.ElasticClient.Search<BeautySpot>(x => x
+            .Sort(s => s
+            .GeoDistance(g => g
+            .Field(f => f.Location)
+            .Points(new GeoLocation(31.245105, 121.506377))
+            .Unit(DistanceUnit.Kilometers)
+            .Ascending())));
+            return result;
+        }
+
+        /// <summary>
+        /// 创建景点实体
+        /// </summary>
+        /// <param name="name">景点名称</param>
+        /// <param name="lat">维度</param>
+        /// <param name="lon">经度</param>
+        /// <returns></returns>    
+        [NonAction]
+        public BeautySpot CreateBeautySpot(string name, double lat, double lon)
+        {
+            return new BeautySpot
+            {
+                Id = Guid.NewGuid().ToString(),
+                Country = "中国",
+                Ciry = "上海",
+                CreateTime = DateTime.Now,
+                Location = new GeoLocation(lat, lon),
+                Name = name
+            };
+        }
     }
+
+    public interface IBeautySpotRepository : IElasticsearchRepository<BeautySpot>
+    {
+    }
+    public class BeautySpotRepository : ElasticsearchRepositoryBase<BeautySpot>, IBeautySpotRepository, ITransientDependency
+    {
+        public BeautySpotRepository(IElasticClientFactory factory) : base(factory)
+        {
+
+        }
+    }
+
+    public class ElasticClientFactory : IElasticClientFactory, ITransientDependency
+    {
+        public ElasticClient Create()
+        {
+            var uri = new Uri("http://localhost:9200");
+            var nodes = new Node[]
+            {
+                new Node(uri)
+            };
+            var pool = new StaticConnectionPool(nodes);
+            var settings = new ConnectionSettings(pool).DefaultIndex("virgo");
+            return new ElasticClient(settings);
+        }
+    }
+    /// <summary>
+    /// 景点
+    /// </summary>    
+    public class BeautySpot
+    {
+        /// <summary>
+        /// 主键
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>
+        /// 国家
+        /// </summary>
+        public string Country { get; set; }
+        /// <summary>
+        /// 城市
+        /// </summary>
+        public string Ciry { get; set; }
+        /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 位置（lat：纬度,lon：经度）
+        /// </summary>
+        [GeoPoint(Name = "location")]
+        public GeoLocation Location { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+    }
+
+    /// <summary>
+    /// 订单模型
+    /// </summary>
     public class OrderModel
     {
         /// <summary>

@@ -12,7 +12,7 @@ namespace Virgo.Elasticsearch
     /// <see cref="IElasticsearchRepository"/>搜索引擎仓储抽基础类
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ElasticsearchRepository<T> : IElasticsearchRepository<T> where T : class
+    public abstract class ElasticsearchRepositoryBase<T> : IElasticsearchRepository<T> where T : class
     {
         /// <summary>
         /// Elasticsearch客户端
@@ -22,17 +22,15 @@ namespace Virgo.Elasticsearch
         /// 索引名
         /// </summary>
         public IndexName Index { get; }
+
         /// <summary>
         /// 初始化设置客户端
         /// </summary>
-        /// <param name="uri"></param>
-        /// <param name="defaultIndex"></param>
-        protected ElasticsearchRepository(Uri uri, string defaultIndex = null)
+        protected ElasticsearchRepositoryBase(IElasticClientFactory factory)
         {
-            var connection = new ConnectionSettings(uri).DefaultIndex(defaultIndex);
-            Index = defaultIndex;
-            ElasticClient = new ElasticClient(connection);
+            ElasticClient = factory.Create();
         }
+
         /// <summary>
         /// 批量插入、更新
         /// </summary>
@@ -107,7 +105,7 @@ namespace Virgo.Elasticsearch
             bool result;
             try
             {
-                var deleteIndexResponse = await ElasticClient.DeleteIndexAsync(index);
+                var deleteIndexResponse = await ElasticClient.Indices.DeleteAsync(index);
                 result = deleteIndexResponse.ApiCall.Success;
             }
             catch (Exception)
@@ -122,12 +120,12 @@ namespace Virgo.Elasticsearch
         /// <param name="objects">删除的对象实体集合</param>
         /// <param name="type">删除的对象类型</param>
         /// <returns>是否删除成功</returns>
-        public virtual async Task<bool> DeleteManyAsync(IEnumerable<T> objects, TypeName type = null)
+        public virtual async Task<bool> DeleteManyAsync(IEnumerable<T> objects)
         {
             bool result;
             try
             {
-                var deleteManyResponse = await ElasticClient.DeleteManyAsync<T>(objects, Index, type);
+                var deleteManyResponse = await ElasticClient.DeleteManyAsync<T>(objects, Index);
                 result = deleteManyResponse.ApiCall.Success;
             }
             catch (Exception)
@@ -183,14 +181,13 @@ namespace Virgo.Elasticsearch
         /// 根据多个ID获取对象信息
         /// </summary>
         /// <param name="ids">主键集合</param>
-        /// <param name="type">类型名</param>
         /// <returns>对象集合</returns>
-        public virtual async Task<List<T>> GetManyAsync(IEnumerable<string> ids, TypeName type = null)
+        public virtual async Task<List<T>> GetManyAsync(IEnumerable<string> ids)
         {
             List<T> result;
             try
             {
-                var getHits = await ElasticClient.GetManyAsync<T>(ids, Index, type);
+                var getHits = await ElasticClient.GetManyAsync<T>(ids, Index);
                 var json = JsonConvert.SerializeObject(getHits.Select(x => x.Source));
                 result = JsonConvert.DeserializeObject<List<T>>(json);
             }
@@ -224,14 +221,13 @@ namespace Virgo.Elasticsearch
         /// 批量插入多条数据
         /// </summary>
         /// <param name="document">插入的对象集合</param>
-        /// <param name="type">类型</param>
         /// <returns>是否插入成功</returns>
-        public virtual async Task<bool> IndexManyAsync(IEnumerable<T> document, TypeName type = null)
+        public virtual async Task<bool> IndexManyAsync(IEnumerable<T> document)
         {
             bool result;
             try
             {
-                var indexResponse = await ElasticClient.IndexManyAsync(document, Index, type);
+                var indexResponse = await ElasticClient.IndexManyAsync(document, Index);
                 result = indexResponse.ApiCall.Success;
             }
             catch (Exception)
@@ -250,7 +246,7 @@ namespace Virgo.Elasticsearch
             bool result;
             try
             {
-                var refreshResponse = await ElasticClient.RefreshAsync(index);
+                var refreshResponse = await ElasticClient.Indices.RefreshAsync(index);
                 result = refreshResponse.ApiCall.Success;
             }
             catch (Exception)
@@ -259,29 +255,7 @@ namespace Virgo.Elasticsearch
             }
             return result;
         }
-        /// <summary>
-        /// 搜索
-        /// </summary>
-        /// <param name="selector">搜索条件</param>
-        /// <returns>对象型集合</returns>
-        public virtual async Task<List<T>> SearchAsync(Func<SearchDescriptor<T>, ISearchRequest> selector = null)
-        {
-            List<T> result = null;
-            try
-            {
-                var searchResponse = await ElasticClient.SearchAsync<T>(selector);
-                if (searchResponse.ApiCall.Success)
-                {
-                    var json = JsonConvert.SerializeObject(searchResponse.Documents);
-                    result = JsonConvert.DeserializeObject<List<T>>(json);
-                }
-            }
-            catch (Exception)
-            {
-                result = null;
-            }
-            return result;
-        }
+
         /// <summary>
         /// 更新执行字段
         /// </summary>
