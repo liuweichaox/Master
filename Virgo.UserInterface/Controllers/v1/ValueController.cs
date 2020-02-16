@@ -179,7 +179,7 @@ namespace Virgo.UserInterface.Controllers
     {
         public ElasticClient Create()
         {
-            //var uri = new Uri("http://elastic:123456@localhost:9200");url方式
+            //var uri = new Uri("http://elastic:123456@localhost:9200");url内的身份验证
             var uri = new Uri("http://localhost:9200");
             var nodes = new Node[]
             {
