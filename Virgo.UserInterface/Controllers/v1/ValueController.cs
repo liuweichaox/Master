@@ -161,9 +161,16 @@ namespace Virgo.UserInterface.Controllers
         }
     }
 
+    /// <summary>
+    /// <see cref="BeautySpot"/>仓储接口
+    /// </summary>
     public interface IBeautySpotRepository : IElasticsearchRepository<BeautySpot>
     {
     }
+
+    /// <summary>
+    /// <see cref="BeautySpot"/>仓储实现
+    /// </summary>
     public class BeautySpotRepository : ElasticsearchRepositoryBase<BeautySpot>, IBeautySpotRepository, ITransientDependency
     {
         public BeautySpotRepository(IElasticClientFactory factory) : base(factory)
@@ -187,7 +194,8 @@ namespace Virgo.UserInterface.Controllers
             };
             var pool = new StaticConnectionPool(nodes);
             var settings = new ConnectionSettings(pool).BasicAuthentication("elastic", "123456").DefaultIndex("virgo");
-            return new ElasticClient(settings);
+            var client = new ElasticClient(settings);
+            return client;
         }
     }
     /// <summary>
