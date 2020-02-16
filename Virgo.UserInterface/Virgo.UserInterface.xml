@@ -51,9 +51,9 @@
             </summary>
             <param name="id"></param>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.CreateIndex">
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.InitLocationData">
             <summary>
-            创建索引
+            初始化地理位置数据
             </summary>
             <returns></returns>
         </member>
@@ -71,6 +71,11 @@
             <param name="lat">维度</param>
             <param name="lon">经度</param>
             <returns></returns>    
+        </member>
+        <member name="T:Virgo.UserInterface.Controllers.ElasticClientFactory">
+            <summary>
+            <see cref="T:Nest.ElasticClient"/>工厂
+            </summary>
         </member>
         <member name="T:Virgo.UserInterface.Controllers.BeautySpot">
             <summary>

@@ -93,11 +93,11 @@ namespace Virgo.UserInterface.Controllers
         }
 
         /// <summary>
-        /// 创建索引
+        /// 初始化地理位置数据
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string CreateIndex()
+        public string InitLocationData()
         {
             var deleteIndexResponse = _beautySpotRepository.ElasticClient.Indices.Delete("virgo");
             var mappingResponse = _beautySpotRepository.ElasticClient.Indices.Create("virgo", c => c.Map<BeautySpot>(m => m.AutoMap()));
@@ -120,14 +120,23 @@ namespace Virgo.UserInterface.Controllers
         [HttpGet]
         public object QueryLocation()
         {
-            var result = _beautySpotRepository.ElasticClient.Search<BeautySpot>(x => x
-            .Sort(s => s
+            var location = new GeoLocation(31.245105, 121.506377);
+            var search = _beautySpotRepository.ElasticClient.Search<BeautySpot>(s => s
+            .Query(q => q.GeoDistance(g => g
+            .Boost(1.1)
+            .Name("named_query")
+            .Field(p => p.Location)
+            .DistanceType(GeoDistanceType.Arc)
+            .Location(location)
+            .Distance(3, DistanceUnit.Kilometers)
+            .ValidationMethod(GeoValidationMethod.IgnoreMalformed)))
+            .Sort(t => t
             .GeoDistance(g => g
             .Field(f => f.Location)
-            .Points(new GeoLocation(31.245105, 121.506377))
+            .Points(location)
             .Unit(DistanceUnit.Kilometers)
             .Ascending())));
-            return result;
+            return search;
         }
 
         /// <summary>
@@ -163,17 +172,21 @@ namespace Virgo.UserInterface.Controllers
         }
     }
 
+    /// <summary>
+    /// <see cref="ElasticClient"/>工厂
+    /// </summary>
     public class ElasticClientFactory : IElasticClientFactory, ITransientDependency
     {
         public ElasticClient Create()
         {
+            //var uri = new Uri("http://elastic:123456@localhost:9200");url方式
             var uri = new Uri("http://localhost:9200");
             var nodes = new Node[]
             {
                 new Node(uri)
             };
             var pool = new StaticConnectionPool(nodes);
-            var settings = new ConnectionSettings(pool).DefaultIndex("virgo");
+            var settings = new ConnectionSettings(pool).BasicAuthentication("elastic", "123456").DefaultIndex("virgo");
             return new ElasticClient(settings);
         }
     }
