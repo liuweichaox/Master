@@ -1263,9 +1263,9 @@
             <summary>
             申请拦截
             </summary>
-            <param name="interceptorTypes"></param>
+            <param name="interceptorTypes">拦截器类</param>
             <param name="e"></param>
-            <param name="interceptAdditionalInterfaces"></param>
+            <param name="interceptAdditionalInterfaces">拦截其他接口</param>
         </member>
         <member name="M:Virgo.DependencyInjection.AutofacInterceptionExtensions.RegisterInterceptorBy``1(Autofac.ContainerBuilder)">
             <summary>

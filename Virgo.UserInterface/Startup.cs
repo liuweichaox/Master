@@ -48,7 +48,7 @@ namespace Virgo.UserInterface
         public void ConfigureServices(IServiceCollection services)
         {
             NativeInjectorBootStrapper.RegisterServices(services);
-            services.AddHostedService<BGMJobService>();
+            // services.AddHostedService<BGMJobService>();
         }
         /// <summary>
         /// Autofac 容器配置
@@ -57,7 +57,7 @@ namespace Virgo.UserInterface
         public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<CustomInterceptor>();
-            //builder.RegisterInterceptorBy<CustomInterceptor>();
+            builder.RegisterInterceptorBy<CustomInterceptor>();
             builder.RegisterAssembly(Assembly.GetExecutingAssembly()).RegisterInfrastructure().RegisterApplication();
         }
 

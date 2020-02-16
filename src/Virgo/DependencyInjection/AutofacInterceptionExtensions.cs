@@ -87,9 +87,9 @@ namespace Virgo.DependencyInjection
         /// <summary>
         /// 申请拦截
         /// </summary>
-        /// <param name="interceptorTypes"></param>
+        /// <param name="interceptorTypes">拦截器类</param>
         /// <param name="e"></param>
-        /// <param name="interceptAdditionalInterfaces"></param>
+        /// <param name="interceptAdditionalInterfaces">拦截其他接口</param>
         private static void ApplyInterception(Type[] interceptorTypes, IActivatingEventArgs<object> e, bool interceptAdditionalInterfaces)
         {
             var type = e.Instance.GetType();
@@ -99,14 +99,16 @@ namespace Virgo.DependencyInjection
                 return;
             }
 
+            //代理接口
             var proxiedInterfaces = type.GetInterfaces().Where(i => i.GetTypeInfo().IsVisible).ToArray();
             if (!proxiedInterfaces.Any())
             {
                 return;
             }
 
-            var theInterface = proxiedInterfaces.First();
-            var interfaces = proxiedInterfaces.Skip(1).ToArray();
+            //优先匹配接口名称包含实现类名称的类
+            var theInterface = proxiedInterfaces.FirstOrDefault(x => x.Name.Contains(type.Name))??proxiedInterfaces.First();
+            var interfaces = proxiedInterfaces.Where(x => x != theInterface).ToArray();
 
             IList<IInterceptor> interceptorInstances = interceptorTypes.Select(interceptorType => (IInterceptor)e.Context.Resolve(interceptorType)).ToList();
 
