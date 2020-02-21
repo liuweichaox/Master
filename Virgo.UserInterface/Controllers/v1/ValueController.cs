@@ -128,7 +128,7 @@ namespace Virgo.UserInterface.Controllers
             .Field(p => p.Location)
             .DistanceType(GeoDistanceType.Arc)
             .Location(location)
-            .Distance(3, DistanceUnit.Kilometers)
+            .Distance(25, DistanceUnit.Kilometers)
             .ValidationMethod(GeoValidationMethod.IgnoreMalformed)))
             .Sort(t => t
             .GeoDistance(g => g

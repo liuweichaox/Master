@@ -72,6 +72,16 @@
             <param name="lon">经度</param>
             <returns></returns>    
         </member>
+        <member name="T:Virgo.UserInterface.Controllers.IBeautySpotRepository">
+            <summary>
+            <see cref="T:Virgo.UserInterface.Controllers.BeautySpot"/>仓储接口
+            </summary>
+        </member>
+        <member name="T:Virgo.UserInterface.Controllers.BeautySpotRepository">
+            <summary>
+            <see cref="T:Virgo.UserInterface.Controllers.BeautySpot"/>仓储实现
+            </summary>
+        </member>
         <member name="T:Virgo.UserInterface.Controllers.ElasticClientFactory">
             <summary>
             <see cref="T:Nest.ElasticClient"/>工厂
