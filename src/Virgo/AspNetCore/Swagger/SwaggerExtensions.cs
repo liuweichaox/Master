@@ -31,6 +31,7 @@ namespace Virgo.AspNetCore
                 // 根据 API 版本信息生成 API 文档
                 var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
 
+                //配置API版本
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
                     options.SwaggerDoc(description.GroupName, CreateInfoForApiVersion(description));
@@ -49,7 +50,7 @@ namespace Virgo.AspNetCore
                 });
 
                 // 参数使用驼峰命名方式
-                //options.DescribeAllParametersInCamelCase();
+                options.DescribeAllParametersInCamelCase();
 
                 // 取消 API 文档需要输入版本信息
                 options.OperationFilter<RemoveVersionFromParameter>();

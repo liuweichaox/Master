@@ -37,6 +37,11 @@
             Guid Xml GO GO GO
             </summary>
         </member>
+        <member name="P:Virgo.Application.Models.Requests.CustomRequest.MyName">
+            <summary>
+            变量
+            </summary>
+        </member>
         <member name="T:Virgo.Application.Models.Responses.CostomResponse">
             <summary>
             自定义响应实体示例

@@ -13,5 +13,10 @@ namespace Virgo.Application.Models.Requests
         /// Guid Xml GO GO GO
         /// </summary>
         public Guid Id { get; set; }
+
+        /// <summary>
+        /// 变量
+        /// </summary>
+        public string MyName { get; set; }
     }
 }
