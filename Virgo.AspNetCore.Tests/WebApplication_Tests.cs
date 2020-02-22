@@ -1,21 +1,19 @@
-ï»¿using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.Mvc.Testing;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Virgo.UserInterface;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Virgo.Tests.AspNetCore
+namespace Virgo.AspNetCore.Tests
 {
     /// <summary>
-    /// Webé›†æˆæµ‹è¯•
+    /// Web¼¯³É²âÊÔ
     /// </summary>
-    public class BasicTests : IClassFixture<WebApplicationFactory<Startup>>
+    public class WebApplication_Tests : IClassFixture<WebApplicationFactory<Startup>>
     {
         private readonly WebApplicationFactory<Startup> _factory;
-        public BasicTests(WebApplicationFactory<Startup> factory)
+        public WebApplication_Tests(WebApplicationFactory<Startup> factory)
         {
             _factory = factory.WithWebHostBuilder(build =>
             {
@@ -26,28 +24,32 @@ namespace Virgo.Tests.AspNetCore
             });
         }
 
+        /// <summary>
+        /// µ÷ÓÃ½Ó¿Ú
+        /// </summary>
+        /// <returns></returns>
         [Fact]
         public async Task GetAsync()
         {
-            //å•å…ƒæµ‹è¯•çš„3AåŸåˆ™ï¼š
+            //µ¥Ôª²âÊÔµÄ3AÔ­Ôò£º
 
-            // Arrange è®¾ç½®æµ‹è¯•æ•°æ®ã€å˜é‡ã€ç¯å¢ƒç­‰
+            // Arrange ÉèÖÃ²âÊÔÊı¾İ¡¢±äÁ¿¡¢»·¾³µÈ
             var client = _factory.CreateClient();
 
-            // Act è°ƒç”¨è¦æµ‹è¯•çš„å‡½æ•°ã€ä»£ç 
+            // Act µ÷ÓÃÒª²âÊÔµÄº¯Êı¡¢´úÂë
             var response = await client.GetAsync("/api/v1.0/Value/Add?a=1&b=2");
 
-            // Assert éªŒè¯è¾“å‡ºæ˜¯å¦æ˜¯é¢„æœŸç»“æœ
+            // Assert ÑéÖ¤Êä³öÊÇ·ñÊÇÔ¤ÆÚ½á¹û
             response.EnsureSuccessStatusCode(); // Status Code 200-299
             Assert.Equal("3", await response.Content.ReadAsStringAsync());
 
-            
-            var service=_factory.Services.GetService<IService>();
+
+            var service = _factory.Services.GetService<IService>();
         }
     }
     public interface IService
     {
-         int Age { get; set; }
+        int Age { get; set; }
         string Call();
     }
     public class Service : IService

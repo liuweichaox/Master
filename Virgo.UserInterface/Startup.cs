@@ -19,6 +19,7 @@ using System;
 using Virgo.Extensions;
 using Autofac.Extras.DynamicProxy;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Virgo.UserInterface
 {

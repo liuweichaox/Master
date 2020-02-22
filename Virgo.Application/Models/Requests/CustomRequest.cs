@@ -17,6 +17,6 @@ namespace Virgo.Application.Models.Requests
         /// <summary>
         /// 变量
         /// </summary>
-        public string MyName { get; set; }
+        public string Name { get; set; }
     }
 }

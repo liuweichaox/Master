@@ -37,7 +37,7 @@
             Guid Xml GO GO GO
             </summary>
         </member>
-        <member name="P:Virgo.Application.Models.Requests.CustomRequest.MyName">
+        <member name="P:Virgo.Application.Models.Requests.CustomRequest.Name">
             <summary>
             变量
             </summary>

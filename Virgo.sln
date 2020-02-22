@@ -43,6 +43,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.Application", "Virgo.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Virgo.UserInterface", "Virgo.UserInterface\Virgo.UserInterface.csproj", "{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.Elasticsearch.Tests", "Virgo.Elasticsearch.Tests\Virgo.Elasticsearch.Tests.csproj", "{0A2C0C3E-2011-464A-8971-E22A19ACFF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virgo.AspNetCore.Tests", "Virgo.AspNetCore.Tests\Virgo.AspNetCore.Tests.csproj", "{A4DC3E23-134F-417F-91C5-22D8E75DB6DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A2C0C3E-2011-464A-8971-E22A19ACFF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2C0C3E-2011-464A-8971-E22A19ACFF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2C0C3E-2011-464A-8971-E22A19ACFF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2C0C3E-2011-464A-8971-E22A19ACFF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DC3E23-134F-417F-91C5-22D8E75DB6DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4DC3E23-134F-417F-91C5-22D8E75DB6DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4DC3E23-134F-417F-91C5-22D8E75DB6DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DC3E23-134F-417F-91C5-22D8E75DB6DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +151,8 @@ Global
 		{A905F508-B481-4B07-A059-5DB32A4A0939} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{F65E58A7-47FF-427B-B091-8896C8C62938} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
 		{FD3B3097-7F6F-4463-8864-5F9BA1D5C0B2} = {BCAD3773-7FE5-46E8-8BD4-A75B98BF9045}
+		{0A2C0C3E-2011-464A-8971-E22A19ACFF03} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
+		{A4DC3E23-134F-417F-91C5-22D8E75DB6DE} = {806CD8AE-1E95-4FE2-B004-6E4B024C870C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CCA8524E-1E53-4254-BC3E-1D733F1D4C42}
