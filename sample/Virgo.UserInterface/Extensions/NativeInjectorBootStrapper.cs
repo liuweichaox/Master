@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
+using System.Reflection;
 using Virgo.AspNetCore;
 
 namespace Virgo.UserInterface.Extensions
@@ -20,11 +22,6 @@ namespace Virgo.UserInterface.Extensions
 
             services.AddHttpClient();
 
-            services.AddControllers().AddNewtonsoftJson(options =>
-            {
-                // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            });
-
             services.AddOptions();
 
             services.AddApiVersion();
@@ -34,7 +31,13 @@ namespace Virgo.UserInterface.Extensions
                 "Virgo.UserInterface.xml",
                 "Virgo.Application.xml"
             };
+          
             services.AddSwaggerStep(xmlPaths);
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            });
         }
     }
 }

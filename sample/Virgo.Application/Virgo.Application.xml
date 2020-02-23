@@ -42,6 +42,11 @@
             变量
             </summary>
         </member>
+        <member name="P:Virgo.Application.Models.Requests.CustomRequest.RequestTime">
+            <summary>
+            请求时间
+            </summary>
+        </member>
         <member name="T:Virgo.Application.Models.Responses.CostomResponse">
             <summary>
             自定义响应实体示例
@@ -62,16 +67,16 @@
             <see cref="T:Virgo.Application.Interfaces.ICustomService"/>服务实现类
             </summary>
         </member>
-        <member name="F:Virgo.Application.Services.CustomService._repository">
+        <member name="F:Virgo.Application.Services.CustomService._customRepository">
             <summary>
-            <see cref="T:Virgo.Domain.Interfaces.IRepository"/>仓储实例
+            <see cref="T:Virgo.Domain.Interfaces.ICustomRepository"/>仓储实例
             </summary>
         </member>
-        <member name="M:Virgo.Application.Services.CustomService.#ctor(Virgo.Domain.Interfaces.IRepository)">
+        <member name="M:Virgo.Application.Services.CustomService.#ctor(Virgo.Domain.Interfaces.ICustomRepository)">
             <summary>
             构造函数
             </summary>
-            <param name="repository"></param>
+            <param name="customRepository"></param>
         </member>
         <member name="M:Virgo.Application.Services.CustomService.Call(Virgo.Application.Models.Requests.CustomRequest)">
             <summary>

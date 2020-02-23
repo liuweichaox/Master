@@ -83,7 +83,7 @@ namespace Virgo.UserInterface
             {
                 endpoints.MapControllers();
             });
-
+            
             app.UseIocManager();
 
             app.UseApiVersioning();

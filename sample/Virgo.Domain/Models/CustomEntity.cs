@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Virgo.Application.Models.Requests
+namespace Virgo.Domain.Models
 {
-    /// <summary>
-    /// 自定义请求实体示例
-    /// </summary>
-    public class CustomRequest
+    public class CustomEntity
     {
         /// <summary>
         /// Guid Xml GO GO GO
