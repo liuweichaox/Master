@@ -4,6 +4,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
 using Virgo.AspNetCore;
+using Virgo.UserInterface.Filters;
 
 namespace Virgo.UserInterface.Extensions
 {
@@ -34,9 +35,12 @@ namespace Virgo.UserInterface.Extensions
           
             services.AddSwaggerStep(xmlPaths);
 
-            services.AddControllers().AddNewtonsoftJson(options =>
+            services.AddControllers(options=> 
             {
-                // options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                options.Filters.Add<AuditActionFilter>();
+            }).AddNewtonsoftJson(options =>
+            {
+               options.SerializerSettings.ContractResolver = new DefaultContractResolver();             
             });
         }
     }

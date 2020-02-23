@@ -24,12 +24,16 @@ namespace Virgo.UserInterface.Filters
             {
                 context.Result = new BadRequestResult();
             }
-            stopwatch.Stop();
+            finally
+            {
+                stopwatch.Stop();
+            }
             var audit = new
             {
                 Parameters = context.ActionArguments.Serialize(),
                 Url = context.HttpContext.Request.GetAbsoluteUri(),
-                Headers = context.HttpContext.Request.Headers.Serialize()
+                Headers = context.HttpContext.Request.Headers.Serialize(),
+                TimeConsuming = stopwatch.ElapsedMilliseconds
             };
             Debug.WriteLine($"审计日志：{Environment.NewLine}{audit.Serialize()}");
         }
