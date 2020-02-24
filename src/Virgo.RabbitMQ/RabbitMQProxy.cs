@@ -9,6 +9,9 @@ using System.Text;
 
 namespace Virgo.RabbitMQ
 {
+    /// <summary>
+    /// RabbmitMQ代理实现
+    /// </summary>
     public class RabbitMQProxy : IRabbitMQProxy
     {
         private readonly IRabbitMQConfiguration _mQConfiguration;
@@ -43,26 +46,22 @@ namespace Virgo.RabbitMQ
                     UserName = _mQConfiguration.UserName ?? "",
                     Password = _mQConfiguration.Password ?? ""
                 };
-                using (var conn = factory.CreateConnection())
-                {
-                    using (var channel = conn.CreateModel())
-                    {
-                        //在MQ上定义一个持久化队列，如果名称相同不会重复创建
-                        channel.QueueDeclare(queueName, true, false, false, null);
+                using var conn = factory.CreateConnection();
+                using var channel = conn.CreateModel();
+                //在MQ上定义一个持久化队列，如果名称相同不会重复创建
+                channel.QueueDeclare(queueName, true, false, false, null);
 
-                        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+                var bytes = Encoding.UTF8.GetBytes(msg);
 
-                        //设置消息持久化
-                        IBasicProperties properties = channel.CreateBasicProperties();
+                //设置消息持久化
+                var properties = channel.CreateBasicProperties();
 
-                        //非持久化1,持久化2
-                        properties.DeliveryMode = 2;
+                //非持久化1,持久化2
+                properties.DeliveryMode = 2;
 
-                        //发送消息到队列
-                        channel.BasicPublish("", queueName, properties, bytes);
-                        return true;
-                    }
-                }
+                //发送消息到队列
+                channel.BasicPublish("", queueName, properties, bytes);
+                return true;
             }
             catch (Exception)
             {
@@ -82,7 +81,7 @@ namespace Virgo.RabbitMQ
             {
                 return false;
             }
-            if (list == null || list.Count() == 0)
+            if (list == null || !list.Any())
             {
                 return false;
             }
@@ -94,27 +93,24 @@ namespace Virgo.RabbitMQ
                     UserName = _mQConfiguration.UserName ?? "",
                     Password = _mQConfiguration.Password ?? ""
                 };
-                using (var conn = factory.CreateConnection())
-                {
-                    using (var channel = conn.CreateModel())
-                    {
-                        channel.QueueDeclare(queueName, true, false, false, null);
-                        //设置消息持久化
-                        IBasicProperties properties = channel.CreateBasicProperties();
+                using var conn = factory.CreateConnection();
+                using var channel = conn.CreateModel();
+                channel.QueueDeclare(queueName, true, false, false, null);
+                //设置消息持久化
+                var properties = channel.CreateBasicProperties();
 
-                        //非持久化1,持久化2
-                        properties.DeliveryMode = 2;
-                        foreach (var item in list)
-                        {
-                            var msg = JsonConvert.SerializeObject(item);
-                            //在MQ上定义一个持久化队列，如果名称相同不会重复创建
-                            byte[] bytes = Encoding.UTF8.GetBytes(msg);
-                            //发送消息到队列
-                            channel.BasicPublish("", queueName, properties, bytes);
-                        }
-                        return true;
-                    }
+                //非持久化1,持久化2
+                properties.DeliveryMode = 2;
+                //循环发送
+                foreach (var item in list)
+                {
+                    var msg = JsonConvert.SerializeObject(item);
+                    //在MQ上定义一个持久化队列，如果名称相同不会重复创建
+                    var bytes = Encoding.UTF8.GetBytes(msg);
+                    //发送消息到队列
+                    channel.BasicPublish("", queueName, properties, bytes);
                 }
+                return true;
             }
             catch (Exception)
             {
@@ -140,63 +136,58 @@ namespace Virgo.RabbitMQ
                         UserName = _mQConfiguration.UserName ?? "",
                         Password = _mQConfiguration.Password ?? ""
                     };
-                    using (var conn = factory.CreateConnection())
+                    using var conn = factory.CreateConnection();
+                    using var channel = conn.CreateModel();
+                    //在MQ上定义一个持久化队列，如果名称相同不会重复创建
+                    channel.QueueDeclare(queueName, true, false, false, null);
+
+                    //在队列上定义一个消费者
+                    var consumer = new EventingBasicConsumer(channel);
+
+                    var closeErrorCount = 0;//队列服务关闭重试次数
+
+                    consumer.Received += (model, ea) =>
                     {
-                        using (var channel = conn.CreateModel())
+                        var msg = "";
+                        try
                         {
-                            //在MQ上定义一个持久化队列，如果名称相同不会重复创建
-                            channel.QueueDeclare(queueName, true, false, false, null);
-
-                            //在队列上定义一个消费者
-                            var consumer = new EventingBasicConsumer(channel);
-
-                            var closeErrorCount = 0;//队列服务关闭重试次数
-
-                            consumer.Received += (model, ea) =>
+                            if (channel.IsClosed)
                             {
-                                var msg = "";
-                                try
-                                {
-                                    if (channel.IsClosed)
-                                    {
-                                        isClose = true;
-                                        return;
-                                    }
+                                isClose = true;
+                                return;
+                            }
 
-                                    byte[] bytes = ea.Body;
-                                    msg = Encoding.UTF8.GetString(bytes);
-                                    var instance = JsonConvert.DeserializeObject<T>(msg);
-                                    var success = func(instance);
-                                    //应答确认
-                                    if (success)
-                                    {
-                                        channel.BasicAck(ea.DeliveryTag, false);
-                                        if (closeErrorCount > 0)
-                                            closeErrorCount = 0;
-                                    }
-                                    else
-                                    {
-                                        //消息未确认
-                                    }
-                                }
-                                catch (EndOfStreamException)//捕获队列服务端关闭的异常
-                                {
-                                    isClose = true;
-                                    return;
-                                }
-                                catch (Exception)
-                                {
-                                    //Logger.Error("队列异常，联系管理员吧：" + queueName + ":" + msg + "ex:" + ex);
-                                    isClose = true;
-                                    return;
-                                }
-                            };
-
-                            //消费队列，并设置应答模式为程序主动应答
-                            channel.BasicConsume(queueName, false, consumer);
-
+                            var bytes = ea.Body;
+                            msg = Encoding.UTF8.GetString(bytes);
+                            var instance = JsonConvert.DeserializeObject<T>(msg);
+                            var success = func(instance);
+                            //应答确认
+                            if (success)
+                            {
+                                channel.BasicAck(ea.DeliveryTag, false);
+                                if (closeErrorCount > 0)
+                                    closeErrorCount = 0;
+                            }
+                            else
+                            {
+                                //消息未确认
+                            }
                         }
-                    }
+                        catch (EndOfStreamException)//捕获队列服务端关闭的异常
+                        {
+                            isClose = true;
+                            return;
+                        }
+                        catch (Exception)
+                        {
+                            //Logger.Error("队列异常，联系管理员吧：" + queueName + ":" + msg + "ex:" + ex);
+                            isClose = true;
+                            return;
+                        }
+                    };
+
+                    //消费队列，并设置应答模式为程序主动应答
+                    channel.BasicConsume(queueName, false, consumer);
                 }
                 catch (Exception)
                 {

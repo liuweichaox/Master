@@ -1,85 +1,75 @@
-﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Nito.AsyncEx;
+﻿using Nito.AsyncEx;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Virgo.Cache
 {
-    /// <summary>
-    /// 缓存的基类
-    /// 它用于简化实现<see cref ="ICache"/>
-    /// </summary>  
     public abstract class CacheBase : ICache
     {
-        public ILogger Logger { get; set; }
-
-        public string Name { get; }
-
         public TimeSpan DefaultSlidingExpireTime { get; set; }
-
         public TimeSpan? DefaultAbsoluteExpireTime { get; set; }
 
         protected readonly object SyncObj = new object();
 
         private readonly AsyncLock _asyncLock = new AsyncLock();
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="name"></param>
-        protected CacheBase(string name)
+        public CacheBase()
         {
-            Name = name;
-            DefaultSlidingExpireTime = TimeSpan.FromHours(1);
-            Logger = NullLogger.Instance;
+            DefaultSlidingExpireTime = TimeSpan.FromMinutes(60);
         }
 
-        public virtual object Get(string key, Func<string, object> factory)
-        {
-            object item = null;
+        public abstract void Clear();
 
+        public Task ClearAsync()
+        {
+            Clear();
+            return Task.FromResult(0);
+        }
+
+        public TValue Get<TValue>(string key, Func<string, TValue> factory) where TValue : class
+        {
+            TValue item = null;
             try
             {
-                item = GetOrDefault(key);
+                item = GetOrDefault<TValue>(key);
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex.ToString(), ex);
+                //
             }
 
             if (item != null) return item;
+
+            lock (SyncObj)
             {
-                lock (SyncObj)
+                try
                 {
+                    item = GetOrDefault<TValue>(key);
+                }
+                catch (Exception ex)
+                {
+                    //
+                }
+
+                if (item != null) return item;
+                {
+                    item = factory(key);
+
+                    if (item == null)
+                    {
+                        return null;
+                    }
+
                     try
                     {
-                        item = GetOrDefault(key);
+                        Set(key, item);
                     }
                     catch (Exception ex)
                     {
-                        Logger.LogError(ex.ToString(), ex);
-                    }
-
-                    if (item != null) return item;
-                    {
-                        item = factory(key);
-
-                        if (item == null)
-                        {
-                            return null;
-                        }
-
-                        try
-                        {
-                            Set(key, item);
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError(ex.ToString(), ex);
-                        }
+                        //
                     }
                 }
             }
@@ -87,81 +77,17 @@ namespace Virgo.Cache
             return item;
         }
 
-        public virtual object[] Get(string[] keys, Func<string, object> factory)
-        {
-            object[] items = null;
 
+        public async Task<TValue> GetAsync<TValue>(string key, Func<string, Task<TValue>> factory) where TValue : class
+        {
+            TValue item = null;
             try
             {
-                items = GetOrDefault(keys);
+                item = await GetOrDefaultAsync<TValue>(key);
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex.ToString(), ex);
-            }
-
-            if (items == null)
-            {
-                items = new object[keys.Length];
-            }
-
-            if (items.All(i => i != null)) return items;
-            {
-                lock (SyncObj)
-                {
-                    try
-                    {
-                        items = GetOrDefault(keys);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogError(ex.ToString(), ex);
-                    }
-
-                    var fetched = new List<KeyValuePair<string, object>>();
-                    for (var i = 0; i < items.Length; i++)
-                    {
-                        string key = keys[i];
-                        object value = items[i];
-                        if (value == null)
-                        {
-                            value = factory(key);
-                        }
-
-                        if (value != null)
-                        {
-                            fetched.Add(new KeyValuePair<string, object>(key, value));
-                        }
-                    }
-
-                    if (!fetched.Any()) return items;
-                    {
-                        try
-                        {
-                            Set(fetched.ToArray());
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError(ex.ToString(), ex);
-                        }
-                    }
-                }
-            }
-
-            return items;
-        }
-
-        public virtual async Task<object> GetAsync(string key, Func<string, Task<object>> factory)
-        {
-            object item = null;
-
-            try
-            {
-                item = await GetOrDefaultAsync(key);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex.ToString(), ex);
+                //
             }
 
             if (item != null) return item;
@@ -170,11 +96,11 @@ namespace Virgo.Cache
                 {
                     try
                     {
-                        item = await GetOrDefaultAsync(key);
+                        item = await GetOrDefaultAsync<TValue>(key);
                     }
                     catch (Exception ex)
                     {
-                        Logger.LogError(ex.ToString(), ex);
+                        //
                     }
 
                     if (item != null) return item;
@@ -192,7 +118,7 @@ namespace Virgo.Cache
                         }
                         catch (Exception ex)
                         {
-                            Logger.LogError(ex.ToString(), ex);
+                            //
                         }
                     }
                 }
@@ -201,111 +127,17 @@ namespace Virgo.Cache
             return item;
         }
 
-        public virtual async Task<object[]> GetAsync(string[] keys, Func<string, Task<object>> factory)
+
+        public abstract TValue GetOrDefault<TValue>(string key) where TValue : class;
+
+        public Task<TValue> GetOrDefaultAsync<TValue>(string key) where TValue : class
         {
-            object[] items = null;
-
-            try
-            {
-                items = await GetOrDefaultAsync(keys);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex.ToString(), ex);
-            }
-
-            if (items == null)
-            {
-                items = new object[keys.Length];
-            }
-
-            if (items.All(i => i != null)) return items;
-            {
-                using (await _asyncLock.LockAsync())
-                {
-                    try
-                    {
-                        items = await GetOrDefaultAsync(keys);
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.LogError(ex.ToString(), ex);
-                    }
-
-                    var fetched = new List<KeyValuePair<string, object>>();
-                    for (var i = 0; i < items.Length; i++)
-                    {
-                        string key = keys[i];
-                        object value = items[i];
-                        if (value == null)
-                        {
-                            value = factory(key);
-                        }
-
-                        if (value != null)
-                        {
-                            fetched.Add(new KeyValuePair<string, object>(key, value));
-                        }
-                    }
-
-                    if (!fetched.Any()) return items;
-                    {
-                        try
-                        {
-                            await SetAsync(fetched.ToArray());
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.LogError(ex.ToString(), ex);
-                        }
-                    }
-                }
-            }
-
-            return items;
-        }
-
-        public abstract object GetOrDefault(string key);
-
-        public virtual object[] GetOrDefault(string[] keys)
-        {
-            return keys.Select(GetOrDefault).ToArray();
-        }
-
-        public virtual Task<object> GetOrDefaultAsync(string key)
-        {
-            return Task.FromResult(GetOrDefault(key));
-        }
-
-        public virtual Task<object[]> GetOrDefaultAsync(string[] keys)
-        {
-            return Task.FromResult(GetOrDefault(keys));
-        }
-
-        public abstract void Set(string key, object value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null);
-
-        public virtual void Set(KeyValuePair<string, object>[] pairs, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
-        {
-            foreach (var (key, value) in pairs)
-            {
-                Set(key, value, slidingExpireTime, absoluteExpireTime);
-            }
-        }
-
-        public virtual Task SetAsync(string key, object value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
-        {
-            Set(key, value, slidingExpireTime, absoluteExpireTime);
-            return Task.FromResult(0);
-        }
-
-        public virtual Task SetAsync(KeyValuePair<string, object>[] pairs, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
-        {
-            return Task.WhenAll(pairs.Select(p => SetAsync(p.Key, p.Value, slidingExpireTime, absoluteExpireTime)));
+            return Task.FromResult(GetOrDefault<TValue>(key));
         }
 
         public abstract void Remove(string key);
 
-        public virtual void Remove(string[] keys)
+        public void Remove(string[] keys)
         {
             foreach (var key in keys)
             {
@@ -313,28 +145,60 @@ namespace Virgo.Cache
             }
         }
 
-        public virtual Task RemoveAsync(string key)
+        public Task RemoveAsync(string key)
         {
             Remove(key);
             return Task.FromResult(0);
         }
 
-        public virtual Task RemoveAsync(string[] keys)
+        public Task RemoveAsync(string[] keys)
         {
             return Task.WhenAll(keys.Select(RemoveAsync));
         }
 
-        public abstract void Clear();
+        public abstract void Set<TValue>(string key, TValue value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null) where TValue : class;
 
-        public virtual Task ClearAsync()
+        public Task SetAsync<TValue>(string key, TValue value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null) where TValue : class
         {
-            Clear();
+            Set(key, value, slidingExpireTime, absoluteExpireTime);
             return Task.FromResult(0);
         }
+        #region IDisposable Support
+        private bool disposedValue = false; // 要检测冗余调用
 
-        public virtual void Dispose()
+        protected virtual void Dispose(bool disposing)
         {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: 释放托管状态(托管对象)。
+                }
 
+                // TODO: 释放未托管的资源(未托管的对象)并在以下内容中替代终结器。
+                // TODO: 将大型字段设置为 null。
+
+                disposedValue = true;
+            }
         }
+
+        // TODO: 仅当以上 Dispose(bool disposing) 拥有用于释放未托管资源的代码时才替代终结器。
+        // ~CacheBase()
+        // {
+        //   // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+        //   Dispose(false);
+        // }
+
+        // 添加此代码以正确实现可处置模式。
+        public void Dispose()
+        {
+            // 请勿更改此代码。将清理代码放入以上 Dispose(bool disposing) 中。
+            Dispose(true);
+            // TODO: 如果在以上内容中替代了终结器，则取消注释以下行。
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
+
+
     }
 }

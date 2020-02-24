@@ -2,7 +2,7 @@
 
 namespace Virgo.Redis
 {
-    public class RedisCaCheConfiguration : IRedisCaCheConfiguration, ISingletonDependency
+    public class RedisCaCheConfiguration
     {
         public int DatabaseId { get; set; }
 

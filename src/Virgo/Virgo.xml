@@ -615,171 +615,9 @@
             MimeType
             </summary>
         </member>
-        <member name="T:Virgo.Cache.CacheBase">
-            <summary>
-            缓存的基类
-            它用于简化实现<see cref ="T:Virgo.Cache.ICache"/>
-            </summary>  
-        </member>
-        <member name="M:Virgo.Cache.CacheBase.#ctor(System.String)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="name"></param>
-        </member>
-        <member name="T:Virgo.Cache.CacheExtensions">
-            <summary>
-            <see cref ="T:Virgo.Cache.ICache"/>的扩展方法
-            </summary>
-        </member>
-        <member name="T:Virgo.Cache.CacheManagerBase">
-            <summary>
-            缓存管理器的基类
-            </summary>
-        </member>
-        <member name="F:Virgo.Cache.CacheManagerBase.IocManager">
-            <summary>
-            <see cref="T:Virgo.DependencyInjection.IIocManager"/>实例
-            </summary>
-        </member>
-        <member name="F:Virgo.Cache.CacheManagerBase.Configuration">
-            <summary>
-            配置中心实例
-            </summary>
-        </member>
-        <member name="F:Virgo.Cache.CacheManagerBase.Caches">
-            <summary>
-            缓存字典
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.#ctor(Virgo.DependencyInjection.IIocManager,Virgo.Cache.Configuration.ICachingConfiguration)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="iocManager"></param>
-            <param name="configuration"></param>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.GetAllCaches">
-            <summary>
-            获取所有缓存
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.GetCache(System.String)">
-            <summary>
-            获取缓存
-            </summary>
-            <param name="name"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.Dispose">
-            <summary>
-            释放资源
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.DisposeCaches">
-            <summary>
-            释放缓存
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.CacheManagerBase.CreateCacheImplementation(System.String)">
-            <summary>
-            用于创建实际的缓存实现
-            </summary>
-            <param name="name">缓存的名称</param>
-            <returns>缓存对象</returns>
-        </member>
-        <member name="T:Virgo.Cache.CacheManagerExtensions">
-            <summary>
-            <see cref ="T:Virgo.Cache.ICacheManager"/>的扩展方法
-            </summary>
-        </member>
-        <member name="T:Virgo.Cache.Configuration.CachingConfiguration">
-            <summary>
-            <see cref="T:Virgo.Cache.Configuration.ICachingConfiguration"/>实现类
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.Configuration.CachingConfiguration.Configurators">
-            <summary>
-            缓存配置
-            </summary>
-        </member>
-        <member name="F:Virgo.Cache.Configuration.CachingConfiguration._configurators">
-            <summary>
-            缓存配置
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.#ctor">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.ConfigureAll(System.Action{Virgo.Cache.ICache})">
-            <summary>
-            配置全局
-            </summary>
-            <param name="initAction"></param>
-        </member>
-        <member name="M:Virgo.Cache.Configuration.CachingConfiguration.Configure(System.String,System.Action{Virgo.Cache.ICache})">
-            <summary>
-            配置某个缓存
-            </summary>
-            <param name="cacheName"></param>
-            <param name="initAction"></param>
-        </member>
-        <member name="T:Virgo.Cache.Configuration.ICacheConfigurator">
-            <summary>
-            已注册的缓存配置程序。
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.Configuration.ICacheConfigurator.CacheName">
-            <summary>
-            缓存的名称。
-            如果此配置程序配置所有缓存，则它将为null。
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.Configuration.ICacheConfigurator.InitAction">
-            <summary>
-            配置动作。 在创建缓存之后调用。
-            </summary>
-        </member>
-        <member name="T:Virgo.Cache.Configuration.ICachingConfiguration">
-            <summary>
-            用于配置缓存系统
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.Configuration.ICachingConfiguration.Configurators">
-            <summary>
-            所有已注册配置程序的列表。
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.Configuration.ICachingConfiguration.ConfigureAll(System.Action{Virgo.Cache.ICache})">
-            <summary>
-            用于配置所有缓存。
-            </summary>
-            <param name="initAction">
-            配置缓存的操作
-            创建后，每个缓存都会调用此操作。
-            </param>
-        </member>
-        <member name="M:Virgo.Cache.Configuration.ICachingConfiguration.Configure(System.String,System.Action{Virgo.Cache.ICache})">
-            <summary>
-            用于配置特定缓存。 
-            </summary>
-            <param name="cacheName">Cache name</param>
-            <param name="initAction">
-            配置缓存的操作
-            在创建缓存后立即调用此操作
-            </param>
-        </member>
         <member name="T:Virgo.Cache.ICache">
             <summary>
             定义可以按键存储和获取项目的缓存
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.ICache.Name">
-            <summary>
-            唯一的缓存名称
             </summary>
         </member>
         <member name="P:Virgo.Cache.ICache.DefaultSlidingExpireTime">
@@ -795,71 +633,37 @@
             默认值：空（未使用）
             </summary>
         </member>
-        <member name="M:Virgo.Cache.ICache.Get(System.String,System.Func{System.String,System.Object})">
+        <member name="M:Virgo.Cache.ICache.Get``1(System.String,System.Func{System.String,``0})">
             <summary>
-            从缓存中获取项目
-            此方法隐藏缓存提供程序失败（并记录它们），如果缓存提供程序失败，则使用工厂方法获取对象
+            从缓存中获取项目,如果缓存提供程序失败，则使用工厂方法获取对象
             </summary>
             <param name="key">键</param>
             <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
             <returns>缓存的项目</returns>
         </member>
-        <member name="M:Virgo.Cache.ICache.Get(System.String[],System.Func{System.String,System.Object})">
+        <member name="M:Virgo.Cache.ICache.GetAsync``1(System.String,System.Func{System.String,System.Threading.Tasks.Task{``0}})">
             <summary>
-            从缓存中获取项目
-            此方法隐藏缓存提供程序失败（并记录它们），如果缓存提供程序失败，则使用工厂方法获取对象
-            </summary>
-            <param name="keys">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ICache.GetAsync(System.String,System.Func{System.String,System.Threading.Tasks.Task{System.Object}})">
-            <summary>
-            从缓存中获取一个项目
-            此方法隐藏缓存提供程序失败（并记录它们），如果缓存提供程序失败，则使用工厂方法获取对象
+            从缓存中获取一个项目，如果缓存提供程序失败，则使用工厂方法获取对象
             </summary>
             <param name="key">键</param>
             <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
             <returns>缓存的项目</returns>
         </member>
-        <member name="M:Virgo.Cache.ICache.GetAsync(System.String[],System.Func{System.String,System.Threading.Tasks.Task{System.Object}})">
-            <summary>
-            从缓存中获取一个项目
-            此方法隐藏缓存提供程序失败（并记录它们），如果缓存提供程序失败，则使用工厂方法获取对象
-            </summary>
-            <param name="keys">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ICache.GetOrDefault(System.String)">
+        <member name="M:Virgo.Cache.ICache.GetOrDefault``1(System.String)">
             <summary>
             从缓存中获取项目，如果未找到，则返回null
             </summary>
             <param name="key">键</param>
             <returns>缓存项目，如果未找到则为null</returns>
         </member>
-        <member name="M:Virgo.Cache.ICache.GetOrDefault(System.String[])">
-            <summary>
-            从缓存中获取项目。 对于未找到的每个键，返回空值
-            </summary>
-            <param name="keys">键</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ICache.GetOrDefaultAsync(System.String)">
+        <member name="M:Virgo.Cache.ICache.GetOrDefaultAsync``1(System.String)">
             <summary>
             从缓存中获取项目，如果未找到，则返回null
             </summary>
             <param name="key">键</param>
             <returns>缓存项目，如果未找到则为null</returns>
         </member>
-        <member name="M:Virgo.Cache.ICache.GetOrDefaultAsync(System.String[])">
-            <summary>
-            从缓存中获取项目。 对于未找到的每个键，返回空值
-            </summary>
-            <param name="keys">键</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ICache.Set(System.String,System.Object,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
+        <member name="M:Virgo.Cache.ICache.Set``1(System.String,``0,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
             通过键保存/覆盖缓存中的项目
             最多使用一个过期时间 (<paramref name="slidingExpireTime"/> 或 <paramref name="absoluteExpireTime"/>)。
@@ -871,18 +675,7 @@
             <param name="slidingExpireTime">滑动到期时间</param>
             <param name="absoluteExpireTime">绝对到期时间</param>
         </member>
-        <member name="M:Virgo.Cache.ICache.Set(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            通过键保存/覆盖缓存中的项目
-            最多使用一个过期时间 (<paramref name="slidingExpireTime"/> 或 <paramref name="absoluteExpireTime"/>)。
-            如果没有指定它们，那么<see cref="P:Virgo.Cache.ICache.DefaultAbsoluteExpireTime"/> 如果不为null将被使用。
-            否则, <see cref="P:Virgo.Cache.ICache.DefaultSlidingExpireTime"/>将会被使用。
-            </summary>
-            <param name="pairs">键值对</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ICache.SetAsync(System.String,System.Object,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
+        <member name="M:Virgo.Cache.ICache.SetAsync``1(System.String,``0,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
             <summary>
             通过键保存/覆盖缓存中的项目
             最多使用一个过期时间 (<paramref name="slidingExpireTime"/> 或 <paramref name="absoluteExpireTime"/>)。
@@ -891,17 +684,6 @@
             </summary>
             <param name="key">键</param>
             <param name="value">值</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ICache.SetAsync(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            通过键保存/覆盖缓存中的项目
-            最多使用一个过期时间 (<paramref name="slidingExpireTime"/> 或 <paramref name="absoluteExpireTime"/>)。
-            如果没有指定它们，那么<see cref="P:Virgo.Cache.ICache.DefaultAbsoluteExpireTime"/> 如果不为null将被使用。 
-            否则, <see cref="P:Virgo.Cache.ICache.DefaultSlidingExpireTime"/>将会被使用。
-            </summary>
-            <param name="pairs">键值对</param>
             <param name="slidingExpireTime">滑动到期时间</param>
             <param name="absoluteExpireTime">绝对到期时间</param>
         </member>
@@ -939,238 +721,10 @@
             清除此缓存中的所有项目。
             </summary>
         </member>
-        <member name="T:Virgo.Cache.ICacheManager">
-            <summary>
-            <see cref="T:Virgo.Cache.ICache"/> 对象的上层容器
-            缓存管理器应该作为Singleton工作，并跟踪和管理<see cref ="T:Virgo.Cache.ICache"/>对象
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.ICacheManager.GetAllCaches">
-            <summary>
-            获取所有缓存
-            </summary>
-            <returns>缓存列表</returns>
-        </member>
-        <member name="M:Virgo.Cache.ICacheManager.GetCache(System.String)">
-            <summary>
-            获取<see cref ="T:Virgo.Cache.ICache"/>实例
-            如果缓存尚不存在，它可能会创建缓存
-            </summary>
-            <param name="name">
-            缓存的唯一且区分大小写的名称
-            </param>
-            <returns>缓存引用</returns>
-        </member>
-        <member name="T:Virgo.Cache.ITypedCache`2">
-            <summary>
-            以类型化方式使用缓存的接口
-            </summary>
-            <typeparam name="TKey">缓存的键</typeparam>
-            <typeparam name="TValue">缓存的值</typeparam>
-        </member>
-        <member name="P:Virgo.Cache.ITypedCache`2.Name">
-            <summary>
-            缓存的唯一名称
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.ITypedCache`2.DefaultSlidingExpireTime">
-            <summary>
-            缓存项的默认滑动到期时间
-            </summary>
-        </member>
-        <member name="P:Virgo.Cache.ITypedCache`2.InternalCache">
-            <summary>
-            获取内部缓存
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Get(`0,System.Func{`0,`1})">
-            <summary>
-            从缓存中获取一个项目
-            </summary>
-            <param name="key">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Get(`0[],System.Func{`0,`1})">
-            <summary>
-            从缓存中获取多个项目
-            </summary>
-            <param name="keys">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetAsync(`0,System.Func{`0,System.Threading.Tasks.Task{`1}})">
-            <summary>
-            从缓存中获取一个项目
-            </summary>
-            <param name="key">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetAsync(`0[],System.Func{`0,System.Threading.Tasks.Task{`1}})">
-            <summary>
-            从缓存中获取多个项目
-            </summary>
-            <param name="keys">键</param>
-            <param name="factory">如果不存在，则创建缓存项的工厂方法</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetOrDefault(`0)">
-            <summary>
-            从缓存中获取项目，如果未找到，则返回null
-            </summary>
-            <param name="key">键</param>
-            <returns>缓存项目，如果未找到则为null</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetOrDefault(`0[])">
-            <summary>
-            从缓存中获取项目。 对于未找到的每个键，返回空值。
-            </summary>
-            <param name="keys">键</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetOrDefaultAsync(`0)">
-            <summary>
-            从缓存中获取项目，如果未找到，则返回null
-            </summary>
-            <param name="key">键</param>
-            <returns>缓存项目，如果未找到则为null</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.GetOrDefaultAsync(`0[])">
-            <summary>
-            从缓存中获取项目。 对于未找到的每个键，返回空值。
-            </summary>
-            <param name="keys">键</param>
-            <returns>缓存的项目</returns>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Set(`0,`1,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            通过键保存/覆盖缓存中的项目。
-            </summary>
-            <param name="key">键</param>
-            <param name="value">值</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Set(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            按对保存/覆盖缓存中的项目
-            </summary>
-            <param name="pairs">键值对</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.SetAsync(`0,`1,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            通过键保存/覆盖缓存中的项目。
-            </summary>
-            <param name="key">键</param>
-            <param name="value">值</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.SetAsync(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
-            <summary>
-            按对保存/覆盖缓存中的项目
-            </summary>
-            <param name="pairs">键值对</param>
-            <param name="slidingExpireTime">滑动到期时间</param>
-            <param name="absoluteExpireTime">绝对到期时间</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Remove(`0)">
-            <summary>
-            通过它的键删除缓存项（如果缓存中不存在给定密钥则不执行任何操作）
-            </summary>
-            <param name="key">键</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Remove(`0[])">
-            <summary>
-            按键删除缓存项
-            </summary>
-            <param name="keys">键</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.RemoveAsync(`0)">
-            <summary>
-            通过它的键删除缓存项（如果缓存中不存在给定密钥则不执行任何操作）
-            </summary>
-            <param name="key">键</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.RemoveAsync(`0[])">
-            <summary>
-            按键删除缓存项
-            </summary>
-            <param name="keys">键</param>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.Clear">
-            <summary>
-            清除此缓存中的所有项目
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.ITypedCache`2.ClearAsync">
-            <summary>
-            清除此缓存中的所有项目
-            </summary>
-        </member>
         <member name="T:Virgo.Cache.Memory.VirgoMemoryCache">
             <summary>
             实现<see cref ="T:Virgo.Cache.ICache"/>以使用<see cref ="T:Microsoft.Extensions.Caching.Memory.MemoryCache"/>
             </summary>
-        </member>
-        <member name="M:Virgo.Cache.Memory.VirgoMemoryCache.#ctor(System.String)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="name">缓存的唯一名称</param>
-        </member>
-        <member name="T:Virgo.Cache.Memory.VirgoMemoryCacheManager">
-            <summary>
-            实现<see cref ="T:Virgo.Cache.ICacheManager"/>以使用MemoryCache
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.Memory.VirgoMemoryCacheManager.#ctor(Virgo.DependencyInjection.IIocManager,Virgo.Cache.Configuration.ICachingConfiguration)">
-            <summary>
-            构造函数
-            </summary>
-        </member>
-        <member name="T:Virgo.Cache.TypedCacheExtensions">
-            <summary>
-            <see cref ="T:Virgo.Cache.ITypedCache`2"/>的扩展方法
-            </summary>
-        </member>
-        <member name="M:Virgo.Cache.TypedCacheExtensions.Get``2(Virgo.Cache.ITypedCache{``0,``1},``0,System.Func{``1})">
-            <summary>
-            获取缓存对象
-            </summary>
-            <typeparam name="TKey"></typeparam>
-            <typeparam name="TValue"></typeparam>
-            <param name="cache"></param>
-            <param name="key"></param>
-            <param name="factory"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Cache.TypedCacheExtensions.GetAsync``2(Virgo.Cache.ITypedCache{``0,``1},``0,System.Func{System.Threading.Tasks.Task{``1}})">
-            <summary>
-            获取缓存对象
-            </summary>
-            <typeparam name="TKey"></typeparam>
-            <typeparam name="TValue"></typeparam>
-            <param name="cache"></param>
-            <param name="key"></param>
-            <param name="factory"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Cache.TypedCacheWrapper`2">
-            <summary>
-            <see cref="T:Virgo.Cache.ITypedCache`2"/>实现
-            </summary>
-            <typeparam name="TKey">缓存的键</typeparam>
-            <typeparam name="TValue">缓存的值</typeparam>
-        </member>
-        <member name="M:Virgo.Cache.TypedCacheWrapper`2.#ctor(Virgo.Cache.ICache)">
-            <summary>
-            创建一个新的<see cref ="T:Virgo.Cache.TypedCacheWrapper`2"/>对象
-            </summary>
-            <param name="internalCache">实际的内部缓存</param>
         </member>
         <member name="T:Virgo.Data.MsSqlHelper">
             <summary>

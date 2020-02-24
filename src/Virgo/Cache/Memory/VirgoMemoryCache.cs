@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using System;
+using System.Threading.Tasks;
 using Virgo.Cache;
 
 namespace Virgo.Cache.Memory
@@ -11,23 +12,28 @@ namespace Virgo.Cache.Memory
     public class VirgoMemoryCache : CacheBase
     {
         private MemoryCache _memoryCache;
-
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="name">缓存的唯一名称</param>
-        public VirgoMemoryCache(string name)
-            : base(name)
+        public VirgoMemoryCache()
         {
             _memoryCache = new MemoryCache(new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()));
         }
 
-        public override object GetOrDefault(string key)
+        public override void Clear()
         {
-            return _memoryCache.Get(key);
+            _memoryCache.Dispose();
+            _memoryCache = new MemoryCache(new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()));
         }
 
-        public override void Set(string key, object value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
+        public override TValue GetOrDefault<TValue>(string key)
+        {
+            return _memoryCache.Get<TValue>(key);
+        }
+
+        public override void Remove(string key)
+        {
+            _memoryCache.Remove(key);
+        }
+
+        public override void Set<TValue>(string key, TValue value, TimeSpan? slidingExpireTime = null, TimeSpan? absoluteExpireTime = null)
         {
             if (value == null)
             {
@@ -50,23 +56,6 @@ namespace Virgo.Cache.Memory
             {
                 _memoryCache.Set(key, value, DefaultSlidingExpireTime);
             }
-        }
-
-        public override void Remove(string key)
-        {
-            _memoryCache.Remove(key);
-        }
-
-        public override void Clear()
-        {
-            _memoryCache.Dispose();
-            _memoryCache = new MemoryCache(new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()));
-        }
-
-        public override void Dispose()
-        {
-            _memoryCache.Dispose();
-            base.Dispose();
         }
     }
 }

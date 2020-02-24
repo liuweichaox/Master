@@ -35,14 +35,14 @@ namespace Virgo.Extensions
         public static async Task<string> ReceiveStringAsync(this WebSocket socket, CancellationToken ct = default)
         {
             var buffer = new ArraySegment<byte>(new byte[8192]);
-            using var ms = new MemoryStream();
+            await using var ms = new MemoryStream();
             WebSocketReceiveResult result;
             do
             {
                 ct.ThrowIfCancellationRequested();
 
                 result = await socket.ReceiveAsync(buffer, ct);
-                ms.Write(buffer.Array, buffer.Offset, result.Count);
+                ms.Write(buffer: buffer.Array ?? throw new InvalidOperationException(), buffer.Offset, result.Count);
             }
             while (!result.EndOfMessage);
 
