@@ -12,23 +12,27 @@ namespace Virgo.RabbitMQ
     /// <summary>
     /// RabbmitMQ代理实现
     /// </summary>
-    public class RabbitMQProxy : IRabbitMQProxy
+    public class RabbitMQProxy
     {
         private readonly IRabbitMQConfiguration _mQConfiguration;
         public RabbitMQProxy(IRabbitMQConfiguration mQConfiguration)
         {
             _mQConfiguration = mQConfiguration;
         }
+
         /// <summary>
         /// 发布消息
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="queueName">队列名称</param>
-        /// <param name="model">消息内容</param>
-        /// <returns>是否发布成功</returns>
-        public bool Publish<T>(string queueName, T model) where T : QueueMessage
+        /// <param name="queueName"></param>
+        /// <param name="model"></param>
+        /// <param name="exchangeName"></param>
+        /// <param name="exchangeType"></param>
+        /// <param name="routingKey"></param>
+        /// <returns></returns>
+        public bool Publish<T>(string queueName, T model, string exchangeName, string exchangeType, string routingKey) where T : class
         {
-            if (string.IsNullOrEmpty(_mQConfiguration.Url))
+            if (string.IsNullOrEmpty(_mQConfiguration.HostName))
             {
                 return false;
             }
@@ -36,94 +40,54 @@ namespace Virgo.RabbitMQ
             {
                 return false;
             }
-            //序列化对象
-            var msg = JsonConvert.SerializeObject(model);
             try
             {
                 var factory = new ConnectionFactory
                 {
-                    Uri = new Uri(_mQConfiguration.Url),
+                    VirtualHost = "/",
+                    HostName = _mQConfiguration.HostName,
+                    Port = _mQConfiguration.Port,
                     UserName = _mQConfiguration.UserName ?? "",
                     Password = _mQConfiguration.Password ?? ""
                 };
                 using var conn = factory.CreateConnection();
                 using var channel = conn.CreateModel();
+                //定义交换机
+                channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
+                //定义队列
+                channel.QueueDeclare(queueName, true, false, false, null);
+                //绑定交换机-队列
+                channel.QueueBind(queueName, exchangeName, routingKey, null);
+                //序列化对象
+                var msg = JsonConvert.SerializeObject(model);
                 //在MQ上定义一个持久化队列，如果名称相同不会重复创建
-                channel.QueueDeclare(queueName, true, false, false, null);
-
-                var bytes = Encoding.UTF8.GetBytes(msg);
-
+                var messageBodyBytes = Encoding.UTF8.GetBytes(msg);
                 //设置消息持久化
-                var properties = channel.CreateBasicProperties();
-
+                var props = channel.CreateBasicProperties();
+                // MIME类型
+                props.ContentType = "text/plain";
                 //非持久化1,持久化2
-                properties.DeliveryMode = 2;
-
+                props.DeliveryMode = 2;
                 //发送消息到队列
-                channel.BasicPublish("", queueName, properties, bytes);
+                channel.BasicPublish(exchangeName, routingKey, props, messageBodyBytes);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
         }
-        /// <summary>
-        /// 发布消息（批量发布）
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="queueName"></param>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public bool BatchPublish<T>(string queueName, IList<T> list) where T : QueueMessage
-        {
-            if (string.IsNullOrEmpty(_mQConfiguration.Url))
-            {
-                return false;
-            }
-            if (list == null || !list.Any())
-            {
-                return false;
-            }
-            try
-            {
-                var factory = new ConnectionFactory
-                {
-                    Uri = new Uri(_mQConfiguration.Url),
-                    UserName = _mQConfiguration.UserName ?? "",
-                    Password = _mQConfiguration.Password ?? ""
-                };
-                using var conn = factory.CreateConnection();
-                using var channel = conn.CreateModel();
-                channel.QueueDeclare(queueName, true, false, false, null);
-                //设置消息持久化
-                var properties = channel.CreateBasicProperties();
 
-                //非持久化1,持久化2
-                properties.DeliveryMode = 2;
-                //循环发送
-                foreach (var item in list)
-                {
-                    var msg = JsonConvert.SerializeObject(item);
-                    //在MQ上定义一个持久化队列，如果名称相同不会重复创建
-                    var bytes = Encoding.UTF8.GetBytes(msg);
-                    //发送消息到队列
-                    channel.BasicPublish("", queueName, properties, bytes);
-                }
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
         /// <summary>
         /// 消息订阅
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="queueName">队列名称</param>
-        /// <param name="func">接收到消息后执行的操作</param>
-        public void Subscribe<T>(string queueName, Func<T, bool> func) where T : QueueMessage
+        /// <param name="queueName"></param>
+        /// <param name="exchangeName"></param>
+        /// <param name="exchangeType"></param>
+        /// <param name="routingKey"></param>
+        /// <param name="func"></param>
+        public void Subscribe<T>(string queueName, string exchangeName, string exchangeType, string routingKey, Func<T, bool> func) where T : class
         {
             var isClose = false;//队列服务端是否关闭
             do
@@ -132,15 +96,26 @@ namespace Virgo.RabbitMQ
                 {
                     var factory = new ConnectionFactory
                     {
-                        Uri = new Uri(_mQConfiguration.Url),
+                        VirtualHost = "/",
+                        HostName = "localhost",
+                        Port = 5672,
                         UserName = _mQConfiguration.UserName ?? "",
                         Password = _mQConfiguration.Password ?? ""
                     };
                     using var conn = factory.CreateConnection();
                     using var channel = conn.CreateModel();
-                    //在MQ上定义一个持久化队列，如果名称相同不会重复创建
+                    //定义交换机
+                    channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
+                    //定义队列
                     channel.QueueDeclare(queueName, true, false, false, null);
-
+                    //绑定交换机-队列
+                    channel.QueueBind(queueName, exchangeName, routingKey, null);
+                    //设置消息持久化
+                    var props = channel.CreateBasicProperties();
+                    // MIME类型
+                    props.ContentType = "text/plain";
+                    //非持久化1,持久化2
+                    props.DeliveryMode = 2;
                     //在队列上定义一个消费者
                     var consumer = new EventingBasicConsumer(channel);
 
@@ -184,8 +159,7 @@ namespace Virgo.RabbitMQ
                             isClose = true;
                             return;
                         }
-                    };
-
+                    }; 
                     //消费队列，并设置应答模式为程序主动应答
                     channel.BasicConsume(queueName, false, consumer);
                 }

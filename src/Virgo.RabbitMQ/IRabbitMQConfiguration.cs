@@ -8,7 +8,13 @@
         /// <summary>
         /// 连接地址
         /// </summary>
-        string Url { get; set; }
+        string HostName { get; set; }
+
+        /// <summary>
+        /// 端口
+        /// </summary>
+        int Port { get; set; }
+
         /// <summary>
         /// 用户名
         /// </summary>

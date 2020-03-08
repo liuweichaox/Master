@@ -276,5 +276,15 @@ namespace Virgo.Extensions
         /// <param name="o">需要比较的对象</param>
         /// <returns>是否同一对象</returns>
         public new static bool ReferenceEquals(this object _this, object o) => object.ReferenceEquals(_this, o);
+
+        /// <summary>
+        /// 获取字符串字节序列
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static byte[] GetBytes(this string str)
+        {
+            return Encoding.UTF8.GetBytes(str);
+        }       
     }
 }

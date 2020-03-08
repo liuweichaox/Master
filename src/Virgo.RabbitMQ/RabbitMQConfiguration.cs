@@ -6,10 +6,16 @@
     /// </summary>
     public class RabbitMQConfiguration : IRabbitMQConfiguration
     {
+
         /// <summary>
-        /// 地址
+        /// 主机地址
         /// </summary>
-        public string Url { get; set; }
+        public string HostName { get; set; }
+        /// <summary>
+        /// 端口
+        /// </summary>
+        public int Port { get; set; }
+
         /// <summary>
         /// 用户名
         /// </summary>

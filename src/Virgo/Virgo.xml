@@ -2202,6 +2202,13 @@
             <param name="o">需要比较的对象</param>
             <returns>是否同一对象</returns>
         </member>
+        <member name="M:Virgo.Extensions.StringExtensions.GetBytes(System.String)">
+            <summary>
+            获取字符串字节序列
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
         <member name="T:Virgo.Extensions.WebExtension">
             <summary>
             <see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>的拓展方法
