@@ -7,6 +7,9 @@ using Virgo.Extensions;
 
 namespace Virgo.UserInterface.Filters
 {
+    /// <summary>
+    /// 审计日志过滤器
+    /// </summary>
     public class AuditActionFilter : IAsyncActionFilter
     {
         public AuditActionFilter()
