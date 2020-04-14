@@ -16,6 +16,7 @@ namespace Virgo.Redis
         {
             services.AddSingleton<ICache, RedisCache>();
             services.AddSingleton<IRedisCacheProvider, RedisCacheProvider>();
+            services.AddSingleton<ILock, RedisLock>();
         }
     }
 }

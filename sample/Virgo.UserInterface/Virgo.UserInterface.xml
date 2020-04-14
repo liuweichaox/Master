@@ -4,6 +4,23 @@
         <name>Virgo.UserInterface</name>
     </assembly>
     <members>
+        <member name="M:Virgo.UserInterface.Controllers.v1.SnapUpTestController.SnapUpTest">
+            <summary>
+            模拟抢购
+            </summary>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.v1.SnapUpTestController.SnapUpCommodity">
+            <summary>
+            抢购商品
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.UserInterface.Controllers.v1.SnapUpTestController.RushBuySuccess">
+            <summary>
+            抢购商品
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Virgo.UserInterface.Controllers.ValueController">
             <summary>
             ValueController
@@ -212,6 +229,11 @@
             注册服务
             </summary>
             <param name="services"></param>
+        </member>
+        <member name="T:Virgo.UserInterface.Filters.AuditActionFilter">
+            <summary>
+            审计日志过滤器
+            </summary>
         </member>
         <member name="T:Virgo.UserInterface.Middlewares.ChatWebSocketMiddleware">
             <summary>
