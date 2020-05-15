@@ -1,4 +1,5 @@
 ﻿using OfficeOpenXml;
+using OfficeOpenXml.FormulaParsing.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,12 +19,14 @@ namespace Virgo.Extensions
     {
         #region 导入
         /// <summary>
-        /// 读取Excel，将<see cref="Stream"/>转换为<see cref="string[][]"/>
+        /// 将Excel转换为<see cref="List{T}"/>
         /// </summary>
+        /// <typeparam name="T"></typeparam>
         /// <param name="stream"></param>
         /// <param name="worksheet"></param>
         /// <returns></returns>
-        public static string[][] ReadExcel(this Stream stream, int worksheet = 0)
+        /// <exception cref="ExcelException">Excel错误消息类型</exception>
+        public static List<T> ExcelToList<T>(this Stream stream, int worksheet = 0) where T : class, new()
         {
             if (stream == null)
                 throw new ArgumentException(nameof(stream));
@@ -33,41 +36,17 @@ namespace Virgo.Extensions
             var maxColumnNum = ws.Dimension.End.Column; //工作区结束列
             var minRowNum = ws.Dimension.Start.Row; //工作区开始行号
             var maxRowNum = ws.Dimension.End.Row; //工作区结束行号
-            string[][] cells = new string[maxRowNum][];
-            for (var row = minRowNum; row <= maxRowNum; row++)
-            {
-                string[] rowItem = new string[maxColumnNum];
-                for (int col = minColumnNum; col <= maxColumnNum; col++)
-                {
-                    rowItem[col - 1] = ws.GetValue(row, col).ToString();
-                }
-                cells[row - 1] = rowItem;
-            }
-            return cells;
-        }
-
-        /// <summary>
-        /// 读取Excel，将<see cref="string[][]"/>转换为<see cref="List{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cells"></param>
-        /// <returns></returns>
-        /// <exception cref="ExcelException"></exception>
-        public static List<T> ExcelToList<T>(this string[][] cells) where T : class, new()
-        {
-            if (cells == null)
-                throw new ArgumentException(nameof(cells));
             var errors = new List<ExcelExceptioInfo>();
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
-            for (int row = 0; row < cells.Length; row++)
+            for (int row = minRowNum; row <= maxRowNum; row++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
-                for (int col = 0; col < cells.Length; col++)
+                for (int col = minColumnNum; col <= maxColumnNum; col++)
                 {
-                    var cell = cells[row][col];
-                    if (row == 0)
+                    var cell = ws.Cells[row, col].Value.ToString();
+                    if (row == minRowNum)
                     {
                         var propertyName = propertyInfos.SingleOrDefault(x => x.GetCustomAttribute<DescriptionAttribute>()?.Description == cell)?.Name;
                         if (propertyName != null)
@@ -95,7 +74,7 @@ namespace Virgo.Extensions
                         }
                     }
                 }
-                if (row != 0)
+                if (row != minRowNum)
                 {
                     list.Add(rowInstance);
                 }
@@ -105,20 +84,6 @@ namespace Virgo.Extensions
                 throw new ExcelException(errors);
             }
             return list;
-        }
-        /// <summary>
-        /// 读取Excel.将Excel转换为<see cref="List{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="stream"></param>
-        /// <param name="worksheet"></param>
-        /// <returns></returns>
-        public static List<T> ReadExcel<T>(this Stream stream, int worksheet = 0) where T : class, new()
-        {
-            if (stream == null)
-                throw new ArgumentException(nameof(stream));
-            var cells = ReadExcel(stream, worksheet);
-            return ExcelToList<T>(cells);
         }
         #endregion
 
@@ -151,7 +116,12 @@ namespace Virgo.Extensions
                         sheet.SetValue(row + 1, col + 1, title);//第一行设置标题
                     }
                     var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
-                    sheet.SetValue(row + 2, col + 1, val);//第一条数据从第二行开始追加
+                    var cell = sheet.Cells[row+2,col+1];//第一条数据从第二行开始追加
+                    cell.Value = val;
+                    if (val.IsNumeric() && val.Length > 11)
+                    {
+                        cell.Style.Numberformat.Format = "@";
+                    }
                 }
             }
             return package;

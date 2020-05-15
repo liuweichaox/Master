@@ -28,13 +28,15 @@ namespace Virgo.Tests.Extensions
                 {
                     CreateTime=DateTime.Now,
                     Email="12345@gamil.com",
-                    Name="Jon"
+                    Name="Jon",
+                    Card="1234567890123456"
                 },
                 new ExcelTemplate()
                 {
                     CreateTime=DateTime.Now,
                     Email="54321@gamil.com",
-                    Name="Allen"
+                    Name="Allen",
+                    Card="6543210987654321"
                 }
             };
             var path = "D:\\ExcelTest.xlxs";
@@ -57,13 +59,15 @@ namespace Virgo.Tests.Extensions
                 {
                     CreateTime=DateTime.Now,
                     Email="12345@gamil.com",
-                    Name="Jon"
+                    Name="Jon",
+                    Card="1234567890123456"
                 },
                 new ExcelTemplate()
                 {
                     CreateTime=DateTime.Now,
                     Email="54321@gamil.com",
-                    Name="Allen"
+                    Name="Allen",
+                    Card="6543210987654321"
                 }
             };
             using (var stream = temps.ExportToStream())
@@ -81,7 +85,7 @@ namespace Virgo.Tests.Extensions
             var path = "D:\\ExcelTest.xlxs";
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                var templates = stream.ReadExcel<ExcelTemplate>();
+                var templates = stream.ExcelToList<ExcelTemplate>();
                 templates.ShouldNotBeNull();
             }
         }
@@ -102,6 +106,11 @@ namespace Virgo.Tests.Extensions
         /// </summary>
         [Description(" 邮  箱 ")]
         public string Email { get; set; }
+        /// <summary>
+        /// 身份证 
+        /// </summary>
+        [Description(" 身份证 ")]
+        public string Card { get; set; }
         /// <summary>
         /// 创建时间 
         /// </summary>

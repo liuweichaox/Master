@@ -9,6 +9,13 @@
             模拟抢购
             </summary>
         </member>
+        <member name="M:Virgo.UserInterface.Controllers.v1.SnapUpTestController.SendRedis(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            设置Redis
+            </summary>
+            <param name="jObject"></param>
+            <returns></returns>
+        </member>
         <member name="M:Virgo.UserInterface.Controllers.v1.SnapUpTestController.SnapUpCommodity">
             <summary>
             抢购商品
