@@ -29,7 +29,7 @@ namespace Virgo.Extensions
         /// <param name="right">右条件</param>
         /// <returns>新表达式</returns>
         public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> left, Expression<Func<T, bool>> right)
-        {
+        { 
             return CombineLambdas(left, right, ExpressionType.OrElse);
         }
 
