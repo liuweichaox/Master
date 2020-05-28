@@ -40,6 +40,8 @@ namespace Virgo.Extensions
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
+            if (propertyInfos.Length != maxColumnNum)
+                throw new Exception($"Excel格式错误，无法将该文件转换为List<{typeof(T).Name}>对象！");
             for (int row = minRowNum; row <= maxRowNum; row++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
@@ -116,7 +118,7 @@ namespace Virgo.Extensions
                         sheet.SetValue(row + 1, col + 1, title);//第一行设置标题
                     }
                     var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
-                    var cell = sheet.Cells[row+2,col+1];//第一条数据从第二行开始追加
+                    var cell = sheet.Cells[row + 2, col + 1];//第一条数据从第二行开始追加
                     cell.Value = val;
                     if (val.IsNumeric() && val.Length > 11)
                     {

@@ -39,7 +39,7 @@ namespace Virgo.Tests.Extensions
                     Card="6543210987654321"
                 }
             };
-            var path = "D:\\ExcelTest.xlxs";
+            var path = "D:\\ExcelTest.xlsx";
             temps.ExportToFile(path);
             using (var stream = new FileStream(path, FileMode.Open))
             {
@@ -82,7 +82,7 @@ namespace Virgo.Tests.Extensions
         [Fact]
         public void ReadExcel_Test()
         {
-            var path = "D:\\ExcelTest.xlxs";
+            var path = "D:\\ExcelTest.xlsx";
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 var templates = stream.ExcelToList<ExcelTemplate>();
