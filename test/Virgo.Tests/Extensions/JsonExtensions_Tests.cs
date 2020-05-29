@@ -1,11 +1,12 @@
-﻿using Shouldly;
+﻿using Newtonsoft.Json;
+using Shouldly;
 using System;
 using Virgo.Extensions;
 using Xunit;
 
 namespace Virgo.Tests.Extensions
 {
-    public class JsonExtensions_Test
+    public class JsonExtensions_Tests
     {
         [Fact]
         public void Simple_Serialize_Test()
@@ -27,6 +28,7 @@ namespace Virgo.Tests.Extensions
     [Serializable]
     public class Person
     {
+        [JsonProperty("Name")]
         public string Name { get; set; }
         public Person()
         {

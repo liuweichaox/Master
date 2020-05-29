@@ -1,6 +1,8 @@
-﻿using OfficeOpenXml;
+﻿using MySqlX.XDevAPI.Relational;
+using OfficeOpenXml;
 using OfficeOpenXml.FormulaParsing.Utilities;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -8,6 +10,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading.Tasks;
 using Virgo.IO;
 
 namespace Virgo.Extensions
@@ -26,7 +29,7 @@ namespace Virgo.Extensions
         /// <param name="worksheet"></param>
         /// <returns></returns>
         /// <exception cref="ExcelException">Excel错误消息类型</exception>
-        public static List<T> ExcelToList<T>(this Stream stream, int worksheet = 0) where T : class, new()
+        public static List<T> ToObjectsFromExcel<T>(this Stream stream, int worksheet = 0) where T : class, new()
         {
             if (stream == null)
                 throw new ArgumentException(nameof(stream));
@@ -96,7 +99,7 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static ExcelPackage ExportToExcel<T>(this List<T> list)
+        public static ExcelPackage ToExcelFromObjects<T>(this List<T> list)
         {
             if (list == null || list.Any() == false)
                 throw new ArgumentException(nameof(list));
@@ -135,11 +138,11 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static MemoryStream ExportToStream<T>(this List<T> list)
+        public static MemoryStream ToStreamFromObjects<T>(this List<T> list)
         {
             if (list == null || list.Any() == false)
                 throw new ArgumentException(nameof(list));
-            using var package = ExportToExcel(list);
+            using var package = ToExcelFromObjects(list);
             MemoryStream stream = new MemoryStream();
             package.SaveAs(stream);
             return stream;
@@ -150,12 +153,12 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <param name="path"></param>
-        public static void ExportToFile<T>(this List<T> list, string path)
+        public static void ToExcelFileFromObjects<T>(this List<T> list, string path)
         {
             if (string.IsNullOrWhiteSpace(path))
                 throw new ArgumentException(nameof(path));
             FileHelper.DeleteIfExists(path);
-            using var package = ExportToExcel(list);
+            using var package = ToExcelFromObjects(list);
             using FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
             package.SaveAs(stream);
         }

@@ -8,6 +8,8 @@ using Shouldly;
 using System.Linq;
 using System.IO;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace Virgo.Tests.Extensions
 {
@@ -22,25 +24,38 @@ namespace Virgo.Tests.Extensions
         [Fact]
         public void ExportExcelToFile_Test()
         {
-            var temps = new List<ExcelTemplate>()
+            var temps = new ConcurrentBag<ExcelTemplate>();
+            Parallel.For(0, 33333, i =>
             {
-                new ExcelTemplate()
+                var item1 = new ExcelTemplate()
                 {
-                    CreateTime=DateTime.Now,
-                    Email="12345@gamil.com",
-                    Name="Jon",
-                    Card="1234567890123456"
-                },
-                new ExcelTemplate()
+                    CreateTime = DateTime.Now,
+                    Email = "12345@gamil.com",
+                    Name = "Jon",
+                    Card = "1234567890123456"
+                };
+
+                var item2 = new ExcelTemplate()
                 {
-                    CreateTime=DateTime.Now,
-                    Email="54321@gamil.com",
-                    Name="Allen",
-                    Card="6543210987654321"
-                }
-            };
+                    CreateTime = DateTime.Now,
+                    Email = "54321@gamil.com",
+                    Name = "Allen",
+                    Card = "6543210987654321"
+                };
+
+                var item3 = new ExcelTemplate()
+                {
+                    CreateTime = DateTime.Now,
+                    Email = "666666@gamil.com",
+                    Name = "Lucy",
+                    Card = "6543210987654321"
+                };
+                temps.Add(item1);
+                temps.Add(item2);
+                temps.Add(item3);
+            });
             var path = "D:\\ExcelTest.xlsx";
-            temps.ExportToFile(path);
+            temps.ToList().ToExcelFileFromObjects(path);
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 stream.ShouldNotBeNull();
@@ -53,24 +68,37 @@ namespace Virgo.Tests.Extensions
         [Fact]
         public void ExportExcelToStream_Test()
         {
-            var temps = new List<ExcelTemplate>()
-            {
-                new ExcelTemplate()
-                {
-                    CreateTime=DateTime.Now,
-                    Email="12345@gamil.com",
-                    Name="Jon",
-                    Card="1234567890123456"
-                },
-                new ExcelTemplate()
-                {
-                    CreateTime=DateTime.Now,
-                    Email="54321@gamil.com",
-                    Name="Allen",
-                    Card="6543210987654321"
-                }
-            };
-            using (var stream = temps.ExportToStream())
+            var temps = new ConcurrentBag<ExcelTemplate>();
+            Parallel.For(0, 33333, i =>
+              {
+                  var item1 = new ExcelTemplate()
+                  {
+                      CreateTime = DateTime.Now,
+                      Email = "12345@gamil.com",
+                      Name = "Jon",
+                      Card = "1234567890123456"
+                  };
+
+                  var item2 = new ExcelTemplate()
+                  {
+                      CreateTime = DateTime.Now,
+                      Email = "54321@gamil.com",
+                      Name = "Allen",
+                      Card = "6543210987654321"
+                  };
+
+                  var item3 = new ExcelTemplate()
+                  {
+                      CreateTime = DateTime.Now,
+                      Email = "666666@gamil.com",
+                      Name = "Lucy",
+                      Card = "6543210987654321"
+                  };
+                  temps.Add(item1);
+                  temps.Add(item2);
+                  temps.Add(item3);
+              });
+            using (var stream = temps.ToList().ToStreamFromObjects())
             {
                 stream.ShouldNotBeNull();
             }
@@ -85,7 +113,7 @@ namespace Virgo.Tests.Extensions
             var path = "D:\\ExcelTest.xlsx";
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                var templates = stream.ExcelToList<ExcelTemplate>();
+                var templates = stream.ToObjectsFromExcel<ExcelTemplate>();
                 templates.ShouldNotBeNull();
             }
         }

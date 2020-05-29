@@ -1828,7 +1828,7 @@
             Excel拓展
             </summary>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.ExcelToList``1(System.IO.Stream,System.Int32)">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ToObjectsFromExcel``1(System.IO.Stream,System.Int32)">
             <summary>
             将Excel转换为<see cref="T:System.Collections.Generic.List`1"/>
             </summary>
@@ -1838,7 +1838,7 @@
             <returns></returns>
             <exception cref="T:Virgo.Extensions.ExcelException">Excel错误消息类型</exception>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.ExportToExcel``1(System.Collections.Generic.List{``0})">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ToExcelFromObjects``1(System.Collections.Generic.List{``0})">
             <summary>
             导出Excel.将<see cref="T:System.Collections.Generic.List`1"/>转为为<see cref="T:OfficeOpenXml.ExcelPackage"/>
             </summary>
@@ -1846,7 +1846,7 @@
             <param name="list"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.ExportToStream``1(System.Collections.Generic.List{``0})">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ToStreamFromObjects``1(System.Collections.Generic.List{``0})">
             <summary>
             导出Excel.将<see cref="T:System.Collections.Generic.List`1"/>转为为<see cref="T:System.IO.MemoryStream"/>
             </summary>
@@ -1854,7 +1854,7 @@
             <param name="list"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.Extensions.ExcelExtensions.ExportToFile``1(System.Collections.Generic.List{``0},System.String)">
+        <member name="M:Virgo.Extensions.ExcelExtensions.ToExcelFileFromObjects``1(System.Collections.Generic.List{``0},System.String)">
             <summary>
             导出Excel.将<see cref="T:System.Collections.Generic.List`1"/>转为为<see cref="T:System.IO.File"/>
             </summary>
@@ -2226,6 +2226,23 @@
             <param name="socket"></param>
             <param name="ct"></param>
             <returns></returns>
+        </member>
+        <member name="T:Virgo.Extensions.XMLExtensions">
+            <summary>
+            XML拓展
+            </summary>
+        </member>
+        <member name="M:Virgo.Extensions.XMLExtensions.XMLSerialize``1(``0)">
+            <summary>
+            XMLHelper
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.XMLExtensions.XMLDeserialize``1(System.String)">
+            <summary>
+            反序列化
+            </summary>
         </member>
         <member name="T:Virgo.Files.ISevenZipCompressor">
             <summary>

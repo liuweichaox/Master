@@ -16,7 +16,7 @@ namespace Virgo.Extensions
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public static string Serialize<T>(this T model) where T : class
+        public static string XMLSerialize<T>(this T model) where T : class
         {
             string xml;
             using (var ms = new MemoryStream())
@@ -32,7 +32,7 @@ namespace Virgo.Extensions
         /// <summary>
         /// 反序列化
         /// </summary>
-        public static T Deserialize<T>(this string xml) where T : class
+        public static T XMLDeserialize<T>(this string xml) where T : class
         {
             try
             {
