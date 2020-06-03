@@ -106,7 +106,7 @@ namespace Virgo.Extensions
                 throw new ArgumentException(nameof(list));
             var type = typeof(T);
             ExcelPackage package = new ExcelPackage();
-            ExcelWorksheet sheet = package.Workbook.Worksheets.Add(type.Name);
+            ExcelWorksheet sheet = package.Workbook.Worksheets.Add("Sheet1");
             var propertyInfos = type.GetProperties();
             var rows = list.Count;
             var cols = propertyInfos.Length;
