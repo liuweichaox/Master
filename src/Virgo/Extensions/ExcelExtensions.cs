@@ -1,6 +1,7 @@
 ﻿using MySqlX.XDevAPI.Relational;
 using OfficeOpenXml;
 using OfficeOpenXml.FormulaParsing.Utilities;
+using OfficeOpenXml.Style;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -118,7 +119,9 @@ namespace Virgo.Extensions
                     if (row == 0)
                     {
                         var title = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
-                        sheet.SetValue(row + 1, col + 1, title);//第一行设置标题
+                        var firstCell = sheet.Cells[row + 1, col + 1];
+                        firstCell.Value = title; //第一行设置标题
+                        firstCell.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                     }
                     var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
                     var cell = sheet.Cells[row + 2, col + 1];//第一条数据从第二行开始追加
@@ -127,6 +130,7 @@ namespace Virgo.Extensions
                     {
                         cell.Style.Numberformat.Format = "@";
                     }
+                    cell.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 }
             }
             return package;
