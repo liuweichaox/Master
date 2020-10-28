@@ -21,7 +21,7 @@ namespace Virgo.UserInterface.Controllers.v1
         private readonly ILock _redisClient;
         private readonly static string commodityKey = "CommodityKey";
         private readonly string lockKey = $"Lock:{commodityKey}";
-        private readonly string RushBuySuccessUser = "RushBuySuccess";
+        private readonly string rushBuySuccessUser = "RushBuySuccess";
         private readonly int lockKeyOutTime = 15;
 
         public SnapUpTestController(ILock redisClient, IRedisCacheProvider redisCacheProvider)
@@ -73,7 +73,7 @@ namespace Virgo.UserInterface.Controllers.v1
             string guid = Guid.NewGuid().ToString();//设置唯一key，互斥锁，只能解锁自己上的锁
             var threadId = Thread.CurrentThread.ManagedThreadId.ToString(); //线程id 模拟UserID
             var commoditySum = int.Parse(await _redis.StringGetAsync(commodityKey, CommandFlags.PreferSlave)); //模拟库存库存 如果库存不足，则直接返回
-            if (commoditySum <= 0 || _redis.HashExists(RushBuySuccessUser, threadId, CommandFlags.PreferSlave))   //根据业务，防止超抢情况，如果抢购成功则直接返回
+            if (commoditySum <= 0 || _redis.HashExists(rushBuySuccessUser, threadId, CommandFlags.PreferSlave))   //根据业务，防止超抢情况，如果抢购成功则直接返回
             {
                 return;
             }
@@ -93,7 +93,7 @@ namespace Virgo.UserInterface.Controllers.v1
                 finally
                 {
                     _redisClient.LockWatchDogStop();//关闭看门狗
-                    _redis.HashIncrement(RushBuySuccessUser, threadId);//如果抢购成功则存入hashkey，避免超抢
+                    _redis.HashIncrement(rushBuySuccessUser, threadId);//如果抢购成功则存入hashkey，避免超抢
                     await _redisClient.LockReleaseAsync(lockKey, guid);//抢购成功则释放锁
                     Console.WriteLine($"用户：{threadId}已抢到商品，时间为:{DateTime.Now}");
                 }

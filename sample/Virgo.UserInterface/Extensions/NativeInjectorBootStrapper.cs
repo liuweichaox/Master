@@ -4,6 +4,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
 using Virgo.AspNetCore;
+using Virgo.Redis;
 using Virgo.UserInterface.Filters;
 
 namespace Virgo.UserInterface.Extensions
@@ -26,6 +27,8 @@ namespace Virgo.UserInterface.Extensions
             services.AddOptions();
 
             services.AddApiVersion();
+
+            services.AddRedis();
 
             var xmlPaths = new List<string>()
             {

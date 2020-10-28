@@ -56,6 +56,12 @@ namespace Virgo.Redis
             };
             _timer.Start();
         }
+        /// <summary>
+        /// 续期锁
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <param name="second"></param>
         private void LockRenew(string key, string value, int second)
         {
             //如果是当前key对应的value，则进行守护，否则释放
@@ -63,6 +69,7 @@ namespace Virgo.Redis
             if (current == value)
             {
                 Console.WriteLine($"--设置前剩余过期时间为{_redis.KeyTimeToLive(key)}");
+                // 设置锁的过期时间
                 _redis.KeyExpire(key, DateTime.Now.AddSeconds(second));
             }
             else
@@ -71,6 +78,9 @@ namespace Virgo.Redis
                 Console.WriteLine($"--设置过期时间失败，当前value:{current},redisvalue:{value}");
             }
         }
+        /// <summary>
+        /// 设置redis分布式锁情况下，客户端获取锁并执行结束redis操作时，释放后台线程（开门狗）
+        /// </summary>
         public void LockWatchDogStop()
         {
             Console.WriteLine($"Stop——{System.Threading.Thread.CurrentThread.ManagedThreadId}关闭开门狗，时间为:{DateTime.Now}");
