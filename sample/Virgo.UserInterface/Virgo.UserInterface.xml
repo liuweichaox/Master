@@ -75,6 +75,14 @@
             </summary>
             <param name="id"></param>
         </member>
+        <member name="M:Virgo.UserInterface.Controllers.ValueController.Add(System.Int32,System.Int32)">
+            <summary>
+            求和
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
         <member name="M:Virgo.UserInterface.Controllers.ValueController.InitLocationData">
             <summary>
             初始化地理位置数据

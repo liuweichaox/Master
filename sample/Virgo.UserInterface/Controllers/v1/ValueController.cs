@@ -86,6 +86,13 @@ namespace Virgo.UserInterface.Controllers
         public void Delete(int id)
         {
         }
+
+        /// <summary>
+        /// 求和
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         [HttpGet]
         public int Add([FromQuery]int a, [FromQuery] int b)
         {

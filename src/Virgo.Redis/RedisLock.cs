@@ -12,7 +12,7 @@ namespace Virgo.Redis
     /// </summary>
     public class RedisLock : ILock
     {
-        private static Timer _timer;
+        private Timer _timer;
         private readonly IDatabase _redis;
         public RedisLock(IRedisCacheProvider redis)
         {
@@ -32,8 +32,8 @@ namespace Virgo.Redis
         /// <summary>
         /// 释放锁
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
+        /// <param name="key">要操作的Key</param>
+        /// <param name="value">Guid</param>
         /// <returns></returns>
         public async Task<bool> LockReleaseAsync(string key, string value)
         {
@@ -44,9 +44,9 @@ namespace Virgo.Redis
         /// 设置redis分布式锁情况下，客户端获取锁成功执行redis操作时，同时开启一个后台线程（看门狗），
         /// 每隔过期时间的1/3时检查是否还持有锁，如果持有则自动续期
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="second"></param>
+        /// <param name="key">要操作的Key</param>
+        /// <param name="value">Guid</param>
+        /// <param name="second">过期时间(秒)</param>
         public void LockWatchDogStart(string key, string value, int second)
         {
             _timer = new Timer(second * 1000 / 3.0);
@@ -59,9 +59,9 @@ namespace Virgo.Redis
         /// <summary>
         /// 续期锁
         /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <param name="second"></param>
+        /// <param name="key">要操作的Key</param>
+        /// <param name="value">Guid</param>
+        /// <param name="second">过期时间(秒)</param>
         private void LockRenew(string key, string value, int second)
         {
             //如果是当前key对应的value，则进行守护，否则释放
