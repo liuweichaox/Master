@@ -37,7 +37,6 @@ namespace Virgo.RabbitMQ.Tests
         {
             _rabbitMQProxy.Subscribe<QueueMessage>("topic.virgo.user", "exchangeJon", ExchangeType.Topic, "routingKeyByJon", (item) =>
              {
-
                  return true;
              });
         }

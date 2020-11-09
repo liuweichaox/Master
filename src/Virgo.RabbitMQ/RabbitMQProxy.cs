@@ -23,14 +23,13 @@ namespace Virgo.RabbitMQ
         /// <summary>
         /// 发布消息
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="queueName"></param>
-        /// <param name="model"></param>
-        /// <param name="exchangeName"></param>
-        /// <param name="exchangeType"></param>
-        /// <param name="routingKey"></param>
-        /// <returns></returns>
-        public bool Publish<T>(string queueName, T model, string exchangeName, string exchangeType, string routingKey) where T : class
+        /// <param name="queueName">队列名称</param>
+        /// <param name="model">发送数据</param>
+        /// <param name="exchangeName">交换机名称</param>
+        /// <param name="exchangeType">交换机类型</param>
+        /// <param name="routingKey">路由key</param>
+        /// <returns>是否成功</returns>
+        public bool Publish(string queueName, object model, string exchangeName, string exchangeType, string routingKey)
         {
             if (string.IsNullOrEmpty(_mQConfiguration.HostName))
             {
@@ -81,12 +80,12 @@ namespace Virgo.RabbitMQ
         /// <summary>
         /// 消息订阅
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="queueName"></param>
-        /// <param name="exchangeName"></param>
-        /// <param name="exchangeType"></param>
-        /// <param name="routingKey"></param>
-        /// <param name="func"></param>
+        /// <typeparam name="T">消息模型</typeparam>
+        /// <param name="queueName">队列名称</param>
+        /// <param name="exchangeName">交换机名称</param>
+        /// <param name="exchangeType">交换机类型</param>
+        /// <param name="routingKey">路由key</param>
+        /// <param name="func">处理消息</param>
         public void Subscribe<T>(string queueName, string exchangeName, string exchangeType, string routingKey, Func<T, bool> func) where T : class
         {
             var isClose = false;//队列服务端是否关闭
@@ -159,7 +158,7 @@ namespace Virgo.RabbitMQ
                             isClose = true;
                             return;
                         }
-                    }; 
+                    };
                     //消费队列，并设置应答模式为程序主动应答
                     channel.BasicConsume(queueName, false, consumer);
                 }
