@@ -27,7 +27,7 @@ namespace Virgo.RabbitMQ
         /// <param name="model">发送数据</param>
         /// <param name="exchangeName">交换机名称</param>
         /// <param name="exchangeType">交换机类型</param>
-        /// <param name="routingKey">路由key</param>
+        /// <param name="routingKey">路由键</param>
         /// <returns>是否成功</returns>
         public bool Publish(string queueName, object model, string exchangeName, string exchangeType, string routingKey)
         {
@@ -41,6 +41,7 @@ namespace Virgo.RabbitMQ
             }
             try
             {
+                // 实例化连接工厂。
                 var factory = new ConnectionFactory
                 {
                     VirtualHost = "/",
@@ -49,11 +50,12 @@ namespace Virgo.RabbitMQ
                     UserName = _mQConfiguration.UserName ?? "",
                     Password = _mQConfiguration.Password ?? ""
                 };
+                // 创建连接、信道。
                 using var conn = factory.CreateConnection();
                 using var channel = conn.CreateModel();
                 //定义交换机
                 channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
-                //定义队列
+                // 声明队列，标记为持久性
                 channel.QueueDeclare(queueName, true, false, false, null);
                 //绑定交换机-队列
                 channel.QueueBind(queueName, exchangeName, routingKey, null);
@@ -61,8 +63,8 @@ namespace Virgo.RabbitMQ
                 var msg = JsonConvert.SerializeObject(model);
                 //在MQ上定义一个持久化队列，如果名称相同不会重复创建
                 var messageBodyBytes = Encoding.UTF8.GetBytes(msg);
-                //设置消息持久化
-                var props = channel.CreateBasicProperties(); 
+                // 将消息标记为持久性。
+                var props = channel.CreateBasicProperties();
                 // MIME类型
                 props.ContentType = "text/plain";
                 //非持久化1,持久化2
@@ -84,7 +86,7 @@ namespace Virgo.RabbitMQ
         /// <param name="queueName">队列名称</param>
         /// <param name="exchangeName">交换机名称</param>
         /// <param name="exchangeType">交换机类型</param>
-        /// <param name="routingKey">路由key</param>
+        /// <param name="routingKey">路由键</param>
         /// <param name="func">处理消息</param>
         public void Subscribe<T>(string queueName, string exchangeName, string exchangeType, string routingKey, Func<T, bool> func) where T : class
         {
@@ -93,6 +95,7 @@ namespace Virgo.RabbitMQ
             {
                 try
                 {
+                    // 实例化连接工厂。
                     var factory = new ConnectionFactory
                     {
                         VirtualHost = "/",
@@ -101,14 +104,17 @@ namespace Virgo.RabbitMQ
                         UserName = _mQConfiguration.UserName ?? "",
                         Password = _mQConfiguration.Password ?? ""
                     };
+                    // 创建连接、信道。
                     using var conn = factory.CreateConnection();
                     using var channel = conn.CreateModel();
                     //定义交换机
                     channel.ExchangeDeclare(exchangeName, exchangeType, true, false, null);
-                    //定义队列
+                    // 获取发送消息
                     channel.QueueDeclare(queueName, true, false, false, null);
                     //绑定交换机-队列
                     channel.QueueBind(queueName, exchangeName, routingKey, null);
+                    // 告知 RabbitMQ，在未收到当前 Worker 的消息确认信号时，不再分发给消息，确保公平调度。
+                    channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
                     //设置消息持久化
                     var props = channel.CreateBasicProperties();
                     // MIME类型
