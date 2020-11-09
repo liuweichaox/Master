@@ -62,7 +62,7 @@ namespace Virgo.RabbitMQ
                 //在MQ上定义一个持久化队列，如果名称相同不会重复创建
                 var messageBodyBytes = Encoding.UTF8.GetBytes(msg);
                 //设置消息持久化
-                var props = channel.CreateBasicProperties();
+                var props = channel.CreateBasicProperties(); 
                 // MIME类型
                 props.ContentType = "text/plain";
                 //非持久化1,持久化2
@@ -120,6 +120,7 @@ namespace Virgo.RabbitMQ
 
                     var closeErrorCount = 0;//队列服务关闭重试次数
 
+                    // 绑定消息接收事件。
                     consumer.Received += (model, ea) =>
                     {
                         var msg = "";
@@ -138,6 +139,7 @@ namespace Virgo.RabbitMQ
                             //应答确认
                             if (success)
                             {
+                                // 手动发送消息确认信号。
                                 channel.BasicAck(ea.DeliveryTag, false);
                                 if (closeErrorCount > 0)
                                     closeErrorCount = 0;
@@ -152,14 +154,15 @@ namespace Virgo.RabbitMQ
                             isClose = true;
                             return;
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-                            //Logger.Error("队列异常，联系管理员吧：" + queueName + ":" + msg + "ex:" + ex);
                             isClose = true;
                             return;
                         }
                     };
-                    //消费队列，并设置应答模式为程序主动应答
+                    // 消费队列，并设置应答模式为程序主动应答
+                    // autoAck:false - 关闭自动消息确认，调用`BasicAck`方法进行手动消息确认。
+                    // autoAck:true  - 开启自动消息确认，当消费者接收到消息后就自动发送 ack 信号，无论消息是否正确处理完毕。
                     channel.BasicConsume(queueName, false, consumer);
                 }
                 catch (Exception)
