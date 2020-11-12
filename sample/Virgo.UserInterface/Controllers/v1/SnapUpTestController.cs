@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Nest;
 using Newtonsoft.Json.Linq;
 using Nito.AsyncEx;
 using StackExchange.Redis;
@@ -36,6 +37,7 @@ namespace Virgo.UserInterface.Controllers.v1
         [HttpGet]
         public void SnapUpTest()
         {
+           
             Console.WriteLine($"抢购开始——————:{DateTime.Now.ToLongTimeString()}");
             Parallel.For(0, 1000, thread => //模拟N个人，多线程异步
             {
