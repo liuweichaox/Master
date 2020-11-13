@@ -17,9 +17,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System;
 using Virgo.Extensions;
-using Autofac.Extras.DynamicProxy;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Virgo.UserInterface
 {
@@ -49,7 +47,7 @@ namespace Virgo.UserInterface
         public void ConfigureServices(IServiceCollection services)
         {
             NativeInjectorBootStrapper.RegisterServices(services);
-            // services.AddHostedService<BGMJobService>();
+            services.AddHostedService<BGMJobService>();
         }
         /// <summary>
         /// Autofac 容器配置
@@ -83,7 +81,7 @@ namespace Virgo.UserInterface
             {
                 endpoints.MapControllers();
             });
-            
+
             app.UseIocManager();
 
             app.UseApiVersioning();

@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
-using System.Threading.Tasks;
 using Virgo.UserInterface;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
