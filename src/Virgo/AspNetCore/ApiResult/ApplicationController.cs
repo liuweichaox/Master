@@ -62,7 +62,7 @@ namespace Virgo.AspNetCore
         /// <param name="message"></param>
         /// <returns></returns>
         [NonAction]
-        public ApiResult<T> UnSuccess<T>(T data, string message = "")
+        public ApiResult<T> Failed<T>(T data, string message = "")
         {
             return new ApiResult<T>(data, ApiStatus.FAIL, message);
         }
@@ -72,7 +72,7 @@ namespace Virgo.AspNetCore
         /// <param name="message"></param>
         /// <returns></returns>
         [NonAction]
-        public ApiResult UnSuccess(string message = "")
+        public ApiResult Failed(string message = "")
         {
             return new ApiResult("", ApiStatus.FAIL, message);
         }

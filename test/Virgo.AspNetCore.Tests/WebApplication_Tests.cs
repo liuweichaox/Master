@@ -3,6 +3,7 @@ using System;
 using Virgo.UserInterface;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
+using System.Threading.Tasks;
 
 namespace Virgo.AspNetCore.Tests
 {

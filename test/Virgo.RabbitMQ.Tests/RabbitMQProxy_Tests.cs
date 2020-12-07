@@ -62,7 +62,7 @@ namespace Virgo.RabbitMQ.Tests
         }
 
         /// <summary>
-        /// 发布消息-完全匹配模式测试
+        /// Direct发布消息-完全匹配模式测试
         /// </summary>
         [Fact]
         public void Publish_DirectExchange_Test()
@@ -72,7 +72,7 @@ namespace Virgo.RabbitMQ.Tests
         }
 
         /// <summary>
-        /// 订阅消息-完全匹配模式测试
+        /// Direct订阅消息-完全匹配模式测试
         /// </summary>
         [Fact]
         public void Subscribe_DirectExchange_Test()
@@ -86,7 +86,7 @@ namespace Virgo.RabbitMQ.Tests
         }
 
         /// <summary>
-        /// 发布消息-完全匹配模式测试
+        /// Fanout发布消息-广播模式
         /// </summary>
         [Fact]
         public void Publish_FanoutExchange_Test()
@@ -96,7 +96,7 @@ namespace Virgo.RabbitMQ.Tests
         }
 
         /// <summary>
-        /// 订阅消息-完全匹配模式测试
+        /// Fanout订阅消息-广播模式
         /// </summary>
         [Fact]
         public void Subscribe_FanoutExchange_Test()
@@ -111,7 +111,7 @@ namespace Virgo.RabbitMQ.Tests
 
 
         /// <summary>
-        /// 发布消息-完全匹配模式测试
+        /// Topic发布消息-通配符模式
         /// </summary>
         [Fact]
         public void Publish_TopicExchange_Test()
@@ -121,7 +121,7 @@ namespace Virgo.RabbitMQ.Tests
         }
 
         /// <summary>
-        /// 订阅消息-完全匹配模式测试
+        /// Topic订阅消息-通配符模式
         /// </summary>
         [Theory]
         [InlineData("topic.#")]

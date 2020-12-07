@@ -43,7 +43,7 @@ namespace Virgo.AspNetCore
     /// <summary>
     /// <see cref="ApiResult{T}"/>默认实现方式
     /// </summary>
-    public class ApiResult : ApiResult<string>
+    public class ApiResult : ApiResult<object>
     {
         /// <summary>
         /// 构造函数
@@ -51,7 +51,7 @@ namespace Virgo.AspNetCore
         /// <param name="data"></param>
         /// <param name="status"></param>
         /// <param name="message"></param>
-        public ApiResult(string data, ApiStatus status, string message) : base(data, status, message)
+        public ApiResult(object data, ApiStatus status, string message) : base(data, status, message)
         {
         }
     }
