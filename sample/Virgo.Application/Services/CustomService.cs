@@ -34,7 +34,7 @@ namespace Virgo.Application.Services
         public CostomResponse Call(CustomRequest request)
         {
             System.Diagnostics.Debug.WriteLine("CustomService Calling");
-            var customEntity = request.Map<CustomRequest,CustomEntity>();
+            var customEntity = request.MapTo<CustomRequest,CustomEntity>();
             _customRepository.Call(customEntity);
             return new CostomResponse()
             {

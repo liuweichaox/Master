@@ -126,7 +126,7 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.UnSuccess``1(``0,System.String)">
+        <member name="M:Virgo.AspNetCore.ApplicationController.Failed``1(``0,System.String)">
             <summary>
             响应失败
             </summary>
@@ -135,7 +135,7 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.UnSuccess(System.String)">
+        <member name="M:Virgo.AspNetCore.ApplicationController.Failed(System.String)">
             <summary>
             响应失败
             </summary>
@@ -1534,26 +1534,62 @@
         </member>
         <member name="T:Virgo.Extensions.AutoMapperExtensions">
             <summary>
-            AutoMapper映射拓展
+            AutoMapper扩展帮助类
             </summary>
         </member>
-        <member name="M:Virgo.Extensions.AutoMapperExtensions.Map``2(``0)">
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``1(System.Object)">
             <summary>
-            将源类型对象转换为目标类型对象
+            类型映射
             </summary>
-            <typeparam name="TSource">源类型</typeparam>
-            <typeparam name="TDestination">目标类型</typeparam>
-            <param name="source">原类型对象</param>
-            <returns>目标类型对象</returns>
+            <typeparam name="TDestination">映射后的对象</typeparam>
+            <param name="obj">要映射的对象</param>
+            <returns></returns>
         </member>
-        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapToList``2(System.Collections.Generic.IEnumerable{``0})">
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``1(System.Collections.IEnumerable)">
             <summary>
-            将源类型对象转换为目标类型对象集合
+            集合列表类型映射
             </summary>
-            <typeparam name="TSource">源类型</typeparam>
-            <typeparam name="TDestination">目标类型</typeparam>
-            <param name="source">源类型对象集合</param>
-            <returns>目标类型对象集合</returns>
+            <typeparam name="TDestination">目标对象类型</typeparam>
+            <param name="source">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``2(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            集合列表类型映射
+            </summary>
+            <typeparam name="TSource">数据源类型</typeparam>
+            <typeparam name="TDestination">目标对象类型</typeparam>
+            <param name="source">数据源</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``2(System.Collections.Generic.IEnumerable{``0},System.Action{AutoMapper.IMapperConfigurationExpression})">
+            <summary>
+            集合列表类型映射
+            </summary>
+            <typeparam name="TSource">数据源类型</typeparam>
+            <typeparam name="TDestination">目标对象类型</typeparam>
+            <param name="source">数据源</param>
+            <param name="configure">自定义配置</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``2(``0,``1)">
+            <summary>
+            类型映射
+            </summary>
+            <typeparam name="TSource">数据源类型</typeparam>
+            <typeparam name="TDestination">目标对象类型</typeparam>
+            <param name="source">数据源</param>
+            <param name="destination">目标对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Extensions.AutoMapperExtensions.MapTo``2(``0)">
+            <summary>
+            类型映射,默认字段名字一一对应
+            </summary>
+            <typeparam name="TDestination">转化之后的model，可以理解为viewmodel</typeparam>
+            <typeparam name="TSource">要被转化的实体，Entity</typeparam>
+            <param name="source">可以使用这个扩展方法的类型，任何引用类型</param>
+            <returns>转化之后的实体</returns>
         </member>
         <member name="T:Virgo.Extensions.CollectionsExtensions">
             <summary>
