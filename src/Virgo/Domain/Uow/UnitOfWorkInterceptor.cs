@@ -17,6 +17,10 @@ namespace Virgo.Domain.Uow
         {
             _unitOfWork = unitOfWork;
         }
+        /// <summary>
+        /// 工作单元
+        /// </summary>
+        /// <param name="invocation"></param>
         public void Intercept(IInvocation invocation)
         {
             var uowAttr = invocation.MethodInvocationTarget.GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;

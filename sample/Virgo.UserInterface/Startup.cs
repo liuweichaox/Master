@@ -53,7 +53,7 @@ namespace Virgo.UserInterface
         /// Autofac 容器配置
         /// </summary>
         /// <param name="builder"></param>
-        public void ConfigureContainer(ContainerBuilder builder)
+        public void ConfigureContainer(ContainerBuilder builder) 
         {
             builder.RegisterType<CustomInterceptor>();
             builder.RegisterInterceptorBy<CustomInterceptor>();
