@@ -1532,6 +1532,12 @@
             <see cref="T:Virgo.Domain.Uow.IUnitOfWork"/>AOP模式执行
             </summary>
         </member>
+        <member name="M:Virgo.Domain.Uow.UnitOfWorkInterceptor.Intercept(Castle.DynamicProxy.IInvocation)">
+            <summary>
+            工作单元
+            </summary>
+            <param name="invocation"></param>
+        </member>
         <member name="T:Virgo.Extensions.AutoMapperExtensions">
             <summary>
             AutoMapper扩展帮助类
