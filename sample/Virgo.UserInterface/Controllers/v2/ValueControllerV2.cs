@@ -57,7 +57,7 @@ namespace Virgo.UserInterface.Controllers
         }
 
         /// <summary>
-        /// Put:
+        /// Put:api/Value/5
         /// </summary>
         [HttpPut("{id}")]
         public void Put(int id)
