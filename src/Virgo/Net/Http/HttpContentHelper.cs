@@ -146,12 +146,13 @@ namespace Virgo.Net.Http
                 param.Add(new KeyValuePair<string, string>(key, value.ToString()));
             }
             return param;
-        }        /// <summary>
-                 /// Url编码
-                 /// </summary>
-                 /// <param name="content">内容</param>
-                 /// <param name="encode">编码类型</param>
-                 /// <returns></returns>
+        }
+        /// <summary>
+        /// Url编码
+        /// </summary>
+        /// <param name="content">内容</param>
+        /// <param name="encode">编码类型</param>
+        /// <returns></returns>
         private static string Encode(string content, Encoding encode = null)
         {
             return encode == null ? content : System.Web.HttpUtility.UrlEncode(content, Encoding.UTF8);
