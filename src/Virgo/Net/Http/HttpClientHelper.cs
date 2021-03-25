@@ -18,10 +18,10 @@ namespace Virgo.Net.Http
         /// <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
         /// </summary>
         /// <param name="url">请求地址</param>
-        /// <param name="data">请求参数</param>
+        /// <param name="query">Query参数</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> GetAsync(string url, object data, Action<HttpRequestHeaders> action = null)
+        public static async Task<string> GetAsync(string url, object query, Action<HttpRequestHeaders> action = null)
         {
             if (url.ToLower().StartsWith("https"))
             {
@@ -37,7 +37,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
+                using var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(query))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -54,10 +54,11 @@ namespace Virgo.Net.Http
         /// <para><see cref="StringContent"/>后台使用[FromBody]接受参数</para>
         /// </summary>
         /// <param name="url">请求地址</param>
+        /// <param name="query">Query参数</param>
         /// <param name="content">请求参数</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> PostAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
+        public static async Task<string> PostAsync(string url, object query, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             if (url.ToLower().StartsWith("https"))
             {
@@ -73,7 +74,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.PostAsync(url, content);
+                using var response = await client.PostAsync($"{url}?{BuildParam(ToKeyValuePair(query))}", content);
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -91,10 +92,11 @@ namespace Virgo.Net.Http
         /// <para><see cref="StringContent"/>后台使用[FromBody]接受参数</para>
         /// </summary>
         /// <param name="url">请求地址</param>
+        /// <param name="query">Query参数</param>
         /// <param name="content">请求参数</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> PutAsync(string url, HttpContent content, Action<HttpRequestHeaders> action = null)
+        public static async Task<string> PutAsync(string url,object query, HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             if (url.ToLower().StartsWith("https"))
             {
@@ -110,7 +112,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.PutAsync(url, content);
+                using var response = await client.PutAsync($"{url}?{BuildParam(ToKeyValuePair(query))}", content);
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = response.Content.ReadAsStreamAsync().Result;
@@ -125,10 +127,10 @@ namespace Virgo.Net.Http
         /// <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
         /// </summary>
         /// <param name="url">请求地址</param>
-        /// <param name="data">请求参数</param>
+        /// <param name="query">Query参数</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns>JSON字符串</returns>
-        public static async Task<string> DeleteAsync(string url, object data, Action<HttpRequestHeaders> action = null)
+        public static async Task<string> DeleteAsync(string url, object query, Action<HttpRequestHeaders> action = null)
         {
             if (url.ToLower().StartsWith("https"))
             {
@@ -144,7 +146,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(data))}");
+                using var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(query))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -160,10 +162,11 @@ namespace Virgo.Net.Http
         /// </summary>
         /// <param name="url">请求地址</param>
         /// <param name="method">请求方法</param>
+        /// <param name="query">Query参数</param>
         /// <param name="content">请求内容</param>
         /// <param name="action">Http请求头设置</param>
         /// <returns></returns>
-        public static async Task<string> SendAsync(string url, HttpMethod method, HttpContent content, Action<HttpRequestHeaders> action = null)
+        public static async Task<string> SendAsync(string url, HttpMethod method, object query,HttpContent content, Action<HttpRequestHeaders> action = null)
         {
             if (url.ToLower().StartsWith("https"))
             {
@@ -179,7 +182,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var httpRequestMessage = new HttpRequestMessage(method, url)
+                using var httpRequestMessage = new HttpRequestMessage(method, $"{url}?{BuildParam(ToKeyValuePair(query))}")
                 {
                     Content = content
                 };
