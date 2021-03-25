@@ -37,7 +37,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.GetAsync($"{url}?{BuildParam(ToKeyValuePair(query))}");
+                using var response = await client.GetAsync($"{url}{BuildParam(ToKeyValuePair(query))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -74,7 +74,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.PostAsync($"{url}?{BuildParam(ToKeyValuePair(query))}", content);
+                using var response = await client.PostAsync($"{url}{BuildParam(ToKeyValuePair(query))}", content);
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -112,7 +112,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.PutAsync($"{url}?{BuildParam(ToKeyValuePair(query))}", content);
+                using var response = await client.PutAsync($"{url}{BuildParam(ToKeyValuePair(query))}", content);
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = response.Content.ReadAsStreamAsync().Result;
@@ -146,7 +146,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.DeleteAsync($"{url}?{BuildParam(ToKeyValuePair(query))}");
+                using var response = await client.DeleteAsync($"{url}{BuildParam(ToKeyValuePair(query))}");
                 if (response.IsSuccessStatusCode)
                 {
                     var stream = await response.Content.ReadAsStreamAsync();
@@ -182,7 +182,7 @@ namespace Virgo.Net.Http
                 handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
-                using var httpRequestMessage = new HttpRequestMessage(method, $"{url}?{BuildParam(ToKeyValuePair(query))}")
+                using var httpRequestMessage = new HttpRequestMessage(method, $"{url}{BuildParam(ToKeyValuePair(query))}")
                 {
                     Content = content
                 };

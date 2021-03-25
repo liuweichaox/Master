@@ -30,7 +30,7 @@ namespace Virgo.Net.Http
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
             }
-            httpRequest = (HttpWebRequest)WebRequest.Create($"{url}?{BuildParam(ToKeyValuePair(data))}");
+            httpRequest = (HttpWebRequest)WebRequest.Create($"{url}{BuildParam(ToKeyValuePair(data))}");
             httpRequest.Method = HttpMethod.Get.Method;
             httpRequest.ContentType = "application/json; charset=UTF-8";
             httpRequest.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;

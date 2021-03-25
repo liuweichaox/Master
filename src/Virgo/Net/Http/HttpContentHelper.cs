@@ -124,6 +124,7 @@ namespace Virgo.Net.Http
                 }
                 if (palms != "")
                 {
+                    url += "?";
                     palms = palms.TrimEnd('&');
                 }
                 url += palms;
