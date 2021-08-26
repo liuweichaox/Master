@@ -4,6 +4,7 @@ using Virgo.UserInterface;
 using Xunit;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace Virgo.AspNetCore.Tests
 {
@@ -34,7 +35,7 @@ namespace Virgo.AspNetCore.Tests
             //单元测试的3A原则：
 
             // Arrange 设置测试数据、变量、环境等
-            var client = _factory.CreateClient();
+            var client = new HttpClient();/* _factory.CreateClient();*/
 
             // Act 调用要测试的函数、代码
             var response = await client.GetAsync("/api/v1.0/Value/Add?a=1&b=2");

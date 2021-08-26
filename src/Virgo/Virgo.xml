@@ -355,11 +355,11 @@
             <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
             </summary>
             <param name="url">请求地址</param>
-            <param name="data">请求参数</param>
+            <param name="query">Query参数</param>
             <param name="action">Http请求头设置</param>
             <returns>JSON字符串</returns>
         </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.PostAsync(System.String,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+        <member name="M:Virgo.Net.Http.HttpClientHelper.PostAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
             <summary>
             通过HttpClient发起Post请求
             <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
@@ -367,11 +367,12 @@
             <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
             </summary>
             <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
             <param name="content">请求参数</param>
             <param name="action">Http请求头设置</param>
             <returns>JSON字符串</returns>
         </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.PutAsync(System.String,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+        <member name="M:Virgo.Net.Http.HttpClientHelper.PutAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
             <summary>
             通过HttpClient发起Put请求
             <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
@@ -379,6 +380,7 @@
             <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
             </summary>
             <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
             <param name="content">请求参数</param>
             <param name="action">Http请求头设置</param>
             <returns>JSON字符串</returns>
@@ -389,16 +391,17 @@
             <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
             </summary>
             <param name="url">请求地址</param>
-            <param name="data">请求参数</param>
+            <param name="query">Query参数</param>
             <param name="action">Http请求头设置</param>
             <returns>JSON字符串</returns>
         </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.SendAsync(System.String,System.Net.Http.HttpMethod,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+        <member name="M:Virgo.Net.Http.HttpClientHelper.SendAsync(System.String,System.Net.Http.HttpMethod,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
             <summary>
             将HTTP请求作为异步操作发送
             </summary>
             <param name="url">请求地址</param>
             <param name="method">请求方法</param>
+            <param name="query">Query参数</param>
             <param name="content">请求内容</param>
             <param name="action">Http请求头设置</param>
             <returns></returns>
