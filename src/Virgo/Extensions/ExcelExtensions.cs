@@ -54,7 +54,7 @@ namespace Virgo.Extensions
                     var cell = ws.Cells[row, col].Value.ToString();
                     if (row == minRowNum)
                     {
-                        var propertyName = propertyInfos.SingleOrDefault(x => x.GetCustomAttribute<DescriptionAttribute>()?.Description == cell)?.Name;
+                        var propertyName = propertyInfos.FirstOrDefault(x => x.GetCustomAttribute<DescriptionAttribute>()?.Description == cell)?.Name;
                         if (propertyName != null)
                         {
                             propertyPosition.Add(col, propertyName);
@@ -65,10 +65,21 @@ namespace Virgo.Extensions
                         var propertyName = propertyPosition.GetValueOrDefault(col);
                         if (propertyName != null)
                         {
-                            var property = propertyInfos.SingleOrDefault(x => x.Name == propertyName);
+                            var property = propertyInfos.FirstOrDefault(x => x.Name == propertyName);
                             try
                             {
-                                var value = Convert.ChangeType(cell, property.PropertyType);
+                                object value = null;
+                                var type = property.PropertyType;
+                                var nullableType = Nullable.GetUnderlyingType(type);
+                                if (nullableType != null)
+                                {
+                                    if (cell == null)
+                                    {
+                                        value = null;
+                                    }
+                                    value = Convert.ChangeType(cell, nullableType);
+                                }
+                                value = Convert.ChangeType(cell, type);
                                 property.SetValue(rowInstance, value);
                             }
                             catch (Exception ex)
