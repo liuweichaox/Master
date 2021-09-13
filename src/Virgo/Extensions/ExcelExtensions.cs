@@ -68,18 +68,9 @@ namespace Virgo.Extensions
                             var property = propertyInfos.FirstOrDefault(x => x.Name == propertyName);
                             try
                             {
-                                object value = null;
                                 var type = property.PropertyType;
-                                var nullableType = Nullable.GetUnderlyingType(type);
-                                if (nullableType != null)
-                                {
-                                    if (cell == null)
-                                    {
-                                        value = null;
-                                    }
-                                    value = Convert.ChangeType(cell, nullableType);
-                                }
-                                value = Convert.ChangeType(cell, type);
+                                var nullableType = Nullable.GetUnderlyingType(type) ?? type;
+                                var value = cell == null ? null : Convert.ChangeType(cell, nullableType);
                                 property.SetValue(rowInstance, value);
                             }
                             catch (Exception ex)
