@@ -235,7 +235,25 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (4)">
+  <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.UserInterface">
+    <configuration name="Virgo.AspNetCore.Tests" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/test/Virgo.AspNetCore.Tests/Virgo.AspNetCore.Tests.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Virgo.Dapper.Tests" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -500,13 +518,13 @@
     <list>
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (1)" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (6)" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (7)" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (2)" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (3)" />
       <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (4)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
       <item itemvalue=".NET Project.Virgo.Tests" />
       <item itemvalue=".NET Project.Virgo.Redis.Tests" />
       <item itemvalue=".NET Project.Virgo.Quartz.Tests" />
@@ -514,6 +532,7 @@
       <item itemvalue=".NET Project.Virgo.Dapper.Tests" />
       <item itemvalue=".NET Project.Virgo.Elasticsearch.Tests" />
       <item itemvalue=".NET Project.Virgo.RabbitMQ.Tests" />
+      <item itemvalue=".NET Project.Virgo.AspNetCore.Tests" />
     </list>
     <recent_temporary>
       <list>
