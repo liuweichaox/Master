@@ -9,6 +9,10 @@
     <projectFile>test/Virgo.Dapper.Tests/Virgo.Dapper.Tests.csproj</projectFile>
     <projectFile>test/Virgo.Elasticsearch.Tests/Virgo.Elasticsearch.Tests.csproj</projectFile>
     <projectFile>test/Virgo.RabbitMQ.Tests/Virgo.RabbitMQ.Tests.csproj</projectFile>
+    <projectFile>test/Virgo.AspNetCore.Tests/Virgo.AspNetCore.Tests.csproj</projectFile>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BranchesTreeState">
     <expand>
@@ -30,16 +34,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="Submit Code">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Virgo.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/Virgo.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueControllerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,98 +72,99 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Snowflake/IdWorker.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/MaxValueAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/ComplexPasswordAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/IP/IpHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.TestBase/TestBaseWithIocBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Snowflake/IdWorker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Security/HashEncode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Hardware/SystemInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/VirgoExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/WebSocketExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UnifOfWork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UserInfoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/CallContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/HiPerfTimer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/ConcurrentLimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/Disposable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/AuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ICreationAudited.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IDeletionAudited.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasModificationTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IFullAudited.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ISoftDelete.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/CreationAuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/CreationAuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UnifOfWork_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/IUserInfoRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UserInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/AutoMapperExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/CollectionsExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Mime/MimeMapper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IocManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/DependencyInjectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/AutofacInterceptionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IIocManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCache.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Text/StringHelper_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/IRedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Text/StringCompute_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Cache/MemoryCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/FullAuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Quartz.Tests/QuartzScheduleJobManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Snowflake/IdGenerator_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Extensions/ComparableExtensions_Test.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IAudited.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/IUserInfoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasCreationTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UserInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/AuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UserInfoRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/FullAuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Dapper.Tests/UnifOfWork.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasDeletionTime.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IModificationAudited.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/liuweichao/Github/Virgo/sample/Virgo.UserInterface/Controllers/v2/ValueControllerV2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.TestBase/TestBaseWithIocBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Extensions/DateTimeExtensions_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCaCheConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisDatabaseExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MsSqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheConfigurationExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringCompute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/ICache.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/CacheBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/Memory/VirgoMemoryCache.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Files/SevenZipCompressor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Media/ImageHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Win32/WindowsCommand.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Aliyun/Sms/SmsSender.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Aliyun/Sms/ISmsSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Snowflake/IdGenerator_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Extensions/ComparableExtensions_Test.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/IActiveUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/IUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Uow/UnitOfWorkAttribute.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/AggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/IDapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasModificationTime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DbConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IModificationAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/JobBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ISoftDelete.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/CreationAuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasDeletionTime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/FullAuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/AuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/FullAuditedEntity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IHasCreationTime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/CreationAuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Aliyun/Sms/ISmsSender.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Common/QRCoderUtils_Tests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/AuditedAggregateRoot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IFullAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IDeletionAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.MongoDB/MongoDbClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/ICreationAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/Disposable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/HiPerfTimer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticsearchRepository.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/CallContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/ConcurrentLimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Systems/LimitedQueue.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Cache/MemoryCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Aliyun/Sms/SmsSender.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Text/StringCompute_Tests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Text/StringHelper_Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.EntityFrameworkCore/IRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.EntityFrameworkCore/RepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Hardware/SystemInfo.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Virgo/Security/HashEncode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticsearchRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.MongoDB/MongoDbClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/IDapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Quartz/JobBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DapperRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Dapper/DbConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisDatabaseExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheConfigurationExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCache.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/IRedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCaCheConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/AutofacInterceptionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IocManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IIocManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Win32/WindowsCommand.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/DependencyInjectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Media/ImageHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/CollectionsExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/Memory/VirgoMemoryCache.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Files/SevenZipCompressor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/WebSocketExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/ICache.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringCompute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/CacheBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MsSqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/AutoMapperExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Mime/MimeMapper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/ComplexPasswordAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/MaxValueAttribute.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -213,6 +215,9 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1TwyHagvbXlgxGmfYz3N8jyeIDq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -223,6 +228,7 @@
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -374,120 +380,15 @@
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_KIND" value="Unloaded" />
       <option name="PROJECT_TFM" value="" />
       <method v="2">
         <option name="Build" />
       </method>
     </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (1)" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (2)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (3)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (4)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (6)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express (7)" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.Presentation: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Virgo.Presentation/Virgo.Presentation.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v3.0" />
-      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
-      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
-      <option name="SEND_DEBUG_REQUEST" value="1" />
-      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="Virgo.UserInterface" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+    <configuration name="Virgo.UserInterface" type="LaunchSettings" factoryName=".NET Launch Settings Profile" temporary="true">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v5.0" />
+      <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="Virgo.UserInterface" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -502,7 +403,7 @@
     </configuration>
     <configuration name="Virgo.UserInterface: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.csproj" />
-      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v5.0" />
+      <option name="LAUNCH_PROFILE_TFM" value="net6.0" />
       <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -516,15 +417,6 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (1)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (6)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (7)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (2)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (3)" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (4)" />
       <item itemvalue=".NET Project.Virgo.Tests" />
       <item itemvalue=".NET Project.Virgo.Redis.Tests" />
       <item itemvalue=".NET Project.Virgo.Quartz.Tests" />
@@ -533,14 +425,12 @@
       <item itemvalue=".NET Project.Virgo.Elasticsearch.Tests" />
       <item itemvalue=".NET Project.Virgo.RabbitMQ.Tests" />
       <item itemvalue=".NET Project.Virgo.AspNetCore.Tests" />
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (4)" />
-        <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (3)" />
-        <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (2)" />
-        <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (7)" />
-        <item itemvalue=".NET Launch Settings Profile.Virgo.Presentation: IIS Express (6)" />
+        <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
       </list>
     </recent_temporary>
   </component>
@@ -565,12 +455,14 @@
       <workItem from="1574850040737" duration="15845000" />
       <workItem from="1582469454922" duration="3215000" />
       <workItem from="1605145695239" duration="970000" />
+      <workItem from="1639931127218" duration="1082000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">

@@ -12,7 +12,7 @@ using Virgo.AspNetCore;
 using Virgo.DependencyInjection;
 using Virgo.Elasticsearch;
 
-namespace Virgo.UserInterface.Controllers
+namespace Virgo.UserInterface.Controllers.v1
 {
     /// <summary>
     /// ValueController
@@ -62,10 +62,7 @@ namespace Virgo.UserInterface.Controllers
         [HttpPost]
         public async Task<ApiResult<CostomResponse>> Post([FromBody] CustomRequest request)
         {
-            var result = await Task.Run(() =>
-            {
-                return _customService.Call(request);
-            });
+            var result = await Task.Run(() => _customService.Call(request));
             return Success(result);
         }
 
@@ -195,7 +192,7 @@ namespace Virgo.UserInterface.Controllers
         {
             //var uri = new Uri("http://elastic:123456@localhost:9200");url内的身份验证
             var uri = new Uri("http://localhost:9200");
-            var nodes = new Node[]
+            var nodes = new[]
             {
                 new Node(uri)
             };

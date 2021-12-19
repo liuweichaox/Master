@@ -28,54 +28,54 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.ValueController">
+        <member name="T:Virgo.UserInterface.Controllers.v1.ValueController">
             <summary>
             ValueController
             </summary>
         </member>
-        <member name="F:Virgo.UserInterface.Controllers.ValueController._customService">
+        <member name="F:Virgo.UserInterface.Controllers.v1.ValueController._customService">
             <summary>
             <see cref="T:Virgo.Application.Interfaces.ICustomService"/>实例
             </summary>
         </member>
-        <member name="F:Virgo.UserInterface.Controllers.ValueController._beautySpotRepository">
+        <member name="F:Virgo.UserInterface.Controllers.v1.ValueController._beautySpotRepository">
             <summary>
             仓储
             </summary>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.#ctor(Virgo.Application.Interfaces.ICustomService,Virgo.UserInterface.Controllers.IBeautySpotRepository)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.#ctor(Virgo.Application.Interfaces.ICustomService,Virgo.UserInterface.Controllers.v1.IBeautySpotRepository)">
             <summary>
             构造函数
             </summary>
             <param name="customService"></param>
             <param name="beautySpotRepository"></param>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.Get(System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.Get(System.Int32)">
             <summary>
             Get: api/Value/5
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.Post(Virgo.Application.Models.Requests.CustomRequest)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.Post(Virgo.Application.Models.Requests.CustomRequest)">
             <summary>
             Post: api/Value/5
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.Put(Virgo.UserInterface.Controllers.OrderModel)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.Put(Virgo.UserInterface.Controllers.v1.OrderModel)">
             <summary>
             Put:api/Value/5
             </summary>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.Delete(System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.Delete(System.Int32)">
             <summary>
             DELETE: api/ApiWithActions/5
             </summary>
             <param name="id"></param>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.Add(System.Int32,System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.Add(System.Int32,System.Int32)">
             <summary>
             求和
             </summary>
@@ -83,19 +83,19 @@
             <param name="b"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.InitLocationData">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.InitLocationData">
             <summary>
             初始化地理位置数据
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.QueryLocation">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.QueryLocation">
             <summary>
             地理位置搜索
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueController.CreateBeautySpot(System.String,System.Double,System.Double)">
+        <member name="M:Virgo.UserInterface.Controllers.v1.ValueController.CreateBeautySpot(System.String,System.Double,System.Double)">
             <summary>
             创建景点实体
             </summary>
@@ -104,72 +104,72 @@
             <param name="lon">经度</param>
             <returns></returns>    
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.IBeautySpotRepository">
+        <member name="T:Virgo.UserInterface.Controllers.v1.IBeautySpotRepository">
             <summary>
-            <see cref="T:Virgo.UserInterface.Controllers.BeautySpot"/>仓储接口
+            <see cref="T:Virgo.UserInterface.Controllers.v1.BeautySpot"/>仓储接口
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.BeautySpotRepository">
+        <member name="T:Virgo.UserInterface.Controllers.v1.BeautySpotRepository">
             <summary>
-            <see cref="T:Virgo.UserInterface.Controllers.BeautySpot"/>仓储实现
+            <see cref="T:Virgo.UserInterface.Controllers.v1.BeautySpot"/>仓储实现
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.ElasticClientFactory">
+        <member name="T:Virgo.UserInterface.Controllers.v1.ElasticClientFactory">
             <summary>
             <see cref="T:Nest.ElasticClient"/>工厂
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.BeautySpot">
+        <member name="T:Virgo.UserInterface.Controllers.v1.BeautySpot">
             <summary>
             景点
             </summary>    
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Id">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.Id">
             <summary>
             主键
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Country">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.Country">
             <summary>
             国家
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Ciry">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.Ciry">
             <summary>
             城市
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Name">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.Name">
             <summary>
             名称
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.Location">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.Location">
             <summary>
             位置（lat：纬度,lon：经度）
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.BeautySpot.CreateTime">
+        <member name="P:Virgo.UserInterface.Controllers.v1.BeautySpot.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.OrderModel">
+        <member name="T:Virgo.UserInterface.Controllers.v1.OrderModel">
             <summary>
             订单模型
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.OrderModel.OrderCode">
+        <member name="P:Virgo.UserInterface.Controllers.v1.OrderModel.OrderCode">
             <summary>
             订单号
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.OrderModel.OrderAmount">
+        <member name="P:Virgo.UserInterface.Controllers.v1.OrderModel.OrderAmount">
             <summary>
             订单金额
             </summary>
         </member>
-        <member name="P:Virgo.UserInterface.Controllers.OrderModel.OrderType">
+        <member name="P:Virgo.UserInterface.Controllers.v1.OrderModel.OrderType">
             <summary>
             订单类型
             <Remark>
@@ -178,57 +178,57 @@
             </Remark>
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.OrderTypeInfo">
+        <member name="T:Virgo.UserInterface.Controllers.v1.OrderTypeInfo">
             <summary>
             OrderTypeInfo
             </summary>
         </member>
-        <member name="F:Virgo.UserInterface.Controllers.OrderTypeInfo.StoreEntry">
+        <member name="F:Virgo.UserInterface.Controllers.v1.OrderTypeInfo.StoreEntry">
             <summary>
             商家入驻
             </summary>
         </member>
-        <member name="F:Virgo.UserInterface.Controllers.OrderTypeInfo.StoreTrade">
+        <member name="F:Virgo.UserInterface.Controllers.v1.OrderTypeInfo.StoreTrade">
             <summary>
             线下交易
             </summary>
         </member>
-        <member name="T:Virgo.UserInterface.Controllers.ValueControllerV2">
+        <member name="T:Virgo.UserInterface.Controllers.v2.ValueController">
             <summary>
             ValueController
             </summary>
         </member>
-        <member name="F:Virgo.UserInterface.Controllers.ValueControllerV2._customService">
+        <member name="F:Virgo.UserInterface.Controllers.v2.ValueController._customService">
             <summary>
             <see cref="T:Virgo.Application.Interfaces.ICustomService"/>实例
             </summary>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueControllerV2.#ctor(Virgo.Application.Interfaces.ICustomService)">
+        <member name="M:Virgo.UserInterface.Controllers.v2.ValueController.#ctor(Virgo.Application.Interfaces.ICustomService)">
             <summary>
             构造函数
             </summary>
             <param name="customService"></param>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueControllerV2.Get(System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v2.ValueController.Get(System.Int32)">
             <summary>
             Get: api/Value/5
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueControllerV2.Post(Virgo.Application.Models.Requests.CustomRequest)">
+        <member name="M:Virgo.UserInterface.Controllers.v2.ValueController.Post(Virgo.Application.Models.Requests.CustomRequest)">
             <summary>
             Post: api/Value/5
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueControllerV2.Put(System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v2.ValueController.Put(System.Int32)">
             <summary>
             Put:api/Value/5
             </summary>
         </member>
-        <member name="M:Virgo.UserInterface.Controllers.ValueControllerV2.Delete(System.Int32)">
+        <member name="M:Virgo.UserInterface.Controllers.v2.ValueController.Delete(System.Int32)">
             <summary>
             DELETE: api/ApiWithActions/5
             </summary>
@@ -339,7 +339,7 @@
             <param name="env"></param>
             <param name="provider"></param>
         </member>
-        <member name="T:Virgo.UserInterface.BGMJobService">
+        <member name="T:Virgo.UserInterface.BgmJobService">
             <summary>
             BGMJobService
             </summary>

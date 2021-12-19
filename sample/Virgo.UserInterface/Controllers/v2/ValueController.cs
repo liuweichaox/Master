@@ -5,7 +5,7 @@ using Virgo.Application.Models.Requests;
 using Virgo.Application.Models.Responses;
 using Virgo.AspNetCore;
 
-namespace Virgo.UserInterface.Controllers
+namespace Virgo.UserInterface.Controllers.v2
 {
     /// <summary>
     /// ValueController
@@ -14,7 +14,7 @@ namespace Virgo.UserInterface.Controllers
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]/[action]")]
     [ApiController]
-    public class ValueControllerV2 : ApplicationController
+    public class ValueController : ApplicationController
     {
         /// <summary>
         /// <see cref="ICustomService"/>实例
@@ -25,7 +25,7 @@ namespace Virgo.UserInterface.Controllers
         /// 构造函数
         /// </summary>
         /// <param name="customService"></param>
-        public ValueControllerV2(ICustomService customService)
+        public ValueController(ICustomService customService)
         {
             _customService = customService;
         }
@@ -49,10 +49,7 @@ namespace Virgo.UserInterface.Controllers
         [HttpPost]
         public async Task<ApiResult<CostomResponse>> Post([FromBody] CustomRequest request)
         {
-            var result = await Task.Run(() =>
-            {
-                return _customService.Call(request);
-            });
+            var result = await Task.Run(() => _customService.Call(request));
             return Success(result);
         }
 

@@ -16,7 +16,6 @@ using Virgo.AspNetCore.Job;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System;
-using Virgo.Extensions;
 using System.Reflection;
 
 namespace Virgo.UserInterface
@@ -38,7 +37,7 @@ namespace Virgo.UserInterface
         /// <summary>
         /// 配置实例
         /// </summary>
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         /// <summary>
         /// 此方法由运行时调用。使用此方法将服务添加到容器。
@@ -47,13 +46,14 @@ namespace Virgo.UserInterface
         public void ConfigureServices(IServiceCollection services)
         {
             NativeInjectorBootStrapper.RegisterServices(services);
-            services.AddHostedService<BGMJobService>();
+            services.AddHostedService<BgmJobService>();
         }
+
         /// <summary>
         /// Autofac 容器配置
         /// </summary>
         /// <param name="builder"></param>
-        public void ConfigureContainer(ContainerBuilder builder) 
+        public void ConfigureContainer(ContainerBuilder builder)
         {
             builder.RegisterType<CustomInterceptor>();
             builder.RegisterInterceptorBy<CustomInterceptor>();
@@ -75,12 +75,11 @@ namespace Virgo.UserInterface
 
             app.UseRouting();
 
+            app.UseHttpsRedirection();
+            
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
             app.UseIocManager();
 
@@ -90,7 +89,7 @@ namespace Virgo.UserInterface
 
             app.UseWebSockets();
 
-            app.Map("/ws", builder => { app.UseChatWebSocketMiddleware(); });
+            app.Map("/ws", _ => { app.UseChatWebSocketMiddleware(); });
 
             app.UseStaticFiles();
         }
@@ -99,32 +98,40 @@ namespace Virgo.UserInterface
     /// <summary>
     /// BGMJobService
     /// </summary>
-    public class BGMJobService : VirgoBackgroundService
+    public class BgmJobService : VirgoBackgroundService
     {
-        private readonly ILogger<BGMJobService> _logger;
-        public BGMJobService(ILogger<BGMJobService> logger)
+        private readonly ILogger<BgmJobService> _logger;
+
+        public BgmJobService(ILogger<BgmJobService> logger)
         {
             Interval = TimeSpan.FromSeconds(3);
             _logger = logger;
         }
-        int ExcuteCount = 0;
-        string str = @"徘徊着的 在路上的 |你要走吗 Via Via |易碎的 骄傲着 |那也曾是我的模样 |沸腾着的 不安着的 |你要去哪 Via Via |谜一样的 沉默着的 |故事你真的在听吗 |我曾经跨过山和大海 |也穿过人山人海 |我曾经拥有着的一切 |转眼都飘散如烟 |我曾经失落失望失掉所有方向 |直到看见平凡才是唯一的答案 |当你仍然 还在幻想 |你的明天 Via Via |她会好吗 还是更烂 |对我而言是另一天 |我曾经毁了我的一切 |只想永远地离开 |我曾经堕入无边黑暗 |想挣扎无法自拔 |我曾经像你像他像那野草野花 |绝望着 也渴望着 |也哭也笑平凡着 |向前走 就这么走 |就算你被给过什么 |向前走 就这么走 |就算你被夺走什么 |向前走 就这么走 |就算你会错过什么 |向前走 就这么走 |就算你会 |我曾经跨过山和大海 |也穿过人山人海 |我曾经拥有着的一切 |转眼都飘散如烟 |我曾经失落失望失掉所有方向 |直到看见平凡才是唯一的答案 |我曾经毁了我的一切 |只想永远地离开 |我曾经堕入无边黑暗 |想挣扎无法自拔 |我曾经像你像他像那野草野花 |绝望着 也渴望着 |也哭也笑平凡着 |我曾经跨过山和大海 |也穿过人山人海 |我曾经问遍整个世界 |从来没得到答案 |我不过像你像他像那野草野花 |冥冥中这是我 唯一要走的路啊 |时间无言 如此这般 |明天已在 Hia Hia |风吹过的 路依然远 |你的故事讲到了哪";
+
+        private int _excuteCount;
+
+        private const string Str =
+            @"徘徊着的 在路上的 |你要走吗 Via Via |易碎的 骄傲着 |那也曾是我的模样 |沸腾着的 不安着的 |你要去哪 Via Via |谜一样的 沉默着的 |故事你真的在听吗 |我曾经跨过山和大海 |也穿过人山人海 |我曾经拥有着的一切 |转眼都飘散如烟 |我曾经失落失望失掉所有方向 |直到看见平凡才是唯一的答案 |当你仍然 还在幻想 |你的明天 Via Via |她会好吗 还是更烂 |对我而言是另一天 |我曾经毁了我的一切 |只想永远地离开 |我曾经堕入无边黑暗 |想挣扎无法自拔 |我曾经像你像他像那野草野花 |绝望着 也渴望着 |也哭也笑平凡着 |向前走 就这么走 |就算你被给过什么 |向前走 就这么走 |就算你被夺走什么 |向前走 就这么走 |就算你会错过什么 |向前走 就这么走 |就算你会 |我曾经跨过山和大海 |也穿过人山人海 |我曾经拥有着的一切 |转眼都飘散如烟 |我曾经失落失望失掉所有方向 |直到看见平凡才是唯一的答案 |我曾经毁了我的一切 |只想永远地离开 |我曾经堕入无边黑暗 |想挣扎无法自拔 |我曾经像你像他像那野草野花 |绝望着 也渴望着 |也哭也笑平凡着 |我曾经跨过山和大海 |也穿过人山人海 |我曾经问遍整个世界 |从来没得到答案 |我不过像你像他像那野草野花 |冥冥中这是我 唯一要走的路啊 |时间无言 如此这般 |明天已在 Hia Hia |风吹过的 路依然远 |你的故事讲到了哪";
+
         public override void DoWork(object state)
         {
-            var s = $"\r\nFor {ExcuteCount.ToString()} Excuteing……\r\nSay：{GetStr()}\r\n";
+            var s = $"\r\nFor {_excuteCount.ToString()} Executing……\r\nSay：{GetStr()}\r\n";
             Debug.WriteLine(s);
             _logger.LogInformation(s);
-            ExcuteCount++;
+            _excuteCount++;
         }
-        int i = 0;
-        public string GetStr()
+
+        private int _i;
+
+        private string GetStr()
         {
-            if (i > str.Split('|').Length - 1)
+            if (_i > Str.Split('|').Length - 1)
             {
-                i = 0;
+                _i = 0;
             }
-            var s = str.Split('|')[i];
-            i++;
+
+            var s = Str.Split('|')[_i];
+            _i++;
             return s;
         }
     }

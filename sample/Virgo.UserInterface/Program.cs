@@ -32,6 +32,10 @@ namespace Virgo.UserInterface
                     app.SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
                         .AddJsonFile("Configs/myjson.json", true, true);
                 })
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseUrls("http://*:8080");
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
