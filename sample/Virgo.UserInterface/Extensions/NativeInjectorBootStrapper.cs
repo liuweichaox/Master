@@ -14,7 +14,7 @@ namespace Virgo.UserInterface.Extensions
     /// <summary>
     /// 启动器
     /// </summary>
-    public class NativeInjectorBootStrapper
+    public static class NativeInjectorBootStrapper
     {
         /// <summary>
         /// 注册服务
