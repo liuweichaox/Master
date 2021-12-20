@@ -3,7 +3,7 @@
     /// <summary>
     /// RabbitMQ配置
     /// </summary>
-    public interface IRabbitMQConfiguration
+    public interface IRabbitMqConfiguration
     {
         /// <summary>
         /// 连接地址

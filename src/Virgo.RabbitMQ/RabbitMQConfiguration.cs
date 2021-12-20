@@ -2,9 +2,9 @@
 {
     
     /// <summary>
-    /// RabbmitMQ配置类
+    /// RabbitMQ配置类
     /// </summary>
-    public class RabbitMQConfiguration : IRabbitMQConfiguration
+    public class RabbitMqConfiguration : IRabbitMqConfiguration
     {
 
         /// <summary>

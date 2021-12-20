@@ -9,16 +9,16 @@ namespace Virgo.Quartz
     public class QuartzScheduleJobManager : IQuartzScheduleJobManager
     {
         private static volatile IScheduler _scheduler = null;
-        public bool IsRunning { get { return _isRunning; } }
+        public bool IsRunning => _isRunning;
 
         private volatile bool _isRunning;
 
-        private static readonly AsyncLock _asyncLock = new AsyncLock();
+        private static readonly AsyncLock AsyncLock = new AsyncLock();
 
         private async Task<IScheduler> SchedulerAsync()
         {
             if (_scheduler != null) return _scheduler;
-            using (await _asyncLock.LockAsync())
+            using (await AsyncLock.LockAsync())
             {
                 if (_scheduler != null) return _scheduler;
                 var factory = new StdSchedulerFactory();

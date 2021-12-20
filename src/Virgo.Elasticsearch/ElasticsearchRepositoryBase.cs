@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 namespace Virgo.Elasticsearch
 {
     /// <summary>
-    /// <see cref="IElasticsearchRepository"/>搜索引擎仓储抽基础类
+    /// <see>
+    ///     <cref>IElasticsearchRepository</cref>
+    /// </see>
+    ///     搜索引擎仓储抽基础类
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ElasticsearchRepositoryBase<T> : IElasticsearchRepository<T> where T : class

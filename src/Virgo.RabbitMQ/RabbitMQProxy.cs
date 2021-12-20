@@ -2,23 +2,20 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Virgo.RabbitMQ
 {
     /// <summary>
-    /// RabbmitMQ代理实现
+    /// RabbitMQ代理实现
     /// </summary>
-    public class RabbitMQProxy
+    public class RabbitMqProxy
     {
-        private readonly IRabbitMQConfiguration _mQConfiguration;
-        public RabbitMQProxy(IRabbitMQConfiguration mQConfiguration)
+        private readonly IRabbitMqConfiguration _mqConfiguration;
+        public RabbitMqProxy(IRabbitMqConfiguration mQConfiguration)
         {
-            _mQConfiguration = mQConfiguration;
+            _mqConfiguration = mQConfiguration;
         }
 
         /// <summary>
@@ -30,10 +27,10 @@ namespace Virgo.RabbitMQ
             var factory = new ConnectionFactory
             {
                 VirtualHost = "/",
-                HostName = _mQConfiguration.HostName,
-                Port = _mQConfiguration.Port,
-                UserName = _mQConfiguration.UserName,
-                Password = _mQConfiguration.Password
+                HostName = _mqConfiguration.HostName,
+                Port = _mqConfiguration.Port,
+                UserName = _mqConfiguration.UserName,
+                Password = _mqConfiguration.Password
             };
             return factory;
         }
@@ -70,12 +67,12 @@ namespace Virgo.RabbitMQ
                 return false;
             }
         }
+
         /// <summary>
         /// 消息订阅
         /// </summary>
         /// <typeparam name="T">消息模型</typeparam>
         /// <param name="queueName">队列名称</param>
-        /// <param name="routingKey">路由键</param>
         /// <param name="func">处理消息</param>
         public void Subscribe<T>(string queueName, Func<T, bool> func) where T : class
         {
@@ -112,12 +109,12 @@ namespace Virgo.RabbitMQ
             //autoAck:false；关闭自动消息确认，通过调用BasicAck方法手动进行消息确认
             channel.BasicConsume(queueName, false, consumer);
         }
+
         /// <summary>
         /// 异步消息订阅
         /// </summary>
         /// <typeparam name="T">消息模型</typeparam>
         /// <param name="queueName">队列名称</param>
-        /// <param name="routingKey">路由键</param>
         /// <param name="func">处理消息</param>
         public void SubscribeAsync<T>(string queueName, Func<T, Task<bool>> func) where T : class
         {

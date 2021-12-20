@@ -21,7 +21,10 @@ namespace Virgo.Quartz
         /// <summary>
         /// 向服务发送stop命令
         /// 服务可能会立即返回并异步停止
-        /// 然后客户端应该调用<see cref ="WaitToStop"/>方法以确保它已停止
+        /// 然后客户端应该调用<see>
+        ///     <cref>WaitToStop</cref>
+        /// </see>
+        /// 方法以确保它已停止
         /// </summary>
         Task StopAsync();
         /// <summary>

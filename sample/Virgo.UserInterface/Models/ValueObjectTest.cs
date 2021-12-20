@@ -10,6 +10,7 @@ namespace Virgo.UserInterface.Models
     public class ValueObjectTest : ValueObject<ValueObjectTest>
     {
         public string Id { get; set; }
+        
         public string Name { get; set; }
         public int Age { get; set; }
 

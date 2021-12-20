@@ -13,14 +13,14 @@ using Xunit.Abstractions;
 namespace Virgo.RabbitMQ.Tests
 {
     /// <summary>
-    /// <see cref="RabbitMQProxy"/>测试
+    /// <see cref="RabbitMqProxy"/>测试
     /// </summary>
     public class RabbitMQProxy_Tests
     {
         /// <summary>
         /// RabbitMQ
         /// </summary>
-        private readonly RabbitMQProxy _rabbitMQProxy;
+        private readonly RabbitMqProxy _rabbitMQProxy;
         /// <summary>
         /// 测试输出
         /// </summary>
@@ -28,7 +28,7 @@ namespace Virgo.RabbitMQ.Tests
         public RabbitMQProxy_Tests(ITestOutputHelper testOutputHelper)
         {
             Output = testOutputHelper;
-            _rabbitMQProxy = new RabbitMQProxy(new RabbitMQConfiguration
+            _rabbitMQProxy = new RabbitMqProxy(new RabbitMqConfiguration
             {
                 HostName = "localhost",
                 Port = 5672,
