@@ -36,22 +36,15 @@
   <component name="ChangeListManager">
     <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Extensions/NativeInjectorBootStrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Extensions/NativeInjectorBootStrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApiResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApiResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApiStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApiStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApplicationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/PagedResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/PagedResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiVersion/ApiVersionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiVersion/ApiVersionExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2Extensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/RemoveVersionFromParameter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/RemoveVersionFromParameter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/SwaggerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/SwaggerExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Tools/ConfigurationHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Tools/ConfigurationHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Virgo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Virgo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Models/ValueObjectTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Models/ValueObjectTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -466,7 +459,7 @@
       <workItem from="1582469454922" duration="3215000" />
       <workItem from="1605145695239" duration="970000" />
       <workItem from="1639931127218" duration="1684000" />
-      <workItem from="1639963900467" duration="633000" />
+      <workItem from="1639963900467" duration="1222000" />
     </task>
     <servers />
   </component>
