@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.ApiResults
 {
     /// <summary>
     /// 全局控制器
@@ -36,9 +33,9 @@ namespace Virgo.AspNetCore
         /// <param name="message"></param>
         /// <returns></returns>
         [NonAction]
-        public ApiResult Success(string message = "")
+        public ApiResults.ApiResult Success(string message = "")
         {
-            return new ApiResult("", ApiStatus.SUCCESS, message);
+            return new ApiResults.ApiResult("", ApiStatus.SUCCESS, message);
         }
 
         /// <summary>
@@ -72,9 +69,9 @@ namespace Virgo.AspNetCore
         /// <param name="message"></param>
         /// <returns></returns>
         [NonAction]
-        public ApiResult Failed(string message = "")
+        public ApiResults.ApiResult Failed(string message = "")
         {
-            return new ApiResult("", ApiStatus.FAIL, message);
+            return new ApiResults.ApiResult("", ApiStatus.FAIL, message);
         }
     }
 }

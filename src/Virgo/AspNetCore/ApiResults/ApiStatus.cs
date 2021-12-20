@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Virgo.AspNetCore
+﻿namespace Virgo.AspNetCore.ApiResults
 {
     /// <summary>
     /// API状态

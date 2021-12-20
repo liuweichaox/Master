@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.ApiVersion
 {
     /// <summary>
     /// ApiVersion拓展
@@ -23,7 +22,7 @@ namespace Virgo.AspNetCore
                 o.ReportApiVersions = true;
 
                 // 默认的 API 版本
-                o.DefaultApiVersion = new ApiVersion(1, 0);
+                o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
 
                 // 未指定 API 版本时，设置 API 版本为默认的版本
                 o.AssumeDefaultVersionWhenUnspecified = true;

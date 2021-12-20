@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Virgo.Net
+namespace Virgo.AspNetCore.Http
 {
     /// <summary>
     /// 实现类似于.NET Framework中的HttpContext静态对象，使用前需要在Startup中注入，ConfigureServices方法中：services.AddHttpContextAccessor();，Configure方法中：app.UseStaticHttpContext();

@@ -5,7 +5,7 @@ using StackExchange.Redis;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Virgo.AspNetCore;
+using Virgo.AspNetCore.ApiResults;
 using Virgo.Redis;
 
 namespace Virgo.UserInterface.Controllers.v1

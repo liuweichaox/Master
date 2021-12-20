@@ -9,6 +9,7 @@ using Virgo.Application.Interfaces;
 using Virgo.Application.Models.Requests;
 using Virgo.Application.Models.Responses;
 using Virgo.AspNetCore;
+using Virgo.AspNetCore.ApiResults;
 using Virgo.DependencyInjection;
 using Virgo.Elasticsearch;
 

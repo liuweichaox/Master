@@ -17,6 +17,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Reflection;
+using Virgo.AspNetCore.Swagger;
 
 namespace Virgo.UserInterface
 {

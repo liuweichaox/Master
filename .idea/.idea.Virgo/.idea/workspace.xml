@@ -36,7 +36,22 @@
   <component name="ChangeListManager">
     <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Extensions/NativeInjectorBootStrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Extensions/NativeInjectorBootStrapper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApiResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApiResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApiStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApiStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/ApplicationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/ApplicationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResult/PagedResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiResults/PagedResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiVersion/ApiVersionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/ApiVersion/ApiVersionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Http/HttpContext2Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/RemoveVersionFromParameter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/RemoveVersionFromParameter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/SwaggerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Swagger/SwaggerExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/AspNetCore/Tools/ConfigurationHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/AspNetCore/Tools/ConfigurationHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Virgo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Virgo.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +117,6 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Entity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Redis.Tests/RedisCacheManager_Tests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/Auditing/IModificationAudited.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/liuweichao/Github/Virgo/sample/Virgo.UserInterface/Controllers/v2/ValueControllerV2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Domain/Entities/IEntity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.TestBase/TestBaseWithIocBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/test/Virgo.Tests/Extensions/DateTimeExtensions_Tests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -413,6 +427,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
+      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
       <item itemvalue=".NET Project.Virgo.Tests" />
       <item itemvalue=".NET Project.Virgo.Redis.Tests" />
       <item itemvalue=".NET Project.Virgo.Quartz.Tests" />
@@ -421,8 +437,6 @@
       <item itemvalue=".NET Project.Virgo.Elasticsearch.Tests" />
       <item itemvalue=".NET Project.Virgo.RabbitMQ.Tests" />
       <item itemvalue=".NET Project.Virgo.AspNetCore.Tests" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface" />
-      <item itemvalue=".NET Launch Settings Profile.Virgo.UserInterface: IIS Express" />
     </list>
     <recent_temporary>
       <list>
@@ -452,6 +466,7 @@
       <workItem from="1582469454922" duration="3215000" />
       <workItem from="1605145695239" duration="970000" />
       <workItem from="1639931127218" duration="1684000" />
+      <workItem from="1639963900467" duration="633000" />
     </task>
     <servers />
   </component>

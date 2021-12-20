@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.ApiResults
 {
     /// <summary>
     /// 分页结果

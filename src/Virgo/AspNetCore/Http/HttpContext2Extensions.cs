@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Virgo.Net;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.Http
 {
     /// <summary>
     /// 依赖注入<see cref="ServiceCollection"/>容器扩展方法

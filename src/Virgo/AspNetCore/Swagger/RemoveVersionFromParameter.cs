@@ -1,11 +1,8 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using System.Linq;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.Swagger
 {
     /// <summary>
     /// 取消 API 文档需要输入版本信息

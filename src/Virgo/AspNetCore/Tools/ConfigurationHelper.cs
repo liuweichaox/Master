@@ -1,10 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+using Microsoft.Extensions.Configuration;
 
-namespace Virgo.AspNetCore
+namespace Virgo.AspNetCore.Tools
 {
     /// <summary>
     /// 获取配置辅助类

@@ -28,13 +28,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="T:Virgo.AspNetCore.ApiResult`1">
+        <member name="T:Virgo.AspNetCore.ApiResults.ApiResult`1">
             <summary>
             Api返回类
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Virgo.AspNetCore.ApiResult`1.#ctor(`0,Virgo.AspNetCore.ApiStatus,System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApiResult`1.#ctor(`0,Virgo.AspNetCore.ApiResults.ApiStatus,System.String)">
             <summary>
             构造函数
             </summary>
@@ -42,27 +42,27 @@
             <param name="status"></param>
             <param name="message"></param>
         </member>
-        <member name="P:Virgo.AspNetCore.ApiResult`1.Data">
+        <member name="P:Virgo.AspNetCore.ApiResults.ApiResult`1.Data">
             <summary>
             返回数据
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.ApiResult`1.Code">
+        <member name="P:Virgo.AspNetCore.ApiResults.ApiResult`1.Code">
             <summary>
             状态码
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.ApiResult`1.Message">
+        <member name="P:Virgo.AspNetCore.ApiResults.ApiResult`1.Message">
             <summary>
             消息
             </summary>
         </member>
-        <member name="T:Virgo.AspNetCore.ApiResult">
+        <member name="T:Virgo.AspNetCore.ApiResults.ApiResult">
             <summary>
-            <see cref="T:Virgo.AspNetCore.ApiResult`1"/>默认实现方式
+            <see cref="T:Virgo.AspNetCore.ApiResults.ApiResult`1"/>默认实现方式
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.ApiResult.#ctor(System.Object,Virgo.AspNetCore.ApiStatus,System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApiResult.#ctor(System.Object,Virgo.AspNetCore.ApiResults.ApiStatus,System.String)">
             <summary>
             构造函数
             </summary>
@@ -70,39 +70,39 @@
             <param name="status"></param>
             <param name="message"></param>
         </member>
-        <member name="T:Virgo.AspNetCore.ApiStatus">
+        <member name="T:Virgo.AspNetCore.ApiResults.ApiStatus">
             <summary>
             API状态
             </summary>
         </member>
-        <member name="F:Virgo.AspNetCore.ApiStatus.SUCCESS">
+        <member name="F:Virgo.AspNetCore.ApiResults.ApiStatus.SUCCESS">
             <summary>
             操作成功
             </summary>
         </member>
-        <member name="F:Virgo.AspNetCore.ApiStatus.PARAM_ERROR">
+        <member name="F:Virgo.AspNetCore.ApiResults.ApiStatus.PARAM_ERROR">
             <summary>
             参数错误
             </summary>
         </member>
-        <member name="F:Virgo.AspNetCore.ApiStatus.FAIL">
+        <member name="F:Virgo.AspNetCore.ApiResults.ApiStatus.FAIL">
             <summary>
             操作失败
             </summary>
         </member>
-        <member name="T:Virgo.AspNetCore.ApplicationController">
+        <member name="T:Virgo.AspNetCore.ApiResults.ApplicationController">
             <summary>
             全局控制器
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.#ctor">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.#ctor">
             <summary>
             构造函数
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiStatus,System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiResults.ApiStatus,System.String)">
             <summary>
-            <see cref="M:Virgo.AspNetCore.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiStatus,System.String)"/>返回
+            <see cref="M:Virgo.AspNetCore.ApiResults.ApplicationController.ApiResult``1(``0,Virgo.AspNetCore.ApiResults.ApiStatus,System.String)"/>返回
             </summary>
             <typeparam name="T"></typeparam>
             <param name="data"></param>
@@ -110,14 +110,14 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.Success(System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.Success(System.String)">
             <summary>
             响应成功
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.Success``1(``0,System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.Success``1(``0,System.String)">
             <summary>
             响应成功
             </summary>
@@ -126,7 +126,7 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.Failed``1(``0,System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.Failed``1(``0,System.String)">
             <summary>
             响应失败
             </summary>
@@ -135,73 +135,83 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ApplicationController.Failed(System.String)">
+        <member name="M:Virgo.AspNetCore.ApiResults.ApplicationController.Failed(System.String)">
             <summary>
             响应失败
             </summary>
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="T:Virgo.AspNetCore.PagedResult`1">
+        <member name="T:Virgo.AspNetCore.ApiResults.PagedResult`1">
             <summary>
             分页结果
             </summary>
             <typeparam name="TResult"></typeparam>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.Results">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.Results">
             <summary>
             分页集合
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.TotalCount">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.TotalCount">
             <summary>
             总数据量
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.PageCount">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.PageCount">
             <summary>
             总页码
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.PageIndex">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.PageIndex">
             <summary>
             当前页码
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.PageSize">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.PageSize">
             <summary>
             页码大小
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.HasPrev">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.HasPrev">
             <summary>
             是否有上一页
             </summary>
         </member>
-        <member name="P:Virgo.AspNetCore.PagedResult`1.HasNext">
+        <member name="P:Virgo.AspNetCore.ApiResults.PagedResult`1.HasNext">
             <summary>
             是否有下一页
             </summary>
         </member>
-        <member name="T:Virgo.AspNetCore.ApiVersionExtensions">
+        <member name="T:Virgo.AspNetCore.ApiVersion.ApiVersionExtensions">
             <summary>
             ApiVersion拓展
             </summary>
             <remarks>Install-Package Microsoft.AspNetCore.Mvc.Versioning</remarks>
             <remarks>Install-Package Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer</remarks>
         </member>
-        <member name="M:Virgo.AspNetCore.ApiVersionExtensions.AddApiVersion(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Virgo.AspNetCore.ApiVersion.ApiVersionExtensions.AddApiVersion(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             添加 API 版本控制扩展方法
             </summary>
             <param name="services">生命周期中注入的服务集合 <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/></param>
         </member>
-        <member name="T:Virgo.AspNetCore.HttpContext2Extensions">
+        <member name="T:Virgo.AspNetCore.Http.HttpContext2">
+            <summary>
+            实现类似于.NET Framework中的HttpContext静态对象，使用前需要在Startup中注入，ConfigureServices方法中：services.AddHttpContextAccessor();，Configure方法中：app.UseStaticHttpContext();
+            </summary>
+        </member>
+        <member name="P:Virgo.AspNetCore.Http.HttpContext2.Current">
+            <summary>
+            获取当前禽求上下文，使用前需要在Startup中注入，ConfigureServices方法中：services.AddStaticHttpContext();，Configure方法中：app.UseStaticHttpContext();
+            </summary>
+        </member>
+        <member name="T:Virgo.AspNetCore.Http.HttpContext2Extensions">
             <summary>
             依赖注入<see cref="T:Microsoft.Extensions.DependencyInjection.ServiceCollection"/>容器扩展方法
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.HttpContext2Extensions.UseStaticHttpContext(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:Virgo.AspNetCore.Http.HttpContext2Extensions.UseStaticHttpContext(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             注入HttpContext静态对象，方便在任意地方获取HttpContext，app.UseStaticHttpContext();
             </summary>
@@ -260,57 +270,57 @@
             释放资源
             </summary>
         </member>
-        <member name="T:Virgo.AspNetCore.RemoveVersionFromParameter">
+        <member name="T:Virgo.AspNetCore.Swagger.RemoveVersionFromParameter">
             <summary>
             取消 API 文档需要输入版本信息
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.RemoveVersionFromParameter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+        <member name="M:Virgo.AspNetCore.Swagger.RemoveVersionFromParameter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <summary>
             Apply
             </summary>
             <param name="operation"></param>
             <param name="context"></param>
         </member>
-        <member name="T:Virgo.AspNetCore.SwaggerExtensions">
+        <member name="T:Virgo.AspNetCore.Swagger.SwaggerExtensions">
             <summary>
             Swagger拓展类
             </summary>
             <remarks>Swashbuckle.AspNetCore</remarks>
         </member>
-        <member name="M:Virgo.AspNetCore.SwaggerExtensions.AddSwaggerStep(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.List{System.String})">
+        <member name="M:Virgo.AspNetCore.Swagger.SwaggerExtensions.AddSwaggerStep(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Collections.Generic.List{System.String})">
             <summary>
             添加Swagger服务
             </summary>
             <param name="services"></param>
             <param name="xmlPaths"></param>
         </member>
-        <member name="M:Virgo.AspNetCore.SwaggerExtensions.CreateInfoForApiVersion(Microsoft.AspNetCore.Mvc.ApiExplorer.ApiVersionDescription)">
+        <member name="M:Virgo.AspNetCore.Swagger.SwaggerExtensions.CreateInfoForApiVersion(Microsoft.AspNetCore.Mvc.ApiExplorer.ApiVersionDescription)">
             <summary>
             创建Api版本信息
             </summary>
             <param name="description"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.SwaggerExtensions.UseSwaggerWithUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:Virgo.AspNetCore.Swagger.SwaggerExtensions.UseSwaggerWithUI(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
             <summary>
             添加Swagger中间件和SwaggerUI
             </summary>
             <param name="app"></param>
         </member>
-        <member name="T:Virgo.AspNetCore.ConfigurationHelper">
+        <member name="T:Virgo.AspNetCore.Tools.ConfigurationHelper">
             <summary>
             获取配置辅助类
             </summary>
         </member>
-        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetIConfigurationRoot(System.String)">
+        <member name="M:Virgo.AspNetCore.Tools.ConfigurationHelper.GetIConfigurationRoot(System.String)">
             <summary>
             获取<see cref="T:Microsoft.Extensions.Configuration.IConfigurationRoot"/>实例
             </summary>
             <param name="basthPath"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetIConfigurationRoot(System.String,System.String)">
+        <member name="M:Virgo.AspNetCore.Tools.ConfigurationHelper.GetIConfigurationRoot(System.String,System.String)">
             <summary>
             获取指定环境的<see cref="T:Microsoft.Extensions.Configuration.IConfigurationRoot"/>实例
             </summary>
@@ -318,7 +328,7 @@
             <param name="basthPath"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetApplicationConfiguration``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+        <member name="M:Virgo.AspNetCore.Tools.ConfigurationHelper.GetApplicationConfiguration``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
             <summary>
             获取指定节点实例
             </summary>
@@ -326,338 +336,13 @@
             <param name="iConfig"></param>
             <returns></returns>
         </member>
-        <member name="M:Virgo.AspNetCore.ConfigurationHelper.GetConfigurationSection``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+        <member name="M:Virgo.AspNetCore.Tools.ConfigurationHelper.GetConfigurationSection``1(Microsoft.Extensions.Configuration.IConfigurationRoot)">
             <summary>
             获取指定节点实例
             </summary>
             <typeparam name="T"></typeparam>
             <param name="iConfig"></param>
             <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.HttpContext2">
-            <summary>
-            实现类似于.NET Framework中的HttpContext静态对象，使用前需要在Startup中注入，ConfigureServices方法中：services.AddHttpContextAccessor();，Configure方法中：app.UseStaticHttpContext();
-            </summary>
-        </member>
-        <member name="P:Virgo.Net.HttpContext2.Current">
-            <summary>
-            获取当前禽求上下文，使用前需要在Startup中注入，ConfigureServices方法中：services.AddStaticHttpContext();，Configure方法中：app.UseStaticHttpContext();
-            </summary>
-        </member>
-        <member name="T:Virgo.Net.Http.HttpClientHelper">
-            <summary>
-            <see cref="T:System.Net.Http.HttpClient"/>辅助类
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.GetAsync(System.String,System.Object,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
-            <summary>
-            通过HttpClient发起Get请求
-            <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="query">Query参数</param>
-            <param name="action">Http请求头设置</param>
-            <returns>JSON字符串</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.PostAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
-            <summary>
-            通过HttpClient发起Post请求
-            <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
-            <para><see cref="T:System.Net.Http.MultipartFormDataContent"/>、<see cref="T:System.Net.Http.FormUrlEncodedContent"/>、<see cref="T:System.Net.Http.StreamContent"/>、<see cref="T:System.Net.Http.ByteArrayContent"/>后台使用[FromForm]接受参数</para>
-            <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="query">Query参数</param>
-            <param name="content">请求参数</param>
-            <param name="action">Http请求头设置</param>
-            <returns>JSON字符串</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.PutAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
-            <summary>
-            通过HttpClient发起Put请求
-            <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
-            <para><see cref="T:System.Net.Http.MultipartFormDataContent"/>、<see cref="T:System.Net.Http.FormUrlEncodedContent"/>、<see cref="T:System.Net.Http.StreamContent"/>、<see cref="T:System.Net.Http.ByteArrayContent"/>后台使用[FromForm]接受参数</para>
-            <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="query">Query参数</param>
-            <param name="content">请求参数</param>
-            <param name="action">Http请求头设置</param>
-            <returns>JSON字符串</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.DeleteAsync(System.String,System.Object,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
-            <summary>
-            通过HttpClient发起Delete请求
-            <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="query">Query参数</param>
-            <param name="action">Http请求头设置</param>
-            <returns>JSON字符串</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpClientHelper.SendAsync(System.String,System.Net.Http.HttpMethod,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
-            <summary>
-            将HTTP请求作为异步操作发送
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="method">请求方法</param>
-            <param name="query">Query参数</param>
-            <param name="content">请求内容</param>
-            <param name="action">Http请求头设置</param>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.Http.HttpContentHelper">
-            <summary>
-            <see cref="T:System.Net.Http.HttpContent"/>帮助类
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToStreamContent(System.Object)">
-            <summary>
-            Object转换为StreamContent
-            </summary>
-            <param name="data">请求参数</param>
-            <returns>StreamContent</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToStringContent(System.Object)">
-            <summary>
-            Object转换为StringContent
-            </summary>
-            <param name="data">请求参数</param>
-            <returns>StringContent</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToMultipartFormDataContent(Microsoft.AspNetCore.Http.IFormFileCollection,System.Object)">
-            <summary>
-            将接受的文件和参数转换为MultipartFormDataContent
-            </summary>
-            <param name="files"></param>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToFormUrlEncodedContent(System.Object)">
-            <summary>
-            Object转换为FormUrlEncodedContent
-            </summary>
-            <param name="data">请求参数</param>
-            <returns>FormUrlEncodedContent</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToByteArrayContent(System.Object)">
-            <summary>
-            Object转换为ByteArrayContent
-            </summary>
-            <param name="data">请求参数</param>
-            <returns>ByteArrayContent</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToBytes(System.Object)">
-            <summary>
-            Object转换为Bytes
-            </summary>
-            <param name="data">请求参数</param>
-            <returns>byte[]</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.BuildParam(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Text.Encoding)">
-            <summary>
-            将键值对参数集合拼接为Url字符串
-            </summary>
-            <param name="paramArray">键值对集合</param>
-            <param name="encode">转码类型</param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.ToKeyValuePair(System.Object)">
-            <summary>
-            Object转换为KeyValuePair
-            </summary>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.Encode(System.String,System.Text.Encoding)">
-            <summary>
-            Url编码
-            </summary>
-            <param name="content">内容</param>
-            <param name="encode">编码类型</param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Http.HttpContentHelper.Decode(System.String,System.Text.Encoding)">
-            <summary>
-            Url解码
-            </summary>
-            <param name="content">内容</param>
-            <param name="encode">编码类型</param>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.Http.HttpHeaders">
-            <summary>
-            Http头部
-            </summary>
-        </member>
-        <member name="T:Virgo.Net.Http.WebRequestHelper">
-            <summary>
-            <see cref="T:System.Net.WebRequest"/>辅助类
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Http.WebRequestHelper.GetAsync(System.String,System.Object)">
-            <summary>
-            通过WebRequest发起Get请求
-            </summary>
-            <param name="url"></param>
-            <param name="data"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Http.WebRequestHelper.PostAsync(System.String,System.Object)">
-            <summary>
-            通过WebRequest发起Post请求
-            </summary>
-            <param name="url">请求地址</param>
-            <param name="data">请求参数</param>
-            <returns>JSON字符串</returns>
-        </member>
-        <member name="T:Virgo.Net.Http.WebSocketsHelper">
-            <summary>
-            <see cref="T:System.Net.WebSockets.WebSocket"/>帮助类
-            </summary>
-        </member>
-        <member name="F:Virgo.Net.Http.WebSocketsHelper.Sockets">
-            <summary>
-            客户端连接字典
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Http.WebSocketsHelper.AddClient(System.String,System.Net.WebSockets.WebSocket)">
-            <summary>
-            添加客户端
-            </summary>
-            <param name="userId">用户ID</param>
-            <param name="webSocket">WebSocket客户端</param>
-            <returns>是否成功</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.WebSocketsHelper.RemoveClient(System.String)">
-            <summary>
-            移除客户端
-            </summary>
-            <param name="userId">用户ID</param>
-            <returns>WebSocket客户端</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.WebSocketsHelper.GetClient(System.String)">
-            <summary>
-            获取客户端
-            </summary>
-            <param name="userId">用户ID</param>
-            <returns>WebSocket客户端</returns>
-        </member>
-        <member name="M:Virgo.Net.Http.WebSocketsHelper.All">
-            <summary>
-            获取所有客户端
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.Mime.ContentType">
-            <summary>
-            默认MIME映射器，可以根据文件扩展名获取标准内容类型。
-            </summary>
-        </member>
-        <member name="F:Virgo.Net.Mime.ContentType.DefaultMime">
-            <summary>
-            默认Mime  - 如果没有找到任何其他映射则作为默认的Mime-Type
-            </summary>
-        </member>
-        <member name="T:Virgo.Net.Mime.IMimeMapper">
-            <summary>
-            Mime
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Mime.IMimeMapper.Extend(Virgo.Net.Mime.MimeMappingItem[])">
-            <summary>
-            扩展Mime
-            </summary>
-            <param name="extensions"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Mime.IMimeMapper.GetMimeFromExtension(System.String)">
-            <summary>
-            根据扩展名获取mime type
-            </summary>
-            <param name="fileExtension"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Mime.IMimeMapper.GetMimeFromPath(System.String)">
-            <summary>
-            根据路径获取Mime Type
-            </summary>
-            <param name="filePath"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.Mime.MimeMapper">
-            <summary>
-            默认MIME映射器，可以根据文件扩展名获取标准内容类型。
-            </summary>
-        </member>
-        <member name="F:Virgo.Net.Mime.MimeMapper.DefaultMime">
-            <summary>
-            默认Mime  - 如果没有找到任何其他映射则作为默认的Mime-Type
-            </summary>
-        </member>
-        <member name="F:Virgo.Net.Mime.MimeMapper._pathExtensionPattern">
-            <summary>
-            在文件路径中搜索文件扩展名的默认正则表达式
-            </summary>
-        </member>
-        <member name="P:Virgo.Net.Mime.MimeMapper.MimeTypes">
-            <summary>
-            Mime类型的默认字典(Content types)
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.#ctor(Virgo.Net.Mime.MimeMappingItem[])">
-            <summary>
-            
-            </summary>
-            <param name="extensions"></param>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.Extend(Virgo.Net.Mime.MimeMappingItem[])">
-            <summary>
-            扩展mime映射规则的标准列表。扩展的具有更高的优先级 - 如果扩展具有与标准项相同的扩展名，则会覆盖默认的mime
-            </summary>
-            <param name="extensions"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.GetMimeFromExtension(System.String)">
-            <summary>
-            返回特定文件扩展名的Content-Type，如果未找到任何对应关系，则返回默认值
-            </summary>
-            <param name="fileExtension"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.GetMimeFromPath(System.String)">
-            <summary>
-            根据路径获取MimeType
-            </summary>
-            <param name="path"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Virgo.Net.Mime.MimeMapper.GetExtension(System.String)">
-            <summary>
-            获取扩展名
-            </summary>
-            <param name="path"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Virgo.Net.Mime.MimeMappingItem">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Virgo.Net.Mime.MimeMappingItem.Extension">
-            <summary>
-            扩展名
-            </summary>
-        </member>
-        <member name="P:Virgo.Net.Mime.MimeMappingItem.MimeType">
-            <summary>
-            MimeType
-            </summary>
         </member>
         <member name="T:Virgo.Cache.ICache">
             <summary>
@@ -3463,6 +3148,321 @@
         <member name="F:Virgo.Media.ThumbnailCutMode.Cut">
             <summary>
             裁剪
+            </summary>
+        </member>
+        <member name="T:Virgo.Net.Http.HttpClientHelper">
+            <summary>
+            <see cref="T:System.Net.Http.HttpClient"/>辅助类
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpClientHelper.GetAsync(System.String,System.Object,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+            <summary>
+            通过HttpClient发起Get请求
+            <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
+            <param name="action">Http请求头设置</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpClientHelper.PostAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+            <summary>
+            通过HttpClient发起Post请求
+            <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
+            <para><see cref="T:System.Net.Http.MultipartFormDataContent"/>、<see cref="T:System.Net.Http.FormUrlEncodedContent"/>、<see cref="T:System.Net.Http.StreamContent"/>、<see cref="T:System.Net.Http.ByteArrayContent"/>后台使用[FromForm]接受参数</para>
+            <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
+            <param name="content">请求参数</param>
+            <param name="action">Http请求头设置</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpClientHelper.PutAsync(System.String,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+            <summary>
+            通过HttpClient发起Put请求
+            <para><see cref="T:Microsoft.AspNetCore.Http.HttpContext"/>区别：</para>
+            <para><see cref="T:System.Net.Http.MultipartFormDataContent"/>、<see cref="T:System.Net.Http.FormUrlEncodedContent"/>、<see cref="T:System.Net.Http.StreamContent"/>、<see cref="T:System.Net.Http.ByteArrayContent"/>后台使用[FromForm]接受参数</para>
+            <para><see cref="T:System.Net.Http.StringContent"/>后台使用[FromBody]接受参数</para>
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
+            <param name="content">请求参数</param>
+            <param name="action">Http请求头设置</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpClientHelper.DeleteAsync(System.String,System.Object,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+            <summary>
+            通过HttpClient发起Delete请求
+            <para>键值对参数拼接在url上，后台使用[FromQuery]</para>
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="query">Query参数</param>
+            <param name="action">Http请求头设置</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpClientHelper.SendAsync(System.String,System.Net.Http.HttpMethod,System.Object,System.Net.Http.HttpContent,System.Action{System.Net.Http.Headers.HttpRequestHeaders})">
+            <summary>
+            将HTTP请求作为异步操作发送
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="method">请求方法</param>
+            <param name="query">Query参数</param>
+            <param name="content">请求内容</param>
+            <param name="action">Http请求头设置</param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Net.Http.HttpContentHelper">
+            <summary>
+            <see cref="T:System.Net.Http.HttpContent"/>帮助类
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToStreamContent(System.Object)">
+            <summary>
+            Object转换为StreamContent
+            </summary>
+            <param name="data">请求参数</param>
+            <returns>StreamContent</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToStringContent(System.Object)">
+            <summary>
+            Object转换为StringContent
+            </summary>
+            <param name="data">请求参数</param>
+            <returns>StringContent</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToMultipartFormDataContent(Microsoft.AspNetCore.Http.IFormFileCollection,System.Object)">
+            <summary>
+            将接受的文件和参数转换为MultipartFormDataContent
+            </summary>
+            <param name="files"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToFormUrlEncodedContent(System.Object)">
+            <summary>
+            Object转换为FormUrlEncodedContent
+            </summary>
+            <param name="data">请求参数</param>
+            <returns>FormUrlEncodedContent</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToByteArrayContent(System.Object)">
+            <summary>
+            Object转换为ByteArrayContent
+            </summary>
+            <param name="data">请求参数</param>
+            <returns>ByteArrayContent</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToBytes(System.Object)">
+            <summary>
+            Object转换为Bytes
+            </summary>
+            <param name="data">请求参数</param>
+            <returns>byte[]</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.BuildParam(System.Collections.Generic.List{System.Collections.Generic.KeyValuePair{System.String,System.String}},System.Text.Encoding)">
+            <summary>
+            将键值对参数集合拼接为Url字符串
+            </summary>
+            <param name="paramArray">键值对集合</param>
+            <param name="encode">转码类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.ToKeyValuePair(System.Object)">
+            <summary>
+            Object转换为KeyValuePair
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.Encode(System.String,System.Text.Encoding)">
+            <summary>
+            Url编码
+            </summary>
+            <param name="content">内容</param>
+            <param name="encode">编码类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Http.HttpContentHelper.Decode(System.String,System.Text.Encoding)">
+            <summary>
+            Url解码
+            </summary>
+            <param name="content">内容</param>
+            <param name="encode">编码类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Net.Http.HttpHeaders">
+            <summary>
+            Http头部
+            </summary>
+        </member>
+        <member name="T:Virgo.Net.Http.WebRequestHelper">
+            <summary>
+            <see cref="T:System.Net.WebRequest"/>辅助类
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Http.WebRequestHelper.GetAsync(System.String,System.Object)">
+            <summary>
+            通过WebRequest发起Get请求
+            </summary>
+            <param name="url"></param>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Http.WebRequestHelper.PostAsync(System.String,System.Object)">
+            <summary>
+            通过WebRequest发起Post请求
+            </summary>
+            <param name="url">请求地址</param>
+            <param name="data">请求参数</param>
+            <returns>JSON字符串</returns>
+        </member>
+        <member name="T:Virgo.Net.Http.WebSocketsHelper">
+            <summary>
+            <see cref="T:System.Net.WebSockets.WebSocket"/>帮助类
+            </summary>
+        </member>
+        <member name="F:Virgo.Net.Http.WebSocketsHelper.Sockets">
+            <summary>
+            客户端连接字典
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Http.WebSocketsHelper.AddClient(System.String,System.Net.WebSockets.WebSocket)">
+            <summary>
+            添加客户端
+            </summary>
+            <param name="userId">用户ID</param>
+            <param name="webSocket">WebSocket客户端</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.WebSocketsHelper.RemoveClient(System.String)">
+            <summary>
+            移除客户端
+            </summary>
+            <param name="userId">用户ID</param>
+            <returns>WebSocket客户端</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.WebSocketsHelper.GetClient(System.String)">
+            <summary>
+            获取客户端
+            </summary>
+            <param name="userId">用户ID</param>
+            <returns>WebSocket客户端</returns>
+        </member>
+        <member name="M:Virgo.Net.Http.WebSocketsHelper.All">
+            <summary>
+            获取所有客户端
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Net.Mime.ContentType">
+            <summary>
+            默认MIME映射器，可以根据文件扩展名获取标准内容类型。
+            </summary>
+        </member>
+        <member name="F:Virgo.Net.Mime.ContentType.DefaultMime">
+            <summary>
+            默认Mime  - 如果没有找到任何其他映射则作为默认的Mime-Type
+            </summary>
+        </member>
+        <member name="T:Virgo.Net.Mime.IMimeMapper">
+            <summary>
+            Mime
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Mime.IMimeMapper.Extend(Virgo.Net.Mime.MimeMappingItem[])">
+            <summary>
+            扩展Mime
+            </summary>
+            <param name="extensions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Mime.IMimeMapper.GetMimeFromExtension(System.String)">
+            <summary>
+            根据扩展名获取mime type
+            </summary>
+            <param name="fileExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Mime.IMimeMapper.GetMimeFromPath(System.String)">
+            <summary>
+            根据路径获取Mime Type
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Net.Mime.MimeMapper">
+            <summary>
+            默认MIME映射器，可以根据文件扩展名获取标准内容类型。
+            </summary>
+        </member>
+        <member name="F:Virgo.Net.Mime.MimeMapper.DefaultMime">
+            <summary>
+            默认Mime  - 如果没有找到任何其他映射则作为默认的Mime-Type
+            </summary>
+        </member>
+        <member name="F:Virgo.Net.Mime.MimeMapper._pathExtensionPattern">
+            <summary>
+            在文件路径中搜索文件扩展名的默认正则表达式
+            </summary>
+        </member>
+        <member name="P:Virgo.Net.Mime.MimeMapper.MimeTypes">
+            <summary>
+            Mime类型的默认字典(Content types)
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.#ctor(Virgo.Net.Mime.MimeMappingItem[])">
+            <summary>
+            
+            </summary>
+            <param name="extensions"></param>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.Extend(Virgo.Net.Mime.MimeMappingItem[])">
+            <summary>
+            扩展mime映射规则的标准列表。扩展的具有更高的优先级 - 如果扩展具有与标准项相同的扩展名，则会覆盖默认的mime
+            </summary>
+            <param name="extensions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.GetMimeFromExtension(System.String)">
+            <summary>
+            返回特定文件扩展名的Content-Type，如果未找到任何对应关系，则返回默认值
+            </summary>
+            <param name="fileExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.GetMimeFromPath(System.String)">
+            <summary>
+            根据路径获取MimeType
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Virgo.Net.Mime.MimeMapper.GetExtension(System.String)">
+            <summary>
+            获取扩展名
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Virgo.Net.Mime.MimeMappingItem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Virgo.Net.Mime.MimeMappingItem.Extension">
+            <summary>
+            扩展名
+            </summary>
+        </member>
+        <member name="P:Virgo.Net.Mime.MimeMappingItem.MimeType">
+            <summary>
+            MimeType
             </summary>
         </member>
         <member name="T:Virgo.Reflection.ReflectionHelper">

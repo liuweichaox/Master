@@ -4,6 +4,8 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
 using Virgo.AspNetCore;
+using Virgo.AspNetCore.ApiVersion;
+using Virgo.AspNetCore.Swagger;
 using Virgo.Redis;
 using Virgo.UserInterface.Filters;
 
