@@ -10,6 +10,7 @@
     <projectFile>test/Virgo.Elasticsearch.Tests/Virgo.Elasticsearch.Tests.csproj</projectFile>
     <projectFile>test/Virgo.RabbitMQ.Tests/Virgo.RabbitMQ.Tests.csproj</projectFile>
     <projectFile>test/Virgo.AspNetCore.Tests/Virgo.AspNetCore.Tests.csproj</projectFile>
+    <projectFile profileName="IIS Express">sample/Virgo.UserInterface/Virgo.UserInterface.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
@@ -33,14 +34,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="Submit Code">
+    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/SnapUpTestController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v1/ValueController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueControllerV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Controllers/v2/ValueController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Startup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Virgo.UserInterface.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,7 +451,7 @@
       <workItem from="1574850040737" duration="15845000" />
       <workItem from="1582469454922" duration="3215000" />
       <workItem from="1605145695239" duration="970000" />
-      <workItem from="1639931127218" duration="1082000" />
+      <workItem from="1639931127218" duration="1684000" />
     </task>
     <servers />
   </component>
