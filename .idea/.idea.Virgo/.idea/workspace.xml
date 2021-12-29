@@ -35,9 +35,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Aliyun/Sms/SmsSender.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Aliyun/Sms/SmsSender.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Data/MsSqlHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Data/MsSqlHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpClientHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpClientHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/WebRequestHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/WebRequestHelper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +161,7 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Mime/MimeMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/liuweichao/Github/Virgo/src/Virgo/Extensions/ExcelExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/ComplexPasswordAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/MaxValueAttribute.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -454,7 +456,7 @@
       <workItem from="1605145695239" duration="970000" />
       <workItem from="1639931127218" duration="1684000" />
       <workItem from="1639963900467" duration="1222000" />
-      <workItem from="1640788904243" duration="317000" />
+      <workItem from="1640788904243" duration="621000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1640789003929</created>
@@ -463,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1640789003929</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1640789525277</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1640789525277</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
