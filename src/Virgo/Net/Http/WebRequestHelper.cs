@@ -22,7 +22,7 @@ namespace Virgo.Net.Http
         /// <returns></returns>
         public static async Task<string> GetAsync(string url, object data)
         {
-            string jsonString = string.Empty;
+            var jsonString = string.Empty;
             HttpWebRequest httpRequest = null;
             HttpWebResponse httpResponse = null;
             if (url.Contains("https://"))
@@ -44,7 +44,7 @@ namespace Virgo.Net.Http
             }
             if (httpResponse.StatusCode == HttpStatusCode.OK)
             {
-                using var stream = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8);
+                using var stream = new StreamReader(httpResponse.GetResponseStream()!, Encoding.UTF8);
                 jsonString = await stream.ReadToEndAsync();
             }
             return jsonString;
@@ -93,7 +93,7 @@ namespace Virgo.Net.Http
             }
             if (httpResponse.StatusCode == HttpStatusCode.OK)
             {
-                using var stream = new StreamReader(httpResponse.GetResponseStream(), Encoding.UTF8);
+                using var stream = new StreamReader(httpResponse.GetResponseStream()!, Encoding.UTF8);
                 jsonString = await stream.ReadToEndAsync();
             }
             return jsonString;

@@ -22,8 +22,8 @@ namespace Virgo.Net.Http
         public static HttpContent ToStreamContent(object data)
         {
             var json = JsonConvert.SerializeObject(data, Formatting.None, new IsoDateTimeConverter());
-            byte[] bytes = Encoding.UTF8.GetBytes(json);
-            MemoryStream ms = new MemoryStream();
+            var bytes = Encoding.UTF8.GetBytes(json);
+            var ms = new MemoryStream();
             ms.Write(bytes, 0, bytes.Length);
             ms.Position = 0;
             HttpContent streamContent = new StreamContent(ms);
@@ -86,7 +86,7 @@ namespace Virgo.Net.Http
         public static HttpContent ToByteArrayContent(object data)
         {
             var json = JsonConvert.SerializeObject(data, Formatting.None, new IsoDateTimeConverter());
-            byte[] bytes = Encoding.UTF8.GetBytes(json);
+            var bytes = Encoding.UTF8.GetBytes(json);
             HttpContent byteArrayContent = new ByteArrayContent(bytes);
             return byteArrayContent;
         }

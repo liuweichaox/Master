@@ -101,7 +101,7 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        private static ExcelPackage ToExcelFromObjects<T>(this List<T> list)
+        public static ExcelPackage ToExcelFromObjects<T>(this List<T> list)
         {
             if (list == null || list.Any() == false)
                 throw new ArgumentException(nameof(list));

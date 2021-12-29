@@ -28,23 +28,19 @@ namespace Virgo.Net.Http
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             }
-            string jsonString = string.Empty;
-            using (var handler = new HttpClientHandler())
-            {
-                handler.AllowAutoRedirect = true;
-                handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
-                handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
-                using var client = new HttpClient(handler);
-                action?.Invoke(client.DefaultRequestHeaders);
-                using var response = await client.GetAsync($"{url}{BuildParam(ToKeyValuePair(query))}");
-                if (response.IsSuccessStatusCode)
-                {
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    using var reader = new StreamReader(stream);
-                    jsonString = await reader.ReadToEndAsync();
-                }
-            }
+            var jsonString = string.Empty;
+            using var handler = new HttpClientHandler();
+            handler.AllowAutoRedirect = true;
+            handler.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+            handler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, cetChain, policyErrors) => true;
+            using var client = new HttpClient(handler);
+            action?.Invoke(client.DefaultRequestHeaders);
+            using var response = await client.GetAsync($"{url}{BuildParam(ToKeyValuePair(query))}");
+            if (!response.IsSuccessStatusCode) return jsonString;
+            var stream = await response.Content.ReadAsStreamAsync();
+            using var reader = new StreamReader(stream);
+            jsonString = await reader.ReadToEndAsync();
             return jsonString;
         }
         /// <summary>
@@ -65,7 +61,7 @@ namespace Virgo.Net.Http
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             }
-            string jsonString = string.Empty;
+            var jsonString = string.Empty;
             using (var handler = new HttpClientHandler())
             {
                 handler.AllowAutoRedirect = true;
@@ -113,12 +109,10 @@ namespace Virgo.Net.Http
                 using var client = new HttpClient(handler);
                 action?.Invoke(client.DefaultRequestHeaders);
                 using var response = await client.PutAsync($"{url}{BuildParam(ToKeyValuePair(query))}", content);
-                if (response.IsSuccessStatusCode)
-                {
-                    var stream = response.Content.ReadAsStreamAsync().Result;
-                    using var reader = new StreamReader(stream);
-                    jsonString = await reader.ReadToEndAsync();
-                }
+                if (!response.IsSuccessStatusCode) return await Task.FromResult(jsonString);
+                var stream = response.Content.ReadAsStreamAsync().Result;
+                using var reader = new StreamReader(stream);
+                jsonString = await reader.ReadToEndAsync();
             }
             return await Task.FromResult(jsonString);
         }
@@ -137,7 +131,7 @@ namespace Virgo.Net.Http
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             }
-            string jsonString = string.Empty;
+            var jsonString = string.Empty;
             using (var handler = new HttpClientHandler())
             {
                 handler.AllowAutoRedirect = true;
@@ -147,12 +141,10 @@ namespace Virgo.Net.Http
                 using var client = new HttpClient(new HttpClientHandler() { AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip });
                 action?.Invoke(client.DefaultRequestHeaders);
                 using var response = await client.DeleteAsync($"{url}{BuildParam(ToKeyValuePair(query))}");
-                if (response.IsSuccessStatusCode)
-                {
-                    var stream = await response.Content.ReadAsStreamAsync();
-                    using var reader = new StreamReader(stream);
-                    jsonString = await reader.ReadToEndAsync();
-                }
+                if (!response.IsSuccessStatusCode) return await Task.FromResult(jsonString);
+                var stream = await response.Content.ReadAsStreamAsync();
+                using var reader = new StreamReader(stream);
+                jsonString = await reader.ReadToEndAsync();
             }
             return await Task.FromResult(jsonString);
         }
@@ -173,7 +165,7 @@ namespace Virgo.Net.Http
                 ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
             }
-            string jsonString = string.Empty;
+            string jsonString;
             using (var handler = new HttpClientHandler())
             {
                 handler.AllowAutoRedirect = true;
