@@ -14,16 +14,16 @@ namespace Virgo.Data
         /// <summary>
         /// 批量导入(同步方法)
         /// </summary>
-        /// <param name="_mySqlConnection"></param>
+        /// <param name="mySqlConnection"></param>
         /// <param name="table"></param>
         /// <returns></returns>
-        public static int BulkLoad(MySqlConnection _mySqlConnection, DataTable table)
+        public static int BulkLoad(MySqlConnection mySqlConnection, DataTable table)
         {
             var tempPath = Path.GetTempFileName();
             var contents = table.ToCsv();
             File.WriteAllText(tempPath, contents);
             var columns = table.Columns.Cast<DataColumn>().Select(colum => colum.ColumnName).ToList();
-            MySqlBulkLoader bulk = new MySqlBulkLoader(_mySqlConnection)
+            var bulk = new MySqlBulkLoader(mySqlConnection)
             {
                 FieldTerminator = ",",
                 FieldQuotationCharacter = '"',
@@ -42,16 +42,16 @@ namespace Virgo.Data
         /// <summary>
         /// 批量导入(异步方法)
         /// </summary>
-        /// <param name="_mySqlConnection"></param>
+        /// <param name="mySqlConnection"></param>
         /// <param name="table"></param>
         /// <returns></returns>
-        public static async Task<int> BulkLoadAsync(MySqlConnection _mySqlConnection, DataTable table)
+        public static async Task<int> BulkLoadAsync(MySqlConnection mySqlConnection, DataTable table)
         {
             var tempPath = Path.GetTempFileName();
             var contents = table.ToCsv();
             File.WriteAllText(tempPath, contents);
             var columns = table.Columns.Cast<DataColumn>().Select(colum => colum.ColumnName).ToList();
-            MySqlBulkLoader bulk = new MySqlBulkLoader(_mySqlConnection)
+            var bulk = new MySqlBulkLoader(mySqlConnection)
             {
                 FieldTerminator = ",",
                 FieldQuotationCharacter = '"',

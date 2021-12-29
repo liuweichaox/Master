@@ -16,11 +16,9 @@ namespace Virgo.Data
         /// <param name="dataTable"></param>
         public static void BulkCopy(SqlConnection sqlConnection, DataTable dataTable)
         {
-            using (var sqlBulkCopy = new SqlBulkCopy(sqlConnection))
-            {
-                sqlBulkCopy.DestinationTableName = dataTable.TableName;
-                sqlBulkCopy.WriteToServer(dataTable);
-            }
+            using var sqlBulkCopy = new SqlBulkCopy(sqlConnection);
+            sqlBulkCopy.DestinationTableName = dataTable.TableName;
+            sqlBulkCopy.WriteToServer(dataTable);
         }
         /// <summary>
         /// 批量插入(异步方法)
@@ -29,11 +27,9 @@ namespace Virgo.Data
         /// <param name="dataTable"></param>
         public static async Task BulkCopyAsync(SqlConnection sqlConnection, DataTable dataTable)
         {
-            using (var sqlBulkCopy = new SqlBulkCopy(sqlConnection))
-            {
-                sqlBulkCopy.DestinationTableName = dataTable.TableName;
-                await sqlBulkCopy.WriteToServerAsync(dataTable);
-            }
+            using var sqlBulkCopy = new SqlBulkCopy(sqlConnection);
+            sqlBulkCopy.DestinationTableName = dataTable.TableName;
+            await sqlBulkCopy.WriteToServerAsync(dataTable);
         }
     }
 }

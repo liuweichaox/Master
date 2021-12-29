@@ -21,8 +21,8 @@ namespace Virgo.Aliyun.Sms
         public async Task<SendSmsResponse> SendSmsAsync(SendSmsRequest request)
         {
             var verifiedCode = new Random().Next(100000, 999999).ToString();
-            string accessKeyId = "";//你的accessKeyId，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-            string accessKeySecret = "";//你的accessKeySecret，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
+            const string accessKeyId = ""; //你的accessKeyId，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
+            const string accessKeySecret = ""; //你的accessKeySecret，此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
             IClientProfile profile = DefaultProfile.GetProfile("cn-hangzhou", accessKeyId, accessKeySecret);
             IAcsClient acsClient = new DefaultAcsClient(profile);
             SendSmsResponse response = null;
