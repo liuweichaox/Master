@@ -1,18 +1,13 @@
-﻿using MySqlX.XDevAPI.Relational;
-using OfficeOpenXml;
-using OfficeOpenXml.FormulaParsing.Utilities;
+﻿using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using Virgo.IO;
+using LicenseContext = OfficeOpenXml.LicenseContext;
 
 namespace Virgo.Extensions
 {
@@ -21,6 +16,10 @@ namespace Virgo.Extensions
     /// </summary>
     public static class ExcelExtensions
     {
+        static ExcelExtensions()
+        {  
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        }
         #region 导入
         /// <summary>
         /// 将Excel转换为<see cref="List{T}"/>
@@ -40,16 +39,16 @@ namespace Virgo.Extensions
             var maxColumnNum = ws.Dimension.End.Column; //工作区结束列
             var minRowNum = ws.Dimension.Start.Row; //工作区开始行号
             var maxRowNum = ws.Dimension.End.Row; //工作区结束行号
-            var errors = new List<ExcelExceptioInfo>();
+            var errors = new List<ExcelAbnormalInfo>();
             var list = new List<T>();
             var propertyPosition = new Dictionary<int, string>();
             var propertyInfos = typeof(T).GetProperties();
             if (propertyInfos.Length != maxColumnNum)
                 throw new Exception($"Excel格式错误，无法将该文件转换为List<{typeof(T).Name}>对象！");
-            for (int row = minRowNum; row <= maxRowNum; row++)
+            for (var row = minRowNum; row <= maxRowNum; row++)
             {
                 var rowInstance = Activator.CreateInstance<T>();
-                for (int col = minColumnNum; col <= maxColumnNum; col++)
+                for (var col = minColumnNum; col <= maxColumnNum; col++)
                 {
                     var cell = ws.Cells[row, col].Value.ToString();
                     if (row == minRowNum)
@@ -68,15 +67,15 @@ namespace Virgo.Extensions
                             var property = propertyInfos.FirstOrDefault(x => x.Name == propertyName);
                             try
                             {
-                                var type = property.PropertyType;
+                                var type = property?.PropertyType;
                                 var nullableType = Nullable.GetUnderlyingType(type) ?? type;
                                 var value = cell == null ? null : Convert.ChangeType(cell, nullableType);
-                                property.SetValue(rowInstance, value);
+                                property?.SetValue(rowInstance, value);
                             }
                             catch (Exception ex)
                             {
-                                var msg = $"{row + 1}行{col + 1}列单元格：【{cell ?? ""}】转换为【{property.PropertyType.Name}】类型异常";
-                                var error = new ExcelExceptioInfo(row, col, msg, ex.Message, ex.StackTrace);
+                                var msg = $"{row + 1}行{col + 1}列单元格：【{cell ?? ""}】转换为【{property?.PropertyType.Name}】类型异常";
+                                var error = new ExcelAbnormalInfo(row, col, msg, ex.Message, ex.StackTrace);
                                 errors.Add(error);
                             }
                         }
@@ -102,7 +101,7 @@ namespace Virgo.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static ExcelPackage ToExcelFromObjects<T>(this List<T> list)
+        private static ExcelPackage ToExcelFromObjects<T>(this List<T> list)
         {
             if (list == null || list.Any() == false)
                 throw new ArgumentException(nameof(list));
@@ -115,7 +114,7 @@ namespace Virgo.Extensions
             for (int row = 0; row < rows; row++)
             {
                 var item = list[row];
-                for (int col = 0; col < cols; col++)
+                for (var col = 0; col < cols; col++)
                 {
                     var property = propertyInfos[col];
                     if (row == 0)
@@ -128,10 +127,7 @@ namespace Virgo.Extensions
                     var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
                     var cell = sheet.Cells[row + 2, col + 1];//第一条数据从第二行开始追加
                     cell.Value = val;
-                    if (val.IsNumeric() && val.Length > 11)
-                    {
-                        cell.Style.Numberformat.Format = "@";
-                    }
+                    cell.Style.Numberformat.Format = "@";
                     cell.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 }
             }
@@ -149,7 +145,7 @@ namespace Virgo.Extensions
             if (list == null || list.Any() == false)
                 throw new ArgumentException(nameof(list));
             using var package = ToExcelFromObjects(list);
-            MemoryStream stream = new MemoryStream();
+            var stream = new MemoryStream();
             package.SaveAs(stream);
             return stream;
         }
@@ -165,7 +161,7 @@ namespace Virgo.Extensions
                 throw new ArgumentException(nameof(path));
             FileHelper.DeleteIfExists(path);
             using var package = ToExcelFromObjects(list);
-            using FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            using var stream = new FileStream(path, FileMode.Create, FileAccess.Write);
             package.SaveAs(stream);
         }
         #endregion        
@@ -174,11 +170,8 @@ namespace Virgo.Extensions
     /// <summary>
     /// Excel异常模板
     /// </summary>
-    public class ExcelExceptioInfo
+    public class ExcelAbnormalInfo
     {
-        public ExcelExceptioInfo()
-        {
-        }
 
         /// <summary>
         /// 构造函数
@@ -188,7 +181,7 @@ namespace Virgo.Extensions
         /// <param name="message"></param>
         /// <param name="originalMessage"></param>
         /// <param name="stackTrace"></param>
-        public ExcelExceptioInfo(int row, int column, string message, string originalMessage, string stackTrace)
+        public ExcelAbnormalInfo(int row, int column, string message, string originalMessage, string stackTrace)
         {
             Row = row;
             Column = column;
@@ -199,31 +192,32 @@ namespace Virgo.Extensions
         /// <summary>
         /// 行坐标
         /// </summary>
-        public int Row { get; set; }
+        private int Row { get; set; }
         /// <summary>
         /// 列坐标
         /// </summary>
-        public int Column { get; set; }
+        private int Column { get; set; }
         /// <summary>
         /// 错误消息
         /// </summary>
-        public string Message { get; set; }
+        private string Message { get; set; }
         /// <summary>
         /// 原始异常
         /// </summary>
-        public string OriginalMessage { get; set; }
+        private string OriginalMessage { get; set; }
         /// <summary>
         /// 堆栈跟踪
         /// </summary>
-        public string StackTrace { get; set; }
+        private string StackTrace { get; set; }
     }
     /// <summary>
     /// Excel异常
     /// </summary>
     public class ExcelException : Exception
     {
-        public List<ExcelExceptioInfo> ExcelExceptions;
-        public ExcelException(List<ExcelExceptioInfo> excelExceptions)
+        public List<ExcelAbnormalInfo> ExcelExceptions { get; }
+
+        public ExcelException(List<ExcelAbnormalInfo> excelExceptions)
         {
             ExcelExceptions = excelExceptions;
         }

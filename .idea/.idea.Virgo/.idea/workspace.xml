@@ -36,15 +36,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample/Virgo.UserInterface/Models/ValueObjectTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/sample/Virgo.UserInterface/Models/ValueObjectTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Elasticsearch/ElasticsearchRepositoryBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Elasticsearch/IElasticClientFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Quartz/IQuartzScheduleJobManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.Quartz/QuartzScheduleJobManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/IRabbitMQConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo.RabbitMQ/RabbitMQProxy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/Virgo.RabbitMQ.Tests/RabbitMQProxy_Tests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Virgo.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Virgo.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +71,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Virgo/IP/IpHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Snowflake/IdWorker.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Security/HashEncode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Hardware/SystemInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/VirgoExtensions.cs" root0="FORCE_HIGHLIGHTING" />
@@ -161,6 +155,7 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringCompute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Cache/CacheBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MsSqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/liuweichao/Github/Virgo/src/Virgo/Extensions/ExcelExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Text/StringHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Extensions/AutoMapperExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -241,7 +236,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.UserInterface">
@@ -483,7 +478,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Submit Code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Submit Code" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
