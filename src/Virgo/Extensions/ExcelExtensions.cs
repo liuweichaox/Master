@@ -163,6 +163,7 @@ namespace Virgo.Extensions
             using var package = ToExcelFromObjects(list);
             using var stream = new FileStream(path, FileMode.Create, FileAccess.Write);
             package.SaveAs(stream);
+            stream.Dispose();
         }
         #endregion        
     }

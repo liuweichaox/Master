@@ -34,12 +34,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="update">
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpClientHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpClientHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Virgo/Net/Http/WebRequestHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Net/Http/WebRequestHelper.cs" afterDir="false" />
-    </list>
+    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,7 +232,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Virgo.UserInterface">
@@ -456,7 +451,7 @@
       <workItem from="1605145695239" duration="970000" />
       <workItem from="1639931127218" duration="1684000" />
       <workItem from="1639963900467" duration="1222000" />
-      <workItem from="1640788904243" duration="621000" />
+      <workItem from="1640788904243" duration="1403000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1640789003929</created>
@@ -513,6 +508,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="masterDetails">
     <states>
