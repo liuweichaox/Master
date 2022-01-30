@@ -53,7 +53,7 @@ namespace Virgo.Extensions
                     var cell = ws.Cells[row, col].Value.ToString();
                     if (row == minRowNum)
                     {
-                        var propertyName = propertyInfos.FirstOrDefault(x => x.GetCustomAttribute<DescriptionAttribute>()?.Description == cell)?.Name;
+                        var propertyName = propertyInfos.FirstOrDefault(x => x.GetCustomAttribute<ExcelColumnAttribute>()?.Title == cell)?.Name;
                         if (propertyName != null)
                         {
                             propertyPosition.Add(col, propertyName);
@@ -119,15 +119,27 @@ namespace Virgo.Extensions
                     var property = propertyInfos[col];
                     if (row == 0)
                     {
-                        var title = property.GetCustomAttribute<DescriptionAttribute>()?.Description ?? property.Name;
+                        var title = property.GetCustomAttribute<ExcelColumnAttribute>()?.Title ?? property.Name;
                         var firstCell = sheet.Cells[row + 1, col + 1];
+                        firstCell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                        firstCell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
                         firstCell.Value = title; //第一行设置标题
                         firstCell.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                     }
                     var val = Convert.ChangeType(property.GetValue(item), property.PropertyType).ToString();
                     var cell = sheet.Cells[row + 2, col + 1];//第一条数据从第二行开始追加
+                    cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                    cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
                     cell.Value = val;
-                    cell.Style.Numberformat.Format = "@";
+                    var format = property.GetCustomAttribute<ExcelColumnAttribute>()?.Format;
+                    if (string.IsNullOrEmpty(format))
+                    {
+                        cell.Style.Numberformat.Format = decimal.TryParse(val?.ToString(), out var num) ? "0.0000000000" : "@";
+                    }
+                    else
+                    {
+                        cell.Style.Numberformat.Format = format;
+                    }
                     cell.Style.Border.BorderAround(ExcelBorderStyle.Thin);
                 }
             }
@@ -221,6 +233,26 @@ namespace Virgo.Extensions
         public ExcelException(List<ExcelAbnormalInfo> excelExceptions)
         {
             ExcelExceptions = excelExceptions;
+        }
+    }
+    /// <summary>
+    /// excel 列
+    /// </summary>
+    public class ExcelColumnAttribute : Attribute
+    {
+        /// <summary>
+        /// 标题
+        /// </summary>
+        public string Title { get; set; }
+        /// <summary>
+        /// 格式化样式
+        /// </summary>
+        public string Format { get; set; }
+
+        public ExcelColumnAttribute(string title, string format = "")
+        {
+            Title = title;
+            Format = format;
         }
     }
 }

@@ -34,7 +34,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="" />
+    <list default="true" id="0923d1bf-a167-485f-8cc0-19dc4c1a484f" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Virgo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Virgo/Extensions/ExcelExtensions.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,7 +139,6 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/IRedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCaCheConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo.Redis/RedisCacheProvider.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/liuweichao/Github/Virgo/src/Virgo/Extensions/ExcelExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/AutofacInterceptionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IocManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/DependencyInjection/IIocManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -156,7 +158,6 @@
     <setting file="file://$PROJECT_DIR$/src/Virgo/Data/MySqlHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Mime/MimeMapper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Net/Http/HttpContentHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/liuweichao/Github/Virgo/src/Virgo/Extensions/ExcelExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/ComplexPasswordAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Virgo/Validator/MaxValueAttribute.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -452,6 +453,8 @@
       <workItem from="1639931127218" duration="1684000" />
       <workItem from="1639963900467" duration="1222000" />
       <workItem from="1640788904243" duration="1403000" />
+      <workItem from="1640827553378" duration="645000" />
+      <workItem from="1643504919138" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1640789003929</created>
