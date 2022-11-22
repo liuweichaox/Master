@@ -1,5 +1,7 @@
-﻿using Autofac;
+﻿using System;
+using Autofac;
 using System.Linq;
+using Autofac.Core.Resolving.Pipeline;
 using Virgo.DependencyInjection;
 
 namespace Virgo.Domain.Uow
@@ -17,14 +19,7 @@ namespace Virgo.Domain.Uow
         /// <returns></returns>
         public static ContainerBuilder RegisterUnitOfWorkInterceptor(this ContainerBuilder builder)
         {
-            builder.RegisterCallback(x => x.Registered += (sender, e) =>
-            {
-                if (e.ComponentRegistration.Activator.LimitType.GetMethods().Any(m => m.IsDefined(typeof(UnitOfWorkAttribute), true)))
-                {
-                    e.ComponentRegistration.InterceptedBy<UnitOfWorkInterceptor>();
-                }
-            });
-            return builder;
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using Castle.DynamicProxy;
-using System.Reflection;
+﻿using System;
+using Autofac.Core.Resolving.Pipeline;
 using Virgo.DependencyInjection;
 
 namespace Virgo.Domain.Uow
@@ -7,9 +7,10 @@ namespace Virgo.Domain.Uow
     /// <summary>
     /// <see cref="IUnitOfWork"/>AOP模式执行
     /// </summary>
-    public class UnitOfWorkInterceptor : IInterceptor, ITransientDependency
+    public class UnitOfWorkInterceptor : IResolveMiddleware, ITransientDependency
     {
         private readonly IUnitOfWork _unitOfWork;
+        public PipelinePhase Phase => PipelinePhase.RegistrationPipelineStart;
         public UnitOfWorkInterceptor()
         {
         }
@@ -17,32 +18,29 @@ namespace Virgo.Domain.Uow
         {
             _unitOfWork = unitOfWork;
         }
-        /// <summary>
-        /// 工作单元
-        /// </summary>
-        /// <param name="invocation"></param>
-        public void Intercept(IInvocation invocation)
+
+        public void Execute(ResolveRequestContext context, Action<ResolveRequestContext> next)
         {
-            var uowAttr = invocation.MethodInvocationTarget.GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;
-            if (invocation.MethodInvocationTarget.IsDefined(typeof(UnitOfWorkAttribute), true))
-            {
-                try
-                {
-                    _unitOfWork.BeginTransaction();
-                    if (uowAttr.IsolationLevel.HasValue)
-                    {
-                        _unitOfWork.BeginTransaction(uowAttr.IsolationLevel.Value);
-                    }
-                    invocation.Proceed();
-                    _unitOfWork.Commit();
-                }
-                catch (System.Exception)
-                {
-                    _unitOfWork.Rollback();
-                }
-            }
-            invocation.Proceed();
-            return;
+            // var uowAttr = context.Instance.GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;
+            // if (invocation.MethodInvocationTarget.IsDefined(typeof(UnitOfWorkAttribute), true))
+            // {
+            //     try
+            //     {
+            //         _unitOfWork.BeginTransaction();
+            //         if (uowAttr.IsolationLevel.HasValue)
+            //         {
+            //             _unitOfWork.BeginTransaction(uowAttr.IsolationLevel.Value);
+            //         }
+            //         next(context);
+            //         _unitOfWork.Commit();
+            //     }
+            //     catch (System.Exception)
+            //     {
+            //         _unitOfWork.Rollback();
+            //     }
+            // }
+            // next(context);
+            // return;
         }
     }
 }

@@ -4,7 +4,7 @@ using Virgo.Domain.Entities;
 
 namespace Virgo.Dapper.Tests
 {
-    [Table("Users")]
+    [Table("users")]
     public class UserInfo : Entity<Guid>
     {
         public string UserName { get; set; }

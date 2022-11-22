@@ -1,4 +1,5 @@
 ﻿using System;
+using Dapper.Contrib.Extensions;
 
 namespace Virgo.Domain.Entities
 {
@@ -24,6 +25,7 @@ namespace Virgo.Domain.Entities
         /// <summary>
         /// 非自增主键[ExplicitKey]
         /// </summary>
+        [ExplicitKey]
         public virtual string Id { get; set; }
     }
 }

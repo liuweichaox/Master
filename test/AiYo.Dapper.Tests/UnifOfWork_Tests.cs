@@ -13,11 +13,11 @@ namespace Virgo.Dapper.Tests
         public UnifOfWork_Tests()
         {
             Building(build =>
-            {           
-                build.RegisterUnitOfWorkInterceptor();
+            {
                 build.RegisterType<UnitOfWorkInterceptor>();
-                build.RegisterType<UnifOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+                build.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
                 build.RegisterType<UserInfoRepository>().As<IUserInfoRepository>().InstancePerLifetimeScope();
+                build.RegisterUnitOfWorkInterceptor();
             });
         }
 
@@ -49,21 +49,18 @@ SET FOREIGN_KEY_CHECKS = 1;*/
             {
                 new UserInfo()
                 {
-                    Id = Guid.NewGuid(),
                     Password = "Password",
                     PhoneNumber = "12345",
                     UserName = "Jon"
                 },
                 new UserInfo()
                 {
-                    Id = Guid.NewGuid(),
                     Password = "Password",
                     PhoneNumber = "54321",
                     UserName = "AiYoCore"
                 },
                 new UserInfo()
                 {
-                    Id = Guid.NewGuid(),
                     Password = "55555",
                     PhoneNumber = "phone",
                     UserName = "LiuDaDa"
@@ -72,16 +69,16 @@ SET FOREIGN_KEY_CHECKS = 1;*/
                 //增
                 await repository.InsertAsync(users);
                 //删
-                await repository.DeleteAsync(users[0]);
+                // await repository.DeleteAsync(users[0]);
                 //查
-                var userInfos = await repository.GetAllAsync();
+                // var userInfos = await repository.GetAllAsync();
                 //改
-                var virgo = userInfos.FirstOrDefault();
-                virgo.UserName = "新名称";
-                await repository.UpdateAsync(virgo);
+                // var virgo = userInfos.FirstOrDefault();
+                // virgo.UserName = "新名称";
+                // await repository.UpdateAsync(virgo);
                 un.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 un.Rollback();
             }
