@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AiYoCore.Application</name>
+    </assembly>
+    <members>
+        <member name="T:AiYoCore.Application.ApplicationExtensions">
+            <summary>
+            Application拓展类
+            </summary>
+        </member>
+        <member name="M:AiYoCore.Application.ApplicationExtensions.RegisterApplication(Autofac.ContainerBuilder)">
+            <summary>
+            注入Application容器
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AiYoCore.Application.Interfaces.ICustomService">
+            <summary>
+            自定义服务接口
+            </summary>
+        </member>
+        <member name="M:AiYoCore.Application.Interfaces.ICustomService.Call(AiYoCore.Application.Models.Requests.CustomRequest)">
+            <summary>
+            调用方法
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AiYoCore.Application.Models.Requests.CustomRequest">
+            <summary>
+            自定义请求实体示例
+            </summary>
+        </member>
+        <member name="P:AiYoCore.Application.Models.Requests.CustomRequest.Id">
+            <summary>
+            Guid Xml GO GO GO
+            </summary>
+        </member>
+        <member name="P:AiYoCore.Application.Models.Requests.CustomRequest.Name">
+            <summary>
+            变量
+            </summary>
+        </member>
+        <member name="P:AiYoCore.Application.Models.Requests.CustomRequest.RequestTime">
+            <summary>
+            请求时间
+            </summary>
+        </member>
+        <member name="T:AiYoCore.Application.Models.Responses.CostomResponse">
+            <summary>
+            自定义响应实体示例
+            </summary>
+        </member>
+        <member name="P:AiYoCore.Application.Models.Responses.CostomResponse.Id">
+            <summary>
+            XML ID
+            </summary>
+        </member>
+        <member name="P:AiYoCore.Application.Models.Responses.CostomResponse.Date">
+            <summary>
+            XML DATE
+            </summary>
+        </member>
+        <member name="T:AiYoCore.Application.Services.CustomService">
+            <summary>
+            <see cref="T:AiYoCore.Application.Interfaces.ICustomService"/>服务实现类
+            </summary>
+        </member>
+        <member name="F:AiYoCore.Application.Services.CustomService._customRepository">
+            <summary>
+            <see cref="T:AiYoCore.Domain.Interfaces.ICustomRepository"/>仓储实例
+            </summary>
+        </member>
+        <member name="M:AiYoCore.Application.Services.CustomService.#ctor(AiYoCore.Domain.Interfaces.ICustomRepository)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="customRepository"></param>
+        </member>
+        <member name="M:AiYoCore.Application.Services.CustomService.Call(AiYoCore.Application.Models.Requests.CustomRequest)">
+            <summary>
+            调用
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
