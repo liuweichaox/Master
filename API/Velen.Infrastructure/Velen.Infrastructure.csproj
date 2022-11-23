@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Velen.Domain\Velen.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
