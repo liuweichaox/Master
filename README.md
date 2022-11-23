@@ -14,7 +14,7 @@
 
 ## Architecture [Clean Architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-![projects_dependencies](docs/clean_architecture.jpg)
+![projects_dependencies](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/raw/master/docs/clean_architecture.jpg)
 
 ## CQRS
 
@@ -26,7 +26,7 @@
 
 ## Domain
 
-![projects_dependencies](docs/domain_model_diagram.png)
+![projects_dependencies](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/raw/master/docs/domain_model_diagram.png)
 
 ## Validation
 使用 [FluentValidation](https://github.com/JeremySkinner/FluentValidation) 进行数据验证
