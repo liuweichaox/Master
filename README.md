@@ -1,69 +1,70 @@
-使用 Clean Architecture 的原始 SQL 和 DDD 的示例 .NET Core REST API CQRS 实现。
+Sample .NET Core REST API CQRS implementation with raw SQL and DDD using Clean Architecture.
+==============================================================
 
 ## CI
 
 ![](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/workflows/Build%20Pipeline/badge.svg)
 
-## 给个星星!
+## Give a Star! :star:
 
-如果你喜欢这个项目，学会了一些东西或者你正在你的应用程序中使用它，请给它一颗星。谢谢！
+If you like this project, learn something or you are using it in your applications, please give it a star. Thanks!
 
-## 描述
-使用基础 [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) 方法和域驱动设计实例 .NET Core REST API 应用程序。
+## Description
+Sample .NET Core REST API application implemented with basic [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) approach and Domain Driven Design.
 
-## 架构 [清洁架构](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+## Architecture [Clean Architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
 ![projects_dependencies](docs/clean_architecture.jpg)
 
 ## CQRS
 
-读取模型 - 在数据库视图对象上执行原始 SQL 脚本（使用 [Dapper](https://github.com/StackExchange/Dapper)）。
+Read Model - executing raw SQL scripts on database views objects (using [Dapper](https://github.com/StackExchange/Dapper)).
 
-编写模型 - 域驱动设计方法（使用 Entity Framework Core）。
+Write Model - Domain Driven Design approach (using Entity Framework Core).
 
-使用 [MediatR](https://github.com/jbogard/MediatR) 库处理命令/查询/域事件。
+Commands/Queries/Domain Events handling using [MediatR](https://github.com/jbogard/MediatR) library.
 
-＃＃ 领域
+## Domain
 
-![projects_dependencies](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/master/docs/clean_architecture.jpg)
+![projects_dependencies](docs/domain_model_diagram.png)
 
-＃＃ 验证
-使用 [FluentValidation](https://github.com/JeremySkinner/FluentValidation) 进行数据验证
+## Validation
+Data validation using [FluentValidation](https://github.com/JeremySkinner/FluentValidation)
 
-使用 [ProblemDetails](https://github.com/khellang/Middleware/tree/master/src/ProblemDetails) 的 HTTP API 标准实现的问题详细信息
+Problem Details for HTTP APIs standard implementation using [ProblemDetails](https://github.com/khellang/Middleware/tree/master/src/ProblemDetails)
 
-## 缓存
-使用 Cache-Aside 模式和内存缓存。
+## Caching
+Using Cache-Aside pattern and in-memory cache.
 
-＃＃ 一体化
-使用 [Quartz.NET](https://github.com/quartznet/quartznet) 实现发件箱模式
+## Integration
+Outbox Pattern implementation using [Quartz.NET](https://github.com/quartznet/quartznet)
 
-## 相关博客文章
+## Related blog articles
 
-[使用原始 SQL 和 DDD 的简单 CQRS 实现](http://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/)
+[Simple CQRS implementation with raw SQL and DDD](http://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/)
 
-[实体框架 2.2 的域模型封装和 PI](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
+[Domain Model Encapsulation and PI with Entity Framework 2.2](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
 
-[REST API 数据验证](http://www.kamilgrzybek.com/design/rest-api-data-validation/)
+[REST API Data Validation](http://www.kamilgrzybek.com/design/rest-api-data-validation/)
 
-[领域模型验证](http://www.kamilgrzybek.com/design/domain-model-validation/)
+[Domain Model Validation](http://www.kamilgrzybek.com/design/domain-model-validation/)
 
-[如何发布和处理域事件](http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/)
+[How to publish and handle Domain Events](http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/)
 
-[处理域事件：缺失部分](http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/)
+[Handling Domain Events: Missing Part](http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/)
 
-[.NET Core 中的缓存备用模式](http://www.kamilgrzybek.com/design/cache-aside-pattern-in-net-core/)
+[Cache-Aside Pattern in .NET Core](http://www.kamilgrzybek.com/design/cache-aside-pattern-in-net-core/)
 
-[发件箱模式](http://www.kamilgrzybek.com/design/the-outbox-pattern/)
+[The Outbox Pattern](http://www.kamilgrzybek.com/design/the-outbox-pattern/)
 
-## 如何运行应用程序
-1. 创建空数据库。
-2. 执行 InitializeDatabase.sql 脚本。
-2. 设置连接字符串（在 appsettings.json 中或通过用户机密机制）。
-3. 跑！
+## How to run application
+1. Create empty database.
+2. Execute InitializeDatabase.sql script.
+2. Set connection string (in appsettings.json or by user secrets mechanism).
+3. Run!
 
-## 如何运行集成测试
-1. 创建空数据库。
-2. 执行 InitializeDatabase.sql 脚本。
-3. 使用名为“ASPNETCORE_SampleProject_IntegrationTests_ConnectionString”的环境变量设置连接字符串
-- 从项目 [src/Tests/SampleProject.IntegrationTests](src/Tests/SampleProject.IntegrationTests) 运行测试
+## How to run Integration Tests
+1. Create empty database.
+2. Execute InitializeDatabase.sql script.
+3. Set connection string using environment variable named `ASPNETCORE_SampleProject_IntegrationTests_ConnectionString`
+- Run tests from project [src/Tests/SampleProject.IntegrationTests](src/Tests/SampleProject.IntegrationTests)
