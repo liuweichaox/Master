@@ -4,7 +4,7 @@
 
 ![](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/workflows/Build%20Pipeline/badge.svg)
 
-##给个星星！ ：星星：
+##给个星星!
 
 如果你喜欢这个项目，学会了一些东西或者你正在你的应用程序中使用它，请给它一颗星。谢谢！
 
