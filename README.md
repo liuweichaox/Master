@@ -25,7 +25,7 @@
 
 ＃＃ 领域
 
-![projects_dependencies](docs/domain_model_diagram.png)
+![projects_dependencies](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/master/docs/clean_architecture.jpg)
 
 ＃＃ 验证
 使用 [FluentValidation](https://github.com/JeremySkinner/FluentValidation) 进行数据验证
