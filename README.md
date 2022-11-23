@@ -48,9 +48,9 @@
 
 [领域模型验证](http://www.kamilgrzybek.com/design/domain-model-validation/)
 
-[如何发布和处理域事件](http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/)
+[如何发布和处理领域事件](http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/)
 
-[处理域事件：缺失部分](http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/)
+[处理领域事件](http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/)
 
 [.NET Core 中的缓存备用模式](http://www.kamilgrzybek.com/design/cache-aside-pattern-in-net-core/)
 
