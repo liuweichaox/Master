@@ -56,8 +56,6 @@ namespace Virgo.UserInterface
         /// <param name="builder"></param>
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            builder.RegisterType<CustomInterceptor>();
-            builder.RegisterInterceptorBy<CustomInterceptor>();
             builder.RegisterAssembly(Assembly.GetExecutingAssembly()).RegisterInfrastructure().RegisterApplication();
         }
 

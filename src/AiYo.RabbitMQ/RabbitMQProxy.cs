@@ -92,7 +92,7 @@ namespace Virgo.RabbitMQ
             consumer.Received += (model, ea) =>
             {
                 var msg = "";
-                var bytes = ea.Body;
+                var bytes = ea.Body.ToArray();
                 msg = Encoding.UTF8.GetString(bytes);
                 var instance = JsonConvert.DeserializeObject<T>(msg);
                 //7. 模拟耗时
@@ -134,7 +134,7 @@ namespace Virgo.RabbitMQ
             consumer.Received += async (model, ea) =>
             {
                 var msg = "";
-                var bytes = ea.Body;
+                var bytes = ea.Body.ToArray();
                 msg = Encoding.UTF8.GetString(bytes);
                 var instance = JsonConvert.DeserializeObject<T>(msg);
                 // 7.模拟耗时
@@ -229,7 +229,7 @@ namespace Virgo.RabbitMQ
             consumer.Received += (model, ea) =>
             {
                 var msg = "";
-                var bytes = ea.Body;
+                var bytes = ea.Body.ToArray();
                 msg = Encoding.UTF8.GetString(bytes);
                 var instance = JsonConvert.DeserializeObject<T>(msg);
                 // 7. 模拟耗时
@@ -278,7 +278,7 @@ namespace Virgo.RabbitMQ
             consumer.Received += async (model, ea) =>
              {
                  var msg = "";
-                 var bytes = ea.Body;
+                 var bytes = ea.Body.ToArray();
                  msg = Encoding.UTF8.GetString(bytes);
                  var instance = JsonConvert.DeserializeObject<T>(msg);
                  // 7. 模拟耗时

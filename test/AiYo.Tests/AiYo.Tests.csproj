@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Cache\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using Virgo.AspNetCore;
 using Virgo.AspNetCore.ApiVersion;
 using Virgo.AspNetCore.Swagger;
@@ -43,9 +46,10 @@ namespace Virgo.UserInterface.Extensions
             services.AddControllers(options=> 
             {
                 options.Filters.Add<AuditActionFilter>();
-            }).AddNewtonsoftJson(options =>
+            }).AddJsonOptions(options =>
             {
-               options.SerializerSettings.ContractResolver = new DefaultContractResolver();             
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;//解决后端传到前端全大写
+                options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);//解决后端返回数据中文被编码
             });
         }
     }

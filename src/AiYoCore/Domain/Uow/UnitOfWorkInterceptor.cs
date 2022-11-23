@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using Autofac.Core.Resolving.Pipeline;
+using Metalama.Framework.Aspects;
 using Virgo.DependencyInjection;
 
 namespace Virgo.Domain.Uow
@@ -7,10 +9,10 @@ namespace Virgo.Domain.Uow
     /// <summary>
     /// <see cref="IUnitOfWork"/>AOP模式执行
     /// </summary>
-    public class UnitOfWorkInterceptor : IResolveMiddleware, ITransientDependency
+    public class UnitOfWorkInterceptor : OverrideMethodAspect
     {
         private readonly IUnitOfWork _unitOfWork;
-        public PipelinePhase Phase => PipelinePhase.RegistrationPipelineStart;
+
         public UnitOfWorkInterceptor()
         {
         }
@@ -18,29 +20,29 @@ namespace Virgo.Domain.Uow
         {
             _unitOfWork = unitOfWork;
         }
-
-        public void Execute(ResolveRequestContext context, Action<ResolveRequestContext> next)
+        public override dynamic OverrideMethod()
         {
-            // var uowAttr = context.Instance.GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;
-            // if (invocation.MethodInvocationTarget.IsDefined(typeof(UnitOfWorkAttribute), true))
-            // {
-            //     try
-            //     {
-            //         _unitOfWork.BeginTransaction();
-            //         if (uowAttr.IsolationLevel.HasValue)
-            //         {
-            //             _unitOfWork.BeginTransaction(uowAttr.IsolationLevel.Value);
-            //         }
-            //         next(context);
-            //         _unitOfWork.Commit();
-            //     }
-            //     catch (System.Exception)
-            //     {
-            //         _unitOfWork.Rollback();
-            //     }
-            // }
-            // next(context);
-            // return;
+            dynamic result;
+            var uowAttr = meta.Target.GetType().GetCustomAttribute(typeof(UnitOfWorkAttribute)) as UnitOfWorkAttribute;
+            if (meta.Target.Method.GetType().IsDefined(typeof(UnitOfWorkAttribute), true))
+            {
+                try
+                {
+                    _unitOfWork.BeginTransaction();
+                    if (uowAttr.IsolationLevel.HasValue)
+                    {
+                        _unitOfWork.BeginTransaction(uowAttr.IsolationLevel.Value);
+                    }
+                    result = meta.Proceed();
+                    _unitOfWork.Commit();
+                }
+                catch (System.Exception)
+                {
+                    _unitOfWork.Rollback();
+                }
+            }
+            result = meta.Proceed();
+            return result;
         }
     }
 }
