@@ -1,5 +1,4 @@
 使用 Clean Architecture 的原始 SQL 和 DDD 的示例 .NET Core REST API CQRS 实现。
-================================================ ============
 
 ## CI
 
@@ -9,7 +8,7 @@
 
 如果你喜欢这个项目，学会了一些东西或者你正在你的应用程序中使用它，请给它一颗星。谢谢！
 
-＃＃ 描述
+## 描述
 使用基础 [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) 方法和域驱动设计实例 .NET Core REST API 应用程序。
 
 ## 架构 [清洁架构](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
