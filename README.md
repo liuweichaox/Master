@@ -1,3 +1,22 @@
 # Velen
-API：.NET 7.0
-前端：Vue 3.0
+技术栈：
+
+.NET 7.0
+
+Vue 3.0
+
+Dapper
+
+EF Core
+
+AutoMapper
+
+Castle.Windsor
+
+Redis
+
+RabbmitMQ
+
+Soga
+
+CQRS
