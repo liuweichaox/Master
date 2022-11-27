@@ -18,7 +18,7 @@
 
 ## CQRS
 
-读取模型 - 在数据库视图对象上执行原始 SQL 脚本 (using [Dapper](https://github.com/StackExchange/Dapper)).
+读取模型 - 在数据库视图对象上执行原始 SQL 脚本 (使用 [Dapper](https://github.com/StackExchange/Dapper)).
 
 编写模型 - 域驱动设计方法（使用 Entity Framework Core）。
 
