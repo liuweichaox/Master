@@ -42,7 +42,7 @@
 ## Related blog articles
 [使用原始 SQL 和 DDD 的简单 CQRS 实现](http://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/)
 
-[实体框架 2.2 的域模型封装和 PI](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
+[Entity Framework 2.2 的领域模型](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
 
 [REST API 数据验证](http://www.kamilgrzybek.com/design/rest-api-data-validation/)
 
@@ -56,11 +56,11 @@
 
 [发件箱模式](http://www.kamilgrzybek.com/design/the-outbox-pattern/)
 
-## How to run application
+## 如何运行应用程序
 1. 创建空数据库。
 2. 执行 InitializeDatabase.sql 脚本。
-2. 设置连接字符串（在 appsettings.json 中或通过用户机密机制）。
-3. 跑！
+2. 在 appsettings.json 中设置连接字符串。
+3. Run!
 
 ## 如何运行集成测试
 1. 创建空数据库。
