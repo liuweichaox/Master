@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Velen.Domain.Data;
 
 namespace Velen.Application.Configuration.Commands
 {

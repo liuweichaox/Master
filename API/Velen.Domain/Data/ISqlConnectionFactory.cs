@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Velen.Application.Configuration.Data
+namespace Velen.Domain.Data
 {
     public interface ISqlConnectionFactory
     {
