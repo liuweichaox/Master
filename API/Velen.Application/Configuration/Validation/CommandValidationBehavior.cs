@@ -6,11 +6,11 @@ namespace Velen.Application.Configuration.Validation
 {
     public class CommandValidationBehavior<TRequest,TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
-        private readonly IList<IValidator<TRequest>> _validators;
+        private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public CommandValidationBehavior(IList<IValidator<TRequest>> validators)
+        public CommandValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
-            this._validators = validators;
+            _validators = validators;
         }
         
         public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
