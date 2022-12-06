@@ -1,16 +1,12 @@
-using System.Reflection;
-using FluentValidation;
 using FluentValidation.AspNetCore;
-using FluentValidation.Validators;
 using MediatR;
 using Serilog;
-using Serilog.Formatting.Compact;
 using Velen.Application;
 using Velen.Application.Configuration.Validation;
-using Velen.Application.Customers;
 using Velen.Infrastructure;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
-using Type = Google.Protobuf.WellKnownTypes.Type;
+using Hellang.Middleware.ProblemDetails;
+using Velen.API.SeedWork;
+using Velen.Domain.SeedWork;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
@@ -19,6 +15,11 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.Seq("http://localhost:5341"));
 
 // Add services to the container.
+builder.Services.AddProblemDetails(x =>
+{
+    x.Map<InvalidCommandException>(ex => new InvalidCommandProblemDetails(ex));
+    x.Map<BusinessRuleValidationException>(ex => new BusinessRuleValidationExceptionProblemDetails(ex));
+});
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMediatR(typeof(ApplicationModule).Assembly);
 builder.Services.AddScoped(typeof(IPipelineBehavior<, >), typeof(CommandValidationBehavior<, >)); builder.Services.AddFluentValidationAutoValidation();
@@ -36,6 +37,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
