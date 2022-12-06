@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Velen.Application.Configuration.Commands
+namespace Velen.Infrastructure.Commands
 {
     public interface ICommand : IRequest
     {

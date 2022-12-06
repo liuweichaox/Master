@@ -19,4 +19,8 @@
       <_ContentIncludedByDefault Remove="Pages\Home\Index.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Velen.Application\Velen.Application.csproj" />
+    </ItemGroup>
+
 </Project>

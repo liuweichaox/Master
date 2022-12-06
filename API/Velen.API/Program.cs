@@ -1,5 +1,6 @@
 using Serilog;
 using Serilog.Formatting.Compact;
+using Velen.Infrastructure;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+ServiceProviderLocator.SetProvider(app.Services);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

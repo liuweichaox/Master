@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Velen.Domain.Data;
-
-namespace Velen.Application.Configuration.Commands
+﻿namespace Velen.Infrastructure.Commands
 {
     public class CommandBase : ICommand
     {

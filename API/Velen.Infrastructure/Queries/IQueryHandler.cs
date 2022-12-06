@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Velen.Application.Configuration.Queries
+namespace Velen.Infrastructure.Queries
 {
     public interface IQueryHandler<in TQuery, TResult> :
         IRequestHandler<TQuery, TResult> where TQuery : IQuery<TResult>

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Velen.Application.Configuration.Commands
+﻿namespace Velen.Infrastructure.Commands
 {
     public abstract class InternalCommandBase : ICommand
     {

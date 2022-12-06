@@ -2,6 +2,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Velen.Domain.Data;
 
+
 namespace Velen.Infrastructure.Database;
 
 public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
