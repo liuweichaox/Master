@@ -1,12 +1,11 @@
 using FluentValidation;
-using Hellang.Middleware.ProblemDetails.Mvc;
 using MediatR;
-using Microsoft.Extensions.Options;
 using Serilog;
 using System.Text.Encodings.Web;
-using System.Text.Json;
 using System.Text.Unicode;
+using Microsoft.AspNetCore.HttpLogging;
 using Velen.API.Configuration;
+using Velen.API.Middlewares;
 using Velen.Application;
 using Velen.Application.Configuration.Validation;
 using Velen.Infrastructure;
@@ -18,7 +17,7 @@ builder.Host.UseSerilog((ctx, lc) => lc
     .WriteTo.Seq("http://localhost:5341"));
 
 // Add services to the container.
-builder.Services.AddProblemDetails();
+builder.Services.AddHttpLogging(options=>options.LoggingFields = HttpLoggingFields.All);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMediatR(typeof(ApplicationModule).Assembly);
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CommandValidationBehavior<,>));
@@ -26,12 +25,12 @@ builder.Services.AddValidatorsFromAssemblyContaining<ApplicationModule>();
 builder.Services.AddControllers().AddJsonOptions(options => 
 {
     options.JsonSerializerOptions.WriteIndented = true;
-    options.JsonSerializerOptions.PropertyNamingPolicy = null;//解决后端传到前端全大写
-    options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);//解决后端返回数据中文被编码
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerDocumentation();
 
 
 var app = builder.Build();
@@ -39,12 +38,14 @@ ServiceProviderLocator.SetProvider(app.Services);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerDocumentation();
 }
-app.UseMiddleware<GlobalExceptionMiddleware>();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseMiddleware<CorrelationMiddleware>();
+
+app.UseHttpLogging();
 
 app.UseHttpsRedirection();
 
