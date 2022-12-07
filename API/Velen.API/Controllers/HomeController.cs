@@ -6,12 +6,12 @@ namespace Velen.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class HomeController : ControllerBase
+public class HomeController : AppController
 {
     [HttpGet]
-    public IActionResult Hello([FromServices]IMediator mediator)
+    public async Task<IActionResult> Hello([FromServices] IMediator mediator)
     {
-        var result=mediator.Send(new RegisterCustomerCommand(null,"jon"));
-        return Ok(result);
+        var result =await mediator.Send(new RegisterCustomerCommand("893703953@qq.com", "liu wei chao"));
+        return Success(result);
     }
 }

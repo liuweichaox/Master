@@ -8,12 +8,9 @@ namespace Velen.Application.Customers
         public async Task<CustomerDto> Handle(RegisterCustomerCommand request, CancellationToken cancellationToken)
         {
             var guid=Guid.NewGuid();
-            return await  Task.Run(() =>
+            return await Task.FromResult(new CustomerDto()
             {
-                return new CustomerDto()
-                {
-                    Id = guid
-                };
+                Id = guid
             });
         }
     }
