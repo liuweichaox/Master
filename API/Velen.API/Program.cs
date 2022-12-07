@@ -25,6 +25,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(CommandValidatio
 builder.Services.AddValidatorsFromAssemblyContaining<ApplicationModule>();
 builder.Services.AddControllers().AddJsonOptions(options => 
 {
+    options.JsonSerializerOptions.WriteIndented = true;
     options.JsonSerializerOptions.PropertyNamingPolicy = null;//解决后端传到前端全大写
     options.JsonSerializerOptions.Encoder = JavaScriptEncoder.Create(UnicodeRanges.All);//解决后端返回数据中文被编码
 });
