@@ -12,6 +12,6 @@ public class HomeController : ControllerBase
     public IActionResult Hello([FromServices]IMediator mediator)
     {
         var result=mediator.Send(new RegisterCustomerCommand(null,"jon"));
-        return Ok("Hello World");
+        return Ok(result);
     }
 }
