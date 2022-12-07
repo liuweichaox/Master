@@ -22,7 +22,6 @@ namespace Velen.API.Configuration
             }
             catch (Exception ex)
             {
-                context.Response.StatusCode = 400;
                 context.Response.ContentType = "application/json;charset=utf-8";
                 var options = new JsonSerializerOptions
                 {
@@ -32,11 +31,13 @@ namespace Velen.API.Configuration
                 };
                 if (ex.InnerException is InvalidCommandException)
                 {
+                    context.Response.StatusCode = 400;
                     var result = new InvalidCommandProblemDetails((InvalidCommandException)ex.InnerException);
                     await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
                 }
                 else
                 {
+                    context.Response.StatusCode = 500;
                     var result = new
                     {
                         Code = 500,
