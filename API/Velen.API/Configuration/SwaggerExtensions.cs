@@ -10,9 +10,9 @@ namespace Velen.API.Configuration
             {
                 options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "Sample CQRS API",
+                    Title = "示例 CQRS API",
                     Version = "v1",
-                    Description = "Sample .NET Core REST API CQRS implementation with raw SQL and DDD using Clean Architecture.",
+                    Description = "使用原始 SQL 和 DDD 的示例 .NET Core REST API CQRS 实现。",
                 });
 
                 var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;

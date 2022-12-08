@@ -1,5 +1,4 @@
-﻿
-using Velen.Application;
+﻿using Velen.API.Middlewares;
 using Velen.Infrastructure;
 
 namespace Velen.API.Configuration

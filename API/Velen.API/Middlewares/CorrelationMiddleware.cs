@@ -1,4 +1,4 @@
-﻿namespace Velen.API.Configuration
+﻿namespace Velen.API.Middlewares
 {
     internal class CorrelationMiddleware
     {
