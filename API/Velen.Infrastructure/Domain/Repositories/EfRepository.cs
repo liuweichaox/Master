@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Velen.Infrastructure.Repositories
+namespace Velen.Infrastructure.Domain.Repositories
 {
     internal class EfRepository
     {

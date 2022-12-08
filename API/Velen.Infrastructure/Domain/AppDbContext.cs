@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Velen.Infrastructure.EntityConfigurations
+namespace Velen.Infrastructure.Domain
 {
-    internal class OrderEntityTypeConfiguration
+    public class AppDbContext
     {
     }
 }
