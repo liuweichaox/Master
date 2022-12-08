@@ -18,7 +18,7 @@ namespace Velen.Infrastructure.Processing
         {
             var connection = this._sqlConnectionFactory.GetOpenConnection();
 
-            const string sqlInsert = "INSERT INTO [app].[InternalCommands] ([Id], [EnqueueDate] , [Type], [Data]) VALUES " +
+            const string sqlInsert = "INSERT INTO InternalCommands (Id, EnqueueDate , Type, Data) VALUES " +
                                      "(@Id, @EnqueueDate, @Type, @Data)";
 
             await connection.ExecuteAsync(sqlInsert, new

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Velen.Application.Configuration.Validation
+﻿namespace Velen.Application.Exceptions
 {
     public class InvalidCommandException : Exception
     {

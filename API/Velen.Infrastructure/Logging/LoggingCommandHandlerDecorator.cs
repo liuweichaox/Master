@@ -9,7 +9,7 @@ using Velen.Infrastructure.Processing.Outbox;
 
 namespace Velen.Infrastructure.Logging
 {
-    internal class LoggingCommandHandlerDecorator<T> : ICommandHandler<T> where T : ICommand
+    public class LoggingCommandHandlerDecorator<T> : ICommandHandler<T> where T : ICommand
     {
         private readonly ILogger _logger;
 

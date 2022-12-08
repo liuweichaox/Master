@@ -1,14 +1,15 @@
 ﻿using System.Text;
 using FluentValidation;
 using MediatR;
+using Velen.Application.Exceptions;
 
-namespace Velen.Application.Configuration.Validation
+namespace Velen.Application.Behaviors
 {
-    public class CommandValidationBehavior<TRequest,TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
+    public class ValidatorBehavior<TRequest,TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public CommandValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+        public ValidatorBehavior(IEnumerable<IValidator<TRequest>> validators)
         {
             _validators = validators;
         }

@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Velen.API.Configuration
+namespace Velen.API.Extensions
 {
     internal static class SwaggerExtensions
     {

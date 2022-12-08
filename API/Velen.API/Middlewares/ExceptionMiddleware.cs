@@ -1,7 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
-using Velen.Application.Configuration.Validation;
+using Velen.Application.Exceptions;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure.Api;
 

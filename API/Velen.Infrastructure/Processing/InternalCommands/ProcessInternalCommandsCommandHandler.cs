@@ -20,18 +20,16 @@ namespace Velen.Infrastructure.Processing.InternalCommands
         {
             var connection = this._sqlConnectionFactory.GetOpenConnection();
 
-            const string sql = "SELECT " +
-                               "[Command].[Type], " +
-                               "[Command].[Data] " +
-                               "FROM [app].[InternalCommands] AS [Command] " +
-                               "WHERE [Command].[ProcessedDate] IS NULL";
+            const string sql = "SELECT Type, Data " +
+                               "FROM InternalCommands " +
+                               "WHERE ProcessedDate IS NULL";
             var commands = await connection.QueryAsync<InternalCommandDto>(sql);
 
             var internalCommandsList = commands.AsList();
 
             foreach (var internalCommand in internalCommandsList)
             {
-                Type? type = Assemblies.Application.GetType(internalCommand.Type);
+                Type? type = InfrastructureModule.Assembly.GetType(internalCommand.Type);
                 dynamic commandToProcess = JsonSerializer.Serialize(internalCommand.Data, type);
 
                 await CommandsExecutor.Execute(commandToProcess);
