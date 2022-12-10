@@ -2,8 +2,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Velen.Application.Customers.GetCustomerDetails;
 using Velen.Application.Customers.RegisterCustomer;
-using Velen.Domain.Customers;
-using CustomerRegisteredNotification = Velen.Application.Customers.IntegrationHandlers.CustomerRegisteredNotification;
 
 namespace Velen.API.Customers;
 

@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-using Velen.Domain.DomainEvents;
 using Velen.Domain.SeedWork;
 
 namespace Velen.Domain.Events

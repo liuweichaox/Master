@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velen.Application", "Velen.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velen.API", "Velen.API\Velen.API.csproj", "{3C058459-84D1-4471-B0E9-0163398B97D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velen.Tests", "Velen.Tests\Velen.Tests.csproj", "{6ED07BD8-B420-4B9B-8C53-C7FBB6ED5ED3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Velen.Tests", "Velen.Tests\Velen.Tests.csproj", "{B7868DA3-1FD7-4BAF-ACFA-C88F12A250F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,9 +32,9 @@ Global
 		{3C058459-84D1-4471-B0E9-0163398B97D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C058459-84D1-4471-B0E9-0163398B97D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C058459-84D1-4471-B0E9-0163398B97D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6ED07BD8-B420-4B9B-8C53-C7FBB6ED5ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6ED07BD8-B420-4B9B-8C53-C7FBB6ED5ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6ED07BD8-B420-4B9B-8C53-C7FBB6ED5ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6ED07BD8-B420-4B9B-8C53-C7FBB6ED5ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7868DA3-1FD7-4BAF-ACFA-C88F12A250F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7868DA3-1FD7-4BAF-ACFA-C88F12A250F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7868DA3-1FD7-4BAF-ACFA-C88F12A250F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7868DA3-1FD7-4BAF-ACFA-C88F12A250F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

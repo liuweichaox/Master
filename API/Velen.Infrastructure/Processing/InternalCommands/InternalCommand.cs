@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Velen.Infrastructure.Processing.InternalCommands
+﻿namespace Velen.Infrastructure.Processing.InternalCommands
 {
     public class InternalCommand
     {

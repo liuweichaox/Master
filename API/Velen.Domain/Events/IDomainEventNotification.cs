@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Velen.Domain.DomainEvents
+namespace Velen.Domain.Events
 {
     public interface IDomainEventNotification<out TEventType> : IDomainEventNotification
     {

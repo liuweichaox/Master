@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure.Commands;
 using Velen.Infrastructure.Domain;
-using Velen.Infrastructure.Processing;
 
 namespace Velen.Application.Behaviors;
 

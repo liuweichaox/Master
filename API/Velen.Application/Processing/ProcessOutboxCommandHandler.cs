@@ -5,7 +5,7 @@ using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
 using Velen.Domain.Data;
-using Velen.Domain.DomainEvents;
+using Velen.Domain.Events;
 using Velen.Infrastructure;
 using Velen.Infrastructure.Commands;
 using Velen.Infrastructure.Processing.Outbox;

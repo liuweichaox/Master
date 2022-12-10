@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using MediatR;
 using Velen.Application;
-using Velen.Domain.DomainEvents;
+using Velen.Domain.Events;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure.Domain;
 using Velen.Infrastructure.Processing;
