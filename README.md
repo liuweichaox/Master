@@ -1,15 +1,11 @@
 使用 Clean Architecture 的原始 SQL 和 DDD 的示例 .NET Core REST API CQRS 实现。
 ==============================================================
 
-## CI
-
-![](https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/workflows/Build%20Pipeline/badge.svg)
-
 ## 给个 Star!
 
 如果你喜欢这个项目，学到了一些东西或者你正在你的应用程序中使用它，请给它一个星。 谢谢！
 
-## Description
+## 描述
 使用基本 [CQRS](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/cqrs) 方法和域驱动设计实现的示例 .NET Core REST API 应用程序。
 
 ## Architecture [Clean Architecture](http://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
@@ -42,7 +38,7 @@
 ## 相关博客文章
 [使用原始 SQL 和 DDD 的简单 CQRS 实现](http://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/)
 
-[使用 Entity Framework 2.2 的领域模型和透明持久化](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
+[使用 Entity Framework 7.p 的领域模型和透明持久化](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
 
 [REST API 数据验证](http://www.kamilgrzybek.com/design/rest-api-data-validation/)
 
