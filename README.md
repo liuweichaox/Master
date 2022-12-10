@@ -38,7 +38,7 @@
 ## 相关博客文章
 [使用原始 SQL 和 DDD 的简单 CQRS 实现](http://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/)
 
-[使用 Entity Framework 7.p 的领域模型和透明持久化](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
+[使用 Entity Framework 7.0 的领域模型和透明持久化](http://www.kamilgrzybek.com/design/domain-model-encapsulation-and-pi-with-entity-framework-2-2/)
 
 [REST API 数据验证](http://www.kamilgrzybek.com/design/rest-api-data-validation/)
 
