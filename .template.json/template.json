@@ -1,0 +1,13 @@
+{
+  "author": "lwc",
+  "classifications": [ "WebAPI" ],
+  "name": "ApiTemplate", 
+  "identity": "ApiTemplate", 
+  "shortName": "apitmp", 
+  "tags": {
+    "language": "C#" ,
+    "type":"project"
+  },
+  "sourceName": "Velen",  
+  "preferNameDirectory": true 
+}
