@@ -26,7 +26,7 @@ namespace Velen.Application.Processing
             Type type = ApplicationModule.Assembly.GetType(internalCommand.Type);
             dynamic command = JsonSerializer.Deserialize(internalCommand.Data, type);
 
-            internalCommand.ProcessedDate = DateTime.UtcNow;
+            internalCommand.ProcessedDate = DateTime.Now;
 
             await this._mediator.Send(command);
         }

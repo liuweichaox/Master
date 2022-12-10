@@ -1,8 +1,6 @@
-﻿using FluentValidation;
-using Velen.Application.Customers;
-using Velen.Infrastructure.Commands;
+﻿using Velen.Infrastructure.Commands;
 
-namespace Velen.Application.Customers
+namespace Velen.Application.Customers.RegisterCustomer
 {
     public class RegisterCustomerCommand : CommandBase<CustomerDto>
     {

@@ -1,7 +1,8 @@
 ﻿using System.Text.Json.Serialization;
+using Velen.Domain.DomainEvents;
 using Velen.Domain.SeedWork;
 
-namespace Velen.Domain.DomainEvents
+namespace Velen.Domain.Events
 {
     public class DomainNotificationBase<T> : IDomainEventNotification<T> where T : IDomainEvent
     {

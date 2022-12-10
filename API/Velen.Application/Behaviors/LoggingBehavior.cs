@@ -1,34 +1,29 @@
-﻿
-
+﻿using MediatR;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
 using Serilog.Events;
+using Velen.Infrastructure;
 using Velen.Infrastructure.Commands;
 using Velen.Infrastructure.Processing.Outbox;
 
-namespace Velen.Infrastructure.Logging
+namespace Velen.Application.Behaviors
 {
-    public class LoggingCommandHandlerWithResultDecorator<T, TResult> : ICommandHandler<T, TResult> where T : ICommand<TResult>
+    public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly ILogger _logger;
         private readonly IExecutionContextAccessor _executionContextAccessor;
-        private readonly ICommandHandler<T, TResult> _decorated;
-
-        public LoggingCommandHandlerWithResultDecorator(
-            ILogger logger,
-            IExecutionContextAccessor executionContextAccessor,
-            ICommandHandler<T, TResult> decorated)
+        public LoggingBehavior(ILogger logger, IExecutionContextAccessor executionContextAccessor)
         {
             _logger = logger;
             _executionContextAccessor = executionContextAccessor;
-            _decorated = decorated;
         }
-        public async Task<TResult> Handle(T command, CancellationToken cancellationToken)
+        public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            if (command is IRecurringCommand)
+            var command = request as ICommand<TResponse>;
+            if (request is IRecurringCommand)
             {
-                return await _decorated.Handle(command, cancellationToken);
+                return  await next();
             }
 
             using (
@@ -39,28 +34,27 @@ namespace Velen.Infrastructure.Logging
                 try
                 {
                     this._logger.Information(
-                        "Executing command {@Command}",
-                        command);
+                        "Executing command {Command}",
+                        request.GetType().Name);
 
-                    var result = await _decorated.Handle(command, cancellationToken);
+                    var response = await next();
 
-                    this._logger.Information("Command processed successful, result {Result}", result);
+                    this._logger.Information("Command {Command} processed successful", command.GetType().Name);
 
-                    return result;
+                    return response;
                 }
                 catch (Exception exception)
                 {
-                    this._logger.Error(exception, "Command processing failed");
+                    this._logger.Error(exception, "Command {Command} processing failed", command.GetType().Name);
                     throw;
                 }
             }
         }
-
         private class CommandLogEnricher : ILogEventEnricher
         {
-            private readonly ICommand<TResult> _command;
+            private readonly ICommand<TResponse> _command;
 
-            public CommandLogEnricher(ICommand<TResult> command)
+            public CommandLogEnricher(ICommand<TResponse> command)
             {
                 _command = command;
             }
@@ -70,13 +64,16 @@ namespace Velen.Infrastructure.Logging
             }
         }
 
+
         private class RequestLogEnricher : ILogEventEnricher
         {
             private readonly IExecutionContextAccessor _executionContextAccessor;
+
             public RequestLogEnricher(IExecutionContextAccessor executionContextAccessor)
             {
                 _executionContextAccessor = executionContextAccessor;
             }
+
             public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
             {
                 if (_executionContextAccessor.IsAvailable)

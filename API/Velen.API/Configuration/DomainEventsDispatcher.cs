@@ -1,23 +1,22 @@
 ﻿using System.Text.Json;
 using MediatR;
+using Velen.Application;
 using Velen.Domain.DomainEvents;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure.Domain;
+using Velen.Infrastructure.Processing;
 using Velen.Infrastructure.Processing.Outbox;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace Velen.Infrastructure.Processing
+namespace Velen.API.Configuration
 {
     public class DomainEventsDispatcher : IDomainEventsDispatcher
     {
         private readonly IMediator _mediator;
-        private readonly IServiceProvider _serviceProvider;
         private readonly AppDbContext _appDbContext;
 
-        public DomainEventsDispatcher(IMediator mediator, IServiceProvider serviceProvider, AppDbContext appDbContext)
+        public DomainEventsDispatcher(IMediator mediator, AppDbContext appDbContext)
         {
             this._mediator = mediator;
-            this._serviceProvider = serviceProvider;
             this._appDbContext = appDbContext;
         }
 
@@ -35,8 +34,15 @@ namespace Velen.Infrastructure.Processing
             foreach (var domainEvent in domainEvents)
             {
                 Type domainEvenNotificationType = typeof(IDomainEventNotification<>);
-                var domainNotificationWithGenericType = domainEvenNotificationType.MakeGenericType(domainEvent.GetType());
-                var domainNotification = _serviceProvider.GetService(domainNotificationWithGenericType) ?? Activator.CreateInstance(domainNotificationWithGenericType, domainEvent);
+                var domainNotificationWithGenericType =
+                    domainEvenNotificationType.MakeGenericType(domainEvent.GetType());
+                var domainNotificationType=ApplicationModule.Assembly.GetTypes().SingleOrDefault(x =>
+                    x.GetInterfaces().Any(y => y == domainNotificationWithGenericType));
+                if (domainNotificationType == null)
+                {
+                    continue;
+                }
+                var domainNotification = Activator.CreateInstance(domainNotificationType,domainEvent);
                 if (domainNotification != null)
                 {
                     domainEventNotifications.Add(domainNotification as IDomainEventNotification<IDomainEvent>);
@@ -46,11 +52,8 @@ namespace Velen.Infrastructure.Processing
             domainEntities
                 .ForEach(entity => entity.Entity.ClearDomainEvents());
 
-            var tasks = domainEvents
-                .Select(async (domainEvent) =>
-                {
-                    await _mediator.Publish(domainEvent);
-                });
+            var tasks = domainEventNotifications
+                .Select(async (domainEvent) => {  await _mediator.Publish(domainEvent); });
 
             await Task.WhenAll(tasks);
 

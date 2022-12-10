@@ -1,0 +1,25 @@
+﻿using MediatR;
+using Velen.Domain.Customers;
+using Velen.Infrastructure.Commands;
+
+namespace Velen.Application.Customers.IntegrationHandlers
+{
+    public class MarkCustomerAsWelcomedCommandHandler : ICommandHandler<MarkCustomerAsWelcomedCommand, Unit>
+    {
+        private readonly ICustomerRepository _customerRepository;
+
+        public MarkCustomerAsWelcomedCommandHandler(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
+
+        public async Task<Unit> Handle(MarkCustomerAsWelcomedCommand command, CancellationToken cancellationToken)
+        {
+            var customer = await this._customerRepository.GetByIdAsync(command.CustomerId);
+
+            customer.MarkAsWelcomedByEmail();
+
+            return Unit.Value;
+        }
+    }
+}

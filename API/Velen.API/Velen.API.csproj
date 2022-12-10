@@ -21,6 +21,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Scrutor" Version="4.2.0" />
         <PackageReference Include="Serilog.AspNetCore" Version="6.1.0-dev-00285" />
         <PackageReference Include="Serilog.Expressions" Version="3.4.2-dev-00119" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />

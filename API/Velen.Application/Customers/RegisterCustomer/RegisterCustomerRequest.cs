@@ -1,4 +1,4 @@
-﻿namespace Velen.Application.Customers
+﻿namespace Velen.Application.Customers.RegisterCustomer
 {
     public class RegisterCustomerRequest
     {

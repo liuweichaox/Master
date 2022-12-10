@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Velen.Infrastructure.Api;
 
-namespace Velen.API.Controllers;
+namespace Velen.API;
 
 public class AppController:ControllerBase
 {

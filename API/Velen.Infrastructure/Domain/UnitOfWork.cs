@@ -18,7 +18,7 @@ namespace Velen.Infrastructure.Domain
 
         public async Task<int> CommitAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await this._domainEventsDispatcher.DispatchEventsAsync();
+            await _domainEventsDispatcher.DispatchEventsAsync();
             return await this._appDbContext.SaveChangesAsync(cancellationToken);
         }
     }

@@ -10,7 +10,7 @@ namespace Velen.Infrastructure.Processing.InternalCommands
             builder.ToTable("InternalCommands");
             
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Id).ValueGeneratedNever();
+            builder.Property(b => b.Id).ValueGeneratedNever(); 
         }
     }
 }

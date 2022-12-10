@@ -59,7 +59,9 @@ public class ExceptionMiddleware
             }
             default:
             {
-                var result = ApiResult.ErrorResult("服务器内部错误，无法完成请求", ApiResultCode.InternalServerError);
+                var environment = context.RequestServices.GetRequiredService<IWebHostEnvironment>();
+                var message= environment.IsDevelopment() ? ex.Message : "服务器内部错误，无法完成请求";
+                var result = ApiResult.ErrorResult(message, ApiResultCode.InternalServerError);
                 await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
                 break;
             }

@@ -1,4 +1,6 @@
-﻿namespace Velen.Infrastructure.Processing.InternalCommands
+﻿using System.Runtime.Serialization;
+
+namespace Velen.Infrastructure.Processing.InternalCommands
 {
     public class InternalCommand
     {
@@ -8,6 +10,7 @@
 
         public string Data { get; set; }
 
+        public DateTime EnqueueDate { get; set; }
         public DateTime? ProcessedDate { get; set; }
     }
 }

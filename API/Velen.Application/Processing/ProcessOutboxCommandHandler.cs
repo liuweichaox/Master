@@ -6,9 +6,11 @@ using Serilog.Core;
 using Serilog.Events;
 using Velen.Domain.Data;
 using Velen.Domain.DomainEvents;
+using Velen.Infrastructure;
 using Velen.Infrastructure.Commands;
+using Velen.Infrastructure.Processing.Outbox;
 
-namespace Velen.Infrastructure.Processing.Outbox
+namespace Velen.Application.Processing
 {
     internal class ProcessOutboxCommandHandler : ICommandHandler<ProcessOutboxCommand, Unit>
     {
@@ -39,7 +41,7 @@ namespace Velen.Infrastructure.Processing.Outbox
             {
                 foreach (var message in messagesList)
                 {
-                    Type type = InfrastructureModule.Assembly
+                    Type type = ApplicationModule.Assembly
                         .GetType(message.Type);
                     var request = JsonSerializer.Deserialize(message.Data, type) as IDomainEventNotification;
 
@@ -49,7 +51,7 @@ namespace Velen.Infrastructure.Processing.Outbox
 
                         await connection.ExecuteAsync(sqlUpdateProcessedDate, new
                         {
-                            Date = DateTime.UtcNow,
+                            Date = DateTime.Now,
                             message.Id
                         });
                     }

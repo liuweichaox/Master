@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Velen.Infrastructure.Domain;
 
@@ -10,9 +11,11 @@ using Velen.Infrastructure.Domain;
 namespace Velen.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221209165057_xxx")]
+    partial class xxx
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,19 +31,16 @@ namespace Velen.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext")
-                        .HasColumnName("Email")
-                        .HasComment("邮箱");
+                        .HasColumnName("邮件地址");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext")
-                        .HasColumnName("Name")
-                        .HasComment("姓名");
+                        .HasColumnName("姓名");
 
                     b.Property<bool>("WelcomeEmailWasSent")
                         .HasColumnType("tinyint(1)")
-                        .HasColumnName("WelcomeEmailWasSent")
-                        .HasComment("是否发送过欢迎邮件");
+                        .HasColumnName("是否发送邮件");
 
                     b.HasKey("Id");
 
@@ -55,9 +55,6 @@ namespace Velen.Infrastructure.Migrations
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<DateTime>("EnqueueDate")
-                        .HasColumnType("datetime(6)");
 
                     b.Property<DateTime?>("ProcessedDate")
                         .HasColumnType("datetime(6)");

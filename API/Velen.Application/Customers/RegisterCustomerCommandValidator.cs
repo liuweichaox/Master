@@ -1,4 +1,5 @@
 using FluentValidation;
+using Velen.Application.Customers.RegisterCustomer;
 
 namespace Velen.Application.Customers;
 
