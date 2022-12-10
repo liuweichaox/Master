@@ -58,11 +58,5 @@
 2. 在 appsettings.json 中设置连接字符串。
 3. Run!
 
-## 如何运行集成测试
-1. 创建空数据库。
-2. 执行 InitializeDatabase.sql 脚本。
-3. 使用名为“ASPNETCORE_SampleProject_IntegrationTests_ConnectionString”的环境变量设置连接字符串
-- 从项目 [src/Tests/SampleProject.IntegrationTests](src/Tests/SampleProject.IntegrationTests) 运行测试
-
 ## 参考文档
 https://learn.microsoft.com/zh-cn/azure/architecture/microservices/
