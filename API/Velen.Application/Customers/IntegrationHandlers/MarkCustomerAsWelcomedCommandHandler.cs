@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.Text.Json;
+using MediatR;
 using Velen.Domain.Customers;
 using Velen.Infrastructure.Commands;
 
@@ -15,6 +16,7 @@ namespace Velen.Application.Customers.IntegrationHandlers
 
         public async Task<Unit> Handle(MarkCustomerAsWelcomedCommand command, CancellationToken cancellationToken)
         {
+            Console.WriteLine("MarkCustomerAsWelcomedCommand command received command json: " + JsonSerializer.Serialize(command));
             var customer = await this._customerRepository.GetByIdAsync(command.CustomerId);
 
             customer.MarkAsWelcomedByEmail();

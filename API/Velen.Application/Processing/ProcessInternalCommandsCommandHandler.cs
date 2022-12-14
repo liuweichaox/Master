@@ -3,8 +3,10 @@ using Dapper;
 using MediatR;
 using Velen.Domain.Data;
 using Velen.Infrastructure.Commands;
+using Velen.Infrastructure.Processing;
+using Velen.Infrastructure.Processing.InternalCommands;
 
-namespace Velen.Infrastructure.Processing.InternalCommands
+namespace Velen.Application.Processing
 {
     internal class ProcessInternalCommandsCommandHandler : ICommandHandler<ProcessInternalCommandsCommand, Unit>
     {
@@ -29,9 +31,10 @@ namespace Velen.Infrastructure.Processing.InternalCommands
 
             foreach (var internalCommand in internalCommandsList)
             {
-                Type? type = InfrastructureModule.Assembly.GetType(internalCommand.Type);
-                dynamic commandToProcess = JsonSerializer.Serialize(internalCommand.Data, type);
-
+                Type? type = ApplicationModule.Assembly.GetType(internalCommand.Type);
+                if (type == null) continue;
+                Console.WriteLine($"Processing internal command: {type.Name}, {internalCommand.Data}");
+                dynamic commandToProcess = JsonSerializer.Deserialize(internalCommand.Data, type);
                 await CommandsExecutor.Execute(commandToProcess);
             }
 

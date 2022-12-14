@@ -6,6 +6,7 @@ using System.Text.Unicode;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
+using Quartz.Impl;
 using Velen.API;
 using Velen.API.Configuration;
 using Velen.API.Extensions;
@@ -56,7 +57,8 @@ builder.Services.AddScoped<ICommandsScheduler, CommandsScheduler>();
 builder.Services.AddScoped(typeof(ISqlConnectionFactory),
     _ => new SqlConnectionFactory(builder.Configuration.GetConnectionString("AppDbContext")));
 builder.Services.AddQuartz(q => { q.UseMicrosoftDependencyInjectionJobFactory(); });
-builder.Services.AddQuartzServer(q => q.WaitForJobsToComplete = true);
+builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
+builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
 builder.Services.AddControllers(options =>
     {
@@ -76,7 +78,7 @@ builder.Services.AddSwaggerDocumentation();
 
 var app = builder.Build();
 ServiceProviderLocator.SetProvider(app.Services);
-ApplicationStartup.Initialize(app.Services);
+await ApplicationStartup.Initialize(app.Services);
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

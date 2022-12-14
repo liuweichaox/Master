@@ -7,6 +7,7 @@ namespace Velen.Infrastructure.Processing.InternalCommands
     {
         public async Task Execute(IJobExecutionContext context)
         {
+            Console.WriteLine("ProcessInternalCommandsJob  IJob");
             await CommandsExecutor.Execute(new ProcessInternalCommandsCommand());
         }
     }

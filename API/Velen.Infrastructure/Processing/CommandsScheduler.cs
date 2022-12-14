@@ -1,4 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Data;
+using System.Diagnostics;
+using System.Reflection;
+using System.Text.Json;
 using Dapper;
 using Velen.Domain.Data;
 using Velen.Infrastructure.Commands;
@@ -16,17 +19,20 @@ namespace Velen.Infrastructure.Processing
 
         public async Task EnqueueAsync<T>(ICommand<T> command)
         {
+            Console.WriteLine("CommandsScheduler Execute TResult,command json "+JsonSerializer.Serialize(command)+" "+command.GetType().Name);
             var connection = this._sqlConnectionFactory.GetOpenConnection();
 
             const string sqlInsert = "INSERT INTO InternalCommands (Id, EnqueueDate, Type, Data) VALUES " +
                                      "(@Id, @EnqueueDate, @Type, @Data)";
+            //将接口类型转换为封闭类型
+            var type = command.GetType();
 
             await connection.ExecuteAsync(sqlInsert, new
             {
                 command.Id,
                 EnqueueDate = DateTime.Now,
                 Type = command.GetType().FullName,
-                Data = JsonSerializer.Serialize(command)
+                Data = JsonSerializer.Serialize(command, type)
             });
         }
     }

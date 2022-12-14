@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using System.Text.Json;
+using MediatR;
 using Serilog;
 using Serilog.Context;
 using Serilog.Core;
@@ -20,10 +21,12 @@ namespace Velen.Application.Behaviors
         }
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
+            Console.WriteLine("LoggingBehavior Handle command type: " + request.GetType().Name+"request json: "+JsonSerializer.Serialize(request));
             var command = request as ICommand<TResponse>;
             if (request is IRecurringCommand)
             {
                 return  await next();
+                Console.WriteLine("LoggingBehavior Handle RecurringCommand end");
             }
 
             using (
@@ -41,6 +44,7 @@ namespace Velen.Application.Behaviors
 
                     this._logger.Information("Command {Command} processed successful", command.GetType().Name);
 
+                    Console.WriteLine("LoggingBehavior Handle Success Command type: " + command.GetType().Name);
                     return response;
                 }
                 catch (Exception exception)

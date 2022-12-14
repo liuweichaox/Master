@@ -45,6 +45,7 @@ namespace Velen.API.Configuration
                 var domainNotification = Activator.CreateInstance(domainNotificationType,domainEvent);
                 if (domainNotification != null)
                 {
+                    Console.WriteLine("DomainEventsDispatcher: DispatchEventsAsync: domainNotification: " + JsonSerializer.Serialize(domainNotification)+domainNotificationType.Name);
                     domainEventNotifications.Add(domainNotification as IDomainEventNotification<IDomainEvent>);
                 }
             }
@@ -52,15 +53,19 @@ namespace Velen.API.Configuration
             domainEntities
                 .ForEach(entity => entity.Entity.ClearDomainEvents());
 
-            var tasks = domainEventNotifications
-                .Select(async (domainEvent) => {  await _mediator.Publish(domainEvent); });
+            var tasks = domainEvents
+                .Select(async (domainEvent) =>
+                {
+                    Console.WriteLine("DomainEventsDispatcher: DispatchEventsAsync: domainEvent: " + JsonSerializer.Serialize(domainEvent));
+                    await _mediator.Publish(domainEvent);
+                });
 
             await Task.WhenAll(tasks);
 
             foreach (var domainEventNotification in domainEventNotifications)
             {
                 string type = domainEventNotification.GetType().FullName;
-                var data = JsonSerializer.Serialize(domainEventNotification);
+                var data = JsonSerializer.Serialize(domainEventNotification,domainEventNotification.GetType());
                 OutboxMessage outboxMessage = new OutboxMessage(
                     domainEventNotification.DomainEvent.OccurredOn,
                     type,

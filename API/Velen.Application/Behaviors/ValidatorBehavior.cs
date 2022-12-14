@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Text.Json;
 using FluentValidation;
 using MediatR;
 using Velen.Application.Exceptions;
@@ -16,6 +17,7 @@ namespace Velen.Application.Behaviors
         
         public Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
+            Console.WriteLine("ValidatorBehavior Handle command type: " + request.GetType().Name+"result json: "+JsonSerializer.Serialize(request));
             var errors = _validators
                 .Select(v => v.Validate(request))
                 .SelectMany(result => result.Errors)
@@ -36,7 +38,9 @@ namespace Velen.Application.Behaviors
                 throw new InvalidCommandException(errorBuilder.ToString(), null);
             }
 
-            return next();
+            var response= next();
+            Console.WriteLine("ValidatorBehavior Handle End command type: " + request.GetType().Name);
+            return response;
         }
     }
 }

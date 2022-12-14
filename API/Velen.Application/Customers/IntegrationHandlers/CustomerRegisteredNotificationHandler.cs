@@ -1,4 +1,8 @@
-﻿using MediatR;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Text.Json;
+using MediatR;
+using Velen.Domain.Customers;
 using Velen.Infrastructure.Processing;
 
 namespace Velen.Application.Customers.IntegrationHandlers
@@ -15,11 +19,10 @@ namespace Velen.Application.Customers.IntegrationHandlers
 
         public async Task Handle(CustomerRegisteredNotification notification, CancellationToken cancellationToken)
         {
-            // Send welcome e-mail message...
-
+            Console.WriteLine("CustomerRegisteredNotificationHandler - Handle command json "+JsonSerializer.Serialize(notification));
             await this._commandsScheduler.EnqueueAsync(new MarkCustomerAsWelcomedCommand(
-                Guid.NewGuid(),
-                notification.Id));
+                notification.Id,
+                notification.CustomerId));
         }
     }
 }

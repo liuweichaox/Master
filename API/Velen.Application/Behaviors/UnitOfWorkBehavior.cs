@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Velen.Domain.SeedWork;
@@ -18,13 +19,15 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
     }
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
+        Console.WriteLine("UnitOfWorkBehavior Handle command type: " + request.GetType().Name+"result json:"+JsonSerializer.Serialize(request));
         if (_appDbContext.Database.CurrentTransaction!=null)
         {
             return await next();
+            Console.WriteLine("UnitOfWorkBehavior Handle has transaction");
         }
         var response = await next();
         var command = request as ICommand<TResponse>;
-        if (command is InternalCommandBase)
+        if (command is InternalCommandBase<TResponse>)
         {
             var internalCommand = await _appDbContext.InternalCommands
                 .FirstOrDefaultAsync(x => x.Id == command.Id, cancellationToken: cancellationToken);
@@ -35,6 +38,7 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
             }
         }
         await this._unitOfWork.CommitAsync(cancellationToken);
+        Console.WriteLine("UnitOfWorkBehavior Handle commit command type: " + request.GetType().Name);
         return response;
     }
 }

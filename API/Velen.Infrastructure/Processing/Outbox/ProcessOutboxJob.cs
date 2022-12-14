@@ -7,6 +7,7 @@ namespace Velen.Infrastructure.Processing.Outbox
     {
         public async Task Execute(IJobExecutionContext context)
         {
+            Console.WriteLine("Processing outbox IJob");
             await CommandsExecutor.Execute(new ProcessOutboxCommand());
         }
     }

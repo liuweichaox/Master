@@ -47,6 +47,7 @@ namespace Velen.Application.Processing
 
                     using (LogContext.Push(new OutboxMessageContextEnricher(request)))
                     {
+                        Console.WriteLine("Processing outbox ,data: {0}", message.Data);
                         await this._mediator.Publish(request, cancellationToken);
 
                         await connection.ExecuteAsync(sqlUpdateProcessedDate, new
