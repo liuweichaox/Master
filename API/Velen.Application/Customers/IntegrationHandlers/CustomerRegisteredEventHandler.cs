@@ -6,10 +6,13 @@ namespace Velen.Application.Customers.IntegrationHandlers
 {
     public class CustomerRegisteredEventHandler : INotificationHandler<CustomerRegisteredEvent>
     {
-        public Task Handle(CustomerRegisteredEvent notification, CancellationToken cancellationToken)
+        public async Task Handle(CustomerRegisteredEvent notification, CancellationToken cancellationToken)
         {
-            Console.WriteLine("CustomerRegisteredEventHandler - Handle command json " + JsonSerializer.Serialize(notification));
-            return Task.CompletedTask;
+
+             await Task.Run(() =>
+            {
+                Console.WriteLine("CustomerRegisteredEventHandler - Handle command json " + JsonSerializer.Serialize(notification));
+            });
         }
     }
 }
