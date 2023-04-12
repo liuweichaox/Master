@@ -17,7 +17,7 @@ namespace Velen.Application.Customers.GetCustomerDetails
         {
             const string sql = "SELECT " +
                                "Id, " +
-                               "Name" +
+                               "Name, " +
                                "Email, " +
                                "WelcomeEmailWasSent " +
                                "FROM Customers " +
