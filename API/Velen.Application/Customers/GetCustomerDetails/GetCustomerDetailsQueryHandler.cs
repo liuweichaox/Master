@@ -20,7 +20,7 @@ namespace Velen.Application.Customers.GetCustomerDetails
                                "Name" +
                                "Email, " +
                                "WelcomeEmailWasSent" +
-                               "FROM Customer " +
+                               "FROM Customers " +
                                "WHERE Id= @CustomerId ";
 
             var connection = _sqlConnectionFactory.GetOpenConnection();
