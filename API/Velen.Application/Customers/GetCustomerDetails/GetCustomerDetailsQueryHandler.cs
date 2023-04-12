@@ -19,7 +19,7 @@ namespace Velen.Application.Customers.GetCustomerDetails
                                "Id, " +
                                "Name" +
                                "Email, " +
-                               "WelcomeEmailWasSent" +
+                               "WelcomeEmailWasSent " +
                                "FROM Customers " +
                                "WHERE Id= @CustomerId ";
 
