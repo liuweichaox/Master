@@ -3,7 +3,7 @@ using Velen.Application.Customers.RegisterCustomer;
 
 namespace Velen.Application.Customers;
 
-public  class RegisterCustomerCommandValidator:AbstractValidator<RegisterCustomerCommand>
+public class RegisterCustomerCommandValidator : AbstractValidator<RegisterCustomerCommand>
 {
     public RegisterCustomerCommandValidator()
     {
