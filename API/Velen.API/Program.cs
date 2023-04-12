@@ -16,7 +16,6 @@ using Velen.Application;
 using Velen.Application.Behaviors;
 using Velen.Application.Processing;
 using Velen.Domain;
-using Velen.Domain.Customers;
 using Velen.Domain.Data;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure;
@@ -25,6 +24,7 @@ using Velen.Infrastructure.Domain;
 using Velen.Infrastructure.Domain.Repositories;
 using Velen.Infrastructure.Emails;
 using Velen.Infrastructure.Processing;
+using Velen.Domain.IRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc

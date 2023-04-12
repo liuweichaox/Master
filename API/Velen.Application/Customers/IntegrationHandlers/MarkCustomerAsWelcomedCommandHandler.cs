@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using MediatR;
-using Velen.Domain.Customers;
+using Velen.Domain.IRepositories;
 using Velen.Infrastructure.Commands;
 
 namespace Velen.Application.Customers.IntegrationHandlers

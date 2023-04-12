@@ -1,4 +1,6 @@
-﻿namespace Velen.Domain.Customers
+﻿using Velen.Domain.Customers;
+
+namespace Velen.Domain.IRepositories
 {
     public interface ICustomerRepository
     {

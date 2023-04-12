@@ -1,4 +1,5 @@
 ﻿using Velen.Domain.Customers;
+using Velen.Domain.IRepositories;
 using Velen.Domain.SeedWork;
 using Velen.Infrastructure.Commands;
 
