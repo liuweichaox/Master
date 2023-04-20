@@ -1,7 +1,6 @@
 using FluentValidation;
-using Velen.Application.Customers.RegisterCustomer;
 
-namespace Velen.Application.Customers;
+namespace Velen.Application.Customers.RegisterCustomer;
 
 public class RegisterCustomerCommandValidator : AbstractValidator<RegisterCustomerCommand>
 {

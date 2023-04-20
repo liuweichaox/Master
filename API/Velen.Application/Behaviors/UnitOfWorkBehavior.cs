@@ -8,7 +8,7 @@ using Velen.Infrastructure.Domain;
 namespace Velen.Application.Behaviors;
 
 
-public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest:IRequest<TResponse>
+public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly AppDbContext _appDbContext;
@@ -19,8 +19,8 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
     }
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        Console.WriteLine("UnitOfWorkBehavior Handle command type: " + request.GetType().Name+"result json:"+JsonSerializer.Serialize(request));
-        if (_appDbContext.Database.CurrentTransaction!=null)
+        Console.WriteLine("UnitOfWorkBehavior Handle command type: " + request.GetType().Name + "result json:" + JsonSerializer.Serialize(request));
+        if (_appDbContext.Database.CurrentTransaction != null)
         {
             return await next();
             Console.WriteLine("UnitOfWorkBehavior Handle has transaction");
