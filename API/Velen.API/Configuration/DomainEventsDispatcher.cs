@@ -36,16 +36,16 @@ namespace Velen.API.Configuration
                 Type domainEvenNotificationType = typeof(IDomainEventNotification<>);
                 var domainNotificationWithGenericType =
                     domainEvenNotificationType.MakeGenericType(domainEvent.GetType());
-                var domainNotificationType=ApplicationModule.Assembly.GetTypes().SingleOrDefault(x =>
+                var domainNotificationType = ApplicationModule.Assembly.GetTypes().SingleOrDefault(x =>
                     x.GetInterfaces().Any(y => y == domainNotificationWithGenericType));
                 if (domainNotificationType == null)
                 {
                     continue;
                 }
-                var domainNotification = Activator.CreateInstance(domainNotificationType,domainEvent);
+                var domainNotification = Activator.CreateInstance(domainNotificationType, domainEvent);
                 if (domainNotification != null)
                 {
-                    Console.WriteLine("DomainEventsDispatcher: DispatchEventsAsync: domainNotification: " + JsonSerializer.Serialize(domainNotification)+domainNotificationType.Name);
+                    Console.WriteLine("DomainEventsDispatcher: DispatchEventsAsync: domainNotification: " + JsonSerializer.Serialize(domainNotification) + domainNotificationType.Name);
                     domainEventNotifications.Add(domainNotification as IDomainEventNotification<IDomainEvent>);
                 }
             }
@@ -65,7 +65,7 @@ namespace Velen.API.Configuration
             foreach (var domainEventNotification in domainEventNotifications)
             {
                 string type = domainEventNotification.GetType().FullName;
-                var data = JsonSerializer.Serialize(domainEventNotification,domainEventNotification.GetType());
+                var data = JsonSerializer.Serialize(domainEventNotification, domainEventNotification.GetType());
                 OutboxMessage outboxMessage = new OutboxMessage(
                     domainEventNotification.DomainEvent.OccurredOn,
                     type,
