@@ -25,6 +25,7 @@ using Velen.Infrastructure.Domain.Repositories;
 using Velen.Infrastructure.Emails;
 using Velen.Infrastructure.Processing;
 using Velen.Domain.IRepositories;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
@@ -42,8 +43,8 @@ builder.Services.AddMediatR(options =>
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkBehavior<,>));
-builder.Services.AddValidatorsFromAssemblyContaining<ApplicationModule>();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssembly(ApplicationModule.Assembly);
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
