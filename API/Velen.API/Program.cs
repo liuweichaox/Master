@@ -35,7 +35,10 @@ builder.Host.UseSerilog((ctx, lc) => lc
 // Add services to the container.
 builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFields.All);
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddMediatR(ApiModule.Assembly,ApplicationModule.Assembly,DomainModule.Assembly,InfrastructureModule.Assembly);
+builder.Services.AddMediatR(options =>
+{
+    options.RegisterServicesFromAssemblies(ApiModule.Assembly, ApplicationModule.Assembly, DomainModule.Assembly, InfrastructureModule.Assembly);
+});
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnitOfWorkBehavior<,>));
