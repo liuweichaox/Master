@@ -1,17 +1,4 @@
 services:
-  # postgis:
-  #   image: postgis/postgis:13-3.1
-  #   restart: always
-  #   expose:
-  #     - "5432"
-  #   ports:
-  #     - "5432:5432"
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: 123456
-  #     POSTGRES_DB: mydb
-  #     POSTGRES_HOST: localhost
-  #     POSTGRES_HOST_AUTH_METHOD: trust
   redis:
     image: redis
     restart: always
@@ -24,18 +11,6 @@ services:
       privileged: true
     command: 
       redis-server --port 6379 --requirepass 123456  --appendonly yes
-  # clickhouse:
-  #   image: clickhouse/clickhouse-server:22.6.4
-  #   restart: always
-  #   expose:
-  #     - 9009
-  #     - 8123
-  #   ports:
-  #     - "9009:9009"
-  #     - "8123:8123"
-  #   environment:
-  #     platform: linux/amd64
-  #     ulimit nofile: 262144:262144
   mysql:
     image: mysql/mysql-server
     restart: always
@@ -54,36 +29,16 @@ services:
     #   - ./seq-data:/data
     environment:
       ACCEPT_EULA: "Y"
-  # rabbitmq:
-  #   image: rabbitmq:management
-  #   restart: always
-  #   expose:
-  #     - "5672"
-  #     - "15672"
-  #   ports:
-  #     - "5672:5672"
-  #     - "15672:15672"
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: guest
-  #     RABBITMQ_DEFAULT_PASS: guest
-  #     RABBITMQ_DEFAULT_VHOST: /
-  #     RABBITMQ_ERLANG_COOKIE: 123456
-  #     RABBITMQ_NODE_IP_ADDRESS: localhost
-  #     RABBITMQ_NODENAME: rabbit
-  #     RABBITMQ_NODE_PORT: 5672
-  # nginx:
-  #   restart: always
-  #   image: nginx
-  #   container_name: nginx
-  #   expose:
-  #     - "80"
-  #     - "8000"
-  #   ports:
-  #     - "8080:80"
-  #     - "8000:8000"
-  #   volumes:
-  #     - /Users/liuweichao/Tools/nginx/log/:/var/log/nginx 
-  #     - /Users/liuweichao/Tools/nginx/html:/usr/share/nginx/html 
-  #     - /Users/liuweichao/Tools/nginx/nginx.conf:/etc/nginx/nginx.conf
-  #     - /Users/liuweichao/Tools/nginx/conf.d:/etc/nginx/conf.d
-  #     - /Users/liuweichao/Tools/FileServer:/webroot
+  rabbitmq:
+    image: rabbitmq:management
+    restart: always
+    expose:
+      - "5672"
+      - "15672"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
