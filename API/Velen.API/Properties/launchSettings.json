@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Velen": {
+    "Velen.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
