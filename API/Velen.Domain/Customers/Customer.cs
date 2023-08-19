@@ -1,4 +1,6 @@
-﻿using Velen.Domain.SeedWork;
+﻿using System.Runtime.CompilerServices;
+using Velen.Domain.Rules;
+using Velen.Domain.SeedWork;
 
 namespace Velen.Domain.Customers
 {
@@ -29,6 +31,7 @@ namespace Velen.Domain.Customers
             string email,
             string name)
         {
+            CheckRule(new CustomerEmailMustBeUniqueRule(email));
             return new Customer(email, name);
         }
 
