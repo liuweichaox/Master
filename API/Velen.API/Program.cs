@@ -94,7 +94,16 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddLocalization();
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowCredentials()
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .SetIsOriginAllowed(_=>true);
+    });
+});
 var app = builder.Build();
 ServiceProviderLocator.SetProvider(app.Services);
 await ApplicationStartup.Initialize(app.Services);
@@ -124,7 +133,9 @@ app.UseMiddleware<CorrelationMiddleware>();
 
 app.UseHttpLogging();
 
-app.UseHttpsRedirection();
+app.UseCors();
+
+app.UseForwardedHeaders();
 
 app.UseAuthorization();
 
