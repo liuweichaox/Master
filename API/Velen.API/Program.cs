@@ -104,7 +104,7 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed(_=>true);
     });
 });
-
+builder.Services.AddResponseCaching();
 var app = builder.Build();
 ServiceProviderLocator.SetProvider(app.Services);
 await ApplicationStartup.Initialize(app.Services);
@@ -127,6 +127,8 @@ app.UseRequestLocalization(new RequestLocalizationOptions
     SupportedUICultures = supportedCultures,
     ApplyCurrentCultureToResponseHeaders = true
 });
+
+app.UseResponseCaching();
 
 app.UseMiddleware<ExceptionMiddleware>();
 
