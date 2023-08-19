@@ -13,6 +13,7 @@
     <ItemGroup>
         <PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="6.0.21" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +27,7 @@
         <PackageReference Include="Serilog.Expressions" Version="3.4.2-dev-00119" />
         <PackageReference Include="Serilog.Sinks.File" Version="5.0.1-dev-00947" />
         <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.3-dev-00260" />
+        <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 

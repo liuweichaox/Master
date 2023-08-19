@@ -104,6 +104,7 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed(_=>true);
     });
 });
+
 var app = builder.Build();
 ServiceProviderLocator.SetProvider(app.Services);
 await ApplicationStartup.Initialize(app.Services);
