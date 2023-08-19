@@ -24,13 +24,13 @@ public class CustomerController : AppController
     public async Task<IActionResult> GetCustomerDetailsQuery(Guid id)
     {
         var result = await _mediator.Send(new GetCustomerDetailsQuery(id));
-        return Success(result,_stringLocalizer["operation_success"]);
+        return Success(result);
     }
 
     [HttpPost]
     public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerRequest request)
     {
         var result = await _mediator.Send(new RegisterCustomerCommand(request.Email, request.Name));
-        return Success(result);
+        return Success(result,_stringLocalizer["operation_success"]);
     }
 }
