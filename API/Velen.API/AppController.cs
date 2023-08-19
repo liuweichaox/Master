@@ -10,6 +10,11 @@ public class AppController : ControllerBase
         return Ok(ApiResult<T>.SuccessResult(data));
     }
 
+    public IActionResult Success<T>(T data, string message)
+    {
+        return Ok(ApiResult<T>.SuccessResult(data,message));
+    }
+
     protected IActionResult Error(string message)
     {
         return Ok(ApiResult.ErrorResult(message));

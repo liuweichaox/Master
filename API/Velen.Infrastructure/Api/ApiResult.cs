@@ -14,10 +14,15 @@ public class ApiResult<T>
         Message = message;
         Code = (int)code;
     }
-
+    
     public static ApiResult<T> SuccessResult(T data)
     {
         return new ApiResult<T>(data, true, string.Empty, ApiResultCode.Success);
+    }
+
+    public static ApiResult<T> SuccessResult(T data,string message)
+    {
+        return new ApiResult<T>(data, true, message, ApiResultCode.Success);
     }
 
     public static ApiResult<T> ErrorResult(string message)

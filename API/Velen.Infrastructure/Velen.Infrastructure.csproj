@@ -31,4 +31,28 @@
       <Folder Include="Migrations" />
     </ItemGroup>
 
+    <ItemGroup>
+      <EmbeddedResource Update="Localization\MultiLanguage.en-US.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MultiLanguage.en-US.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Localization\MultiLanguage.zn-CH.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>MultiLanguage.zn-CH.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Localization\MultiLanguage.en-US.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MultiLanguage.en-US.resx</DependentUpon>
+      </Compile>
+      <Compile Update="Localization\MultiLanguage.zn-CH.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>MultiLanguage.zn-CH.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>
