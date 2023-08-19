@@ -36,7 +36,7 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>MultiLanguage.en-US.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="Localization\MultiLanguage.zn-CH.resx">
+      <EmbeddedResource Update="Localization\MultiLanguage.zh-CN.resx">
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>MultiLanguage.zn-CH.Designer.cs</LastGenOutput>
       </EmbeddedResource>
@@ -48,10 +48,10 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>MultiLanguage.en-US.resx</DependentUpon>
       </Compile>
-      <Compile Update="Localization\MultiLanguage.zn-CH.Designer.cs">
+      <Compile Update="Localization\MultiLanguage.zh-CN.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>MultiLanguage.zn-CH.resx</DependentUpon>
+        <DependentUpon>MultiLanguage.zh-CN.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

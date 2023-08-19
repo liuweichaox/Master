@@ -14,21 +14,21 @@ namespace Velen.Infrastructure.Localization {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class MultiLanguage_zn_CH {
+    internal class MultiLanguage_zh_CN {
         
         private static System.Resources.ResourceManager resourceMan;
         
         private static System.Globalization.CultureInfo resourceCulture;
         
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MultiLanguage_zn_CH() {
+        internal MultiLanguage_zh_CN() {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.Equals(null, resourceMan)) {
-                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Velen.Infrastructure.Localization.MultiLanguage_zn_CH", typeof(MultiLanguage_zn_CH).Assembly);
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Velen.Infrastructure.Localization.MultiLanguage_zh_CN", typeof(MultiLanguage_zh_CN).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
