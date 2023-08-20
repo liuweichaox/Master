@@ -1,35 +1,9 @@
-using System.Globalization;
 using FluentValidation;
 using MediatR;
 using Serilog;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Unicode;
-using Microsoft.AspNetCore.HttpLogging;
-using Microsoft.EntityFrameworkCore;
 using Quartz;
 using Quartz.Impl;
-using Velen.API;
-using Velen.API.Configuration;
-using Velen.API.Extensions;
-using Velen.API.Filters;
-using Velen.API.Middlewares;
-using Velen.Application;
-using Velen.Application.Behaviors;
-using Velen.Application.Processing;
-using Velen.Domain;
-using Velen.Domain.Data;
-using Velen.Domain.SeedWork;
-using Velen.Infrastructure;
-using Velen.Infrastructure.Database;
-using Velen.Infrastructure.Domain;
-using Velen.Infrastructure.Domain.Repositories;
-using Velen.Infrastructure.Emails;
-using Velen.Infrastructure.Processing;
-using Velen.Domain.IRepositories;
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Localization;
-using Velen.Infrastructure.Converters;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
