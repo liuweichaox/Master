@@ -1,7 +1,4 @@
-﻿using Velen.API.Middlewares;
-using Velen.Infrastructure;
-
-namespace Velen.API.Configuration
+﻿namespace Velen.API.Configuration
 {
     public class ExecutionContextAccessor : IExecutionContextAccessor
     {

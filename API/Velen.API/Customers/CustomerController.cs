@@ -1,4 +1,3 @@
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Velen.Application.Customers.GetCustomerDetails;

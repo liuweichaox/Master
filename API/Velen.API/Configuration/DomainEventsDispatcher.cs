@@ -1,10 +1,4 @@
-﻿using System.Text.Json;
-using MediatR;
-using Velen.Application;
-using Velen.Domain.Events;
-using Velen.Domain.SeedWork;
-using Velen.Infrastructure.Domain;
-using Velen.Infrastructure.Processing;
+﻿using Velen.Domain.Events;
 using Velen.Infrastructure.Processing.Outbox;
 
 namespace Velen.API.Configuration

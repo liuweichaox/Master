@@ -1,10 +1,3 @@
-using FluentValidation;
-using MediatR;
-using Serilog;
-using Quartz;
-using Quartz.Impl;
-using FluentValidation.AspNetCore;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((ctx, lc) => lc
     .Enrich.FromLogContext()
