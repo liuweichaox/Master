@@ -19,11 +19,11 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
     }
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        Console.WriteLine("UnitOfWorkBehavior Handle command type: " + request.GetType().Name + "result json:" + JsonSerializer.Serialize(request));
+        Console.WriteLine(@"UnitOfWorkBehavior Handle command type: " + request.GetType().Name + @"result json:" + JsonSerializer.Serialize(request));
         if (_appDbContext.Database.CurrentTransaction != null)
         {
             return await next();
-            Console.WriteLine("UnitOfWorkBehavior Handle has transaction");
+            Console.WriteLine(@"UnitOfWorkBehavior Handle has transaction");
         }
         var response = await next();
         var command = request as ICommand<TResponse>;
@@ -38,7 +38,7 @@ public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
             }
         }
         await this._unitOfWork.CommitAsync(cancellationToken);
-        Console.WriteLine("UnitOfWorkBehavior Handle commit command type: " + request.GetType().Name);
+        Console.WriteLine(@"UnitOfWorkBehavior Handle commit command type: " + request.GetType().Name);
         return response;
     }
 }

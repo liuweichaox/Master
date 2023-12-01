@@ -21,12 +21,12 @@ namespace Master.Application.Behaviors
         }
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            Console.WriteLine("LoggingBehavior Handle command type: " + request.GetType().Name+"request json: "+JsonSerializer.Serialize(request));
+            Console.WriteLine(@"LoggingBehavior Handle command type: " + request.GetType().Name+@"request json: "+JsonSerializer.Serialize(request));
             var command = request as ICommand<TResponse>;
             if (request is IRecurringCommand)
             {
                 return  await next();
-                Console.WriteLine("LoggingBehavior Handle RecurringCommand end");
+                Console.WriteLine(@"LoggingBehavior Handle RecurringCommand end");
             }
 
             using (
@@ -44,7 +44,7 @@ namespace Master.Application.Behaviors
 
                     this._logger.Information("Command {Command} processed successful", command.GetType().Name);
 
-                    Console.WriteLine("LoggingBehavior Handle Success Command type: " + command.GetType().Name);
+                    Console.WriteLine(@"LoggingBehavior Handle Success Command type: " + command.GetType().Name);
                     return response;
                 }
                 catch (Exception exception)

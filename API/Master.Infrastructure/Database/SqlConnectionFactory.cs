@@ -6,10 +6,10 @@ namespace Master.Infrastructure.Database;
 
 public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 {
-    private readonly string _connectionString;
+    private readonly string? _connectionString;
     private IDbConnection _connection;
 
-    public SqlConnectionFactory(string connectionString)
+    public SqlConnectionFactory(string? connectionString)
     {
         this._connectionString = connectionString;
     }

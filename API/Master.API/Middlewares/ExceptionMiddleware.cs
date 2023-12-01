@@ -3,18 +3,30 @@ using Master.Infrastructure.Api;
 
 namespace Master.API.Middlewares;
 
+/// <summary>
+/// ExceptionMiddleware
+/// </summary>
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
 
     private readonly ILogger<ExceptionMiddleware> _logger;
 
+    /// <summary>
+    /// ExceptionMiddleware
+    /// </summary>
+    /// <param name="next"></param>
+    /// <param name="logger"></param>
     public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
     {
         _next = next;
         _logger = logger;
     }
 
+    /// <summary>
+    /// InvokeAsync
+    /// </summary>
+    /// <param name="context"></param>
     public async Task InvokeAsync(HttpContext context)
     {
         try
