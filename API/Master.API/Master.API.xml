@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Master.API</name>
+    </assembly>
+    <members>
+        <member name="T:Master.API.Configuration.DomainEventsDispatcher">
+            <summary>
+            DomainEventsDispatcher
+            </summary>
+        </member>
+        <member name="T:Master.API.Configuration.ExecutionContextAccessor">
+            <summary>
+            ExecutionContextAccessor
+            </summary>
+        </member>
+        <member name="M:Master.API.Configuration.ExecutionContextAccessor.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            ExecutionContextAccessor
+            </summary>
+            <param name="httpContextAccessor"></param>
+        </member>
+        <member name="P:Master.API.Configuration.ExecutionContextAccessor.CorrelationId">
+            <summary>
+            CorrelationId
+            </summary>
+            <exception cref="T:System.ApplicationException"></exception>
+        </member>
+        <member name="T:Master.API.Customers.CustomerController">
+            <summary>
+            CustomerController
+            </summary>
+        </member>
+        <member name="M:Master.API.Customers.CustomerController.#ctor(MediatR.IMediator,Microsoft.Extensions.Localization.IStringLocalizer{Master.Infrastructure.Localization.MultiLanguage})">
+            <summary>
+            CustomerController
+            </summary>
+            <param name="mediator"></param>
+            <param name="stringLocalize"></param>
+        </member>
+        <member name="M:Master.API.Customers.CustomerController.GetCustomerDetailsQuery(System.Guid)">
+            <summary>
+            GetCustomerDetailsQuery
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Master.API.Customers.CustomerController.RegisterCustomer(Master.API.Customers.RegisterCustomerRequest)">
+            <summary>
+            RegisterCustomer
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Master.API.Customers.RegisterCustomerRequest">
+            <summary>
+            RegisterCustomerRequest
+            </summary>
+        </member>
+        <member name="M:Master.API.Extensions.SwaggerExtensions.AddAuthenticationHeader(Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenOptions)">
+            <summary>
+            为Swagger增加Authentication报文头
+            </summary>
+            <param name="c"></param>
+        </member>
+    </members>
+</doc>
