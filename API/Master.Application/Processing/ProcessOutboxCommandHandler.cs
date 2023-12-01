@@ -6,7 +6,6 @@ using Serilog.Core;
 using Serilog.Events;
 using Master.Domain.Data;
 using Master.Domain.Events;
-using Master.Infrastructure;
 using Master.Infrastructure.Commands;
 using Master.Infrastructure.Processing.Outbox;
 
@@ -27,9 +26,7 @@ namespace Master.Application.Processing
         public async Task<Unit> Handle(ProcessOutboxCommand command, CancellationToken cancellationToken)
         {
             var connection = this._sqlConnectionFactory.GetOpenConnection();
-            const string sql = "SELECT Id,Type,Data " +
-                               "FROM OutboxMessages " +
-                               "WHERE ProcessedDate  IS NULL";
+            const string sql = "SELECT Id,Type,Data FROM OutboxMessages WHERE ProcessedDate  IS NULL";
 
             var messages = await connection.QueryAsync<OutboxMessageDto>(sql);
             var messagesList = messages.AsList();
@@ -41,13 +38,13 @@ namespace Master.Application.Processing
             {
                 foreach (var message in messagesList)
                 {
-                    Type type = ApplicationModule.Assembly
+                    var type = ApplicationModule.Assembly
                         .GetType(message.Type);
                     var request = JsonSerializer.Deserialize(message.Data, type) as IDomainEventNotification;
 
                     using (LogContext.Push(new OutboxMessageContextEnricher(request)))
                     {
-                        Console.WriteLine("Processing outbox ,data: {0}", message.Data);
+                        Console.WriteLine(@"Processing outbox ,data: {0}", message.Data);
                         await this._mediator.Publish(request, cancellationToken);
 
                         await connection.ExecuteAsync(sqlUpdateProcessedDate, new

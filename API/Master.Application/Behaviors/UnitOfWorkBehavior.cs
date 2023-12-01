@@ -7,7 +7,6 @@ using Master.Infrastructure.Domain;
 
 namespace Master.Application.Behaviors;
 
-
 public class UnitOfWorkBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
     private readonly IUnitOfWork _unitOfWork;

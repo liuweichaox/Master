@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Master.Domain.Rules;
+﻿using Master.Domain.Rules;
 using Master.Domain.SeedWork;
 
 namespace Master.Domain.Customers

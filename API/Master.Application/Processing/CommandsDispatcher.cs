@@ -21,8 +21,8 @@ namespace Master.Application.Processing
 
         public async Task DispatchCommandAsync(Guid id)
         {
-            var internalCommand = await this._appDbContext.InternalCommands.SingleOrDefaultAsync(x => x.Id == id);
-            Type type = ApplicationModule.Assembly.GetType(internalCommand.Type);
+            var internalCommand = await _appDbContext.InternalCommands.SingleOrDefaultAsync(x => x.Id == id);
+            var type = ApplicationModule.Assembly.GetType(internalCommand?.Type);
             dynamic command = JsonSerializer.Deserialize(internalCommand.Data, type);
 
             internalCommand.ProcessedDate = DateTime.Now;

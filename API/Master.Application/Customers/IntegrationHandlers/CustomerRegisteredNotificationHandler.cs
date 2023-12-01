@@ -1,8 +1,5 @@
-﻿using System.Diagnostics;
-using System.Reflection;
-using System.Text.Json;
+﻿using System.Text.Json;
 using MediatR;
-using Master.Domain.Customers;
 using Master.Infrastructure.Processing;
 
 namespace Master.Application.Customers.IntegrationHandlers

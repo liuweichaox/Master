@@ -11,7 +11,6 @@ namespace Master.Application.Customers.IntegrationHandlers
         {
             CustomerId = customerId;
         }
-
         public Guid CustomerId { get; }
     }
 }
