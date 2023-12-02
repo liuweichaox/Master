@@ -12,7 +12,7 @@ namespace Master.Application.Processing
         private readonly AppDbContext _appDbContext;
 
         public CommandsDispatcher(
-            IMediator mediator, 
+            IMediator mediator,
             AppDbContext appDbContext)
         {
             this._mediator = mediator;

@@ -10,7 +10,7 @@ namespace Master.Infrastructure.Domain
     public class AppDbContext : DbContext
     {
         private IMediator _mediator;
-        public AppDbContext(DbContextOptions<AppDbContext> options,IMediator mediator) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options, IMediator mediator) : base(options)
         {
             _mediator = mediator;
         }
@@ -25,7 +25,7 @@ namespace Master.Infrastructure.Domain
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
-        public async  Task DispatchEventsAsync()
+        public async Task DispatchEventsAsync()
         {
             var domainEntities = ChangeTracker
                 .Entries<Entity>()

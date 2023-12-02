@@ -21,11 +21,11 @@ namespace Master.Application.Behaviors
         }
         public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
         {
-            Console.WriteLine(@"LoggingBehavior Handle command type: " + request.GetType().Name+@"request json: "+JsonSerializer.Serialize(request));
+            Console.WriteLine(@"LoggingBehavior Handle command type: " + request.GetType().Name + @"request json: " + JsonSerializer.Serialize(request));
             var command = request as ICommand<TResponse>;
             if (request is IRecurringCommand)
             {
-                return  await next();
+                return await next();
                 Console.WriteLine(@"LoggingBehavior Handle RecurringCommand end");
             }
 

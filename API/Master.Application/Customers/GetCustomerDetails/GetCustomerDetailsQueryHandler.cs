@@ -15,13 +15,7 @@ namespace Master.Application.Customers.GetCustomerDetails
 
         public Task<CustomerDetailsDto> Handle(GetCustomerDetailsQuery request, CancellationToken cancellationToken)
         {
-            const string sql = "SELECT " +
-                               "Id, " +
-                               "Name, " +
-                               "Email, " +
-                               "WelcomeEmailWasSent " +
-                               "FROM Customers " +
-                               "WHERE Id= @CustomerId ";
+            const string sql = "SELECT Id, Name, Email, WelcomeEmailWasSent FROM Customers WHERE Id= @CustomerId ";
 
             var connection = _sqlConnectionFactory.GetOpenConnection();
 

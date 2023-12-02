@@ -40,4 +40,8 @@
       <ProjectReference Include="..\Master.Application\Master.Application.csproj" />
     </ItemGroup>
 
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+      <Exec Command="dotnet format --no-restore $(SolutionDir)" />
+    </Target>
+
 </Project>

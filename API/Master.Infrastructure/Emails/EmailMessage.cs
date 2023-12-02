@@ -9,7 +9,7 @@
         public string Content { get; }
 
         public EmailMessage(
-            string from, 
+            string from,
             string to,
             string content)
         {

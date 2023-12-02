@@ -16,7 +16,7 @@ namespace Master.Application.Customers.IntegrationHandlers
 
         public async Task Handle(CustomerRegisteredNotification notification, CancellationToken cancellationToken)
         {
-            Console.WriteLine("CustomerRegisteredNotificationHandler - Handle command json "+JsonSerializer.Serialize(notification));
+            Console.WriteLine(@"CustomerRegisteredNotificationHandler - Handle command json " + JsonSerializer.Serialize(notification));
             await this._commandsScheduler.EnqueueAsync(new MarkCustomerAsWelcomedCommand(
                 notification.Id,
                 notification.CustomerId));

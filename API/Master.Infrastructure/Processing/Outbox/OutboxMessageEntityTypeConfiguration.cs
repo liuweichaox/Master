@@ -8,7 +8,7 @@ namespace Master.Infrastructure.Processing.Outbox
         public void Configure(EntityTypeBuilder<OutboxMessage> builder)
         {
             builder.ToTable("OutboxMessages");
-            
+
             builder.HasKey(b => b.Id);
             builder.Property(b => b.Id).ValueGeneratedNever();
         }

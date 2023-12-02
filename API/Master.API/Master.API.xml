@@ -4,9 +4,68 @@
         <name>Master.API</name>
     </assembly>
     <members>
+        <member name="T:Master.API.ApiModule">
+            <summary>
+            ApiModule
+            </summary>
+        </member>
+        <member name="F:Master.API.ApiModule.Assembly">
+            <summary>
+            Assembly
+            </summary>
+        </member>
+        <member name="T:Master.API.AppController">
+            <summary>
+              Base controller for all controllers in the application.
+            </summary>
+        </member>
+        <member name="M:Master.API.AppController.Success``1(``0)">
+            <summary>
+             Returns a success response with data.
+            </summary>
+            <param name="data"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Master.API.AppController.Success``1(``0,System.String)">
+            <summary>
+            Returns a success response with data and message.
+            </summary>
+            <param name="data"></param>
+            <param name="message"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Master.API.AppController.Error(System.String)">
+            <summary>
+            Returns a error response with message.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Master.API.AppController.Error(System.String,Master.Infrastructure.Api.ApiResultCode)">
+            <summary>
+            Returns a error response with message and code.
+            </summary>
+            <param name="message"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
         <member name="T:Master.API.Configuration.DomainEventsDispatcher">
             <summary>
             DomainEventsDispatcher
+            </summary>
+        </member>
+        <member name="M:Master.API.Configuration.DomainEventsDispatcher.#ctor(MediatR.IMediator,Master.Infrastructure.Domain.AppDbContext)">
+            <summary>
+            DomainEventsDispatcher
+            </summary>
+            <param name="mediator"></param>
+            <param name="appDbContext"></param>
+        </member>
+        <member name="M:Master.API.Configuration.DomainEventsDispatcher.DispatchEventsAsync">
+            <summary>
+            DispatchEventsAsync
             </summary>
         </member>
         <member name="T:Master.API.Configuration.ExecutionContextAccessor">
@@ -62,6 +121,35 @@
             为Swagger增加Authentication报文头
             </summary>
             <param name="c"></param>
+        </member>
+        <member name="T:Master.API.Filters.ValidateModelAttribute">
+            <summary>
+            ValidateModelAttribute
+            </summary>
+        </member>
+        <member name="M:Master.API.Filters.ValidateModelAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            OnActionExecuting
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Master.API.Middlewares.ExceptionMiddleware">
+            <summary>
+            ExceptionMiddleware
+            </summary>
+        </member>
+        <member name="M:Master.API.Middlewares.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{Master.API.Middlewares.ExceptionMiddleware})">
+            <summary>
+            ExceptionMiddleware
+            </summary>
+            <param name="next"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Master.API.Middlewares.ExceptionMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            InvokeAsync
+            </summary>
+            <param name="context"></param>
         </member>
     </members>
 </doc>

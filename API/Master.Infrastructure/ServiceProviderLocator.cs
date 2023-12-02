@@ -15,7 +15,7 @@ public static class ServiceProviderLocator
     {
         return _serviceProvider?.CreateScope();
     }
-    
+
     internal static AsyncServiceScope CreateAsyncScope()
     {
         return (AsyncServiceScope)_serviceProvider?.CreateAsyncScope()!;

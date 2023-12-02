@@ -19,7 +19,7 @@ namespace Master.Application.Customers.IntegrationHandlers
             Console.WriteLine(@"MarkCustomerAsWelcomedCommand command received command json: " + JsonSerializer.Serialize(command));
             var customer = await this._customerRepository.GetByIdAsync(command.CustomerId);
 
-            customer.MarkAsWelcomedByEmail();
+            customer?.MarkAsWelcomedByEmail();
 
             return Unit.Value;
         }

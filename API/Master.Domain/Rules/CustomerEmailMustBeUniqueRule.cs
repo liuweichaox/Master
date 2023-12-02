@@ -2,7 +2,7 @@ using Master.Domain.SeedWork;
 
 namespace Master.Domain.Rules;
 
-public class CustomerEmailMustBeUniqueRule:IBusinessRule
+public class CustomerEmailMustBeUniqueRule : IBusinessRule
 {
     private readonly string _email;
 

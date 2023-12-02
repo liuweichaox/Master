@@ -8,9 +8,9 @@ namespace Master.Infrastructure.Processing.InternalCommands
         public void Configure(EntityTypeBuilder<InternalCommand> builder)
         {
             builder.ToTable("InternalCommands");
-            
+
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Id).ValueGeneratedNever(); 
+            builder.Property(b => b.Id).ValueGeneratedNever();
         }
     }
 }

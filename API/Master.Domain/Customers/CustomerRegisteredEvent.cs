@@ -8,7 +8,7 @@ namespace Master.Domain.Customers
 
         public CustomerRegisteredEvent(Guid customerId)
         {
-            this.CustomerId = customerId;
+            CustomerId = customerId;
         }
     }
 }

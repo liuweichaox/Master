@@ -9,7 +9,7 @@ namespace Master.Infrastructure.Domain
         private readonly IDomainEventsDispatcher _domainEventsDispatcher;
 
         public UnitOfWork(
-            AppDbContext appDbContext, 
+            AppDbContext appDbContext,
             IDomainEventsDispatcher domainEventsDispatcher)
         {
             this._appDbContext = appDbContext;

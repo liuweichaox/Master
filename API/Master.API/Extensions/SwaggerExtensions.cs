@@ -18,7 +18,7 @@ namespace Master.API.Extensions
                 });
 
                 options.AddAuthenticationHeader();
-                
+
                 var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                 var commentsFileName = Assembly.GetExecutingAssembly().GetName().Name + ".XML";
                 var commentsFile = Path.Combine(baseDirectory, commentsFileName);
@@ -39,7 +39,7 @@ namespace Master.API.Extensions
 
             return app;
         }
-        
+
         /// <summary>
         /// 为Swagger增加Authentication报文头
         /// </summary>
@@ -48,7 +48,7 @@ namespace Master.API.Extensions
         {
             c.AddSecurityDefinition("Authorization", new OpenApiSecurityScheme
             {
-                Description =  "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
                 Name = "Authorization",
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.ApiKey,

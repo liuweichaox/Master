@@ -48,31 +48,31 @@ public class ExceptionMiddleware
         var options = new JsonSerializerOptions
         {
             WriteIndented = true,
-            PropertyNamingPolicy = null, 
+            PropertyNamingPolicy = null,
             Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
         };
         switch (ex.InnerException)
         {
             case InvalidCommandException exception:
-            {
-                var result = ApiResult.ErrorResult(exception.Message);
-                await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
-                break;
-            }
+                {
+                    var result = ApiResult.ErrorResult(exception.Message);
+                    await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
+                    break;
+                }
             case BusinessRuleValidationException exception:
-            {
-                var result = ApiResult.ErrorResult(exception.Message);
-                await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
-                break;
-            }
+                {
+                    var result = ApiResult.ErrorResult(exception.Message);
+                    await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
+                    break;
+                }
             default:
-            {
-                var environment = context.RequestServices.GetRequiredService<IWebHostEnvironment>();
-                var message= environment.IsDevelopment() ? ex.Message : "服务器内部错误，无法完成请求";
-                var result = ApiResult.ErrorResult(message, ApiResultCode.InternalServerError);
-                await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
-                break;
-            }
+                {
+                    var environment = context.RequestServices.GetRequiredService<IWebHostEnvironment>();
+                    var message = environment.IsDevelopment() ? ex.Message : "服务器内部错误，无法完成请求";
+                    var result = ApiResult.ErrorResult(message, ApiResultCode.InternalServerError);
+                    await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
+                    break;
+                }
         }
     }
 }

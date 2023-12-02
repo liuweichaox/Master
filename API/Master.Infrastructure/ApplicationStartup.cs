@@ -5,13 +5,13 @@ using Master.Infrastructure.Processing.Outbox;
 
 namespace Master.Infrastructure;
 
-public class ApplicationStartup
+public static class ApplicationStartup
 {
     public static async Task Initialize(IServiceProvider serviceProvider)
     {
         var schedulerFactory = serviceProvider.GetRequiredService<ISchedulerFactory>();
         var scheduler = await schedulerFactory.GetScheduler();
-        
+
         var processOutboxJob = JobBuilder.Create<ProcessOutboxJob>().Build();
         var trigger =
             TriggerBuilder

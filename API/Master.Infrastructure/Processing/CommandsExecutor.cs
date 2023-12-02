@@ -10,20 +10,20 @@ namespace Master.Infrastructure.Processing
     {
         public static async Task Execute(ICommand command)
         {
-            Console.WriteLine("CommandsExecutor Execute");
+            Console.WriteLine(@"CommandsExecutor Execute");
             using var scope = ServiceProviderLocator.CreateScope();
-            var mediator = scope.ServiceProvider.GetService<IMediator>();
+            var mediator = scope?.ServiceProvider.GetService<IMediator>();
             await mediator?.Send(command)!;
         }
 
         public static async Task<TResult> Execute<TResult>(ICommand<TResult> command)
         {
-            Console.WriteLine("CommandsExecutor Execute TResult,command json "+JsonSerializer.Serialize(command)+command.GetType().Name);
+            Console.WriteLine(@"CommandsExecutor Execute TResult,command json " + JsonSerializer.Serialize(command) + command.GetType().Name);
             using var scope = ServiceProviderLocator.CreateScope();
-            var mediator = scope.ServiceProvider.GetService<IMediator>();
+            var mediator = scope?.ServiceProvider.GetService<IMediator>();
             return await mediator?.Send(command)!;
         }
-        
+
         public static async Task ExecuteAsync(ICommand command)
         {
             await using var scope = ServiceProviderLocator.CreateAsyncScope();

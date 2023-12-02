@@ -28,7 +28,7 @@ public class AppController : ControllerBase
     /// <returns></returns>
     protected IActionResult Success<T>(T data, string message)
     {
-        return Ok(ApiResult<T>.SuccessResult(data,message));
+        return Ok(ApiResult<T>.SuccessResult(data, message));
     }
 
     /// <summary>

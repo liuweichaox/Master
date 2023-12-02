@@ -1,7 +1,4 @@
-﻿using System.Data;
-using System.Diagnostics;
-using System.Reflection;
-using System.Text.Json;
+﻿using System.Text.Json;
 using Dapper;
 using Master.Domain.Data;
 using Master.Infrastructure.Commands;
@@ -19,11 +16,10 @@ namespace Master.Infrastructure.Processing
 
         public async Task EnqueueAsync<T>(ICommand<T> command)
         {
-            Console.WriteLine("CommandsScheduler Execute TResult,command json "+JsonSerializer.Serialize(command)+" "+command.GetType().Name);
+            Console.WriteLine(@"CommandsScheduler Execute TResult,command json " + JsonSerializer.Serialize(command) + " " + command.GetType().Name);
             var connection = this._sqlConnectionFactory.GetOpenConnection();
 
-            const string sqlInsert = "INSERT INTO InternalCommands (Id, EnqueueDate, Type, Data) VALUES " +
-                                     "(@Id, @EnqueueDate, @Type, @Data)";
+            const string sqlInsert = "INSERT INTO InternalCommands (Id, EnqueueDate, Type, Data) VALUES (@Id, @EnqueueDate, @Type, @Data)";
             //将接口类型转换为封闭类型
             var type = command.GetType();
 

@@ -14,13 +14,13 @@ public class ApiResult<T>
         Message = message;
         Code = (int)code;
     }
-    
+
     public static ApiResult<T> SuccessResult(T data)
     {
         return new ApiResult<T>(data, true, string.Empty, ApiResultCode.Success);
     }
 
-    public static ApiResult<T> SuccessResult(T data,string message)
+    public static ApiResult<T> SuccessResult(T data, string message)
     {
         return new ApiResult<T>(data, true, message, ApiResultCode.Success);
     }
@@ -38,7 +38,7 @@ public class ApiResult<T>
 
 public class ApiResult : ApiResult<object>
 {
-    public  ApiResult(object data, bool success, string message, ApiResultCode code) : base(data, success, message, code)
+    public ApiResult(object data, bool success, string message, ApiResultCode code) : base(data, success, message, code)
     {
     }
 }

@@ -21,7 +21,7 @@ public class CustomerController : AppController
     /// </summary>
     /// <param name="mediator"></param>
     /// <param name="stringLocalize"></param>
-    public CustomerController(IMediator mediator,IStringLocalizer<MultiLanguage> stringLocalize)
+    public CustomerController(IMediator mediator, IStringLocalizer<MultiLanguage> stringLocalize)
     {
         _mediator = mediator;
         _stringLocalize = stringLocalize;
@@ -48,6 +48,6 @@ public class CustomerController : AppController
     public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerRequest request)
     {
         var result = await _mediator.Send(new RegisterCustomerCommand(request.Email, request.Name));
-        return Success(result,_stringLocalize["operation_success"]);
+        return Success(result, _stringLocalize["operation_success"]);
     }
 }

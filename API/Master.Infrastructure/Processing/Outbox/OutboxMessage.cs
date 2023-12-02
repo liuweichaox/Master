@@ -14,7 +14,7 @@
 
         private OutboxMessage()
         {
-            
+
         }
 
         public OutboxMessage(DateTime occurredOn, string type, string data)

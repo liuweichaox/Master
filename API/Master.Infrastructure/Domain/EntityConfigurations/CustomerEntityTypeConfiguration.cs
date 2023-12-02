@@ -9,7 +9,7 @@ namespace Master.Infrastructure.Domain.EntityConfigurations
         public void Configure(EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("Customers");
-            
+
             builder.HasKey(b => b.Id);
 
             builder.Property("WelcomeEmailWasSent").HasColumnName("WelcomeEmailWasSent").HasComment("是否发送过欢迎邮件");

@@ -67,10 +67,10 @@ namespace Master.API.Configuration
 
             await Task.WhenAll(tasks);
 
-            foreach (var outboxMessage in from domainEventNotification in domainEventNotifications 
-                     let type = domainEventNotification?.GetType().FullName 
-                     let data = JsonSerializer.Serialize(domainEventNotification, domainEventNotification?.GetType()) 
-                     select new OutboxMessage(domainEventNotification.DomainEvent.OccurredOn, type, data))
+            foreach (var outboxMessage in from domainEventNotification in domainEventNotifications
+                                          let type = domainEventNotification?.GetType().FullName
+                                          let data = JsonSerializer.Serialize(domainEventNotification, domainEventNotification?.GetType())
+                                          select new OutboxMessage(domainEventNotification.DomainEvent.OccurredOn, type, data))
             {
                 this._appDbContext.OutboxMessages.Add(outboxMessage);
             }

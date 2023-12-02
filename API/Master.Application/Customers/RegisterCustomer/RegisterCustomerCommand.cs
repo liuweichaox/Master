@@ -12,6 +12,6 @@ namespace Master.Application.Customers.RegisterCustomer
         {
             this.Email = email;
             this.Name = name;
-        }      
+        }
     }
 }

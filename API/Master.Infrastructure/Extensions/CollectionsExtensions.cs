@@ -18,7 +18,7 @@ public static class CollectionsExtensions
             action(o);
         }
     }
-    
+
     /// <summary>
     /// 遍历 IEnumerable 并返回一个新的 List
     /// </summary>
@@ -33,7 +33,7 @@ public static class CollectionsExtensions
             yield return action(o);
         }
     }
-    
+
     /// <summary>
     /// 遍历 IAsyncEnumerable 并返回一个新的 List
     /// </summary>
@@ -48,7 +48,7 @@ public static class CollectionsExtensions
             yield return action(o);
         }
     }
-    
+
     /// <summary>
     /// 遍历 IEnumerable
     /// </summary>
@@ -60,7 +60,7 @@ public static class CollectionsExtensions
         await Task.Run(() => { Parallel.ForEach(objs, action); });
     }
 
-    
+
     /// <summary>
     /// 遍历 IAsyncEnumerable
     /// </summary>
@@ -74,7 +74,7 @@ public static class CollectionsExtensions
             action(o);
         }
     }
-    
+
     /// <summary>
     /// 是否为空
     /// </summary>

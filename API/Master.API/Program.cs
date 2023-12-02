@@ -68,7 +68,7 @@ builder.Services.AddCors(options =>
         policy.AllowCredentials()
             .AllowAnyHeader()
             .AllowAnyMethod()
-            .SetIsOriginAllowed(_=>true);
+            .SetIsOriginAllowed(_ => true);
     });
 });
 builder.Services.AddResponseCaching();
