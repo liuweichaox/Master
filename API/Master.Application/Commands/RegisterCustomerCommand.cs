@@ -1,7 +1,7 @@
 ﻿using Master.Application.DTOs;
 using Master.Infrastructure.Commands;
 
-namespace Master.Application.Customers.RegisterCustomer;
+namespace Master.Application.Commands;
 
 public class RegisterCustomerCommand : CommandBase<CustomerDTO>
 {

@@ -35,7 +35,7 @@ public class ValidatorBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest
 
             foreach (var error in errors) errorBuilder.AppendLine(error.ErrorMessage);
 
-            throw new InvalidCommandException(errorBuilder.ToString(), null);
+            throw new BusinessException(errorBuilder.ToString(), null);
         }
 
         var response = next();

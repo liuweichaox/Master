@@ -52,7 +52,7 @@ public class ExceptionMiddleware
         };
         switch (ex.InnerException)
         {
-            case InvalidCommandException exception:
+            case BusinessException exception:
                 {
                     var result = APIResult.ErrorResult(exception.Message);
                     await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));

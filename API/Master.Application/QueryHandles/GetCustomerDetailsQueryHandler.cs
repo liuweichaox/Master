@@ -1,8 +1,10 @@
 ﻿using Dapper;
+using Master.Application.DTOs;
+using Master.Application.Queries;
 using Master.Domain.Data;
 using Master.Infrastructure.Queries;
 
-namespace Master.Application.Customers.GetCustomerDetails;
+namespace Master.Application.QueryHandles;
 
 public class GetCustomerDetailsQueryHandler : IQueryHandler<GetCustomerDetailsQuery, CustomerDetailsDTO>
 {

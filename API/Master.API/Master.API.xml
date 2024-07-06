@@ -70,7 +70,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Master.API.Controller.CustomerController.RegisterCustomer(Master.Application.Customers.RegisterCustomer.RegisterCustomerCommand)">
+        <member name="M:Master.API.Controller.CustomerController.RegisterCustomer(Master.Application.Commands.RegisterCustomerCommand)">
             <summary>
                 RegisterCustomer
             </summary>

@@ -1,10 +1,11 @@
-﻿using Master.Application.DTOs;
+﻿using Master.Application.Commands;
+using Master.Application.DTOs;
 using Master.Domain.Customers;
 using Master.Domain.IRepositories;
 using Master.Domain.SeedWork;
 using Master.Infrastructure.Commands;
 
-namespace Master.Application.Customers.RegisterCustomer;
+namespace Master.Application.CommandHandles;
 
 public class RegisterCustomerCommandHandler : ICommandHandler<RegisterCustomerCommand, CustomerDTO>
 {

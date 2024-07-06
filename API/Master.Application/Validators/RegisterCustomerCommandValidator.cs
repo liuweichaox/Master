@@ -1,6 +1,7 @@
 using FluentValidation;
+using Master.Application.Commands;
 
-namespace Master.Application.Customers.RegisterCustomer;
+namespace Master.Application.Validators;
 
 public class RegisterCustomerCommandValidator : AbstractValidator<RegisterCustomerCommand>
 {

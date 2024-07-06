@@ -1,6 +1,7 @@
-﻿using Master.Infrastructure.Queries;
+﻿using Master.Application.DTOs;
+using Master.Infrastructure.Queries;
 
-namespace Master.Application.Customers.GetCustomerDetails;
+namespace Master.Application.Queries;
 
 public class GetCustomerDetailsQuery : IQuery<CustomerDetailsDTO>
 {

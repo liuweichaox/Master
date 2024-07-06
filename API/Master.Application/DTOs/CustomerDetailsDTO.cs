@@ -1,4 +1,4 @@
-﻿namespace Master.Application.Customers.GetCustomerDetails;
+﻿namespace Master.Application.DTOs;
 
 public class CustomerDetailsDTO
 {

@@ -1,5 +1,4 @@
-using Master.Application.Customers.GetCustomerDetails;
-using Master.Application.Customers.RegisterCustomer;
+using Master.Application.Commands;
 using Master.Infrastructure.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
