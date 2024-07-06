@@ -5,10 +5,10 @@ namespace Master.API;
 /// <summary>
 ///     ApiModule
 /// </summary>
-public class ApiModule
+public class APIModule
 {
     /// <summary>
     ///     Assembly
     /// </summary>
-    public static readonly Assembly Assembly = typeof(ApiModule).Assembly;
+    public static readonly Assembly Assembly = typeof(APIModule).Assembly;
 }

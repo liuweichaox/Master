@@ -1,4 +1,4 @@
-using Master.Infrastructure.Api;
+using Master.Infrastructure.API;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Master.API;
@@ -16,7 +16,7 @@ public class AppController : ControllerBase
     /// <returns></returns>
     protected IActionResult Success<T>(T data)
     {
-        return Ok(ApiResult<T>.SuccessResult(data));
+        return Ok(APIResult<T>.SuccessResult(data));
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public class AppController : ControllerBase
     /// <returns></returns>
     protected IActionResult Success<T>(T data, string message)
     {
-        return Ok(ApiResult<T>.SuccessResult(data, message));
+        return Ok(APIResult<T>.SuccessResult(data, message));
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public class AppController : ControllerBase
     /// <returns></returns>
     protected IActionResult Error(string message)
     {
-        return Ok(ApiResult.ErrorResult(message));
+        return Ok(APIResult.ErrorResult(message));
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ public class AppController : ControllerBase
     /// <param name="message"></param>
     /// <param name="code"></param>
     /// <returns></returns>
-    protected IActionResult Error(string message, ApiResultCode code)
+    protected IActionResult Error(string message, APIResultCode code)
     {
-        return Ok(ApiResult.ErrorResult(message, code));
+        return Ok(APIResult.ErrorResult(message, code));
     }
 }

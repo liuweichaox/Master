@@ -31,27 +31,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Update="Localization\MultiLanguage.en-US.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>MultiLanguage.en-US.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Localization\MultiLanguage.zh-CN.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>MultiLanguage.zn-CH.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Localization\MultiLanguage.en-US.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>MultiLanguage.en-US.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Localization\MultiLanguage.zh-CN.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>MultiLanguage.zh-CN.resx</DependentUpon>
-        </Compile>
+      <None Update="Localization\MultiLanguage.zh-CN.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Localization\MultiLanguage.en-US.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

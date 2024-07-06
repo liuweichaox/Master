@@ -4,12 +4,12 @@
         <name>Master.API</name>
     </assembly>
     <members>
-        <member name="T:Master.API.ApiModule">
+        <member name="T:Master.API.APIModule">
             <summary>
                 ApiModule
             </summary>
         </member>
-        <member name="F:Master.API.ApiModule.Assembly">
+        <member name="F:Master.API.APIModule.Assembly">
             <summary>
                 Assembly
             </summary>
@@ -43,7 +43,7 @@
             <param name="message"></param>
             <returns></returns>
         </member>
-        <member name="M:Master.API.AppController.Error(System.String,Master.Infrastructure.Api.ApiResultCode)">
+        <member name="M:Master.API.AppController.Error(System.String,Master.Infrastructure.API.APIResultCode)">
             <summary>
                 Returns a error response with message and code.
             </summary>

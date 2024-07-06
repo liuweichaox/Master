@@ -1,5 +1,5 @@
 using Master.Application.Exceptions;
-using Master.Infrastructure.Api;
+using Master.Infrastructure.API;
 
 namespace Master.API.Middlewares;
 
@@ -54,13 +54,13 @@ public class ExceptionMiddleware
         {
             case InvalidCommandException exception:
                 {
-                    var result = ApiResult.ErrorResult(exception.Message);
+                    var result = APIResult.ErrorResult(exception.Message);
                     await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
                     break;
                 }
             case BusinessRuleValidationException exception:
                 {
-                    var result = ApiResult.ErrorResult(exception.Message);
+                    var result = APIResult.ErrorResult(exception.Message);
                     await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
                     break;
                 }
@@ -68,7 +68,7 @@ public class ExceptionMiddleware
                 {
                     var environment = context.RequestServices.GetRequiredService<IWebHostEnvironment>();
                     var message = environment.IsDevelopment() ? ex.Message : "服务器内部错误，无法完成请求";
-                    var result = ApiResult.ErrorResult(message, ApiResultCode.InternalServerError);
+                    var result = APIResult.ErrorResult(message, APIResultCode.InternalServerError);
                     await context.Response.WriteAsync(JsonSerializer.Serialize(result, options));
                     break;
                 }

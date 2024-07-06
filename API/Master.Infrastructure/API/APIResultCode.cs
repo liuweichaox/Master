@@ -1,6 +1,6 @@
-namespace Master.Infrastructure.Api;
+namespace Master.Infrastructure.API;
 
-public enum ApiResultCode
+public enum APIResultCode
 {
     Success = 200,
     ClientError = 400,

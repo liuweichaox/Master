@@ -1,4 +1,4 @@
-namespace Master.Infrastructure.Api;
+namespace Master.Infrastructure.API;
 
 /// <summary>
 ///     分页结果

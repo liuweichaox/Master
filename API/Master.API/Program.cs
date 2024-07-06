@@ -1,3 +1,6 @@
+using Master.Infrastructure.Localization;
+using Microsoft.Extensions.Localization;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((_, lc) => lc
     .Enrich.FromLogContext()
@@ -9,7 +12,7 @@ builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFi
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMediatR(options =>
 {
-    options.RegisterServicesFromAssemblies(ApiModule.Assembly, ApplicationModule.Assembly, DomainModule.Assembly,
+    options.RegisterServicesFromAssemblies(APIModule.Assembly, ApplicationModule.Assembly, DomainModule.Assembly,
         InfrastructureModule.Assembly);
 });
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
@@ -31,6 +34,8 @@ builder.Services.AddScoped(typeof(ISqlConnectionFactory),
 builder.Services.AddQuartz(q => { q.UseMicrosoftDependencyInjectionJobFactory(); });
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 
 builder.Services.AddControllers(options => { options.Filters.Add<ValidateModelAttribute>(); })
     .AddJsonOptions(options =>
@@ -54,7 +59,10 @@ builder.Services.AddControllers(options => { options.Filters.Add<ValidateModelAt
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
-builder.Services.AddLocalization();
+builder.Services.AddLocalization(options =>
+{
+    options.ResourcesPath = "Localization";
+});
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -88,8 +96,6 @@ app.UseRequestLocalization(new RequestLocalizationOptions
 app.UseResponseCaching();
 
 app.UseMiddleware<ExceptionMiddleware>();
-
-app.UseMiddleware<CorrelationMiddleware>();
 
 app.UseHttpLogging();
 

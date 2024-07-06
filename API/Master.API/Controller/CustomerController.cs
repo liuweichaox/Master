@@ -36,8 +36,8 @@ public class CustomerController : AppController
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCustomerDetailsQuery(Guid id)
     {
-        var result = await _mediator.Send(new GetCustomerDetailsQuery(id));
-        return Success(result);
+        //var result = await _mediator.Send(new GetCustomerDetailsQuery(id));
+        return Success("result", _stringLocalize["operation_success"]);
     }
 
     /// <summary>
