@@ -1,17 +1,17 @@
-﻿using Master.Infrastructure.Commands;
+﻿using Master.Application.DTOs;
+using Master.Infrastructure.Commands;
 
-namespace Master.Application.Customers.RegisterCustomer
+namespace Master.Application.Customers.RegisterCustomer;
+
+public class RegisterCustomerCommand : CommandBase<CustomerDTO>
 {
-    public class RegisterCustomerCommand : CommandBase<CustomerDto>
+    public RegisterCustomerCommand(string email, string name)
     {
-        public string Email { get; }
-
-        public string Name { get; }
-
-        public RegisterCustomerCommand(string email, string name)
-        {
-            this.Email = email;
-            this.Name = name;
-        }
+        Email = email;
+        Name = name;
     }
+
+    public string Email { get; }
+
+    public string Name { get; }
 }

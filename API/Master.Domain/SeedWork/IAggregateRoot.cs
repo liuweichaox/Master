@@ -1,7 +1,5 @@
-﻿namespace Master.Domain.SeedWork
-{
-    public interface IAggregateRoot
-    {
+﻿namespace Master.Domain.SeedWork;
 
-    }
+public interface IAggregateRoot
+{
 }

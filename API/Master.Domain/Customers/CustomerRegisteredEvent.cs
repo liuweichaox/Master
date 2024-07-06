@@ -1,14 +1,13 @@
 ﻿using Master.Domain.SeedWork;
 
-namespace Master.Domain.Customers
-{
-    public class CustomerRegisteredEvent : DomainEventBase
-    {
-        public Guid CustomerId { get; }
+namespace Master.Domain.Customers;
 
-        public CustomerRegisteredEvent(Guid customerId)
-        {
-            CustomerId = customerId;
-        }
+public class CustomerRegisteredEvent : DomainEventBase
+{
+    public CustomerRegisteredEvent(Guid customerId)
+    {
+        CustomerId = customerId;
     }
+
+    public Guid CustomerId { get; }
 }

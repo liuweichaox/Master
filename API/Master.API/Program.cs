@@ -9,7 +9,8 @@ builder.Services.AddHttpLogging(options => options.LoggingFields = HttpLoggingFi
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMediatR(options =>
 {
-    options.RegisterServicesFromAssemblies(ApiModule.Assembly, ApplicationModule.Assembly, DomainModule.Assembly, InfrastructureModule.Assembly);
+    options.RegisterServicesFromAssemblies(ApiModule.Assembly, ApplicationModule.Assembly, DomainModule.Assembly,
+        InfrastructureModule.Assembly);
 });
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidatorBehavior<,>));
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
@@ -25,20 +26,13 @@ builder.Services.AddDbContextPool<AppDbContext>((_, options) =>
 });
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
-builder.Services.AddScoped<IExecutionContextAccessor, ExecutionContextAccessor>();
-builder.Services.AddScoped<IDomainEventsDispatcher, DomainEventsDispatcher>();
-builder.Services.AddScoped<ICommandsDispatcher, CommandsDispatcher>();
-builder.Services.AddScoped<ICommandsScheduler, CommandsScheduler>();
 builder.Services.AddScoped(typeof(ISqlConnectionFactory),
     _ => new SqlConnectionFactory(builder.Configuration.GetConnectionString("AppDbContext")));
 builder.Services.AddQuartz(q => { q.UseMicrosoftDependencyInjectionJobFactory(); });
 builder.Services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
-builder.Services.AddControllers(options =>
-    {
-        options.Filters.Add<ValidateModelAttribute>();
-    })
+builder.Services.AddControllers(options => { options.Filters.Add<ValidateModelAttribute>(); })
     .AddJsonOptions(options =>
     {
         //格式化日期时间格式
@@ -74,17 +68,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddResponseCaching();
 var app = builder.Build();
 ServiceProviderLocator.SetProvider(app.Services);
-await ApplicationStartup.Initialize(app.Services);
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwaggerDocumentation();
-}
+if (app.Environment.IsDevelopment()) app.UseSwaggerDocumentation();
 
 IList<CultureInfo> supportedCultures = new List<CultureInfo>
 {
-    new CultureInfo("en-US"),
-    new CultureInfo("zh-CN"),
+    new("en-US"),
+    new("zh-CN")
 };
 
 app.UseRequestLocalization(new RequestLocalizationOptions

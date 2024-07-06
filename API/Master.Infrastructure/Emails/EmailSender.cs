@@ -1,12 +1,9 @@
-﻿namespace Master.Infrastructure.Emails
-{
-    public class EmailSender : IEmailSender
-    {
-        public async Task SendEmailAsync(EmailMessage message)
-        {
-            // Integration with email service.
+﻿namespace Master.Infrastructure.Emails;
 
-            return;
-        }
+public class EmailSender : IEmailSender
+{
+    public async Task SendEmailAsync(EmailMessage message)
+    {
+        // Integration with email service.
     }
 }

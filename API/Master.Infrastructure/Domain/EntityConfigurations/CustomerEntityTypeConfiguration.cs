@@ -1,20 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Master.Domain.Customers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Master.Domain.Customers;
 
-namespace Master.Infrastructure.Domain.EntityConfigurations
+namespace Master.Infrastructure.Domain.EntityConfigurations;
+
+internal sealed class CustomerEntityTypeConfiguration : IEntityTypeConfiguration<Customer>
 {
-    internal sealed class CustomerEntityTypeConfiguration : IEntityTypeConfiguration<Customer>
+    public void Configure(EntityTypeBuilder<Customer> builder)
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
-        {
-            builder.ToTable("Customers");
+        builder.ToTable("Customers");
 
-            builder.HasKey(b => b.Id);
+        builder.HasKey(b => b.Id);
 
-            builder.Property("WelcomeEmailWasSent").HasColumnName("WelcomeEmailWasSent").HasComment("是否发送过欢迎邮件");
-            builder.Property("Email").HasColumnName("Email").HasComment("邮箱");
-            builder.Property("Name").HasColumnName("Name").HasComment("姓名");
-        }
+        builder.Property("WelcomeEmailWasSent").HasColumnName("WelcomeEmailWasSent").HasComment("是否发送过欢迎邮件");
+        builder.Property("Email").HasColumnName("Email").HasComment("邮箱");
+        builder.Property("Name").HasColumnName("Name").HasComment("姓名");
     }
 }

@@ -1,7 +1,6 @@
-﻿namespace Master.Infrastructure.Emails
+﻿namespace Master.Infrastructure.Emails;
+
+public interface IEmailSender
 {
-    public interface IEmailSender
-    {
-        Task SendEmailAsync(EmailMessage message);
-    }
+    Task SendEmailAsync(EmailMessage message);
 }

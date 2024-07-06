@@ -1,19 +1,17 @@
 ﻿using System.Text.Json.Serialization;
 using Master.Domain.SeedWork;
 
-namespace Master.Domain.Events
+namespace Master.Domain.Events;
+
+public class DomainNotificationBase<T> : IDomainEventNotification<T> where T : IDomainEvent
 {
-    public class DomainNotificationBase<T> : IDomainEventNotification<T> where T : IDomainEvent
+    public DomainNotificationBase(T domainEvent)
     {
-        [JsonIgnore]
-        public T DomainEvent { get; }
-
-        public Guid Id { get; }
-
-        public DomainNotificationBase(T domainEvent)
-        {
-            this.Id = Guid.NewGuid();
-            this.DomainEvent = domainEvent;
-        }
+        Id = Guid.NewGuid();
+        DomainEvent = domainEvent;
     }
+
+    [JsonIgnore] public T DomainEvent { get; }
+
+    public Guid Id { get; }
 }

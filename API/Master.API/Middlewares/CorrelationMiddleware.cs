@@ -1,23 +1,22 @@
-﻿namespace Master.API.Middlewares
+﻿namespace Master.API.Middlewares;
+
+internal class CorrelationMiddleware
 {
-    internal class CorrelationMiddleware
+    internal const string CorrelationHeaderKey = "CorrelationId";
+
+    private readonly RequestDelegate _next;
+
+    public CorrelationMiddleware(RequestDelegate next)
     {
-        internal const string CorrelationHeaderKey = "CorrelationId";
+        _next = next;
+    }
 
-        private readonly RequestDelegate _next;
+    public async Task Invoke(HttpContext context)
+    {
+        var correlationId = Guid.NewGuid();
 
-        public CorrelationMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        context.Request.Headers.Append(CorrelationHeaderKey, correlationId.ToString());
 
-        public async Task Invoke(HttpContext context)
-        {
-            var correlationId = Guid.NewGuid();
-
-            context.Request.Headers.Add(CorrelationHeaderKey, correlationId.ToString());
-
-            await _next.Invoke(context);
-        }
+        await _next.Invoke(context);
     }
 }

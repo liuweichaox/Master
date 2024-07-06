@@ -3,12 +3,12 @@ using System.Reflection;
 namespace Master.API;
 
 /// <summary>
-/// ApiModule
+///     ApiModule
 /// </summary>
 public class ApiModule
 {
     /// <summary>
-    /// Assembly
+    ///     Assembly
     /// </summary>
     public static readonly Assembly Assembly = typeof(ApiModule).Assembly;
 }

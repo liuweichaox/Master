@@ -1,9 +1,8 @@
 ﻿using MediatR;
 
-namespace Master.Domain.SeedWork
+namespace Master.Domain.SeedWork;
+
+public interface IDomainEvent : INotification
 {
-    public interface IDomainEvent : INotification
-    {
-        DateTime OccurredOn { get; }
-    }
+    DateTime OccurredOn { get; }
 }

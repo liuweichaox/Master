@@ -1,9 +1,8 @@
 ﻿using System.Data;
 
-namespace Master.Domain.Data
+namespace Master.Domain.Data;
+
+public interface ISqlConnectionFactory
 {
-    public interface ISqlConnectionFactory
-    {
-        IDbConnection GetOpenConnection();
-    }
+    IDbConnection GetOpenConnection();
 }

@@ -1,12 +1,11 @@
-﻿namespace Master.Domain.SeedWork
-{
-    public class DomainEventBase : IDomainEvent
-    {
-        public DomainEventBase()
-        {
-            this.OccurredOn = DateTime.Now;
-        }
+﻿namespace Master.Domain.SeedWork;
 
-        public DateTime OccurredOn { get; }
+public class DomainEventBase : IDomainEvent
+{
+    public DomainEventBase()
+    {
+        OccurredOn = DateTime.Now;
     }
+
+    public DateTime OccurredOn { get; }
 }

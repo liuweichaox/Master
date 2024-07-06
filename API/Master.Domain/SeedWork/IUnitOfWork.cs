@@ -1,7 +1,6 @@
-﻿namespace Master.Domain.SeedWork
+﻿namespace Master.Domain.SeedWork;
+
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        Task<int> CommitAsync(CancellationToken cancellationToken = default(CancellationToken));
-    }
+    Task<int> CommitAsync(CancellationToken cancellationToken = default);
 }

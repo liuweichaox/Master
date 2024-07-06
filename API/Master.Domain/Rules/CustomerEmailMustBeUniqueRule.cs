@@ -11,7 +11,10 @@ public class CustomerEmailMustBeUniqueRule : IBusinessRule
         _email = email;
     }
 
-    public bool IsBroken() => string.IsNullOrEmpty(_email);
+    public bool IsBroken()
+    {
+        return string.IsNullOrEmpty(_email);
+    }
 
     public string Message => "Customer email must be unique";
 }

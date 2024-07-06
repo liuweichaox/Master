@@ -1,9 +1,7 @@
-﻿namespace Master.Domain.SeedWork
-{
-    public interface IBusinessRule
-    {
-        bool IsBroken();
+﻿namespace Master.Domain.SeedWork;
 
-        string Message { get; }
-    }
+public interface IBusinessRule
+{
+    string Message { get; }
+    bool IsBroken();
 }

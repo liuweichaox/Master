@@ -1,7 +1,6 @@
-﻿namespace Master.Infrastructure.Processing
+﻿namespace Master.Infrastructure.Processing;
+
+public interface ICommandsDispatcher
 {
-    public interface ICommandsDispatcher
-    {
-        Task DispatchCommandAsync(Guid id);
-    }
+    Task DispatchCommandAsync(Guid id);
 }

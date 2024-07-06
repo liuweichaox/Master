@@ -4,11 +4,12 @@ using System.Text.Json.Serialization;
 namespace Master.Infrastructure.Converters;
 
 /// <summary>
-/// 格式化返回的时间格式
+///     格式化返回的时间格式
 /// </summary>
 public class DateTimeJsonConverter : JsonConverter<DateTime>
 {
     private readonly string _dateFormatString;
+
     public DateTimeJsonConverter()
     {
         _dateFormatString = "yyyy-MM-dd HH:mm:ss";
@@ -21,15 +22,10 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
 
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        string? str = reader.GetString();
+        var str = reader.GetString();
         if (str == null)
-        {
-            return default(DateTime);
-        }
-        else
-        {
-            return DateTime.Parse(str);
-        }
+            return default;
+        return DateTime.Parse(str);
     }
 
     public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)

@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Mvc;
 using Master.Infrastructure.Api;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Master.API;
 
 /// <summary>
-///   Base controller for all controllers in the application.
+///     Base controller for all controllers in the application.
 /// </summary>
 public class AppController : ControllerBase
 {
     /// <summary>
-    ///  Returns a success response with data.
+    ///     Returns a success response with data.
     /// </summary>
     /// <param name="data"></param>
     /// <typeparam name="T"></typeparam>
@@ -20,7 +20,7 @@ public class AppController : ControllerBase
     }
 
     /// <summary>
-    /// Returns a success response with data and message.
+    ///     Returns a success response with data and message.
     /// </summary>
     /// <param name="data"></param>
     /// <param name="message"></param>
@@ -32,7 +32,7 @@ public class AppController : ControllerBase
     }
 
     /// <summary>
-    /// Returns a error response with message.
+    ///     Returns a error response with message.
     /// </summary>
     /// <param name="message"></param>
     /// <returns></returns>
@@ -42,7 +42,7 @@ public class AppController : ControllerBase
     }
 
     /// <summary>
-    /// Returns a error response with message and code.
+    ///     Returns a error response with message and code.
     /// </summary>
     /// <param name="message"></param>
     /// <param name="code"></param>

@@ -1,6 +1,6 @@
 using System.Data;
-using MySql.Data.MySqlClient;
 using Master.Domain.Data;
+using MySql.Data.MySqlClient;
 
 namespace Master.Infrastructure.Database;
 
@@ -11,25 +11,22 @@ public class SqlConnectionFactory : ISqlConnectionFactory, IDisposable
 
     public SqlConnectionFactory(string? connectionString)
     {
-        this._connectionString = connectionString;
-    }
-
-    public IDbConnection GetOpenConnection()
-    {
-        if (this._connection == null || this._connection.State != ConnectionState.Open)
-        {
-            this._connection = new MySqlConnection(_connectionString);
-            this._connection.Open();
-        }
-
-        return this._connection;
+        _connectionString = connectionString;
     }
 
     public void Dispose()
     {
-        if (this._connection != null && this._connection.State == ConnectionState.Open)
+        if (_connection != null && _connection.State == ConnectionState.Open) _connection.Dispose();
+    }
+
+    public IDbConnection GetOpenConnection()
+    {
+        if (_connection == null || _connection.State != ConnectionState.Open)
         {
-            this._connection.Dispose();
+            _connection = new MySqlConnection(_connectionString);
+            _connection.Open();
         }
+
+        return _connection;
     }
 }

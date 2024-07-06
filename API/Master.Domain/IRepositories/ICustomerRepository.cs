@@ -1,11 +1,10 @@
 ﻿using Master.Domain.Customers;
 
-namespace Master.Domain.IRepositories
-{
-    public interface ICustomerRepository
-    {
-        ValueTask<Customer?> GetByIdAsync(Guid id);
+namespace Master.Domain.IRepositories;
 
-        ValueTask AddAsync(Customer customer);
-    }
+public interface ICustomerRepository
+{
+    ValueTask<Customer?> GetByIdAsync(Guid id);
+
+    ValueTask AddAsync(Customer customer);
 }

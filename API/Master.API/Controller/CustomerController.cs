@@ -1,13 +1,13 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Localization;
 using Master.Application.Customers.GetCustomerDetails;
 using Master.Application.Customers.RegisterCustomer;
 using Master.Infrastructure.Localization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
-namespace Master.API.Customers;
+namespace Master.API.Controller;
 
 /// <summary>
-/// CustomerController
+///     CustomerController
 /// </summary>
 [ApiController]
 [Route("[controller]")]
@@ -16,8 +16,9 @@ public class CustomerController : AppController
     private readonly IMediator _mediator;
 
     private readonly IStringLocalizer<MultiLanguage> _stringLocalize;
+
     /// <summary>
-    /// CustomerController
+    ///     CustomerController
     /// </summary>
     /// <param name="mediator"></param>
     /// <param name="stringLocalize"></param>
@@ -28,7 +29,7 @@ public class CustomerController : AppController
     }
 
     /// <summary>
-    /// GetCustomerDetailsQuery
+    ///     GetCustomerDetailsQuery
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -40,14 +41,14 @@ public class CustomerController : AppController
     }
 
     /// <summary>
-    /// RegisterCustomer
+    ///     RegisterCustomer
     /// </summary>
-    /// <param name="request"></param>
+    /// <param name="command"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerRequest request)
+    public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerCommand command)
     {
-        var result = await _mediator.Send(new RegisterCustomerCommand(request.Email, request.Name));
+        var result = await _mediator.Send(command);
         return Success(result, _stringLocalize["operation_success"]);
     }
 }

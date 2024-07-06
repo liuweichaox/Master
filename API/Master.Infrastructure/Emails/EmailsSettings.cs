@@ -1,7 +1,6 @@
-﻿namespace Master.Infrastructure.Emails
+﻿namespace Master.Infrastructure.Emails;
+
+public class EmailsSettings
 {
-    public class EmailsSettings
-    {
-        public string FromAddressEmail { get; set; }
-    }
+    public string FromAddressEmail { get; set; }
 }
